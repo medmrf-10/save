@@ -132,10 +132,8 @@ function sync(){
   var el=document.querySelector('.tab.active .label-name span')||document.querySelector('.tab.active .label-name');
   var l=el?el.textContent.replace(/[●•*◌]/g,'').trim().toLowerCase():'';
   var isM=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'));
-  var isA=(l==='chat'||l==='composer'||l==='ai'||l==='manager'||l==='ai manager');
-  var isV=!!document.querySelector('.chat-widget, .composer-editor, .interactive-input');
-  if(isM||isA||isV)window._rtlDefault=true;
-  else if(l&&!isM)window._rtlDefault=false;
+  var isV=!!document.querySelector('.chat-widget:focus-within, .composer-editor:focus-within, .interactive-input:focus-within');
+  window._rtlDefault=isM||isV;
 }
 setTimeout(function(){
   setInterval(sync,300);sync();
