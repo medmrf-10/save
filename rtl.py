@@ -129,11 +129,14 @@ SCRIPT = r"""
  * P() handles everything else by reading line content. */
 window._rtlDefault=false;
 function sync(){
-  var el=document.querySelector('.tab.active .label-name span');
-  if(!el)el=document.querySelector('.tab.active .label-name');
-  var f=el?el.textContent.replace(/[●•*◌]/g,'').trim():'';
-  var l=f.toLowerCase();
-  window._rtlDefault=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'))
+  var el=document.querySelector('.tab.active .label-name span')||document.querySelector('.tab.active .label-name');
+  var l=el?el.textContent.replace(/[●•*◌]/g,'').trim().toLowerCase():'';
+  var isM=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'));
+  var isA=(l==='chat'||l==='composer'||l==='ai'||l==='manager'||l==='ai manager');
+  var focus=document.activeElement;
+  var isF=focus&&(focus.closest('.chat-widget')||focus.closest('.composer-editor')||focus.closest('.interactive-input'));
+  if(isM||isA||isF)window._rtlDefault=true;
+  else if(l&&!isM)window._rtlDefault=false;
 }
 setTimeout(function(){
   setInterval(sync,300);sync();
@@ -153,31 +156,10 @@ RTL_CSS = """
 .view-line[dir="rtl"]{text-align:right}
 .view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
 
-/* Chat RTL */
-.interactive-item-container .rendered-markdown,
-.interactive-item-container .rendered-markdown p,
-.interactive-item-container .rendered-markdown li,
-.interactive-item-container .rendered-markdown h1,
-.interactive-item-container .rendered-markdown h2,
-.interactive-item-container .rendered-markdown h3,
-.interactive-item-container .rendered-markdown h4,
-.interactive-item-container .rendered-markdown blockquote,
-.interactive-item-container .rendered-markdown ul,
-.interactive-item-container .rendered-markdown ol,
-.chat-widget .rendered-markdown,
-.chat-widget .rendered-markdown p,
-.chat-widget .rendered-markdown li,
-.chat-widget .rendered-markdown h1,
-.chat-widget .rendered-markdown h2,
-.chat-widget .rendered-markdown h3,
-.chat-widget .rendered-markdown h4,
-.chat-widget .rendered-markdown blockquote,
-.chat-widget .rendered-markdown ul,
-.chat-widget .rendered-markdown ol{direction:rtl;text-align:right;unicode-bidi:plaintext}
-.interactive-item-container .rendered-markdown pre,
-.interactive-item-container .rendered-markdown code,
-.chat-widget .rendered-markdown pre,
-.chat-widget .rendered-markdown code{direction:ltr;text-align:left;unicode-bidi:normal}
+/* Chat & AI RTL */
+.interactive-item-container .rendered-markdown, .interactive-item-container .rendered-markdown p, .interactive-item-container .rendered-markdown li, .interactive-item-container .rendered-markdown h1, .interactive-item-container .rendered-markdown h2, .interactive-item-container .rendered-markdown h3, .interactive-item-container .rendered-markdown h4, .interactive-item-container .rendered-markdown blockquote, .interactive-item-container .rendered-markdown ul, .interactive-item-container .rendered-markdown ol, .chat-widget .rendered-markdown, .chat-widget .rendered-markdown p, .chat-widget .rendered-markdown li, .chat-widget .rendered-markdown h1, .chat-widget .rendered-markdown h2, .chat-widget .rendered-markdown h3, .chat-widget .rendered-markdown h4, .chat-widget .rendered-markdown blockquote, .chat-widget .rendered-markdown ul, .chat-widget .rendered-markdown ol, .composer-editor .rendered-markdown, .composer-editor .rendered-markdown p, .composer-editor .rendered-markdown li, .composer-editor .rendered-markdown h1, .composer-editor .rendered-markdown h2, .composer-editor .rendered-markdown h3, .composer-editor .rendered-markdown h4, .composer-editor .rendered-markdown blockquote, .composer-editor .rendered-markdown ul, .composer-editor .rendered-markdown ol { direction: rtl; text-align: right; unicode-bidi: plaintext; }
+.interactive-item-container .rendered-markdown pre, .interactive-item-container .rendered-markdown code, .chat-widget .rendered-markdown pre, .chat-widget .rendered-markdown code, .composer-editor .rendered-markdown pre, .composer-editor .rendered-markdown code, .interactive-input pre, .interactive-input code { direction: ltr; text-align: left; unicode-bidi: normal; }
+.chat-widget textarea, .chat-widget input, .composer-editor textarea, .composer-editor input, .interactive-input textarea, .interactive-input input { unicode-bidi: plaintext !important; }
 """
 
 css += '\n' + RTL_CSS
