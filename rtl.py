@@ -133,7 +133,11 @@ function sync(){
   if(!el)el=document.querySelector('.tab.active .label-name');
   var f=el?el.textContent.replace(/[●•*◌]/g,'').trim():'';
   var l=f.toLowerCase();
-  window._rtlDefault=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'))
+  var isM=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'));
+  var isA=(['chat','composer','ai','manager','ai manager'].indexOf(l)!==-1);
+  var focus=document.activeElement;
+  var isF=focus&&(focus.closest('.chat-widget')||focus.closest('.composer-editor')||focus.closest('.interactive-input'));
+  window._rtlDefault=isM||isA||isF;
 }
 setTimeout(function(){
   setInterval(sync,300);sync();
@@ -153,7 +157,7 @@ RTL_CSS = """
 .view-line[dir="rtl"]{text-align:right}
 .view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
 
-/* Chat RTL */
+/* Chat & AI RTL */
 .interactive-item-container .rendered-markdown,
 .interactive-item-container .rendered-markdown p,
 .interactive-item-container .rendered-markdown li,
@@ -173,11 +177,51 @@ RTL_CSS = """
 .chat-widget .rendered-markdown h4,
 .chat-widget .rendered-markdown blockquote,
 .chat-widget .rendered-markdown ul,
-.chat-widget .rendered-markdown ol{direction:rtl;text-align:right;unicode-bidi:plaintext}
+.chat-widget .rendered-markdown ol,
+.composer-editor .rendered-markdown,
+.composer-editor .rendered-markdown p,
+.composer-editor .rendered-markdown li,
+.composer-editor .rendered-markdown h1,
+.composer-editor .rendered-markdown h2,
+.composer-editor .rendered-markdown h3,
+.composer-editor .rendered-markdown h4,
+.composer-editor .rendered-markdown blockquote,
+.composer-editor .rendered-markdown ul,
+.composer-editor .rendered-markdown ol,
+.ai-editor .rendered-markdown,
+.ai-editor .rendered-markdown p,
+.ai-editor .rendered-markdown li,
+.ai-editor .rendered-markdown h1,
+.ai-editor .rendered-markdown h2,
+.ai-editor .rendered-markdown h3,
+.ai-editor .rendered-markdown h4,
+.ai-editor .rendered-markdown blockquote,
+.ai-editor .rendered-markdown ul,
+.ai-editor .rendered-markdown ol {
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: plaintext;
+}
+
 .interactive-item-container .rendered-markdown pre,
 .interactive-item-container .rendered-markdown code,
 .chat-widget .rendered-markdown pre,
-.chat-widget .rendered-markdown code{direction:ltr;text-align:left;unicode-bidi:normal}
+.chat-widget .rendered-markdown code,
+.composer-editor .rendered-markdown pre,
+.composer-editor .rendered-markdown code,
+.ai-editor .rendered-markdown pre,
+.ai-editor .rendered-markdown code,
+.interactive-input pre,
+.interactive-input code {
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: normal;
+}
+
+/* Global Input Support */
+textarea, input {
+    unicode-bidi: plaintext !important;
+}
 """
 
 css += '\n' + RTL_CSS
