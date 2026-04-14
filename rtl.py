@@ -133,9 +133,8 @@ function sync(){
   var l=el?el.textContent.replace(/[●•*◌]/g,'').trim().toLowerCase():'';
   var isM=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'));
   var isA=(l==='chat'||l==='composer'||l==='ai'||l==='manager'||l==='ai manager');
-  var focus=document.activeElement;
-  var isF=focus&&(focus.closest('.chat-widget')||focus.closest('.composer-editor')||focus.closest('.interactive-input'));
-  if(isM||isA||isF)window._rtlDefault=true;
+  var isV=!!document.querySelector('.chat-widget, .composer-editor, .interactive-input');
+  if(isM||isA||isV)window._rtlDefault=true;
   else if(l&&!isM)window._rtlDefault=false;
 }
 setTimeout(function(){
