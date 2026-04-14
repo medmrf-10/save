@@ -99,15 +99,20 @@ else:
     print(f"  ❌ {errors[-1]}")
 
 # ==============================================================
-# MOD 3: Fix arrow keys — remove RTL direction swap
+# MOD 3: Fix arrow keys — restore physical movement
 # ==============================================================
-print("\n🔧 [3/4] إصلاح الأسهم المعكوسة ...")
+print("\n🔧 [3/4] إصلاح الأسهم المعكوسة (ضمان الحركة البصرية) ...")
+
+# We keep the original ternary operator because it correctly swaps logical
+# directions in RTL to maintain physical arrow behavior.
+# Left Arrow -> o ? moveRight : moveLeft  (In RTL, moveRight is physical Left)
+# Right Arrow -> o ? moveLeft : moveRight (In RTL, moveLeft is physical Right)
 
 OLD_ARROW_L = 'o?G0.moveRight(t.cursorConfig,t,s.viewState,i,n):G0.moveLeft(t.cursorConfig,t,s.viewState,i,n)'
-NEW_ARROW_L = 'G0.moveLeft(t.cursorConfig,t,s.viewState,i,n)'
+NEW_ARROW_L = 'o?G0.moveRight(t.cursorConfig,t,s.viewState,i,n):G0.moveLeft(t.cursorConfig,t,s.viewState,i,n)'
 
 OLD_ARROW_R = 'o?G0.moveLeft(t.cursorConfig,t,s.viewState,i,n):G0.moveRight(t.cursorConfig,t,s.viewState,i,n)'
-NEW_ARROW_R = 'G0.moveRight(t.cursorConfig,t,s.viewState,i,n)'
+NEW_ARROW_R = 'o?G0.moveLeft(t.cursorConfig,t,s.viewState,i,n):G0.moveRight(t.cursorConfig,t,s.viewState,i,n)'
 
 for label, old, new in [("سهم يسار", OLD_ARROW_L, NEW_ARROW_L), ("سهم يمين", OLD_ARROW_R, NEW_ARROW_R)]:
     c = js.count(old)
