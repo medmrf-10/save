@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-RTL Support for Antigravity v8.2 — The Radical Solution
+RTL Support for Antigravity v8.3 — Chat + Manager RTL
 =========================================================
 Auto-detect direction per line based on content:
 - First Arabic char → RTL
@@ -104,9 +104,9 @@ else:
 print("\n🔧 [3/3] سكريبت كشف الملف (مبسّط!) ...")
 
 SCRIPT = r"""
-;/* RTL_V82 */(function(){
-/* RTL v8.2 — Auto-detect. Just set _rtlDefault based on file type.
- * P() handles everything else by reading line content. */
+;/* RTL_V83_CHAT */(function(){
+/* RTL v8.3 — Auto-detect for editor + Chat/Manager RTL support.
+ * P() handles editor lines. This script handles chat inputs. */
 window._rtlDefault=false;
 function sync(){
   var el=document.querySelector('.tab.active .label-name span');
@@ -115,9 +115,45 @@ function sync(){
   var l=f.toLowerCase();
   window._rtlDefault=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'))
 }
+/* MutationObserver: set dir="auto" on chat input textareas & contenteditable */
+function patchChatInputs(){
+  var sels=[
+    '.interactive-input-editor textarea',
+    '.chat-input-container textarea',
+    '.inline-chat-input textarea',
+    '.chat-edit-input-container textarea',
+    '.interactive-input-editor [contenteditable]',
+    '.chat-input-container [contenteditable]',
+    '.inline-chat-input [contenteditable]'
+  ];
+  sels.forEach(function(s){
+    document.querySelectorAll(s).forEach(function(el){
+      if(el.getAttribute('dir')!=='auto') el.setAttribute('dir','auto');
+    })
+  });
+  /* Also patch .view-lines inside chat editors */
+  var chatEditors=[
+    '.interactive-input-editor .view-lines',
+    '.chat-input-container .view-lines',
+    '.inline-chat-input .view-lines',
+    '.chat-edit-input-container .view-lines'
+  ];
+  chatEditors.forEach(function(s){
+    document.querySelectorAll(s).forEach(function(el){
+      if(el.style.direction!=='auto'){
+        el.style.direction='auto';
+        el.style.unicodeBidi='plaintext';
+      }
+    })
+  });
+}
 setTimeout(function(){
   setInterval(sync,300);sync();
-  console.log('🔄 RTL v8.2 — auto-detect direction per line')
+  /* Patch existing + watch for new chat inputs */
+  patchChatInputs();
+  var obs=new MutationObserver(function(){patchChatInputs()});
+  obs.observe(document.body,{childList:true,subtree:true});
+  console.log('🔄 RTL v8.3 — auto-detect for editor + chat/manager')
 },2000)
 })();
 """
@@ -129,11 +165,11 @@ print("  ✅ سكريبت مبسّط (كشف الملف فقط — 10 أسطر!)
 # CSS
 # ==============================================================
 RTL_CSS = """
-/* ===== RTL v8.2 ===== */
+/* ===== RTL v8.3 — Chat + Manager + Auto-detect ===== */
 .view-line[dir="rtl"]{text-align:right}
 .view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
 
-/* Chat RTL */
+/* === Chat Response/Request RTL (Auto-detect per paragraph) === */
 .interactive-item-container .rendered-markdown,
 .interactive-item-container .rendered-markdown p,
 .interactive-item-container .rendered-markdown li,
@@ -141,9 +177,13 @@ RTL_CSS = """
 .interactive-item-container .rendered-markdown h2,
 .interactive-item-container .rendered-markdown h3,
 .interactive-item-container .rendered-markdown h4,
+.interactive-item-container .rendered-markdown h5,
+.interactive-item-container .rendered-markdown h6,
 .interactive-item-container .rendered-markdown blockquote,
 .interactive-item-container .rendered-markdown ul,
 .interactive-item-container .rendered-markdown ol,
+.interactive-item-container .rendered-markdown td,
+.interactive-item-container .rendered-markdown th,
 .chat-widget .rendered-markdown,
 .chat-widget .rendered-markdown p,
 .chat-widget .rendered-markdown li,
@@ -151,13 +191,65 @@ RTL_CSS = """
 .chat-widget .rendered-markdown h2,
 .chat-widget .rendered-markdown h3,
 .chat-widget .rendered-markdown h4,
+.chat-widget .rendered-markdown h5,
+.chat-widget .rendered-markdown h6,
 .chat-widget .rendered-markdown blockquote,
 .chat-widget .rendered-markdown ul,
-.chat-widget .rendered-markdown ol{direction:rtl;text-align:right;unicode-bidi:plaintext}
+.chat-widget .rendered-markdown ol,
+.chat-widget .rendered-markdown td,
+.chat-widget .rendered-markdown th{direction:auto;text-align:start;unicode-bidi:plaintext}
+
+/* === Chat Input RTL (typing area) === */
+.interactive-input-editor .view-lines,
+.interactive-input-editor .view-line,
+.chat-input-container .monaco-editor .view-lines,
+.chat-input-container .monaco-editor .view-line,
+.chat-edit-input-container .monaco-editor .view-lines,
+.chat-edit-input-container .monaco-editor .view-line{direction:auto;unicode-bidi:plaintext;text-align:start}
+
+/* === Inline Chat RTL === */
+.inline-chat-widget .rendered-markdown,
+.inline-chat-widget .rendered-markdown p,
+.inline-chat-widget .rendered-markdown li,
+.inline-chat-widget .rendered-markdown h1,
+.inline-chat-widget .rendered-markdown h2,
+.inline-chat-widget .rendered-markdown h3,
+.inline-chat-widget .rendered-markdown h4,
+.inline-chat-input .monaco-editor .view-lines,
+.inline-chat-input .monaco-editor .view-line{direction:auto;unicode-bidi:plaintext;text-align:start}
+
+/* === Extension/Settings/Manager Editor RTL === */
+.extension-editor .rendered-markdown,
+.extension-editor .rendered-markdown p,
+.extension-editor .rendered-markdown li,
+.extension-editor .rendered-markdown h1,
+.extension-editor .rendered-markdown h2,
+.extension-editor .rendered-markdown h3,
+.extension-editor .rendered-markdown h4,
+.settings-editor .rendered-markdown,
+.settings-editor .rendered-markdown p,
+.settings-editor .rendered-markdown li{direction:auto;unicode-bidi:plaintext;text-align:start}
+
+/* === Interactive Session (Notebook-style) === */
+.interactive-session .rendered-markdown,
+.interactive-session .rendered-markdown p,
+.interactive-session .rendered-markdown li,
+.interactive-request .rendered-markdown,
+.interactive-request .rendered-markdown p,
+.interactive-response .rendered-markdown,
+.interactive-response .rendered-markdown p{direction:auto;unicode-bidi:plaintext;text-align:start}
+
+/* === Keep code blocks LTR everywhere === */
+.rendered-markdown pre,
+.rendered-markdown code,
 .interactive-item-container .rendered-markdown pre,
 .interactive-item-container .rendered-markdown code,
 .chat-widget .rendered-markdown pre,
-.chat-widget .rendered-markdown code{direction:ltr;text-align:left;unicode-bidi:normal}
+.chat-widget .rendered-markdown code,
+.inline-chat-widget .rendered-markdown pre,
+.inline-chat-widget .rendered-markdown code,
+.extension-editor .rendered-markdown pre,
+.extension-editor .rendered-markdown code{direction:ltr!important;text-align:left!important;unicode-bidi:normal!important}
 """
 
 css += '\n' + RTL_CSS
@@ -195,12 +287,12 @@ if not ok:
     print(f"\n👉 sudo cp {JS_TMP} '{JS_DEST}' && sudo cp {CSS_TMP} '{CSS_DEST}'")
 
 print("\n" + "=" * 50)
-print("🎉 RTL v8.2 — الحل الجذري")
+print("🎉 RTL v8.3 — Chat + Manager + المحرر")
 print("=" * 50)
 print("✨ كل سطر يكتشف اتجاهه تلقائياً من محتواه!")
 print("📌 حرف عربي أول → RTL")
 print("📌 حرف لاتيني أول → LTR")
-print("📌 سطر فاضي → RTL (في .md)")
-print("📌 بدون Cmd+;, بدون وراثة, بدون تخزين!")
-print("📌 الأسهم تتحرك بصرياً")
+print("📌 Chat Input + Responses — unicode-bidi:plaintext")
+print("📌 Inline Chat + Manager Editor — مدعوم")
+print("📌 Code blocks — دائماً LTR")
 print("\n⚠️  Cmd+Q ثم أعد فتح Antigravity!")
