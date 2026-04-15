@@ -192,10 +192,19 @@ RTL_CSS = """
 .interactive-item-container .value .rendered-markdown ul,
 .interactive-item-container .value .rendered-markdown ol{direction:rtl;text-align:right;unicode-bidi:plaintext}
 
-/* Chat input — unicode-bidi:plaintext preserves native clipboard shortcuts (Cmd+C/V) */
+/* Chat input — keep Monaco internals LTR so Cmd+C/V/X work correctly.
+   Visual RTL is achieved via text-align + unicode-bidi, NOT direction. */
 .interactive-session .chat-input-container{direction:rtl;text-align:right;unicode-bidi:plaintext}
-.interactive-input-part{direction:rtl;unicode-bidi:plaintext}
-.interactive-input-part textarea,.interactive-input-part [contenteditable]{direction:rtl;unicode-bidi:plaintext}
+.interactive-input-part{direction:ltr;text-align:right;unicode-bidi:plaintext}
+
+/* Force Monaco editor internals in chat to stay LTR — critical for clipboard shortcuts */
+.interactive-input-part .monaco-editor{direction:ltr!important}
+.interactive-input-part .monaco-editor .inputarea{direction:ltr!important}
+.interactive-input-part .monaco-editor textarea{direction:ltr!important}
+.interactive-input-part .monaco-editor .view-lines{direction:ltr}
+
+/* The actual text content uses unicode-bidi for RTL appearance */
+.interactive-input-part .monaco-editor .view-line{unicode-bidi:plaintext;text-align:right}
 
 /* === Agent Manager RTL === */
 .antigravity-agent-side-panel{direction:rtl!important;text-align:right!important}
