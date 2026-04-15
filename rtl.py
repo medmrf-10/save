@@ -90,9 +90,10 @@ print("\n🔧 [3/3] سكريبت كشف الملف (مبسّط!) ...")
 
 SCRIPT = r"""
 ;/* RTL_V90 */(function(){
-/* RTL v9.0 — Force RTL + Cmd+; toggle per file */
+/* RTL v9.0 — Force RTL + Cmd+; toggle + webview injection */
 window._rtlDefault=false;
 var _ov={};
+var _wvCSS='*:not(pre):not(code):not(.codicon):not(.monaco-tokenized-source):not(.monaco-tokenized-source *){direction:rtl!important;text-align:right!important;unicode-bidi:plaintext!important}pre,code,.codicon,.monaco-tokenized-source,.monaco-tokenized-source *{direction:ltr!important;text-align:left!important;unicode-bidi:normal!important}';
 function _gf(){
   var el=document.querySelector('.tab.active .label-name span');
   if(!el)el=document.querySelector('.tab.active .label-name');
@@ -102,6 +103,25 @@ function sync(){
   var f=_gf(),l=f.toLowerCase();
   var isMd=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'));
   window._rtlDefault=(f in _ov)?_ov[f]:isMd
+}
+/* Inject RTL CSS into webview iframes (Agent Manager, Jetski, etc.) */
+function injectWebviews(){
+  try{
+    var frames=document.querySelectorAll('iframe.webview');
+    if(!frames.length)frames=document.querySelectorAll('webview, iframe[sandbox]');
+    for(var i=0;i<frames.length;i++){
+      try{
+        var doc=frames[i].contentDocument||frames[i].contentWindow.document;
+        if(!doc||!doc.head)continue;
+        if(doc.getElementById('_rtl_wv'))continue;
+        var s=doc.createElement('style');
+        s.id='_rtl_wv';
+        s.textContent=_wvCSS;
+        doc.head.appendChild(s);
+        console.log('🔄 RTL injected into webview',i)
+      }catch(x){}
+    }
+  }catch(x){}
 }
 document.addEventListener('keydown',function(e){
   if((e.metaKey||e.ctrlKey)&&e.key===';'){
@@ -121,7 +141,8 @@ document.addEventListener('keydown',function(e){
 },true);
 setTimeout(function(){
   setInterval(sync,300);sync();
-  console.log('🔄 RTL v9.0 — Cmd+; to toggle direction')
+  setInterval(injectWebviews,1000);injectWebviews();
+  console.log('🔄 RTL v9.0 — Cmd+; toggle + webview injection')
 },2000)
 })();
 """
@@ -138,6 +159,9 @@ RTL_CSS = """
 /* === Editor RTL === */
 .view-line[dir="rtl"]{text-align:right}
 .view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
+
+/* === Fix: kill text-indent overflow on RTL wrapped lines === */
+.view-line[dir="rtl"]>div[style*="text-indent"]{text-indent:0px!important}
 
 /* === Chat Panel RTL (interactive-session) === */
 .interactive-session{direction:rtl;text-align:right}
