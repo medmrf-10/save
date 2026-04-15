@@ -90,18 +90,38 @@ print("\n🔧 [3/3] سكريبت كشف الملف (مبسّط!) ...")
 
 SCRIPT = r"""
 ;/* RTL_V90 */(function(){
-/* RTL v9.0 — Force RTL. All .md lines are RTL regardless of language. */
+/* RTL v9.0 — Force RTL + Cmd+; toggle per file */
 window._rtlDefault=false;
-function sync(){
+var _ov={};
+function _gf(){
   var el=document.querySelector('.tab.active .label-name span');
   if(!el)el=document.querySelector('.tab.active .label-name');
-  var f=el?el.textContent.replace(/[●•*◌]/g,'').trim():'';
-  var l=f.toLowerCase();
-  window._rtlDefault=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'))
+  return el?el.textContent.replace(/[●•*◌]/g,'').trim():''
 }
+function sync(){
+  var f=_gf(),l=f.toLowerCase();
+  var isMd=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'));
+  window._rtlDefault=(f in _ov)?_ov[f]:isMd
+}
+document.addEventListener('keydown',function(e){
+  if((e.metaKey||e.ctrlKey)&&e.key===';'){
+    e.preventDefault();e.stopPropagation();
+    var f=_gf();if(!f)return;
+    window._rtlDefault=!window._rtlDefault;
+    _ov[f]=window._rtlDefault;
+    var msg=window._rtlDefault?'↘ RTL':'↙ LTR';
+    var n=document.createElement('div');
+    n.textContent=msg;
+    n.style.cssText='position:fixed;top:20px;right:20px;z-index:99999;background:#007acc;color:#fff;padding:10px 20px;border-radius:8px;font-size:16px;font-weight:bold;transition:opacity 0.5s;pointer-events:none;font-family:system-ui';
+    document.body.appendChild(n);
+    setTimeout(function(){n.style.opacity='0'},1500);
+    setTimeout(function(){n.remove()},2000);
+    console.log('🔄 RTL toggle:',msg,'for',f)
+  }
+},true);
 setTimeout(function(){
   setInterval(sync,300);sync();
-  console.log('🔄 RTL v9.0 — force RTL for all .md content')
+  console.log('🔄 RTL v9.0 — Cmd+; to toggle direction')
 },2000)
 })();
 """
