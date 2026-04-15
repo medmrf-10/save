@@ -1,0 +1,366 @@
+================================================================================
+                    رحلة دعم RTL في Antigravity
+                    (التوثيق الكامل للمحادثة السابقة)
+                    التاريخ: 2026-04-14
+================================================================================
+
+هذا الملف يحتوي على كل ما تعلمناه أثناء محاولة إضافة دعم RTL إلى Antigravity
+(محرر مبني على VS Code / Monaco Editor). أرسل هذا الملف للمحادثة التالية
+ليفهم كل شيء ويكمل من حيث توقفنا.
+
+================================================================================
+الجزء 1: ما هو Antigravity؟
+================================================================================
+
+- تطبيق Electron مبني على VS Code
+- المسار: /Applications/Antigravity.app/
+- الملفات الأساسية:
+  * JS: /Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js
+  * CSS: /Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.css
+- الملفات ملك المستخدم macm1pro (ليس med10)
+  → أي تعديل يحتاج: sudo cp
+- المستخدم الحالي: med10
+- مشروع المستخدم: /Users/med10/med/plugins/
+
+================================================================================
+الجزء 2: النسخ الاحتياطية (مهمة جداً!)
+================================================================================
+
+النسخ الأصلية النظيفة (بدون أي تعديل):
+- JS: /Users/med10/med/plugins/workbench.desktop.main.js.backup
+- CSS: /Users/med10/med/plugins/workbench.desktop.main.css.backup
+
+>> يجب دائماً البدء من هذه النسخ عند إنشاء باتش جديد <<
+>> لا تعدل الملفات المنصبة مباشرة — عدّل النسخة الاحتياطية واحفظ في /tmp ثم انسخ بـ sudo <<
+
+الطريقة الصحيحة:
+1. اقرأ من الـ backup
+2. عدّل في الذاكرة
+3. احفظ في /tmp
+4. المستخدم ينفذ: sudo cp /tmp/workbench.desktop.main.{js,css} /Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/
+5. المستخدم يعمل Cmd+Q ثم يعيد فتح Antigravity
+
+================================================================================
+الجزء 3: بنية Monaco الداخلية (ما اكتشفناه)
+================================================================================
+
+--- 3.1: دالة اتجاه النص P(t,e) ---
+
+هذه الدالة الأهم. Monaco يستدعيها لكل سطر ليعرف اتجاهه.
+
+الدالة الأصلية (في النسخة النظيفة):
+```
+P(t,e){
+  let i=0;
+  for(const n of e){
+    const s=n.range;
+    if(s.startLineNumber>t||s.endLineNumber<t) continue;
+    const r=n.options.textDirection;
+    r===IL.RTL ? i++ : r===IL.LTR && i--
+  }
+  return i>0 ? IL.RTL : IL.LTR
+}
+```
+
+- t = رقم السطر
+- e = مصفوفة decorations
+- IL.LTR = 0, IL.RTL = 1
+- الدالة تفحص decorations فقط. إذا لم تجد شيء → ترجع LTR
+
+عندما ترجع IL.RTL:
+- Monaco يضيف dir="rtl" على div السطر
+- Monaco يضيف padding-right للسكرول
+- الكيرسر يتحرك بشكل مختلف
+- الأهم: Monaco يفعّل وضع rendering خاص للنص
+
+--- 3.2: كيف يرسم Monaco الأسطر ---
+
+HTML الذي ينتجه Monaco لسطر عادي:
+```html
+<div class="view-line" style="top:Xpx;height:Ypx;">
+  <span style="position:absolute;top:0;bottom:0;">
+    <span class="mtk1">نص عربي</span>
+    <span class="mtk6"># </span>
+  </span>
+</div>
+```
+
+عندما يكون dir="rtl":
+```html
+<div class="view-line" dir="rtl" style="top:Xpx;height:Ypx;padding-right:14px;">
+  ...
+</div>
+```
+
+--- 3.3: ماذا يفعل containsRTL؟ ---
+
+كل token (قطعة نصية ملونة) له خاصية containsRTL:
+- true = النص يحتوي حروف RTL
+- false = النص كله LTR
+
+عندما containsRTL=true، Monaco يضيف تلقائياً:
+```html
+<span style="unicode-bidi:isolate" class="mtk1">نص عربي</span>
+```
+
+هذا سلوك Monaco الأصلي — ليس من كودنا!
+
+--- 3.4: مسارا الرسم (الاكتشاف الأهم) ---
+
+Monaco له مساران لرسم الحروف:
+
+المسار 1 (للمسافات البيضاء - whitespace tokens):
+- يضيف ZWNJ (حرف 8204 = Zero Width Non-Joiner) بعد كل حرف
+- يضاعف عرض كل حرف (re=2, oe=1)
+- هذا يكسر اتصال الحروف العربية إذا طُبّق عليها!
+- الشرط: P = v!==0 && W.isWhitespace()
+- يؤثر فقط على tokens من نوع whitespace (مسافات، تابات)
+
+المسار 2 (للنص العادي - الـ else):
+- يرسم الحروف مباشرة بدون ZWNJ
+- الحروف العربية تبقى متصلة ✅
+
+الخلاصة: مسار الرسم للنص العادي لا يكسر الحروف.
+المشكلة ليست هنا.
+
+--- 3.5: دالة XLl — الالتفاف (Word Wrap) ---
+
+عندما يكون editor.wordWrap="on" وسطر طويل يلتف:
+```js
+function XLl(t,e,i,n,s,r){
+  if(r!==0){
+    s.appendString('<div style="text-indent: -' + r + 'px; padding-left: ' + r + 'px; ...');
+  }
+}
+```
+
+المشكلة: يستخدم padding-LEFT دائماً — حتى في RTL!
+النتيجة: السطر الملتف يذهب لليسار بدلاً من اليمين.
+
+هذه مشكلة في كود Monaco نفسه. الحل يحتاج إما:
+1. تعديل الدالة في JS لتستخدم padding-right عندما يكون RTL
+2. أو CSS override (لكن لم ينفع لأن الـ padding-left مكتوب inline)
+
+================================================================================
+الجزء 4: ما جربناه (المحاولات)
+================================================================================
+
+--- v4 (أول نسخة عملت — جزئياً) ---
+
+ما فعلناه:
+1. عدلنا P() لترجع RTL افتراضياً لكل الأسطر
+2. أضفنا سكريبت تحكم: Cmd+; للتبديل، Enter للوراثة، localStorage للذاكرة
+3. أضفنا CSS:
+   .view-line[dir="rtl"]{text-align:right;unicode-bidi:plaintext}
+   .view-line[dir="rtl"]>span{direction:rtl;unicode-bidi:plaintext}
+
+النتيجة:
+✅ النص العادي يعمل RTL
+✅ Cmd+; يبدّل الاتجاه
+✅ الذاكرة تعمل
+❌ العناوين (# heading) الحروف مقلوبة بالكامل (نيملاعلا بدل العالمين)
+❌ كل أنواع الملفات أصبحت RTL (حتى .py!)
+❌ Chat/Manager View لم تتأثر
+
+سبب انقلاب العناوين:
+unicode-bidi:plaintext على >span (الـ span الخارجي) سببت double-reversal
+الـ >span يحتوي كل tokens السطر. plaintext أعاد حساب bidi للمحتوى كله
+مع dir="rtl" من Monaco = انقلاب مزدوج.
+
+--- v5 (Gemini عملها — كارثة) ---
+
+ما فعل:
+1. أزال تعديل P() — تركها أصلية (ترجع LTR)
+2. استخدم MutationObserver لإضافة dir="rtl" على الـ DOM بعد الرسم
+3. CSS: unicode-bidi:isolate على >span
+
+النتيجة:
+❌ الحروف لا تزال غير متصلة في العناوين
+❌ الكيرسر على اليسار (لأن Monaco يحسبه LTR داخلياً)
+❌ Wiki links لا تعمل على اليمين
+❌ الالتفاف يذهب لليسار
+❌ المراقب (MutationObserver) على body بطيء ويسبب flicker
+
+--- v6 (محاولة الإصلاح النظيف) ---
+
+ما فعلناه:
+1. أعدنا تعديل P() (مثل v4) لكن فقط لملفات .md
+2. سكريبت تحكم يكشف نوع الملف من اسم التاب
+3. CSS: فقط text-align:right — بدون أي unicode-bidi
+
+النتيجة:
+✅ الاتجاه يعمل للنص العادي
+✅ ملفات الأكواد تبقى LTR
+❌ العناوين لا تزال بحروف غير متصلة
+❌ Wiki links لا تعمل من اليمين
+❌ الالتفاف لا يزال يذهب لليسار
+
+--- v6.1 (آخر محاولة — سببت اختفاء النص) ---
+
+ما فعلناه:
+أضفنا CSS للالتفاف:
+.view-line[dir="rtl"]>div{padding-left:0!important;padding-right:inherit!important;text-indent:0!important;}
+
+النتيجة:
+❌❌❌ النص اختفى بالكامل! وميض فقط على أقصى اليمين.
+السبب المحتمل: >div لا يوجد في بنية Monaco — السلكتور خاطئ أو تعارض.
+
+================================================================================
+الجزء 5: المشاكل المتبقية (يجب حلها)
+================================================================================
+
+1. ★★★ الحروف العربية غير متصلة في العناوين (# heading)
+   - تحدث فقط في أسطر تحتوي # + نص عربي
+   - النص العادي (بدون #) الحروف متصلة ✅
+   - ليست مشكلة الخط — جربنا Cairo و Noto Naskh Arabic ونفس النتيجة
+   - السبب المحتمل: طريقة Monaco في فصل tokens + تأثير bidi على ترتيب الحروف
+   - اكتشاف: Monaco يضيف unicode-bidi:isolate تلقائياً على tokens العربية
+     هذا سلوك أصلي من Monaco وليس من كودنا
+
+2. ★★ Wiki links [[link]] لا تعمل بالضغط من اليمين
+   - Cmd+hover يظهر يد على اليسار لكن ليس على اليمين
+   - منطقة الضغط (hit area) محسوبة بطريقة LTR
+   - سطر الويكي يتلون بمربع وردي عند الضغط
+   - السبب: Monaco يحسب مواقع الحروف بطريقة LTR حتى عندما يعرض RTL
+
+3. ★★ الالتفاف (Word Wrap) يذهب لليسار
+   - السطر الطويل عندما يلتف، الجزء الثاني يذهب لليسار
+   - السبب: دالة XLl تستخدم padding-left دائماً (مشكلة في كود Monaco)
+   - الحل يحتاج تعديل الدالة في JS أو override ذكي
+
+4. ★ Chat/Agent View لا يتحول لـ RTL
+   - CSS selectors قد تكون خاطئة
+   - يجب فحص DOM الفعلي باستخدام DevTools (Cmd+Shift+I في Antigravity)
+   - Selectors التي جربناها:
+     * .interactive-item-container .value .rendered-markdown
+     * .chat-widget .rendered-markdown
+     * .interactive-item-container .chat-markdown-part
+
+5. ★ Manager View لا يتحول لـ RTL
+   - نفس مشكلة Chat — الـ selectors قد تكون خاطئة
+   - Selectors التي جربناها:
+     * .agent-sessions-container
+     * .ai-management-editor
+
+================================================================================
+الجزء 6: ما نجح فعلاً ولا يجب تغييره
+================================================================================
+
+1. ✅ تعديل P() ليرجع RTL حسب نوع الملف — يعمل ممتاز
+   - لا قفز (zero jumping) لأن الاتجاه يُحدد قبل الرسم
+   - الكيرسر في المكان الصحيح
+   - النتيجة نظيفة للنص العادي (بدون #)
+
+2. ✅ سكريبت التحكم — يعمل ممتاز
+   - window._rtlDefault: الافتراضي حسب نوع الملف
+   - window._rtlLineMap: تبديلات المستخدم لكل سطر
+   - Cmd+; للتبديل
+   - Enter يرث اتجاه السطر السابق
+   - localStorage للذاكرة الدائمة
+   - كشف الملف من: .tab.active .label-name span
+   - isMD(): .md, .markdown, .mdx → RTL | الباقي → LTR
+
+3. ✅ CSS: .view-line[dir="rtl"]{text-align:right} — يعمل
+   - هذا كافي لمحاذاة النص يميناً
+   - لا يسبب مشاكل
+
+================================================================================
+الجزء 7: إعدادات المستخدم
+================================================================================
+
+ملف: /Users/med10/med/plugins/.vscode/settings.json
+```json
+{
+    "editor.fontSize": 15,
+    "editor.fontFamily": "'cairo'",
+    "editor.fontWeight": "600",
+    "editor.fontLigatures": true,
+    "editor.wordWrap": "on",
+    ... (باقي الإعدادات)
+}
+```
+
+- الخط: Cairo (خط عربي من Google)
+- الالتفاف مفعّل (wordWrap: on)
+- الاختصار المطلوب: Cmd+; (حالياً محجوز لـ Launchpad — المستخدم سيغيره)
+
+================================================================================
+الجزء 8: ملف rtl.py — البنية الصحيحة
+================================================================================
+
+الملف: /Users/med10/med/plugins/rtl.py
+
+البنية المطلوبة:
+1. اقرأ من BACKUP (ليس من الملف المنصب!)
+2. عدّل P() في JS
+3. احقن سكريبت التحكم في نهاية JS
+4. أضف CSS في نهاية CSS
+5. احفظ في /tmp
+6. حاول النسخ (سيفشل — المستخدم يعمل sudo)
+
+** مهم جداً: لا تحذف ملفات /tmp إذا فشل النسخ! **
+
+================================================================================
+الجزء 9: خطة العمل للمحادثة القادمة
+================================================================================
+
+الأولوية 1: إصلاح العناوين (الحروف غير المتصلة)
+- يحتاج فحص DOM فعلي (DevTools) لرؤية ماذا يحدث بالضبط
+- ربما نحتاج تعديل في JS لمنع unicode-bidi:isolate على tokens العربية
+- أو تعديل containsRTL handling في كود الرسم
+- الكود المسؤول:
+  Z&&e.appendString('style="unicode-bidi:isolate" ')
+  يمكن تغييره إلى:
+  Z&&e.appendString('style="unicode-bidi:plaintext" ')
+  أو حذفه تماماً
+  لكن يجب اختبار التأثير!
+
+الأولوية 2: إصلاح الالتفاف
+- تعديل دالة XLl في JS:
+  بدل: padding-left
+  استخدم: check direction → padding-left أو padding-right
+- أو: أزل text-indent و padding-left وأضف CSS بديل
+
+الأولوية 3: Chat/Manager View
+- فتح DevTools (Cmd+Shift+I) في Antigravity
+- فحص DOM الفعلي للدردشة والـ Manager
+- إيجاد الـ selectors الصحيحة
+- تحديث CSS
+
+الأولوية 4: Wiki links
+- هذه مشكلة عميقة في Monaco hit-testing
+- قد لا تكون قابلة للإصلاح بدون تعديل كبير
+- يمكن تأجيلها
+
+================================================================================
+الجزء 10: أوامر مهمة للمرجع
+================================================================================
+
+# استعادة النسخة الأصلية (إذا خربت الأمور):
+sudo cp /Users/med10/med/plugins/workbench.desktop.main.js.backup /Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js
+sudo cp /Users/med10/med/plugins/workbench.desktop.main.css.backup /Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.css
+
+# تشغيل الباتش:
+python3 /Users/med10/med/plugins/rtl.py
+
+# نسخ الباتش:
+sudo cp /tmp/workbench.desktop.main.{js,css} /Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/
+
+# فتح DevTools:
+Cmd+Shift+I (داخل Antigravity)
+
+================================================================================
+الجزء 11: تنبيهات حرجة
+================================================================================
+
+⚠️ لا تضع unicode-bidi:plaintext على >span (الخارجي) — يقلب الحروف!
+⚠️ لا تضع unicode-bidi:isolate على >span — يفصل الحروف!  
+⚠️ لا تستخدم MutationObserver على body — بطيء ويسبب وميض!
+⚠️ لا تحذف ملفات /tmp قبل نجاح النسخ!
+⚠️ دائماً ابدأ من النسخة الاحتياطية النظيفة!
+⚠️ بعد كل تعديل: Cmd+Q ثم أعد فتح Antigravity!
+⚠️ الالتفاف: لا تغير CSS على >div — يخفي النص!
+
+================================================================================
+نهاية الملف
+================================================================================

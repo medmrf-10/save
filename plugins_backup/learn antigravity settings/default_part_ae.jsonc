@@ -1,0 +1,1000 @@
+	"scss.lint.propertyIgnoredDueToDisplay": "warning",
+
+	// The universal selector (`*`) is known to be slow.
+	"scss.lint.universalSelector": "ignore",
+
+	// Unknown at-rule.
+	"scss.lint.unknownAtRules": "warning",
+
+	// Unknown property.
+	"scss.lint.unknownProperties": "warning",
+
+	// Unknown vendor specific property.
+	"scss.lint.unknownVendorSpecificProperties": "ignore",
+
+	// A list of properties that are not validated against the `unknownProperties` rule.
+	"scss.lint.validProperties": [],
+
+	// When using a vendor-specific prefix, also include the standard property.
+	"scss.lint.vendorPrefix": "warning",
+
+	// No unit for zero needed.
+	"scss.lint.zeroUnits": "ignore",
+
+	// Enables or disables all validations.
+	"scss.validate": true,
+
+	// TS Server
+	// Check if npm is installed for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
+	"typescript.check.npmIsInstalled": true,
+
+	// Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
+	"typescript.npm": "",
+
+	// Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
+	"typescript.tsserver.enableTracing": false,
+
+	// Enables project wide error reporting.
+	"typescript.tsserver.experimental.enableProjectDiagnostics": false,
+
+	// Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
+	"typescript.tsserver.log": "off",
+
+	// The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `typescript.tsserver.nodePath` to run TS Server with a custom Node installation.
+	"typescript.tsserver.maxTsServerMemory": 3072,
+
+	// Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want the IDE to detect a Node installation.
+	"typescript.tsserver.nodePath": "",
+
+	// Additional paths to discover TypeScript Language Service plugins.
+	"typescript.tsserver.pluginPaths": [],
+
+	// Controls if TypeScript launches a dedicated server to more quickly handle syntax related operations, such as computing code folding.
+	//  - always: Use a lighter weight syntax server to handle all IntelliSense operations. This syntax server can only provide IntelliSense for opened files.
+	//  - never: Don't use a dedicated syntax server. Use a single server to handle all IntelliSense operations.
+	//  - auto: Spawn both a full server and a lighter weight server dedicated to syntax operations. The syntax server is used to speed up syntax operations and provide IntelliSense while projects are loading.
+	"typescript.tsserver.useSyntaxServer": "auto",
+
+	// Configure which watching strategies should be used to keep track of files and directories.
+	"typescript.tsserver.watchOptions": "vscode",
+
+	// Enable/disable project-wide IntelliSense on web. Requires that the IDE is running in a trusted context.
+	"typescript.tsserver.web.projectWideIntellisense.enabled": true,
+
+	// Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `typescript.tsserver.web.projectWideIntellisense.enabled`
+	"typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": false,
+
+	// Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `typescript.tsserver.web.projectWideIntellisense.enabled`. Currently not supported for Safari.
+	"typescript.tsserver.web.typeAcquisition.enabled": true,
+
+	// Extensions
+	// Specify a list of extensions that are allowed to use. This helps maintain a secure and consistent development environment by restricting the use of unauthorized extensions. For more information on how to configure this setting, please visit the [Configure Allowed Extensions](https://code.visualstudio.com/docs/setup/enterprise#_configure-allowed-extensions) section.
+	"extensions.allowed": "*",
+
+	// When enabled, automatically checks extensions for updates. If an extension has an update, it is marked as outdated in the Extensions view.
+	"extensions.autoCheckUpdates": true,
+
+	// Controls the automatic update behavior of extensions.
+	//  - true: Download and install updates automatically for all extensions.
+	//  - onlyEnabledExtensions: Download and install updates automatically only for enabled extensions.
+	//  - false: Extensions are not automatically updated.
+	"extensions.autoUpdate": true,
+
+	// When enabled, editors with extension details will be automatically closed upon navigating away from the Extensions View.
+	"extensions.closeExtensionDetailsOnViewChange": false,
+
+	// When an extension is listed here, a confirmation prompt will not be shown when that extension handles a URI.
+	"extensions.confirmedUriHandlerExtensionIds": [],
+
+	// Configure an extension to execute in a different extension host process.
+	"extensions.experimental.affinity": {},
+
+	// When enabled, extensions which declare the `onStartupFinished` activation event will be activated after a timeout.
+	"extensions.experimental.deferredStartupFinishedActivation": false,
+
+	// When enabled, extensions can be searched for via Quick Access and report issues from there.
+	"extensions.experimental.issueQuickAccess": true,
+
+	// When enabled, the notifications for extension recommendations will not be shown.
+	"extensions.ignoreRecommendations": false,
+
+	// Controls the timeout in milliseconds for HTTP requests made when fetching extensions from the Marketplace
+	"extensions.requestTimeout": 60000,
+
+	// This setting is deprecated. Use extensions.ignoreRecommendations setting to control recommendation notifications. Use Extensions view's visibility actions to hide Recommended view by default.
+	// 
+	"extensions.showRecommendationsOnlyOnDemand": false,
+
+	// When enabled, Node.js navigator object is exposed on the global scope.
+	"extensions.supportNodeGlobalNavigator": false,
+
+	// Override the untrusted workspace support of an extension. Extensions using `true` will always be enabled. Extensions using `limited` will always be enabled, and the extension will hide functionality that requires trust. Extensions using `false` will only be enabled only when the workspace is trusted.
+	"extensions.supportUntrustedWorkspaces": {},
+
+	// Override the virtual workspaces support of an extension.
+	"extensions.supportVirtualWorkspaces": {},
+
+	// When enabled, extensions are verified to be signed before getting installed.
+	"extensions.verifySignature": false,
+
+	// Enable web worker extension host.
+	//  - true: The Web Worker Extension Host will always be launched.
+	//  - false: The Web Worker Extension Host will never be launched.
+	//  - auto: The Web Worker Extension Host will be launched when a web extension needs it.
+	"extensions.webWorker": "auto",
+
+	// Output
+	// Enable/disable the ability of smart scrolling in the output view. Smart scrolling allows you to lock scrolling automatically when you click in the output view and unlocks when you click in the last line.
+	"output.smartScroll.enabled": true,
+
+	// Automatically scroll the interactive window to show the output of the last statement executed. If this value is false, the window will only scroll if the last cell was already the one scrolled to.
+	"interactiveWindow.alwaysScrollOnNewCell": true,
+
+	// Execute the Interactive Window (REPL) input box with shift+enter, so that enter can be used to create a newline.
+	"interactiveWindow.executeWithShiftEnter": false,
+
+	// Prompt to save the interactive window when it is closed. Only new interactive windows will be affected by this setting change.
+	"interactiveWindow.promptToSaveOnClose": false,
+
+	// Display a hint in the Interactive Window (REPL) input box to indicate how to execute code.
+	"interactiveWindow.showExecutionHint": true,
+
+	// Application
+	// Controls the timeout in seconds before giving up resolving the shell environment when the application is not already launched from a terminal. See our [documentation](https://go.microsoft.com/fwlink/?linkid=2149667) for more information.
+	"application.shellEnvironmentResolutionTimeout": 10,
+
+	// External Terminal
+	// When opening a file from the Explorer in a terminal, determines what kind of terminal will be launched
+	//  - integrated: Show the integrated terminal action.
+	//  - external: Show the external terminal action.
+	//  - both: Show both integrated and external terminal actions.
+	"terminal.explorerKind": "integrated",
+
+	// Customizes which terminal to run on Linux.
+	"terminal.external.linuxExec": "xterm",
+
+	// Customizes which terminal application to run on macOS.
+	"terminal.external.osxExec": "Terminal.app",
+
+	// Customizes which terminal to run on Windows.
+	"terminal.external.windowsExec": "C:\\Windows\\System32\\cmd.exe",
+
+	// When opening a repository from the Source Control Repositories view in a terminal, determines what kind of terminal will be launched
+	//  - integrated: Show the integrated terminal action.
+	//  - external: Show the external terminal action.
+	//  - both: Show both integrated and external terminal actions.
+	"terminal.sourceControlRepositoriesKind": "integrated",
+
+	// Integrated Terminal
+	// Use `chat.tools.terminal.autoApprove` instead
+	// 
+	"chat.agent.terminal.allowList": null,
+
+	// Use `chat.tools.terminal.autoApprove` instead
+	// 
+	"chat.agent.terminal.autoApprove": null,
+
+	// Use `chat.tools.terminal.autoApprove` instead
+	// 
+	"chat.agent.terminal.denyList": null,
+
+	// A list of commands or regular expressions that control whether the run in terminal tool commands require explicit approval. These will be matched against the start of a command. A regular expression can be provided by wrapping the string in `/` characters followed by optional flags such as `i` for case-insensitivity.
+	// 
+	// Set to `true` to automatically approve commands, `false` to always require explicit approval or `null` to unset the value.
+	// 
+	// Note that these commands and regular expressions are evaluated for every _sub-command_ within the full _command line_, so `foo && bar` for example will need both `foo` and `bar` to match a `true` entry and must not match a `false` entry in order to auto approve. Inline commands such as `<(foo)` (process substitution) should also be detected.
+	// 
+	// An object can be used to match against the full command line instead of matching sub-commands and inline commands, for example `{ approve: false, matchCommandLine: true }`. In order to be auto approved _both_ the sub-command and command line must not be explicitly denied, then _either_ all sub-commands or command line needs to be approved.
+	// 
+	// Note that there's a default set of rules to allow and also deny commands. Consider setting `chat.tools.terminal.ignoreDefaultAutoApproveRules` to `true` to ignore all default rules to ensure there are no conflicts with your own rules. Do this at your own risk, the default denial rules are designed to protect you against running dangerous commands.
+	// 
+	// Examples:
+	// |Value|Description|
+	// |---|---|
+	// | `"mkdir": true` | Allow all commands starting with `mkdir`
+	// | `"npm run build": true` | Allow all commands starting with `npm run build`
+	// | `"bin/test.sh": true` | Allow all commands that match the path `bin/test.sh` (`bin\test.sh`, `./bin/test.sh`, etc.)
+	// | `"/^git (status\|show\\b.*)$/": true` | Allow `git status` and all commands starting with `git show`
+	// | `"/^Get-ChildItem\\b/i": true` | will allow `Get-ChildItem` commands regardless of casing
+	// | `"/.*/": true` | Allow all commands (denied commands still require approval)
+	// | `"rm": false` | Require explicit approval for all commands starting with `rm`
+	// | `"/\\.ps1/i": { approve: false, matchCommandLine: true }` | Require explicit approval for any _command line_ that contains `".ps1"` regardless of casing
+	// | `"rm": null` | Unset the default `false` value for `rm`
+	"chat.tools.terminal.autoApprove": {
+		"cd": true,
+		"echo": true,
+		"ls": true,
+		"pwd": true,
+		"cat": true,
+		"head": true,
+		"tail": true,
+		"findstr": true,
+		"wc": true,
+		"tr": true,
+		"cut": true,
+		"cmp": true,
+		"which": true,
+		"basename": true,
+		"dirname": true,
+		"realpath": true,
+		"readlink": true,
+		"stat": true,
+		"file": true,
+		"du": true,
+		"df": true,
+		"sleep": true,
+		"nl": true,
+		"grep": true,
+		"git status": true,
+		"git log": true,
+		"git show": true,
+		"git diff": true,
+		"git grep": true,
+		"git branch": true,
+		"/^git branch\\b.*-(d|D|m|M|-delete|-force)\\b/": false,
+		"Get-ChildItem": true,
+		"Get-Content": true,
+		"Get-Date": true,
+		"Get-Random": true,
+		"Get-Location": true,
+		"Write-Host": true,
+		"Write-Output": true,
+		"Split-Path": true,
+		"Join-Path": true,
+		"Start-Sleep": true,
+		"Where-Object": true,
+		"/^Select-[a-z0-9]/i": true,
+		"/^Measure-[a-z0-9]/i": true,
+		"/^Compare-[a-z0-9]/i": true,
+		"/^Format-[a-z0-9]/i": true,
+		"/^Sort-[a-z0-9]/i": true,
+		"column": true,
+		"/^column\\b.*-c\\s+[0-9]{4,}/": false,
+		"date": true,
+		"/^date\\b.*(-s|--set)\\b/": false,
+		"find": true,
+		"/^find\\b.*-(delete|exec|execdir|fprint|fprintf|fls|ok|okdir)\\b/": false,
+		"sort": true,
+		"/^sort\\b.*-(o|S)\\b/": false,
+		"tree": true,
+		"/^tree\\b.*-o\\b/": false,
+		"rm": false,
+		"rmdir": false,
+		"del": false,
+		"Remove-Item": false,
+		"ri": false,
+		"rd": false,
+		"erase": false,
+		"dd": false,
+		"kill": false,
+		"ps": false,
+		"top": false,
+		"Stop-Process": false,
+		"spps": false,
+		"taskkill": false,
+		"taskkill.exe": false,
+		"curl": false,
+		"wget": false,
+		"Invoke-RestMethod": false,
+		"Invoke-WebRequest": false,
+		"irm": false,
+		"iwr": false,
+		"chmod": false,
+		"chown": false,
+		"Set-ItemProperty": false,
+		"sp": false,
+		"Set-Acl": false,
+		"jq": false,
+		"xargs": false,
+		"eval": false,
+		"Invoke-Expression": false,
+		"iex": false
+	},
+
+	// Whether to automatically respond to prompts in the terminal such as `Confirm? y/n`. This is an experimental feature and may not work in all scenarios.
+	"chat.tools.terminal.autoReplyToPrompts": false,
+
+	// Controls whether detected file write operations are blocked in the run in terminal tool. When detected, this will require explicit approval regardless of whether the command would normally be auto approved. Note that this cannot detect all possible methods of writing files, this is what is currently detected:
+	// 
+	// - File redirection (detected via the bash or PowerShell tree sitter grammar)
+	//  - never: Allow all detected file writes.
+	//  - outsideWorkspace: Block file writes detected outside the workspace. This depends on the shell integration feature working correctly to determine the current working directory of the terminal.
+	//  - all: Block all detected file writes.
+	"chat.tools.terminal.blockDetectedFileWrites": "outsideWorkspace",
+
+	// Controls whether to allow auto approval in the run in terminal tool.
+	"chat.tools.terminal.enableAutoApprove": true,
+
+	// Whether to ignore the built-in default auto-approve rules used by the run in terminal tool as defined in `chat.tools.terminal.autoApprove`. When this setting is enabled, the run in terminal tool will ignore any rule that comes from the default set but still follow rules defined in the user, remote and workspace settings. Use this setting at your own risk; the default auto-approve rules are designed to protect you against running dangerous commands.
+	"chat.tools.terminal.ignoreDefaultAutoApproveRules": false,
+
+	// Where to show the output from the run in terminal tool session.
+	//  - terminal: Reveal the terminal when running the command.
+	//  - none: Do not reveal the terminal automatically.
+	"chat.tools.terminal.outputLocation": "terminal",
+
+	// Use `terminal.integrated.shellIntegration.timeout` instead
+	// Configures the duration in milliseconds to wait for shell integration to be detected when the run in terminal tool launches a new terminal. Set to `0` to wait the minimum time, the default value `-1` means the wait time is variable based on the value of `terminal.integrated.shellIntegration.enabled` and whether it's a remote window. A large value can be useful if your shell starts very slowly and a low value if you're intentionally not using shell integration.
+	"chat.tools.terminal.shellIntegrationTimeout": -1,
+
+	// The terminal profile to use on Linux for chat agent's run in terminal tool.
+	"chat.tools.terminal.terminalProfile.linux": null,
+
+	// The terminal profile to use on macOS for chat agent's run in terminal tool.
+	"chat.tools.terminal.terminalProfile.osx": null,
+
+	// The terminal profile to use on Windows for chat agent's run in terminal tool.
+	"chat.tools.terminal.terminalProfile.windows": null,
+
+	// Use `chat.tools.terminal.autoApprove` instead
+	// 
+	"github.copilot.chat.agent.terminal.allowList": null,
+
+	// Use `chat.tools.terminal.autoApprove` instead
+	// 
+	"github.copilot.chat.agent.terminal.denyList": null,
+
+	// Focus the terminal accessible view when a command is executed.
+	"terminal.integrated.accessibleViewFocusOnCommandExecution": false,
+
+	// Preserve the cursor position on reopen of the terminal's accessible view rather than setting it to the bottom of the buffer.
+	"terminal.integrated.accessibleViewPreserveCursorPosition": false,
+
+	// Whether or not to allow chord keybindings in the terminal. Note that when this is true and the keystroke results in a chord it will bypass `terminal.integrated.commandsToSkipShell`, setting this to false is particularly useful when you want ctrl+k to go to your shell (not Antigravity).
+	"terminal.integrated.allowChords": true,
+
+	// An array of strings containing the URI schemes that the terminal is allowed to open links for. By default, only a small subset of possible schemes are allowed for security reasons.
+	"terminal.integrated.allowedLinkSchemes": [
+		"file",
+		"http",
+		"https",
+		"mailto",
+		"vscode",
+		"vscode-insiders"
+	],
+
+	// Whether to allow menubar mnemonics (for example Alt+F) to trigger the open of the menubar. Note that this will cause all alt keystrokes to skip the shell when true. This does nothing on macOS.
+	"terminal.integrated.allowMnemonics": false,
+
+	// If enabled, alt/option + click will reposition the prompt cursor to underneath the mouse when `editor.multiCursorModifier` is set to `'alt'` (the default value). This may not work reliably depending on your shell.
+	"terminal.integrated.altClickMovesCursor": true,
+
+	// The terminal profile to use on Linux for automation-related terminal usage like tasks and debug.
+	"terminal.integrated.automationProfile.linux": null,
+
+	// The terminal profile to use on macOS for automation-related terminal usage like tasks and debug.
+	"terminal.integrated.automationProfile.osx": null,
+
+	// The terminal profile to use for automation-related terminal usage like tasks and debug. This setting will currently be ignored if `terminal.integrated.automationShell.windows` (now deprecated) is set.
+	"terminal.integrated.automationProfile.windows": null,
+
+	// A set of messages that, when encountered in the terminal, will be automatically responded to. Provided the message is specific enough, this can help automate away common responses.
+	// 
+	// Remarks:
+	// 
+	// - Use `"Terminate batch job (Y/N)": "Y\r"` to automatically respond to the terminate batch job prompt on Windows.
+	// - The message includes escape sequences so the reply might not happen with styled text.
+	// - Each reply can only happen once every second.
+	// - Use `"\r"` in the reply to mean the enter key.
+	// - To unset a default key, set the value to null.
+	// - Restart VS Code if new don't apply.
+	"terminal.integrated.autoReplies": {},
+
+	// The number of milliseconds to show the bell within a terminal tab when triggered.
+	"terminal.integrated.bellDuration": 1000,
+
+	// A set of command IDs whose keybindings will not be sent to the shell but instead always be handled by Antigravity. This allows keybindings that would normally be consumed by the shell to act instead the same as when the terminal is not focused, for example `Ctrl+P` to launch Quick Open.
+	// 
+	// &nbsp;
+	// 
+	// Many commands are skipped by default. To override a default and pass that command's keybinding to the shell instead, add the command prefixed with the `-` character. For example add `-workbench.action.quickOpen` to allow `Ctrl+P` to reach the shell.
+	// 
+	// &nbsp;
+	// 
+	// The following list of default skipped commands is truncated when viewed in Settings Editor. To see the full list, [open the default settings JSON](command:workbench.action.openRawDefaultSettings 'Open Default Settings (JSON)') and search for the first command from the list below.
+	// 
+	// &nbsp;
+	// 
+	// Default Skipped Commands:
+	// 
+	// - antigravity.prioritized.terminalCommand.open
+	// - antigravity.sendTerminalToChat
+	// - antigravity.toggleChatFocus
+	// - editor.action.accessibilityHelp
+	// - editor.action.toggleTabFocusMode
+	// - notification.acceptPrimaryAction
+	// - notifications.hideList
+	// - notifications.hideToasts
+	// - runCommands
+	// - workbench.action.closeQuickOpen
+	// - workbench.action.debug.continue
+	// - workbench.action.debug.disconnect
+	// - workbench.action.debug.pause
+	// - workbench.action.debug.restart
+	// - workbench.action.debug.run
+	// - workbench.action.debug.start
+	// - workbench.action.debug.stepInto
+	// - workbench.action.debug.stepOut
+	// - workbench.action.debug.stepOver
+	// - workbench.action.debug.stop
+	// - workbench.action.firstEditorInGroup
+	// - workbench.action.focusActiveEditorGroup
+	// - workbench.action.focusEighthEditorGroup
+	// - workbench.action.focusFifthEditorGroup
+	// - workbench.action.focusFirstEditorGroup
+	// - workbench.action.focusFourthEditorGroup
+	// - workbench.action.focusLastEditorGroup
+	// - workbench.action.focusNextPart
+	// - workbench.action.focusPreviousPart
+	// - workbench.action.focusSecondEditorGroup
+	// - workbench.action.focusSeventhEditorGroup
+	// - workbench.action.focusSixthEditorGroup
+	// - workbench.action.focusThirdEditorGroup
+	// - workbench.action.lastEditorInGroup
+	// - workbench.action.navigateDown
+	// - workbench.action.navigateLeft
+	// - workbench.action.navigateRight
+	// - workbench.action.navigateUp
+	// - workbench.action.nextEditor
+	// - workbench.action.nextEditorInGroup
+	// - workbench.action.nextPanelView
+	// - workbench.action.nextSideBarView
+	// - workbench.action.openNextRecentlyUsedEditor
+	// - workbench.action.openNextRecentlyUsedEditorInGroup
+	// - workbench.action.openPreviousRecentlyUsedEditor
+	// - workbench.action.openPreviousRecentlyUsedEditorInGroup
+	// - workbench.action.previousEditor
+	// - workbench.action.previousEditorInGroup
+	// - workbench.action.previousPanelView
+	// - workbench.action.previousSideBarView
+	// - workbench.action.quickOpen
+	// - workbench.action.quickOpenLeastRecentlyUsedEditor
+	// - workbench.action.quickOpenLeastRecentlyUsedEditorInGroup
+	// - workbench.action.quickOpenPreviousEditor
+	// - workbench.action.quickOpenPreviousRecentlyUsedEditor
+	// - workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup
+	// - workbench.action.quickOpenView
+	// - workbench.action.showCommands
+	// - workbench.action.tasks.build
+	// - workbench.action.tasks.reRunTask
+	// - workbench.action.tasks.rerunForActiveTerminal
+	// - workbench.action.tasks.restartTask
+	// - workbench.action.tasks.runTask
+	// - workbench.action.tasks.showLog
+	// - workbench.action.tasks.showTasks
+	// - workbench.action.tasks.terminate
+	// - workbench.action.tasks.test
+	// - workbench.action.terminal.acceptSelectedSuggestion
+	// - workbench.action.terminal.acceptSelectedSuggestionEnter
+	// - workbench.action.terminal.chat.cancel
+	// - workbench.action.terminal.chat.close
+	// - workbench.action.terminal.chat.discard
+	// - workbench.action.terminal.chat.feedbackHelpful
+	// - workbench.action.terminal.chat.feedbackReportIssue
+	// - workbench.action.terminal.chat.feedbackUnhelpful
+	// - workbench.action.terminal.chat.insertCommand
+	// - workbench.action.terminal.chat.makeRequest
+	// - workbench.action.terminal.chat.runCommand
+	// - workbench.action.terminal.chat.start
+	// - workbench.action.terminal.chat.viewInChat
+	// - workbench.action.terminal.clear
+	// - workbench.action.terminal.clearSelection
+	// - workbench.action.terminal.copyAndClearSelection
+	// - workbench.action.terminal.copyLastCommand
+	// - workbench.action.terminal.copyLastCommandAndLastCommandOutput
+	// - workbench.action.terminal.copyLastCommandOutput
+	// - workbench.action.terminal.copySelection
+	// - workbench.action.terminal.copySelectionAsHtml
+	// - workbench.action.terminal.deleteToLineStart
+	// - workbench.action.terminal.deleteWordLeft
+	// - workbench.action.terminal.deleteWordRight
+	// - workbench.action.terminal.findNext
+	// - workbench.action.terminal.findPrevious
+	// - workbench.action.terminal.focus
+	// - workbench.action.terminal.focusAccessibleBuffer
+	// - workbench.action.terminal.focusAtIndex1
+	// - workbench.action.terminal.focusAtIndex2
+	// - workbench.action.terminal.focusAtIndex3
+	// - workbench.action.terminal.focusAtIndex4
+	// - workbench.action.terminal.focusAtIndex5
+	// - workbench.action.terminal.focusAtIndex6
+	// - workbench.action.terminal.focusAtIndex7
+	// - workbench.action.terminal.focusAtIndex8
+	// - workbench.action.terminal.focusAtIndex9
+	// - workbench.action.terminal.focusFind
+	// - workbench.action.terminal.focusHover
+	// - workbench.action.terminal.focusNext
+	// - workbench.action.terminal.focusNextPane
+	// - workbench.action.terminal.focusPrevious
+	// - workbench.action.terminal.focusPreviousPane
+	// - workbench.action.terminal.goToRecentDirectory
+	// - workbench.action.terminal.hideFind
+	// - workbench.action.terminal.hideSuggestWidget
+	// - workbench.action.terminal.kill
+	// - workbench.action.terminal.killEditor
+	// - workbench.action.terminal.maybeCopySelection
+	// - workbench.action.terminal.moveToEditor
+	// - workbench.action.terminal.moveToLineEnd
+	// - workbench.action.terminal.moveToLineStart
+	// - workbench.action.terminal.moveToTerminalPanel
+	// - workbench.action.terminal.new
+	// - workbench.action.terminal.newInActiveWorkspace
+	// - workbench.action.terminal.newInNewWindow
+	// - workbench.action.terminal.paste
+	// - workbench.action.terminal.pasteSelection
+	// - workbench.action.terminal.resizePaneDown
+	// - workbench.action.terminal.resizePaneLeft
+	// - workbench.action.terminal.resizePaneRight
+	// - workbench.action.terminal.resizePaneUp
+	// - workbench.action.terminal.runActiveFile
+	// - workbench.action.terminal.runRecentCommand
+	// - workbench.action.terminal.runSelectedText
+	// - workbench.action.terminal.scrollDown
+	// - workbench.action.terminal.scrollDownPage
+	// - workbench.action.terminal.scrollToBottom
+	// - workbench.action.terminal.scrollToNextCommand
+	// - workbench.action.terminal.scrollToPreviousCommand
+	// - workbench.action.terminal.scrollToTop
+	// - workbench.action.terminal.scrollUp
+	// - workbench.action.terminal.scrollUpPage
+	// - workbench.action.terminal.searchWorkspace
+	// - workbench.action.terminal.selectAll
+	// - workbench.action.terminal.selectNextPageSuggestion
+	// - workbench.action.terminal.selectNextSuggestion
+	// - workbench.action.terminal.selectPrevPageSuggestion
+	// - workbench.action.terminal.selectPrevSuggestion
+	// - workbench.action.terminal.selectToNextCommand
+	// - workbench.action.terminal.selectToNextLine
+	// - workbench.action.terminal.selectToPreviousCommand
+	// - workbench.action.terminal.selectToPreviousLine
+	// - workbench.action.terminal.sendSequence
+	// - workbench.action.terminal.sizeToContentWidth
+	// - workbench.action.terminal.split
+	// - workbench.action.terminal.splitInActiveWorkspace
+	// - workbench.action.terminal.stopVoice
+	// - workbench.action.terminal.suggestToggleDetails
+	// - workbench.action.terminal.suggestToggleDetailsFocus
+	// - workbench.action.terminal.toggleFindCaseSensitive
+	// - workbench.action.terminal.toggleFindRegex
+	// - workbench.action.terminal.toggleFindWholeWord
+	// - workbench.action.terminal.toggleTerminal
+	// - workbench.action.terminal.triggerSuggest
+	// - workbench.action.toggleFullScreen
+	// - workbench.action.toggleMaximizedPanel
+	// - workbench.action.togglePanel
+	"terminal.integrated.commandsToSkipShell": [],
+
+	// Controls whether to confirm when the window closes if there are active terminal sessions. Background terminals like those launched by some extensions will not trigger the confirmation.
+	//  - never: Never confirm.
+	//  - always: Always confirm if there are terminals.
+	//  - hasChildProcesses: Confirm if there are any terminals that have child processes.
+	"terminal.integrated.confirmOnExit": "never",
+
+	// Controls whether to confirm killing terminals when they have child processes. When set to editor, terminals in the editor area will be marked as changed when they have child processes. Note that child process detection may not work well for shells like Git Bash which don't run their processes as child processes of the shell. Background terminals like those launched by some extensions will not trigger the confirmation.
+	//  - never: Never confirm.
+	//  - editor: Confirm if the terminal is in the editor.
+	//  - panel: Confirm if the terminal is in the panel.
+	//  - always: Confirm if the terminal is either in the editor or panel.
+	"terminal.integrated.confirmOnKill": "editor",
+
+	// Controls whether text selected in the terminal will be copied to the clipboard.
+	"terminal.integrated.copyOnSelection": false,
+
+	// Controls whether the terminal cursor blinks.
+	"terminal.integrated.cursorBlinking": false,
+
+	// Controls the style of terminal cursor when the terminal is focused.
+	"terminal.integrated.cursorStyle": "block",
+
+	// Controls the style of terminal cursor when the terminal is not focused.
+	"terminal.integrated.cursorStyleInactive": "outline",
+
+	// Controls the width of the cursor when `terminal.integrated.cursorStyle` is set to `line`.
+	"terminal.integrated.cursorWidth": 1,
+
+	// Whether to draw custom glyphs for block element and box drawing characters instead of using the font, which typically yields better rendering with continuous lines. Note that this doesn't work when `terminal.integrated.gpuAcceleration` is disabled.
+	"terminal.integrated.customGlyphs": true,
+
+	// An explicit start path where the terminal will be launched, this is used as the current working directory (cwd) for the shell process. This may be particularly useful in workspace settings if the root directory is not a convenient cwd.
+	"terminal.integrated.cwd": "",
+
+	// Controls where newly created terminals will appear.
+	//  - editor: Create terminals in the editor
+	//  - view: Create terminals in the terminal view
+	"terminal.integrated.defaultLocation": "view",
+
+	// The default terminal profile on Linux.
+	"terminal.integrated.defaultProfile.linux": null,
+
+	// The default terminal profile on macOS.
+	//  - null: Automatically detect the default
+	//  - bash: $(terminal-bash) bash
+	// - path: /bin/bash
+	// - args: ['-l']
+	//  - csh: $(terminal) csh
+	// - path: /bin/csh
+	//  - dash: $(terminal) dash
+	// - path: /bin/dash
+	//  - ksh: $(terminal) ksh
+	// - path: /bin/ksh
+	//  - sh: $(terminal) sh
+	// - path: /bin/sh
+	//  - tcsh: $(terminal) tcsh
+	// - path: /bin/tcsh
+	//  - zsh: $(terminal) zsh
+	// - path: /bin/zsh
+	// - args: ['-l']
+	//  - pwsh: $(terminal-powershell) pwsh
+	// - path: /opt/homebrew/bin/pwsh
+	//  - JavaScript Debug Terminal: $($(debug)) JavaScript Debug Terminal
+	// - extensionIdentifier: ms-vscode.js-debug
+	"terminal.integrated.defaultProfile.osx": null,
+
+	// The default terminal profile on Windows.
+	"terminal.integrated.defaultProfile.windows": null,
+
+	// Controls whether to detect and set the `$LANG` environment variable to a UTF-8 compliant option since Antigravity's terminal only supports UTF-8 encoded data coming from the shell.
+	//  - auto: Set the `$LANG` environment variable if the existing variable does not exist or it does not end in `'.UTF-8'`.
+	//  - off: Do not set the `$LANG` environment variable.
+	//  - on: Always set the `$LANG` environment variable.
+	"terminal.integrated.detectLocale": "auto",
+
+	// Enable developer mode for the terminal. This shows additional debug information and visualizations for shell integration sequences.
+	"terminal.integrated.developer.devMode": false,
+
+	// Simulated latency in milliseconds applied to all calls made to the pty host. This is useful for testing terminal behavior under high latency conditions.
+	"terminal.integrated.developer.ptyHost.latency": 0,
+
+	// Simulated startup delay in milliseconds for the pty host process. This is useful for testing terminal initialization under slow startup conditions.
+	"terminal.integrated.developer.ptyHost.startupDelay": 0,
+
+	// Controls whether bold text in the terminal will always use the "bright" ANSI color variant.
+	"terminal.integrated.drawBoldTextInBrightColors": true,
+
+	// This is now deprecated. Instead use the `terminal.integrated.enableVisualBell` and `accessibility.signals.terminalBell` settings.
+	// 
+	"terminal.integrated.enableBell": false,
+
+	// Whether to enable file links in terminals. Links can be slow when working on a network drive in particular because each file link is verified against the file system. Changing this will take effect only in new terminals.
+	//  - off: Always off.
+	//  - on: Always on.
+	//  - notRemote: Enable only when not in a remote workspace.
+	"terminal.integrated.enableFileLinks": "on",
+
+	// Enables image support in the terminal, this will only work when `terminal.integrated.gpuAcceleration#` is enabled. Both sixel and iTerm's inline image protocol are supported on Linux and macOS. This will only work on Windows for versions of ConPTY >= v2 which is shipped with Windows itself, see also `#terminal.integrated.windowsUseConptyDll`. Images will currently not be restored between window reloads/reconnects.
+	"terminal.integrated.enableImages": false,
+
+	// Controls whether to show a warning dialog when pasting multiple lines into the terminal.
+	//  - auto: Enable the warning but do not show it when:
+	// 
+	// - Bracketed paste mode is enabled (the shell supports multi-line paste natively)
+	// - The paste is handled by the shell's readline (in the case of pwsh)
+	//  - always: Always show the warning if the text contains a new line.
+	//  - never: Never show the warning.
+	"terminal.integrated.enableMultiLinePasteWarning": "auto",
+
+	// Persist terminal sessions/history for the workspace across window reloads.
+	"terminal.integrated.enablePersistentSessions": true,
+
+	// Controls whether the visual terminal bell is enabled. This shows up next to the terminal's name.
+	"terminal.integrated.enableVisualBell": false,
+
+	// Object with environment variables that will be added to the Antigravity process to be used by the terminal on Linux. Set to `null` to delete the environment variable.
+	"terminal.integrated.env.linux": {},
+
+	// Object with environment variables that will be added to the Antigravity process to be used by the terminal on macOS. Set to `null` to delete the environment variable.
+	"terminal.integrated.env.osx": {},
+
+	// Object with environment variables that will be added to the Antigravity process to be used by the terminal on Windows. Set to `null` to delete the environment variable.
+	"terminal.integrated.env.windows": {},
+
+	// Whether to relaunch terminals automatically if extensions want to contribute to their environment and have not been interacted with yet.
+	"terminal.integrated.environmentChangesRelaunch": true,
+
+	// Scrolling speed multiplier when pressing `Alt`.
+	"terminal.integrated.fastScrollSensitivity": 5,
+
+	// Controls whether the terminal, accessible buffer, or neither will be focused after `Terminal: Run Selected Text In Active Terminal` has been run.
+	//  - terminal: Always focus the terminal.
+	//  - accessible-buffer: Always focus the accessible buffer.
+	//  - none: Do nothing.
+	"terminal.integrated.focusAfterRun": "none",
+
+	// Controls the font family of the terminal. Defaults to `editor.fontFamily`'s value.
+	"terminal.integrated.fontFamily": "",
+
+	// Controls whether font ligatures are enabled in the terminal. Ligatures will only work if the configured `terminal.integrated.fontFamily` supports them.
+	"terminal.integrated.fontLigatures.enabled": false,
+
+	// When `terminal.integrated.gpuAcceleration#` is enabled and the particular `#terminal.integrated.fontFamily` cannot be parsed, this is the set of character sequences that will always be drawn together. This allows the use of a fixed set of ligatures even when the font isn't supported.
+	"terminal.integrated.fontLigatures.fallbackLigatures": [
+		"<--",
+		"<---",
+		"<<-",
+		"<-",
+		"->",
+		"->>",
+		"-->",
+		"--->",
+		"<==",
+		"<===",
+		"<<=",
+		"<=",
+		"=>",
+		"=>>",
+		"==>",
+		"===>",
+		">=",
+		">>=",
+		"<->",
+		"<-->",
+		"<--->",
+		"<---->",
+		"<=>",
+		"<==>",
+		"<===>",
+		"<====>",
+		"::",
+		":::",
+		"<~~",
+		"</",
+		"</>",
+		"/>",
+		"~~>",
+		"==",
+		"!=",
+		"/=",
+		"~=",
+		"<>",
+		"===",
+		"!==",
+		"!===",
+		"<:",
+		":=",
+		"*=",
+		"*+",
+		"<*",
+		"<*>",
+		"*>",
+		"<|",
+		"<|>",
+		"|>",
+		"+*",
+		"=*",
+		"=:",
+		":>",
+		"/*",
+		"*/",
+		"+++",
+		"<!--",
+		"<!---"
+	],
+
+	// Controls what font feature settings are used when ligatures are enabled, in the format of the `font-feature-settings` CSS property. Some examples which may be valid depending on the font:
+	// 
+	// - `"calt" off, "ss03"`
+	// - `"liga" on`
+	// - `"calt" off, "dlig" on`
+	"terminal.integrated.fontLigatures.featureSettings": "\"calt\" on",
+
+	// Controls the font size in pixels of the terminal.
+	"terminal.integrated.fontSize": 12,
+
+	// The font weight to use within the terminal for non-bold text. Accepts "normal" and "bold" keywords or numbers between 1 and 1000.
+	"terminal.integrated.fontWeight": "normal",
+
+	// The font weight to use within the terminal for bold text. Accepts "normal" and "bold" keywords or numbers between 1 and 1000.
+	"terminal.integrated.fontWeightBold": "bold",
+
+	// Controls whether the terminal will leverage the GPU to do its rendering.
+	//  - auto: Let Antigravity detect which renderer will give the best experience.
+	//  - on: Enable GPU acceleration within the terminal.
+	//  - off: Disable GPU acceleration within the terminal. The terminal will render much slower when GPU acceleration is off but it should reliably work on all systems.
+	"terminal.integrated.gpuAcceleration": "auto",
+
+	// Whether to hide the terminal view when the last terminal is closed. This will only happen when the terminal is the only visible view in the view container.
+	"terminal.integrated.hideOnLastClosed": true,
+
+	// Whether to hide the terminal view on startup, avoiding creating a terminal when there are no persistent sessions.
+	//  - never: Never hide the terminal view on startup.
+	//  - whenEmpty: Only hide the terminal when there are no persistent sessions restored.
+	//  - always: Always hide the terminal, even when there are persistent sessions restored.
+	"terminal.integrated.hideOnStartup": "never",
+
+	// Controls whether the terminal will ignore bracketed paste mode even if the terminal was put into the mode, omitting the `\x1b[200~` and `\x1b[201~` sequences when pasting. This is useful when the shell is not respecting the mode which can happen in sub-shells for example.
+	"terminal.integrated.ignoreBracketedPasteMode": false,
+
+	// A set of process names to ignore when using the `terminal.integrated.confirmOnKill` setting.
+	"terminal.integrated.ignoreProcessNames": [
+		"starship",
+		"oh-my-posh",
+		"bash",
+		"zsh"
+	],
+
+	// Whether new shells should inherit their environment from the IDE, which may source a login shell to ensure $PATH and other development variables are initialized. This has no effect on Windows.
+	"terminal.integrated.inheritEnv": true,
+
+	// Controls if the first terminal without input will show a hint about available actions when it is focused.
+	"terminal.integrated.initialHint": true,
+
+	// Controls the letter spacing of the terminal. This is an integer value which represents the number of additional pixels to add between characters.
+	"terminal.integrated.letterSpacing": 0,
+
+	// Controls the line height of the terminal. This number is multiplied by the terminal font size to get the actual line-height in pixels.
+	"terminal.integrated.lineHeight": 1,
+
+	// When local echo should be enabled. This will override `terminal.integrated.localEchoLatencyThreshold`
+	//  - on: Always enabled
+	//  - off: Always disabled
+	//  - auto: Enabled only for remote workspaces
+	"terminal.integrated.localEchoEnabled": "off",
+
+	// Local echo will be disabled when any of these program names are found in the terminal title.
+	"terminal.integrated.localEchoExcludePrograms": [
+		"vim",
+		"vi",
+		"nano",
+		"tmux"
+	],
+
+	// Length of network delay, in milliseconds, where local edits will be echoed on the terminal without waiting for server acknowledgement. If '0', local echo will always be on, and if '-1' it will be disabled.
+	"terminal.integrated.localEchoLatencyThreshold": 30,
+
+	// Terminal style of locally echoed text; either a font style or an RGB color.
+	"terminal.integrated.localEchoStyle": "dim",
+
+	// Controls whether to force selection when using Option+click on macOS. This will force a regular (line) selection and disallow the use of column selection mode. This enables copying and pasting using the regular terminal selection, for example, when mouse mode is enabled in tmux.
+	"terminal.integrated.macOptionClickForcesSelection": false,
+
+	// Controls whether to treat the option key as the meta key in the terminal on macOS.
+	"terminal.integrated.macOptionIsMeta": false,
+
+	// Controls how terminal reacts to middle click.
+	//  - default: The platform default to focus the terminal. On Linux this will also paste the selection.
+	//  - paste: Paste on middle click.
+	"terminal.integrated.middleClickBehavior": "default",
+
+	// When set, the foreground color of each cell will change to try meet the contrast ratio specified. Note that this will not apply to `powerline` characters per #146406. Example values:
+	// 
+	// - 1: Do nothing and use the standard theme colors.
+	// - 4.5: [WCAG AA compliance (minimum)](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) (default).
+	// - 7: [WCAG AAA compliance (enhanced)](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast7.html).
+	// - 21: White on black or black on white.
+	"terminal.integrated.minimumContrastRatio": 4.5,
+
+	// A multiplier to be used on the `deltaY` of mouse wheel scroll events.
+	"terminal.integrated.mouseWheelScrollSensitivity": 1,
+
+	// Zoom the font of the terminal when using mouse wheel and holding `Cmd`.
+	"terminal.integrated.mouseWheelZoom": false,
+
+	// When the terminal process must be shut down (for example on window or application close), this determines when the previous terminal session contents/history should be restored and processes be recreated when the workspace is next opened.
+	// 
+	// Caveats:
+	// 
+	// - Restoring of the process current working directory depends on whether it is supported by the shell.
+	// - Time to persist the session during shutdown is limited, so it may be aborted when using high-latency remote connections.
+	//  - onExit: Revive the processes after the last window is closed on Windows/Linux or when the `workbench.action.quit` command is triggered (command palette, keybinding, menu).
+	//  - onExitAndWindowClose: Revive the processes after the last window is closed on Windows/Linux or when the `workbench.action.quit` command is triggered (command palette, keybinding, menu), or when the window is closed.
+	//  - never: Never restore the terminal buffers or recreate the process.
+	"terminal.integrated.persistentSessionReviveProcess": "onExit",
+
+	// Controls the maximum amount of lines that will be restored when reconnecting to a persistent terminal session. Increasing this will restore more lines of scrollback at the cost of more memory and increase the time it takes to connect to terminals on start up. This setting requires a restart to take effect and should be set to a value less than or equal to `terminal.integrated.scrollback`.
+	"terminal.integrated.persistentSessionScrollback": 100,
+
+	// A set of terminal profile customizations for Linux which allows adding, removing or changing how terminals are launched. Profiles are made up of a mandatory path, optional arguments and other presentation options.
+	// 
+	// To override an existing profile use its profile name as the key, for example:
+	// 
+	// ```json
+	// "terminal.integrated.profile.linux": {
+	//   "bash": null
+	// }
+	// ```
+	// 
+	// [Read more about configuring profiles](https://code.visualstudio.com/docs/terminal/profiles).
+	"terminal.integrated.profiles.linux": {
+		"bash": {
+			"path": "bash",
+			"icon": "terminal-bash"
+		},
+		"zsh": {
+			"path": "zsh"
+		},
+		"fish": {
+			"path": "fish"
+		},
+		"tmux": {
+			"path": "tmux",
+			"icon": "terminal-tmux"
+		},
+		"pwsh": {
+			"path": "pwsh",
+			"icon": "terminal-powershell"
+		}
+	},
+
+	// A set of terminal profile customizations for Mac which allows adding, removing or changing how terminals are launched. Profiles are made up of a mandatory path, optional arguments and other presentation options.
+	// 
+	// To override an existing profile use its profile name as the key, for example:
+	// 
+	// ```json
+	// "terminal.integrated.profile.osx": {
+	//   "bash": null
+	// }
+	// ```
+	// 
+	// [Read more about configuring profiles](https://code.visualstudio.com/docs/terminal/profiles).
+	"terminal.integrated.profiles.osx": {
+		"bash": {
+			"path": "bash",
+			"args": [
+				"-l"
+			],
+			"icon": "terminal-bash"
+		},
+		"zsh": {
+			"path": "zsh",
+			"args": [
+				"-l"
+			]
+		},
+		"fish": {
+			"path": "fish",
+			"args": [
+				"-l"
+			]
+		},
+		"tmux": {
+			"path": "tmux",
+			"icon": "terminal-tmux"
+		},
+		"pwsh": {
+			"path": "pwsh",
+			"icon": "terminal-powershell"
+		}
+	},
+
+	// A set of terminal profile customizations for Windows which allows adding, removing or changing how terminals are launched. Profiles are made up of a mandatory path, optional arguments and other presentation options.
+	// 
+	// To override an existing profile use its profile name as the key, for example:
+	// 
+	// ```json
+	// "terminal.integrated.profile.windows": {
+	//   "bash": null
+	// }
+	// ```
+	// 
+	// [Read more about configuring profiles](https://code.visualstudio.com/docs/terminal/profiles).
+	"terminal.integrated.profiles.windows": {
+		"PowerShell": {
+			"source": "PowerShell",
+			"icon": "terminal-powershell"
+		},
+		"Command Prompt": {
+			"path": [
+				"${env:windir}\\Sysnative\\cmd.exe",
+				"${env:windir}\\System32\\cmd.exe"
+			],
+			"args": [],
+			"icon": {
+				"id": "terminal-cmd"
+			}
+		},
+		"Git Bash": {
+			"source": "Git Bash",
+			"icon": "terminal-git-bash"
+		}
+	},
+
+	// Whether to rescale glyphs horizontally that are a single cell wide but have glyphs that would overlap following cell(s). This typically happens for ambiguous width characters (eg. the roman numeral characters U+2160+) which aren't featured in monospace fonts. Emoji glyphs are never rescaled.
+	"terminal.integrated.rescaleOverlappingGlyphs": true,
+
+	// Controls how terminal reacts to right click.
+	//  - default: Show the context menu.
+	//  - copyPaste: Copy when there is a selection, otherwise paste.
+	//  - paste: Paste on right click.
+	//  - selectWord: Select the word under the cursor and show the context menu.
+	//  - nothing: Do nothing and pass event to terminal.
+	"terminal.integrated.rightClickBehavior": "selectWord",

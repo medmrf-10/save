@@ -1,0 +1,840 @@
+	"debug.javascript.terminalOptions": {},
+
+	// Configures whether sourcemapped file where the original file can't be read will automatically be unmapped. If this is false (default), a prompt is shown.
+	"debug.javascript.unmapMissingSources": false,
+
+	// Npm
+	// Controls whether npm scripts should be automatically detected.
+	"npm.autoDetect": "on",
+
+	// Enable running npm scripts contained in a folder from the Explorer context menu.
+	"npm.enableRunFromFolder": false,
+
+	// The NPM Script Explorer is now available in 'Views' menu in the Explorer in all folders.
+	// Enable an explorer view for npm scripts when there is no top-level 'package.json' file.
+	"npm.enableScriptExplorer": false,
+
+	// Configure glob patterns for folders that should be excluded from automatic script detection.
+	"npm.exclude": "",
+
+	// Fetch data from https://registry.npmjs.org and https://registry.bower.io to provide auto-completion and information on hover features on npm dependencies.
+	"npm.fetchOnlinePackageInfo": true,
+
+	// The package manager used to install dependencies.
+	//  - auto: Auto-detect which package manager to use based on lock files and installed package managers.
+	//  - npm: Use npm as the package manager.
+	//  - yarn: Use yarn as the package manager.
+	//  - pnpm: Use pnpm as the package manager.
+	//  - bun: Use bun as the package manager.
+	"npm.packageManager": "auto",
+
+	// Run npm commands with the `--silent` option.
+	"npm.runSilent": false,
+
+	// The default click action used in the NPM Scripts Explorer: `open` or `run`, the default is `open`.
+	"npm.scriptExplorerAction": "open",
+
+	// An array of regular expressions that indicate which scripts should be excluded from the NPM Scripts view.
+	"npm.scriptExplorerExclude": [],
+
+	// Display hover with 'Run' and 'Debug' commands for scripts.
+	"npm.scriptHover": true,
+
+	// The script runner used to run scripts.
+	//  - auto: Auto-detect which script runner to use based on lock files and installed package managers.
+	//  - npm: Use npm as the script runner.
+	//  - yarn: Use yarn as the script runner.
+	//  - pnpm: Use pnpm as the script runner.
+	//  - bun: Use bun as the script runner.
+	//  - node: Use Node.js as the script runner.
+	"npm.scriptRunner": "auto",
+
+	// Reference Search View
+	// Controls whether 'Peek References' or 'Find References' is invoked when selecting CodeLens references.
+	//  - peek: Show references in peek editor.
+	//  - view: Show references in separate view.
+	"references.preferredLocation": "peek",
+
+	// Simple Browser
+	// Enable/disable the floating indicator that shows when focused in the simple browser.
+	"simpleBrowser.focusLockIndicator.enabled": true,
+
+	// Go
+	// Tags and options configured here will be used by the Add Tags command to add tags to struct fields. If promptForTags is true, then user will be prompted for tags and options. By default, json tags are added.
+	"go.addTags": {
+		"tags": "json",
+		"options": "json=omitempty",
+		"promptForTags": false,
+		"transform": "snakecase",
+		"template": ""
+	},
+
+	// Alternate tools or alternate paths for the same tools used by the Go extension. Provide either absolute path or the name of the binary in GOPATH/bin, GOROOT/bin or PATH. Useful when you want to use wrapper script for the Go tools.
+	"go.alternateTools": {},
+
+	// Flags to `go build`/`go test` used during build-on-save or running tests. (e.g. ["-ldflags='-s'"]) This is propagated to the language server if `gopls.build.buildFlags` is not specified.
+	"go.buildFlags": [],
+
+	// Enable the Go language server (`go.useLanguageServer`) to diagnose compile errors.
+	// Compiles code on file save using 'go build' or 'go test -c'. Not applicable when using the language server.
+	"go.buildOnSave": "package",
+
+	// The Go build tags to use for all commands, that support a `-tags '...'` argument. When running tests, go.testTags will be used instead if it was set. This is propagated to the language server if `gopls.build.buildFlags` is not specified.
+	"go.buildTags": "",
+
+	// This option lets you choose the way to display code coverage. Choose either to highlight the complete line or to show a decorator in the gutter. You can customize the colors and borders for the former and the style for the latter.
+	"go.coverageDecorator": {
+		"type": "highlight",
+		"coveredHighlightColor": "rgba(64,128,128,0.5)",
+		"uncoveredHighlightColor": "rgba(128,64,64,0.25)",
+		"coveredBorderColor": "rgba(64,128,128,0.5)",
+		"uncoveredBorderColor": "rgba(128,64,64,0.25)",
+		"coveredGutterStyle": "blockblue",
+		"uncoveredGutterStyle": "slashyellow"
+	},
+
+	// Use these options to control whether only covered or only uncovered code or both should be highlighted after running test coverage
+	"go.coverageOptions": "showBothCoveredAndUncoveredCode",
+
+	// When generating code coverage, the value for -covermode. 'default' is the default value chosen by the 'go test' command.
+	"go.coverMode": "default",
+
+	// If true, runs 'go test -coverprofile' on save and shows test coverage.
+	"go.coverOnSave": false,
+
+	// If true, shows test coverage when Go: Test Function at cursor command is run.
+	"go.coverOnSingleTest": false,
+
+	// If true, shows test coverage when Go: Test Single File command is run.
+	"go.coverOnSingleTestFile": false,
+
+	// If true, shows test coverage when Go: Test Package command is run.
+	"go.coverOnTestPackage": true,
+
+	// When generating code coverage, should counts be shown as --374--
+	"go.coverShowCounts": false,
+
+	// Delve settings that applies to all debugging sessions. Debug configuration in the launch.json file will override these values.
+	"go.delveConfig": {},
+
+	// (Experimental) vulncheck enables vulnerability scanning.
+	// 
+	//  - Imports: `"Imports"`: In Imports mode, `gopls` will report vulnerabilities that affect packages
+	// directly and indirectly used by the analyzed main module.
+	// 
+	//  - Off: `"Off"`: Disable vulnerability analysis.
+	// 
+	//  - Prompt: `"Prompt"`: Vulncheck can be triggered via prompt.
+	// 
+	"go.diagnostic.vulncheck": "Prompt",
+
+	// If true, tests will not run concurrently. When a new test run is started, the previous will be cancelled.
+	"go.disableConcurrentTests": false,
+
+	// Experimental Feature: Enable/Disable entries from the context menu in the editor.
+	"go.editorContextMenuCommands": {
+		"toggleTestFile": true,
+		"addTags": true,
+		"removeTags": false,
+		"fillStruct": false,
+		"testAtCursor": true,
+		"testFile": false,
+		"testPackage": false,
+		"generateTestForFunction": true,
+		"generateTestForFile": false,
+		"generateTestForPackage": false,
+		"addImport": true,
+		"testCoverage": true,
+		"playground": true,
+		"debugTestAtCursor": true,
+		"benchmarkAtCursor": false,
+		"compilerDetails": false
+	},
+
+	// Feature level setting to enable/disable code lens for references and run/debug tests
+	"go.enableCodeLens": {
+		"runtest": true
+	},
+
+	// Disable experimental features. These features are only available in the pre-release version.
+	"go.experiments": {
+		"testExplorer": true
+	},
+
+	// Flags to pass to format tool (e.g. ["-s"]). Not applicable when using the language server.
+	"go.formatFlags": [],
+
+	// Specifies the tool for formatting Go code. The default is `default`, which uses the language server `gopls` as formatting provider. To configure gopls's formatting, see the 'gopls.formatting' settings. When a specific tool (e.g., `gofmt`, `goimports`) is selected, the extension will run it instead.
+	//  - default: Formatting is performed by the language server, gopls. (recommended)
+	//  - gofmt: Formats using `gofmt`, the standard Go formatter. See https://pkg.go.dev/cmd/gofmt.
+	//  - goimports: Formats using `goimports`, which organizes imports and applies `gofmt`. See https://pkg.go.dev/golang.org/x/tools/cmd/goimports.
+	//  - goformat: Formats using `goformat`, a configurable version of `gofmt`. See https://github.com/mbenkmann/goformat. (Deprecated due to lack of generics support)
+	//  - gofumpt: Formats using `gofumpt`, a stricter version of `gofmt`. See https://github.com/mvdan/gofumpt. Note: `gopls` can also be configured to use `gofumpt` via the `gopls.formatting.gofumpt` setting.
+	//  - custom: Formats using a custom tool. The tool's path must be specified in the `go.alternateTools` setting under the `customFormatter` key.
+	"go.formatTool": "default",
+
+	// Additional command line flags to pass to `gotests` for generating tests.
+	"go.generateTestsFlags": [],
+
+	// Specify GOPATH here to override the one that is set as environment variable. The inferred GOPATH from workspace root overrides this, if go.inferGopath is set to true.
+	"go.gopath": null,
+
+	// Specifies the GOROOT to use when no environment variable is set.
+	"go.goroot": null,
+
+	// Infer GOPATH from the workspace root. This is ignored when using Go Modules.
+	"go.inferGopath": false,
+
+	// `"assignVariableTypes"` controls inlay hints for variable types in assign statements:
+	// ```go
+	// 	i/* int*/, j/* int*/ := 0, len(r)-1
+	// ```
+	// 
+	"go.inlayHints.assignVariableTypes": false,
+
+	// `"compositeLiteralFields"` inlay hints for composite literal field names:
+	// ```go
+	// 	{/*in: */"Hello, world", /*want: */"dlrow ,olleH"}
+	// ```
+	// 
+	"go.inlayHints.compositeLiteralFields": false,
+
+	// `"compositeLiteralTypes"` controls inlay hints for composite literal types:
+	// ```go
+	// 	for _, c := range []struct {
+	// 		in, want string
+	// 	}{
+	// 		/*struct{ in string; want string }*/{"Hello, world", "dlrow ,olleH"},
+	// 	}
+	// ```
+	// 
+	"go.inlayHints.compositeLiteralTypes": false,
+
+	// `"constantValues"` controls inlay hints for constant values:
+	// ```go
+	// 	const (
+	// 		KindNone   Kind = iota/* = 0*/
+	// 		KindPrint/*  = 1*/
+	// 		KindPrintf/* = 2*/
+	// 		KindErrorf/* = 3*/
+	// 	)
+	// ```
+	// 
+	"go.inlayHints.constantValues": false,
+
+	// `"functionTypeParameters"` inlay hints for implicit type parameters on generic functions:
+	// ```go
+	// 	myFoo/*[int, string]*/(1, "hello")
+	// ```
+	// 
+	"go.inlayHints.functionTypeParameters": false,
+
+	// `"ignoredError"` inlay hints for implicitly discarded errors:
+	// ```go
+	// 	f.Close() // ignore error
+	// ```
+	// This check inserts an `// ignore error` hint following any
+	// statement that is a function call whose error result is
+	// implicitly ignored.
+	// 
+	// To suppress the hint, write an actual comment containing
+	// "ignore error" following the call statement, or explictly
+	// assign the result to a blank variable. A handful of common
+	// functions such as `fmt.Println` are excluded from the
+	// check.
+	// 
+	"go.inlayHints.ignoredError": false,
+
+	// `"parameterNames"` controls inlay hints for parameter names:
+	// ```go
+	// 	parseInt(/* str: */ "123", /* radix: */ 8)
+	// ```
+	// 
+	"go.inlayHints.parameterNames": false,
+
+	// `"rangeVariableTypes"` controls inlay hints for variable types in range statements:
+	// ```go
+	// 	for k/* int*/, v/* string*/ := range []string{} {
+	// 		fmt.Println(k, v)
+	// 	}
+	// ```
+	// 
+	"go.inlayHints.rangeVariableTypes": false,
+
+	// If true, then `-i` flag will be passed to `go build` everytime the code is compiled. Since Go 1.10, setting this may be unnecessary unless you are in GOPATH mode and do not use the language server.
+	"go.installDependenciesWhenBuilding": false,
+
+	// Flags like -rpc.trace and -logfile to be used while running the language server.
+	"go.languageServerFlags": [],
+
+	// Flags to pass to Lint tool (e.g. ["-min_confidence=.8"])
+	"go.lintFlags": [],
+
+	// Lints code on file save using the configured Lint tool. Options are 'file', 'package', 'workspace' or 'off'.
+	//  - file: lint the current file on file saving
+	//  - package: lint the current package on file saving
+	//  - workspace: lint all the packages in the current workspace root folder on file saving
+	//  - off: do not run lint automatically
+	"go.lintOnSave": "package",
+
+	// Specifies an additional client-side linting tool that should be run by the Go extension. By default (unset), no additional linter is run. This feature is additional to diagnostics reported by the language server, gopls. Since Gopls incorporates the entire staticcheck analyzer suite, it is typically unnecessary to run the staticcheck tool as well. To configure gopls's linting, see the 'gopls.ui.diagnostic' settings.
+	//  - staticcheck: Run `staticcheck`.
+	//  - golint: Run `golint`.
+	//  - golangci-lint: Run `golangci-lint` v1.
+	//  - golangci-lint-v2: Run `golangci-lint` v2.
+	//  - revive: Run `revive`.
+	"go.lintTool": "",
+
+	// This setting is deprecated. Use 'Developer: Set Log Level...' command to control logging level instead.
+	// 
+	"go.logging.level": "",
+
+	// The flags configured here will be passed through to command `goplay`
+	"go.playground": {
+		"openbrowser": true,
+		"share": true,
+		"run": true
+	},
+
+	// Tags and options configured here will be used by the Remove Tags command to remove tags to struct fields. If promptForTags is true, then user will be prompted for tags and options. By default, all tags and options will be removed.
+	"go.removeTags": {
+		"tags": "",
+		"options": "",
+		"promptForTags": false
+	},
+
+	// Specifies whether to show the Welcome experience on first install
+	"go.showWelcome": true,
+
+	// Prompt for surveys, including the gopls survey and the Go developer survey.
+	"go.survey.prompt": true,
+
+	// enable the default go build/test task provider.
+	"go.tasks.provideDefault": true,
+
+	// Apply the Go & PATH environment variables used by the extension to all integrated terminals.
+	"go.terminal.activateEnvironment": true,
+
+	// Absolute path to a file containing environment variables definitions. File contents should be of the form key=value.
+	"go.testEnvFile": null,
+
+	// Environment variables that will be passed to the process that runs the Go tests
+	"go.testEnvVars": {},
+
+	// Run benchmarks when running all tests in a file or folder.
+	"go.testExplorer.alwaysRunBenchmarks": false,
+
+	// Concatenate all test log messages for a given location into a single message.
+	"go.testExplorer.concatenateMessages": true,
+
+	// Enable the Go test explorer
+	"go.testExplorer.enable": true,
+
+	// Present packages in the test explorer flat or nested.
+	"go.testExplorer.packageDisplayMode": "flat",
+
+	// Set the source location of dynamically discovered subtests to the location of the containing function. As a result, dynamically discovered subtests will be added to the gutter test widget of the containing function.
+	"go.testExplorer.showDynamicSubtestsInEditor": false,
+
+	// Open the test output terminal when a test run is started.
+	"go.testExplorer.showOutput": true,
+
+	// Flags to pass to `go test`. If null, then buildFlags will be used. This is not propagated to the language server.
+	"go.testFlags": null,
+
+	// Run 'go test' on save for current package. It is not advised to set this to `true` when you have Auto Save enabled.
+	"go.testOnSave": false,
+
+	// The Go build tags to use for when running tests. If null, then buildTags will be used.
+	"go.testTags": null,
+
+	// Specifies the timeout for go test in ParseDuration format.
+	"go.testTimeout": "30s",
+
+	// Environment variables that will be passed to the tools that run the Go tools (e.g. CGO_CFLAGS) and debuggee process launched by Delve. Format as string key:value pairs. When debugging, merged with `envFile` and `env` values with precedence `env` > `envFile` > `go.toolsEnvVars`.
+	"go.toolsEnvVars": {},
+
+	// Location to install the Go tools that the extension depends on if you don't want them in your GOPATH.
+	"go.toolsGopath": null,
+
+	// Automatically update the tools used by the extension, without prompting the user.
+	"go.toolsManagement.autoUpdate": false,
+
+	// Specify whether to prompt about new versions of Go and the Go tools (currently, only `gopls`) the extension depends on
+	//  - proxy: keeps notified of new releases by checking the Go module proxy (GOPROXY)
+	//  - local: checks only the minimum tools versions required by the extension
+	//  - off: completely disables version check (not recommended)
+	"go.toolsManagement.checkForUpdates": "proxy",
+
+	// The path to the `go` binary used to install the Go tools. If it's empty, the same `go` binary chosen for the project will be used for tool installation.
+	"go.toolsManagement.go": "",
+
+	// Trace the communication between VS Code and the Go language server.
+	"go.trace.server": "off",
+
+	// Enable intellisense, code navigation, refactoring, formatting & diagnostics for Go. The features are powered by the Go language server "gopls".
+	"go.useLanguageServer": true,
+
+	// Flags to pass to `go tool vet` (e.g. ["-all", "-shadow"]). Not applicable when using the language server's diagnostics.
+	"go.vetFlags": [],
+
+	// Vets code on file save using 'go tool vet'. Not applicable when using the language server's diagnostics.
+	//  - package: vet the current package on file saving
+	//  - workspace: vet all the packages in the current workspace root folder on file saving
+	//  - off: do not run vet automatically
+	"go.vetOnSave": "package",
+
+	// Configure the default Go language server ('gopls'). In most cases, configuring this section is unnecessary. See [the documentation](https://github.com/golang/tools/blob/master/gopls/doc/settings.md) for all available settings.
+	"gopls": {},
+
+	// clangd
+	// Arguments for clangd server.
+	"clangd.arguments": [],
+
+	// Check for language server updates on startup.
+	"clangd.checkUpdates": false,
+
+	// Warn about conflicting extensions and suggest disabling them.
+	"clangd.detectExtensionConflicts": true,
+
+	// Enable clangd language server features
+	"clangd.enable": true,
+
+	// Enable code completion provided by the language server
+	"clangd.enableCodeCompletion": true,
+
+	// Enable hovers provided by the language server
+	"clangd.enableHover": true,
+
+	// Extra clang flags used to parse files when no compilation database is found.
+	"clangd.fallbackFlags": [],
+
+	// Opacity of inactive regions (used only if clangd.inactiveRegions.useBackgroundHighlight=false)
+	"clangd.inactiveRegions.opacity": 0.55,
+
+	// Use a background highlight rather than opacity to identify inactive preprocessor regions.
+	"clangd.inactiveRegions.useBackgroundHighlight": false,
+
+	// What to do when clangd configuration files are changed. Ignored for clangd 12+, which can reload such files itself; however, this can be overridden with clangd.onConfigChangedForceEnable.
+	//  - prompt: Prompt the user for restarting the server
+	//  - restart: Automatically restart the server
+	//  - ignore: Do nothing
+	"clangd.onConfigChanged": "prompt",
+
+	// Force enable of "On Config Changed" option regardless of clangd version.
+	"clangd.onConfigChangedForceEnable": false,
+
+	// The path to clangd executable, e.g.: /usr/bin/clangd.
+	"clangd.path": "clangd",
+
+	// Auto restart clangd (up to 4 times) if it crashes.
+	"clangd.restartAfterCrash": true,
+
+	// Legacy semanticHighlights is no longer supported. Please use `editor.semanticHighlighting.enabled` instead.
+	// Enable semantic highlighting in clangd.
+	"clangd.semanticHighlighting": true,
+
+	// Always rank completion items on the server as you type. This produces more accurate results at the cost of higher latency than client-side filtering.
+	"clangd.serverCompletionRanking": true,
+
+	// Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format.
+	"clangd.trace": "",
+
+	// Allows the path to be a script e.g.: clangd.sh.
+	"clangd.useScriptAsExecutable": false,
+
+	// Pyrefly - Python Language Tooling
+	// Controls whether comment section folding ranges are included in the editor. When true, comments following the pattern '# Section Name ----' (with 4+ trailing dashes) create collapsible regions, similar to R's code section convention.
+	"pyrefly.commentFoldingRanges": false,
+
+	// Additional arguments that should be passed to the binary at pyrefly.lspPath
+	"pyrefly.lspArguments": [
+		"lsp"
+	],
+
+	// The path to the binary used for the lsp
+	"pyrefly.lspPath": "",
+
+	// Set to 'verbose' to enable LSP trace in the console
+	"pyrefly.trace.server": "off",
+
+	// Automatically insert parentheses when completing a function or method.
+	"python.analysis.completeFunctionParens": false,
+
+	// Controls whether hover tooltips include 'Go to definition' and 'Go to type definition' navigation links.
+	"python.analysis.showHoverGoToLinks": true,
+
+	// Path to a pyrefly.toml or pyproject.toml configuration file. When set, the LSP will use this config for all files in your workspace instead of the default Pyrefly config-finding logic. Prefer to use default logic wherever possible.
+	"python.pyrefly.configPath": "",
+
+	// Controls the scope of Pyrefly's diagnostic analysis. When set to 'openFilesOnly', diagnostics are only provided for files that are currently open in the editor. When set to 'workspace', diagnostics are computed and published for all files in the workspace.
+	"python.pyrefly.diagnosticMode": "openFilesOnly",
+
+	// Disable specific language services. Set individual services to true to disable them.
+	"python.pyrefly.disabledLanguageServices": {},
+
+	// If true, pyrefly will not provide other IDE services like completions, hover, definition, etc. To control type errors, see `python.pyrefly.displayTypeErrors`
+	"python.pyrefly.disableLanguageServices": false,
+
+	// If 'default', Pyrefly will only provide type check squiggles in the IDE if your file is covered by a Pyrefly configuration. If 'force-off', Pyrefly will never provide type check squiggles in the IDE. If 'force-on', Pyrefly will always provide type check squiggles in the IDE. If 'error-missing-imports', Pyrefly will only show errors for missing imports and missing sources (missing-import, missing-source, and missing-source-for-stubs).
+	"python.pyrefly.displayTypeErrors": "default",
+
+	// Enable Pyrefly's Run/Test CodeLens actions for Python files.
+	"python.pyrefly.runnableCodeLens": false,
+
+	// If true (default), Pyrefly will stream diagnostics as they become available during recheck, providing incremental feedback. Set to false to only publish diagnostics after the full recheck completes.
+	"python.pyrefly.streamDiagnostics": true,
+
+	// If true, Pyrefly will sync notebook documents with the language server. Set to false to disable notebook support.
+	"python.pyrefly.syncNotebooks": true,
+
+	// Python Debugger
+	// %debugpy.debugJustMyCode.description%
+	"debugpy.debugJustMyCode": true,
+
+	// %debugpy.showPythonInlineValues.description%
+	"debugpy.showPythonInlineValues": false,
+
+	// Python
+	// Path to the State Tool executable for ActiveState runtimes (version 0.36+).
+	"python.activeStateToolPath": "state",
+
+	// List of paths to libraries and the like that need to be imported by auto complete engine. E.g. when using Google App SDK, the paths are not in system path, hence need to be added into this list.
+	"python.autoComplete.extraPaths": [],
+
+	// Path to the conda executable to use for activation (version 4.4+).
+	"python.condaPath": "",
+
+	// Show or hide Create Environment button in the editor for `requirements.txt` or other dependency files.
+	"python.createEnvironment.contentButton": "hide",
+
+	// Detect if environment creation is required for the current project
+	"python.createEnvironment.trigger": "prompt",
+
+	// Path to default Python to use when extension loads up for the first time, no longer used once an interpreter is selected for the workspace. See [here](https://aka.ms/AAfekmf) to understand when this is used
+	"python.defaultInterpreterPath": "python",
+
+	// Absolute path to a file containing environment variable definitions.
+	"python.envFile": "${workspaceFolder}/.env",
+
+	// Enables A/B tests experiments in the Python extension. If enabled, you may get included in proposed enhancements and/or features.
+	"python.experiments.enabled": true,
+
+	// List of experiments to opt into. If empty, user is assigned the default experiment groups. See [here](https://github.com/microsoft/vscode-python/wiki/AB-Experiments) for more details.
+	"python.experiments.optInto": [],
+
+	// List of experiments to opt out of. If empty, user is assigned the default experiment groups. See [here](https://github.com/microsoft/vscode-python/wiki/AB-Experiments) for more details.
+	"python.experiments.optOutFrom": [],
+
+	// Whether to install Python modules globally when not using an environment.
+	"python.globalModuleInstallation": false,
+
+	// Controls when to display information of selected interpreter in the status bar.
+	//  - never: Never display information.
+	//  - onPythonRelated: Only display information if Python-related files are opened.
+	//  - always: Always display information.
+	"python.interpreter.infoVisibility": "onPythonRelated",
+
+	// Defines type of the language server.
+	//  - Default: Automatically select a language server: Pylance if installed and available, otherwise fallback to Jedi.
+	//  - Jedi: Use Jedi behind the Language Server Protocol (LSP) as a language server.
+	//  - Pylance: Use Pylance as a language server.
+	//  - None: Disable language server capabilities.
+	"python.languageServer": "Default",
+
+	// [Experimental] Select implementation of environment locators. This is an experimental setting while we test native environment location.
+	"python.locator": "js",
+
+	// This setting is deprecated. Please use command `Developer: Set Log Level...` to set logging level.
+	// The logging level the extension logs at, defaults to 'error'
+	"python.logging.level": "error",
+
+	// Set severity of missing packages in requirements.txt or pyproject.toml
+	"python.missingPackage.severity": "Hint",
+
+	// Path to the pipenv executable to use for activation.
+	"python.pipenvPath": "pipenv",
+
+	// Path to the pixi executable.
+	"python.pixiToolPath": "pixi",
+
+	// Path to the poetry executable.
+	"python.poetryPath": "poetry",
+
+	// Toggle Smart Send for the Python REPL. Smart Send enables sending the smallest runnable block of code to the REPL on Shift+Enter and moves the cursor accordingly.
+	"python.REPL.enableREPLSmartSend": true,
+
+	// Toggle to provide variables for the REPL variable view for the native REPL.
+	"python.REPL.provideVariables": true,
+
+	// Toggle to send code to Python REPL instead of the terminal on execution. Turning this on will change the behavior for both Smart Send and Run Selection/Line in the Context Menu.
+	"python.REPL.sendToNativeREPL": false,
+
+	// Activate Python Environment in the current Terminal on load of the Extension.
+	"python.terminal.activateEnvInCurrentTerminal": false,
+
+	// Activate Python Environment in all Terminals created.
+	"python.terminal.activateEnvironment": true,
+
+	// When executing a file in the terminal, whether to use execute in the file's directory, instead of the current open folder.
+	"python.terminal.executeInFileDir": false,
+
+	// When launching a python terminal, whether to focus the cursor on the terminal.
+	"python.terminal.focusAfterLaunch": false,
+
+	// Python launch arguments to use when executing a file in the terminal.
+	"python.terminal.launchArgs": [],
+
+	// Enable [shell integration](https://code.visualstudio.com/docs/terminal/shell-integration) for the terminals running python. Shell integration enhances the terminal experience by enabling command decorations, run recent command, improving accessibility among other things. Note: PyREPL (available in Python 3.13+) is automatically disabled when shell integration is enabled to avoid cursor indentation issues.
+	"python.terminal.shellIntegration.enabled": true,
+
+	// Enable auto run test discovery when saving a test file.
+	"python.testing.autoTestDiscoverOnSaveEnabled": true,
+
+	// Glob pattern used to determine which files are used by autoTestDiscoverOnSaveEnabled.
+	"python.testing.autoTestDiscoverOnSavePattern": "**/*.py",
+
+	// Optional working directory for tests.
+	"python.testing.cwd": null,
+
+	// Port number used for debugging of tests.
+	"python.testing.debugPort": 3000,
+
+	// Prompt to configure a test framework if potential tests directories are discovered.
+	"python.testing.promptToConfigure": true,
+
+	// Arguments passed in. Each argument is a separate item in the array.
+	"python.testing.pytestArgs": [],
+
+	// Enable testing using pytest.
+	"python.testing.pytestEnabled": false,
+
+	// Path to pytest. You can use a custom version of pytest by modifying this setting to include the full path.
+	"python.testing.pytestPath": "pytest",
+
+	// Arguments passed in. Each argument is a separate item in the array.
+	"python.testing.unittestArgs": [
+		"-v",
+		"-s",
+		".",
+		"-p",
+		"*test*.py"
+	],
+
+	// Enable testing using unittest.
+	"python.testing.unittestEnabled": false,
+
+	// Enables the Python Environments extension. Requires window reload on change.
+	"python.useEnvironmentsExtension": false,
+
+	// Folders in your home directory to look into for virtual environments (supports pyenv, direnv and virtualenvwrapper by default).
+	"python.venvFolders": [],
+
+	// Path to folder with a list of Virtual Environments (e.g. ~/.pyenv, ~/Envs, ~/.virtualenvs).
+	"python.venvPath": "",
+
+	// Python Environments
+	// When set to true, uv will be used to manage all virtual environments if available. When set to false, uv will only manage virtual environments explicitly created by uv.
+	"python-envs.alwaysUseUv": true,
+
+	// The default environment manager for creating and managing environments.
+	"python-envs.defaultEnvManager": "ms-python.python:venv",
+
+	// The default package manager for installing packages in environments.
+	"python-envs.defaultPackageManager": "ms-python.python:pip",
+
+	// Absolute paths to search for Python environments across all workspaces. Use for shared environment folders like `~/envs`.
+	"python-envs.globalSearchPaths": [],
+
+	// The list of Python projects.
+	"python-envs.pythonProjects": [],
+
+	// Specifies how the extension can activate an environment in a terminal.
+	// 
+	// Shell startup activates using [shell integration](https://code.visualstudio.com/docs/terminal/shell-integration) or may require changes to the shell initialization files and is only enabled for the following shells: zsh, fsh, pwsh, bash, cmd. When set to `command`, any shell can be activated.
+	// 
+	// **Legacy Setting Support:** This setting takes precedence over the legacy `python.terminal.activateEnvironment` setting. If this setting is not explicitly set and `python.terminal.activateEnvironment` is set to false, this setting will automatically be set to `off` to preserve your preference.
+	// 
+	// This setting applies only when terminals are created, so you will need to restart your terminals for it to take effect.
+	// 
+	// To revert changes made during shellStartup, run `Python Envs: Revert Shell Startup Script Changes`.
+	//  - command: Activation by executing a command in the terminal.
+	//  - shellStartup: Activation using [shell integration](https://code.visualstudio.com/docs/terminal/shell-integration) or by modifying the terminal shell startup script. Enable `terminal.integrated.shellIntegration.enabled` or we may need to modify your shell startup scripts for the ideal experience.
+	//  - off: No automatic activation of environments.
+	"python-envs.terminal.autoActivationType": "command",
+
+	// Whether to show the 'Activate' button in the terminal menu
+	"python-envs.terminal.showActivateButton": false,
+
+	// Paths to search for environments in this workspace. By default, searches for a `.venv` folder in the workspace root.
+	"python-envs.workspaceSearchPaths": [
+		"./**/.venv"
+	],
+
+	// Controls whether environment variables from .env files and python.envFile setting are injected into terminals.
+	"python.terminal.useEnvFile": false,
+
+	// Ruby LSP
+	// Settings that will be forwarded to configure the behavior of Ruby LSP addons. Keys are addon names, values are objects of settings
+	"rubyLsp.addonSettings": {},
+
+	// Relative or absolute path to the Gemfile to use for bundling the Ruby LSP server. Do not use this if you're working on a monorepo or your project's Gemfile is in a subdirectory (look into multiroot workspaces instead). Only necessary when using a separate Gemfile for the Ruby LSP
+	"rubyLsp.bundleGemfile": "",
+
+	// Ignores if the project uses a typechecker. Only intended to be used while working on the Ruby LSP itself
+	"rubyLsp.bypassTypechecker": false,
+
+	// A shell command to activate the right Ruby version or add a custom Ruby bin folder to the PATH. Only used if rubyVersionManager is set to 'custom'
+	"rubyLsp.customRubyCommand": "",
+
+	// List of enabled LSP features
+	"rubyLsp.enabledFeatures": {
+		"codeActions": true,
+		"diagnostics": true,
+		"documentHighlights": true,
+		"documentLink": true,
+		"documentSymbols": true,
+		"foldingRanges": true,
+		"formatting": true,
+		"hover": true,
+		"inlayHint": true,
+		"onTypeFormatting": true,
+		"selectionRanges": true,
+		"semanticHighlighting": true,
+		"completion": true,
+		"codeLens": true,
+		"definition": true,
+		"workspaceSymbol": true,
+		"signatureHelp": true,
+		"typeHierarchy": true
+	},
+
+	// Enable ERB support. This can only work with server versions v0.17.5 or above
+	"rubyLsp.erbSupport": true,
+
+	// Allows opting in or out of feature flags
+	"rubyLsp.featureFlags": {},
+
+	// Turn on/off specific features from request
+	"rubyLsp.featuresConfiguration": {},
+
+	// Which tool the Ruby LSP should use for formatting files
+	//  - auto: Automatically detect formatter
+	//  - rubocop: RuboCop
+	//  - rubocop_internal: Ruby LSP RuboCop integration
+	//  - syntax_tree: Syntax Tree
+	//  - standard: Standard (supported by community addon)
+	//  - rubyfmt: Rubyfmt (supported by community addon)
+	//  - none: Do not use a formatter
+	"rubyLsp.formatter": "auto",
+
+	// Indexing configurations. Modifying these will impact which declarations are available for definition, completion and other features
+	"rubyLsp.indexing": {},
+
+	// List of linter tools that the Ruby LSP should use for diagnostics
+	"rubyLsp.linters": null,
+
+	// When to pull diagnostics from the server (on change, save or both). Selecting 'save' may significantly improve performance on large files
+	"rubyLsp.pullDiagnosticsOn": "both",
+
+	// Path to the Ruby installation. This is used as a fallback if version manager activation fails
+	"rubyLsp.rubyExecutablePath": "",
+
+	// 
+	"rubyLsp.rubyVersionManager": {
+		"identifier": "auto"
+	},
+
+	// Controls the level of opacity for inline RBS comment signatures
+	"rubyLsp.sigOpacityLevel": "1",
+
+	// The amount of time in seconds to wait for a test to finish before timing out. Only used when running tests from the test explorer
+	"rubyLsp.testTimeout": 30,
+
+	// This is a temporary setting for testing purposes, do not use it! Replace the composed bundle logic by bundler-compose.
+	"rubyLsp.useBundlerCompose": false,
+
+	// Markdown Inline Editor
+	// Hex color for blockquote markers and/or text. Leave empty to use theme default.
+	"markdownInlineEditor.colors.blockquote": "",
+
+	// Hex color for unchecked and checked checkbox symbols. Leave empty to use theme default.
+	"markdownInlineEditor.colors.checkbox": "",
+
+	// Hex color for emphasis (bold/italic). Leave empty to use theme default.
+	"markdownInlineEditor.colors.emphasis": "",
+
+	// Hex color for level-1 headings (e.g. `#e06c75`). Leave empty to use theme default.
+	"markdownInlineEditor.colors.heading1": "",
+
+	// Hex color for level-2 headings. Leave empty to use theme default.
+	"markdownInlineEditor.colors.heading2": "",
+
+	// Hex color for level-3 headings. Leave empty to use theme default.
+	"markdownInlineEditor.colors.heading3": "",
+
+	// Hex color for level-4 headings. Leave empty to use theme default.
+	"markdownInlineEditor.colors.heading4": "",
+
+	// Hex color for level-5 headings. Leave empty to use theme default.
+	"markdownInlineEditor.colors.heading5": "",
+
+	// Hex color for level-6 headings. Leave empty to use theme default.
+	"markdownInlineEditor.colors.heading6": "",
+
+	// Hex color for horizontal rule line. Leave empty to use theme default.
+	"markdownInlineEditor.colors.horizontalRule": "",
+
+	// Hex color for image link text/placeholder. Leave empty to use theme default.
+	"markdownInlineEditor.colors.image": "",
+
+	// Hex color for inline code. Leave empty to use theme default.
+	"markdownInlineEditor.colors.inlineCode": "",
+
+	// Hex color for inline code background overlay. Leave empty to use theme-aware default.
+	"markdownInlineEditor.colors.inlineCodeBackground": "",
+
+	// Hex color for link text. Leave empty to use theme default.
+	"markdownInlineEditor.colors.link": "",
+
+	// Hex color for list markers (unordered and ordered). Leave empty to use theme default.
+	"markdownInlineEditor.colors.listMarker": "",
+
+	// Opacity of code block language identifiers (0.0-1.0).
+	"markdownInlineEditor.decorations.codeBlockLanguageOpacity": 0.3,
+
+	// Opacity of frontmatter delimiters (---) (0.0-1.0).
+	"markdownInlineEditor.decorations.frontmatterDelimiterOpacity": 0.3,
+
+	// Opacity of syntax markers when cursor is on a line (0.0-1.0).
+	"markdownInlineEditor.decorations.ghostFaintOpacity": 0.3,
+
+	// Apply markdown decorations in diff views. Disabled by default to show raw syntax for easier review.
+	"markdownInlineEditor.defaultBehaviors.diffView.applyDecorations": false,
+
+	// Render emoji shortcodes (e.g., :smile:) inline in Markdown documents.
+	"markdownInlineEditor.emojis.enabled": true,
+
+	// Single-click to open links and image links (no Ctrl+Click needed). May interfere with text selection.
+	"markdownInlineEditor.links.singleClickOpen": false,
+
+	// Render LaTeX math inline ($...$ and $$...$$). When disabled, math delimiters are shown as plain text.
+	"markdownInlineEditor.math.enabled": true,
+
+	// Enable detection and inline styling for GitHub-style mentions and references such as @username, @org/team, #123, and @owner/repo#456.
+	"markdownInlineEditor.mentions.enabled": true,
+
+	// Override git-remote context auto-detection for clickable mention and issue links. `true` forces links on; `false` forces links off; leave unset to use origin remote auto-detection.
+	"markdownInlineEditor.mentions.linksEnabled": false,
+
+	// Wiki Links Configuration
+	// By default, when invoking `editor.action.revealDefinition` on `[[note.md]]` if `note.md` does not exist in workspace, create it. NB: Works only when `vscodeWikiLinks.workspaceFilenameConvention` = 'uniqueFilenames'.
+	"vscodeWikiLinks.createNoteOnGoToDefinitionWhenMissing": true,
+
+	// Trigger suggest on both insertion AND replacement of new character inside a wiki-link. Defaults true. Set false to only trigger suggest on insertion.
+	"vscodeWikiLinks.triggerSuggestOnReplacement": true,
+
+	// By default, expect 'uniqueFilenames' for every `.md` file in workspace and treat `file.md` as link to file in any subdirectory. If you expect collisions in filenames for notes (eg, `note1/note.md` `note2/note.md`) use 'relativePaths' to render links between files.
+	"vscodeWikiLinks.workspaceFilenameConvention": "uniqueFilenames",
+
+}

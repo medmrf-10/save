@@ -1,0 +1,1000 @@
+
+	// Controls the maximum number of lines the terminal keeps in its buffer. We pre-allocate memory based on this value in order to ensure a smooth experience. As such, as the value increases, so will the amount of memory.
+	"terminal.integrated.scrollback": 1000,
+
+	// Dispatches most keybindings to the terminal instead of the workbench, overriding `terminal.integrated.commandsToSkipShell`, which can be used alternatively for fine tuning.
+	"terminal.integrated.sendKeybindingsToShell": false,
+
+	// When shell integration is enabled, adds a decoration for each command.
+	//  - both: Show decorations in the gutter (left) and overview ruler (right)
+	//  - gutter: Show gutter decorations to the left of the terminal
+	//  - overviewRuler: Show overview ruler decorations to the right of the terminal
+	//  - never: Do not show decorations
+	"terminal.integrated.shellIntegration.decorationsEnabled": "both",
+
+	// Determines whether or not shell integration is auto-injected to support features like enhanced command tracking and current working directory detection. 
+	// 
+	// Shell integration works by injecting the shell with a startup script. The script gives Antigravity insight into what is happening within the terminal.
+	// 
+	// Supported shells:
+	// 
+	// - Linux/macOS: bash, fish, pwsh, zsh
+	//  - Windows: pwsh, git bash
+	// 
+	// This setting applies only when terminals are created, so you will need to restart your terminals for it to take effect.
+	// 
+	//  Note that the script injection may not work if you have custom arguments defined in the terminal profile, have enabled `editor.accessibilitySupport#`, have a [complex bash `PROMPT_COMMAND`](https://code.visualstudio.com/docs/editor/integrated-terminal#_complex-bash-promptcommand), or other unsupported setup. To disable decorations, see `#terminal.integrated.shellIntegration.decorationsEnabled`
+	"terminal.integrated.shellIntegration.enabled": true,
+
+	// Controls whether to report the shell environment, enabling its use in features such as `terminal.integrated.suggest.enabled`. This may cause a slowdown when printing your shell's prompt.
+	"terminal.integrated.shellIntegration.environmentReporting": false,
+
+	// Controls the number of recently used commands to keep in the terminal command history. Set to 0 to disable terminal command history.
+	"terminal.integrated.shellIntegration.history": 100,
+
+	// When shell integration is enabled, enables quick fixes for terminal commands that appear as a lightbulb or sparkle icon to the left of the prompt.
+	"terminal.integrated.shellIntegration.quickFixEnabled": true,
+
+	// Whether to show the command guide when hovering over a command in the terminal.
+	"terminal.integrated.shellIntegration.showCommandGuide": true,
+
+	// Configures the duration in milliseconds to wait for shell integration after launch before declaring it's not there. Set to `0` to wait the minimum time (500ms), the default value `-1` means the wait time is variable based on whether shell integration injection is enabled and whether it's a remote window. Consider setting this to a small value if you intentionally disabled shell integration, or a large value if your shell starts very slowly.
+	"terminal.integrated.shellIntegration.timeout": -1,
+
+	// Controls whether to show the alert "The terminal process terminated with exit code" when exit code is non-zero.
+	"terminal.integrated.showExitAlert": true,
+
+	// Whether to show hovers for links in the terminal output.
+	"terminal.integrated.showLinkHover": true,
+
+	// Controls whether the terminal will scroll using an animation.
+	"terminal.integrated.smoothScrolling": false,
+
+	// Controls the working directory a split terminal starts with.
+	//  - workspaceRoot: A new split terminal will use the workspace root as the working directory. In a multi-root workspace a choice for which root folder to use is offered.
+	//  - initial: A new split terminal will use the working directory that the parent terminal started with.
+	//  - inherited: On macOS and Linux, a new split terminal will use the working directory of the parent terminal. On Windows, this behaves the same as initial.
+	"terminal.integrated.splitCwd": "inherited",
+
+	// Shows the current command at the top of the terminal. This feature requires [shell integration](https://code.visualstudio.com/docs/terminal/shell-integration) to be activated. See `terminal.integrated.shellIntegration.enabled`.
+	"terminal.integrated.stickyScroll.enabled": true,
+
+	// Defines the maximum number of sticky lines to show. Sticky scroll lines will never exceed 40% of the viewport regardless of this setting.
+	"terminal.integrated.stickyScroll.maxLineCount": 5,
+
+	// Controls whether to enable $CDPATH support which exposes children of the folders in the $CDPATH variable regardless of the current working directory. $CDPATH is expected to be semi colon-separated on Windows and colon-separated on other platforms.
+	//  - off: Disable the feature.
+	//  - relative: Enable the feature and use relative paths.
+	//  - absolute: Enable the feature and use absolute paths. This is useful when the shell doesn't natively support `$CDPATH`.
+	"terminal.integrated.suggest.cdPath": "absolute",
+
+	// Enables terminal intellisense suggestions (preview) for supported shells (PowerShell v7+, zsh, bash, fish) when `terminal.integrated.shellIntegration.enabled` is set to `true`.
+	"terminal.integrated.suggest.enabled": false,
+
+	// Controls whether the shell's inline suggestion should be detected and how it is scored.
+	//  - off: Disable the feature.
+	//  - alwaysOnTopExceptExactMatch: Enable the feature and sort the inline suggestion without forcing it to be on top. This means that exact matches will be will be above the inline suggestion.
+	//  - alwaysOnTop: Enable the feature and always put the inline suggestion on top.
+	"terminal.integrated.suggest.inlineSuggestion": "alwaysOnTop",
+
+	// Controls whether a space is automatically inserted after accepting a suggestion and re-trigger suggestions. Folders and symbolic link folders will never have a trailing space added.
+	"terminal.integrated.suggest.insertTrailingSpace": false,
+
+	// Controls whether suggestions should automatically show up while typing. Also be aware of the `terminal.integrated.suggest.suggestOnTriggerCharacters`-setting which controls if suggestions are triggered by special characters.
+	"terminal.integrated.suggest.quickSuggestions": {
+		"commands": "on",
+		"arguments": "on",
+		"unknown": "off"
+	},
+
+	// Controls whether suggestions should run immediately when `Enter` (not `Tab`) is used to accept the result.
+	//  - never: Never run on `Enter`.
+	//  - exactMatch: Run on `Enter` when the suggestion is typed in its entirety.
+	//  - exactMatchIgnoreExtension: Run on `Enter` when the suggestion is typed in its entirety or when a file is typed without its extension included.
+	//  - always: Always run on `Enter`.
+	"terminal.integrated.suggest.runOnEnter": "never",
+
+	// Controls how suggestion selection works in the integrated terminal.
+	//  - partial: Partially select a suggestion when automatically triggering IntelliSense. `Tab` can be used to accept the first suggestion, only after navigating the suggestions via `Down` will `Enter` also accept the active suggestion.
+	//  - always: Always select a suggestion when automatically triggering IntelliSense. `Enter` or `Tab` can be used to accept the first suggestion.
+	//  - never: Never select a suggestion when automatically triggering IntelliSense. The list must be navigated via `Down` before `Enter` or `Tab` can be used to accept the active suggestion.
+	"terminal.integrated.suggest.selectionMode": "partial",
+
+	// Controls whether the terminal suggestions status bar should be shown.
+	"terminal.integrated.suggest.showStatusBar": true,
+
+	// Controls whether suggestions should automatically show up when typing trigger characters.
+	"terminal.integrated.suggest.suggestOnTriggerCharacters": true,
+
+	// Determines whether the up arrow key navigates the command history when focus is on the first suggestion and navigation has not yet occurred. When set to false, the up arrow will move focus to the last suggestion instead.
+	"terminal.integrated.suggest.upArrowNavigatesHistory": true,
+
+	// A set of windows command executable extensions that will be included as suggestions in the terminal.
+	// 
+	// Many executables are included by default, listed below:
+	// 
+	// - bat
+	// - cmd
+	// - com
+	// - exe
+	// - jar
+	// - js
+	// - msi
+	// - pl
+	// - ps1
+	// - py
+	// - rb
+	// - sh
+	// - vbs.
+	// 
+	// To exclude an extension, set it to `false`
+	// 
+	// . To include one not in the list, add it and set it to `true`.
+	"terminal.integrated.suggest.windowsExecutableExtensions": {},
+
+	// A theme color ID to associate with terminal icons by default.
+	"terminal.integrated.tabs.defaultColor": null,
+
+	// A codicon ID to associate with terminal icons by default.
+	//  - add: $(add)
+	//  - plus: $(plus)
+	//  - gist-new: $(gist-new)
+	//  - repo-create: $(repo-create)
+	//  - lightbulb: $(lightbulb)
+	//  - light-bulb: $(light-bulb)
+	//  - repo: $(repo)
+	//  - repo-delete: $(repo-delete)
+	//  - gist-fork: $(gist-fork)
+	//  - repo-forked: $(repo-forked)
+	//  - git-pull-request: $(git-pull-request)
+	//  - git-pull-request-abandoned: $(git-pull-request-abandoned)
+	//  - record-keys: $(record-keys)
+	//  - keyboard: $(keyboard)
+	//  - tag: $(tag)
+	//  - git-pull-request-label: $(git-pull-request-label)
+	//  - tag-add: $(tag-add)
+	//  - tag-remove: $(tag-remove)
+	//  - person: $(person)
+	//  - person-follow: $(person-follow)
+	//  - person-outline: $(person-outline)
+	//  - person-filled: $(person-filled)
+	//  - source-control: $(source-control)
+	//  - mirror: $(mirror)
+	//  - mirror-public: $(mirror-public)
+	//  - star: $(star)
+	//  - star-add: $(star-add)
+	//  - star-delete: $(star-delete)
+	//  - star-empty: $(star-empty)
+	//  - comment: $(comment)
+	//  - comment-add: $(comment-add)
+	//  - alert: $(alert)
+	//  - warning: $(warning)
+	//  - search: $(search)
+	//  - search-save: $(search-save)
+	//  - log-out: $(log-out)
+	//  - sign-out: $(sign-out)
+	//  - log-in: $(log-in)
+	//  - sign-in: $(sign-in)
+	//  - eye: $(eye)
+	//  - eye-unwatch: $(eye-unwatch)
+	//  - eye-watch: $(eye-watch)
+	//  - circle-filled: $(circle-filled)
+	//  - primitive-dot: $(primitive-dot)
+	//  - close-dirty: $(close-dirty)
+	//  - debug-breakpoint: $(debug-breakpoint)
+	//  - debug-breakpoint-disabled: $(debug-breakpoint-disabled)
+	//  - debug-hint: $(debug-hint)
+	//  - terminal-decoration-success: $(terminal-decoration-success)
+	//  - primitive-square: $(primitive-square)
+	//  - edit: $(edit)
+	//  - pencil: $(pencil)
+	//  - info: $(info)
+	//  - issue-opened: $(issue-opened)
+	//  - gist-private: $(gist-private)
+	//  - git-fork-private: $(git-fork-private)
+	//  - lock: $(lock)
+	//  - mirror-private: $(mirror-private)
+	//  - close: $(close)
+	//  - remove-close: $(remove-close)
+	//  - x: $(x)
+	//  - repo-sync: $(repo-sync)
+	//  - sync: $(sync)
+	//  - clone: $(clone)
+	//  - desktop-download: $(desktop-download)
+	//  - beaker: $(beaker)
+	//  - microscope: $(microscope)
+	//  - vm: $(vm)
+	//  - device-desktop: $(device-desktop)
+	//  - file: $(file)
+	//  - more: $(more)
+	//  - ellipsis: $(ellipsis)
+	//  - kebab-horizontal: $(kebab-horizontal)
+	//  - mail-reply: $(mail-reply)
+	//  - reply: $(reply)
+	//  - organization: $(organization)
+	//  - organization-filled: $(organization-filled)
+	//  - organization-outline: $(organization-outline)
+	//  - new-file: $(new-file)
+	//  - file-add: $(file-add)
+	//  - new-folder: $(new-folder)
+	//  - file-directory-create: $(file-directory-create)
+	//  - trash: $(trash)
+	//  - trashcan: $(trashcan)
+	//  - history: $(history)
+	//  - clock: $(clock)
+	//  - folder: $(folder)
+	//  - file-directory: $(file-directory)
+	//  - symbol-folder: $(symbol-folder)
+	//  - logo-github: $(logo-github)
+	//  - mark-github: $(mark-github)
+	//  - github: $(github)
+	//  - terminal: $(terminal)
+	//  - console: $(console)
+	//  - repl: $(repl)
+	//  - zap: $(zap)
+	//  - symbol-event: $(symbol-event)
+	//  - error: $(error)
+	//  - stop: $(stop)
+	//  - variable: $(variable)
+	//  - symbol-variable: $(symbol-variable)
+	//  - array: $(array)
+	//  - symbol-array: $(symbol-array)
+	//  - symbol-module: $(symbol-module)
+	//  - symbol-package: $(symbol-package)
+	//  - symbol-namespace: $(symbol-namespace)
+	//  - symbol-object: $(symbol-object)
+	//  - symbol-method: $(symbol-method)
+	//  - symbol-function: $(symbol-function)
+	//  - symbol-constructor: $(symbol-constructor)
+	//  - symbol-boolean: $(symbol-boolean)
+	//  - symbol-null: $(symbol-null)
+	//  - symbol-numeric: $(symbol-numeric)
+	//  - symbol-number: $(symbol-number)
+	//  - symbol-structure: $(symbol-structure)
+	//  - symbol-struct: $(symbol-struct)
+	//  - symbol-parameter: $(symbol-parameter)
+	//  - symbol-type-parameter: $(symbol-type-parameter)
+	//  - symbol-key: $(symbol-key)
+	//  - symbol-text: $(symbol-text)
+	//  - symbol-reference: $(symbol-reference)
+	//  - go-to-file: $(go-to-file)
+	//  - symbol-enum: $(symbol-enum)
+	//  - symbol-value: $(symbol-value)
+	//  - symbol-ruler: $(symbol-ruler)
+	//  - symbol-unit: $(symbol-unit)
+	//  - activate-breakpoints: $(activate-breakpoints)
+	//  - archive: $(archive)
+	//  - arrow-both: $(arrow-both)
+	//  - arrow-down: $(arrow-down)
+	//  - arrow-left: $(arrow-left)
+	//  - arrow-right: $(arrow-right)
+	//  - arrow-small-down: $(arrow-small-down)
+	//  - arrow-small-left: $(arrow-small-left)
+	//  - arrow-small-right: $(arrow-small-right)
+	//  - arrow-small-up: $(arrow-small-up)
+	//  - arrow-up: $(arrow-up)
+	//  - bell: $(bell)
+	//  - bold: $(bold)
+	//  - book: $(book)
+	//  - bookmark: $(bookmark)
+	//  - debug-breakpoint-conditional-unverified: $(debug-breakpoint-conditional-unverified)
+	//  - debug-breakpoint-conditional: $(debug-breakpoint-conditional)
+	//  - debug-breakpoint-conditional-disabled: $(debug-breakpoint-conditional-disabled)
+	//  - debug-breakpoint-data-unverified: $(debug-breakpoint-data-unverified)
+	//  - debug-breakpoint-data: $(debug-breakpoint-data)
+	//  - debug-breakpoint-data-disabled: $(debug-breakpoint-data-disabled)
+	//  - debug-breakpoint-log-unverified: $(debug-breakpoint-log-unverified)
+	//  - debug-breakpoint-log: $(debug-breakpoint-log)
+	//  - debug-breakpoint-log-disabled: $(debug-breakpoint-log-disabled)
+	//  - briefcase: $(briefcase)
+	//  - broadcast: $(broadcast)
+	//  - browser: $(browser)
+	//  - bug: $(bug)
+	//  - calendar: $(calendar)
+	//  - case-sensitive: $(case-sensitive)
+	//  - check: $(check)
+	//  - checklist: $(checklist)
+	//  - chevron-down: $(chevron-down)
+	//  - chevron-left: $(chevron-left)
+	//  - chevron-right: $(chevron-right)
+	//  - chevron-up: $(chevron-up)
+	//  - chrome-close: $(chrome-close)
+	//  - chrome-maximize: $(chrome-maximize)
+	//  - chrome-minimize: $(chrome-minimize)
+	//  - chrome-restore: $(chrome-restore)
+	//  - circle-outline: $(circle-outline)
+	//  - circle: $(circle)
+	//  - debug-breakpoint-unverified: $(debug-breakpoint-unverified)
+	//  - terminal-decoration-incomplete: $(terminal-decoration-incomplete)
+	//  - circle-slash: $(circle-slash)
+	//  - circuit-board: $(circuit-board)
+	//  - clear-all: $(clear-all)
+	//  - clippy: $(clippy)
+	//  - close-all: $(close-all)
+	//  - cloud-download: $(cloud-download)
+	//  - cloud-upload: $(cloud-upload)
+	//  - code: $(code)
+	//  - collapse-all: $(collapse-all)
+	//  - color-mode: $(color-mode)
+	//  - comment-discussion: $(comment-discussion)
+	//  - credit-card: $(credit-card)
+	//  - dash: $(dash)
+	//  - dashboard: $(dashboard)
+	//  - database: $(database)
+	//  - debug-continue: $(debug-continue)
+	//  - debug-disconnect: $(debug-disconnect)
+	//  - debug-pause: $(debug-pause)
+	//  - debug-restart: $(debug-restart)
+	//  - debug-start: $(debug-start)
+	//  - debug-step-into: $(debug-step-into)
+	//  - debug-step-out: $(debug-step-out)
+	//  - debug-step-over: $(debug-step-over)
+	//  - debug-stop: $(debug-stop)
+	//  - debug: $(debug)
+	//  - device-camera-video: $(device-camera-video)
+	//  - device-camera: $(device-camera)
+	//  - device-mobile: $(device-mobile)
+	//  - diff-added: $(diff-added)
+	//  - diff-ignored: $(diff-ignored)
+	//  - diff-modified: $(diff-modified)
+	//  - diff-removed: $(diff-removed)
+	//  - diff-renamed: $(diff-renamed)
+	//  - diff: $(diff)
+	//  - diff-sidebyside: $(diff-sidebyside)
+	//  - discard: $(discard)
+	//  - editor-layout: $(editor-layout)
+	//  - empty-window: $(empty-window)
+	//  - exclude: $(exclude)
+	//  - extensions: $(extensions)
+	//  - eye-closed: $(eye-closed)
+	//  - file-binary: $(file-binary)
+	//  - file-code: $(file-code)
+	//  - file-media: $(file-media)
+	//  - file-pdf: $(file-pdf)
+	//  - file-submodule: $(file-submodule)
+	//  - file-symlink-directory: $(file-symlink-directory)
+	//  - file-symlink-file: $(file-symlink-file)
+	//  - file-zip: $(file-zip)
+	//  - files: $(files)
+	//  - filter: $(filter)
+	//  - flame: $(flame)
+	//  - fold-down: $(fold-down)
+	//  - fold-up: $(fold-up)
+	//  - fold: $(fold)
+	//  - folder-active: $(folder-active)
+	//  - folder-opened: $(folder-opened)
+	//  - gear: $(gear)
+	//  - gift: $(gift)
+	//  - gist-secret: $(gist-secret)
+	//  - gist: $(gist)
+	//  - git-commit: $(git-commit)
+	//  - git-compare: $(git-compare)
+	//  - compare-changes: $(compare-changes)
+	//  - git-merge: $(git-merge)
+	//  - github-action: $(github-action)
+	//  - github-alt: $(github-alt)
+	//  - globe: $(globe)
+	//  - grabber: $(grabber)
+	//  - graph: $(graph)
+	//  - gripper: $(gripper)
+	//  - heart: $(heart)
+	//  - home: $(home)
+	//  - horizontal-rule: $(horizontal-rule)
+	//  - hubot: $(hubot)
+	//  - inbox: $(inbox)
+	//  - issue-reopened: $(issue-reopened)
+	//  - issues: $(issues)
+	//  - italic: $(italic)
+	//  - jersey: $(jersey)
+	//  - json: $(json)
+	//  - kebab-vertical: $(kebab-vertical)
+	//  - key: $(key)
+	//  - law: $(law)
+	//  - lightbulb-autofix: $(lightbulb-autofix)
+	//  - link-external: $(link-external)
+	//  - link: $(link)
+	//  - list-ordered: $(list-ordered)
+	//  - list-unordered: $(list-unordered)
+	//  - live-share: $(live-share)
+	//  - loading: $(loading)
+	//  - location: $(location)
+	//  - mail-read: $(mail-read)
+	//  - mail: $(mail)
+	//  - markdown: $(markdown)
+	//  - megaphone: $(megaphone)
+	//  - mention: $(mention)
+	//  - milestone: $(milestone)
+	//  - git-pull-request-milestone: $(git-pull-request-milestone)
+	//  - mortar-board: $(mortar-board)
+	//  - move: $(move)
+	//  - multiple-windows: $(multiple-windows)
+	//  - mute: $(mute)
+	//  - no-newline: $(no-newline)
+	//  - note: $(note)
+	//  - octoface: $(octoface)
+	//  - open-preview: $(open-preview)
+	//  - package: $(package)
+	//  - paintcan: $(paintcan)
+	//  - pin: $(pin)
+	//  - play: $(play)
+	//  - run: $(run)
+	//  - plug: $(plug)
+	//  - preserve-case: $(preserve-case)
+	//  - preview: $(preview)
+	//  - project: $(project)
+	//  - pulse: $(pulse)
+	//  - question: $(question)
+	//  - quote: $(quote)
+	//  - radio-tower: $(radio-tower)
+	//  - reactions: $(reactions)
+	//  - references: $(references)
+	//  - refresh: $(refresh)
+	//  - regex: $(regex)
+	//  - remote-explorer: $(remote-explorer)
+	//  - remote: $(remote)
+	//  - remove: $(remove)
+	//  - replace-all: $(replace-all)
+	//  - replace: $(replace)
+	//  - repo-clone: $(repo-clone)
+	//  - repo-force-push: $(repo-force-push)
+	//  - repo-pull: $(repo-pull)
+	//  - repo-push: $(repo-push)
+	//  - report: $(report)
+	//  - request-changes: $(request-changes)
+	//  - rocket: $(rocket)
+	//  - root-folder-opened: $(root-folder-opened)
+	//  - root-folder: $(root-folder)
+	//  - rss: $(rss)
+	//  - ruby: $(ruby)
+	//  - save-all: $(save-all)
+	//  - save-as: $(save-as)
+	//  - save: $(save)
+	//  - screen-full: $(screen-full)
+	//  - screen-normal: $(screen-normal)
+	//  - search-stop: $(search-stop)
+	//  - server: $(server)
+	//  - settings-gear: $(settings-gear)
+	//  - settings: $(settings)
+	//  - shield: $(shield)
+	//  - smiley: $(smiley)
+	//  - sort-precedence: $(sort-precedence)
+	//  - split-horizontal: $(split-horizontal)
+	//  - split-vertical: $(split-vertical)
+	//  - squirrel: $(squirrel)
+	//  - star-full: $(star-full)
+	//  - star-half: $(star-half)
+	//  - symbol-class: $(symbol-class)
+	//  - symbol-color: $(symbol-color)
+	//  - symbol-constant: $(symbol-constant)
+	//  - symbol-enum-member: $(symbol-enum-member)
+	//  - symbol-field: $(symbol-field)
+	//  - symbol-file: $(symbol-file)
+	//  - symbol-interface: $(symbol-interface)
+	//  - symbol-keyword: $(symbol-keyword)
+	//  - symbol-misc: $(symbol-misc)
+	//  - symbol-operator: $(symbol-operator)
+	//  - symbol-property: $(symbol-property)
+	//  - wrench: $(wrench)
+	//  - wrench-subaction: $(wrench-subaction)
+	//  - symbol-snippet: $(symbol-snippet)
+	//  - tasklist: $(tasklist)
+	//  - telescope: $(telescope)
+	//  - text-size: $(text-size)
+	//  - three-bars: $(three-bars)
+	//  - thumbsdown: $(thumbsdown)
+	//  - thumbsup: $(thumbsup)
+	//  - tools: $(tools)
+	//  - triangle-down: $(triangle-down)
+	//  - triangle-left: $(triangle-left)
+	//  - triangle-right: $(triangle-right)
+	//  - triangle-up: $(triangle-up)
+	//  - twitter: $(twitter)
+	//  - unfold: $(unfold)
+	//  - unlock: $(unlock)
+	//  - unmute: $(unmute)
+	//  - unverified: $(unverified)
+	//  - verified: $(verified)
+	//  - versions: $(versions)
+	//  - vm-active: $(vm-active)
+	//  - vm-outline: $(vm-outline)
+	//  - vm-running: $(vm-running)
+	//  - watch: $(watch)
+	//  - whitespace: $(whitespace)
+	//  - whole-word: $(whole-word)
+	//  - window: $(window)
+	//  - word-wrap: $(word-wrap)
+	//  - zoom-in: $(zoom-in)
+	//  - zoom-out: $(zoom-out)
+	//  - list-filter: $(list-filter)
+	//  - list-flat: $(list-flat)
+	//  - list-selection: $(list-selection)
+	//  - selection: $(selection)
+	//  - list-tree: $(list-tree)
+	//  - debug-breakpoint-function-unverified: $(debug-breakpoint-function-unverified)
+	//  - debug-breakpoint-function: $(debug-breakpoint-function)
+	//  - debug-breakpoint-function-disabled: $(debug-breakpoint-function-disabled)
+	//  - debug-stackframe-active: $(debug-stackframe-active)
+	//  - circle-small-filled: $(circle-small-filled)
+	//  - debug-stackframe-dot: $(debug-stackframe-dot)
+	//  - terminal-decoration-mark: $(terminal-decoration-mark)
+	//  - debug-stackframe: $(debug-stackframe)
+	//  - debug-stackframe-focused: $(debug-stackframe-focused)
+	//  - debug-breakpoint-unsupported: $(debug-breakpoint-unsupported)
+	//  - symbol-string: $(symbol-string)
+	//  - debug-reverse-continue: $(debug-reverse-continue)
+	//  - debug-step-back: $(debug-step-back)
+	//  - debug-restart-frame: $(debug-restart-frame)
+	//  - debug-alt: $(debug-alt)
+	//  - call-incoming: $(call-incoming)
+	//  - call-outgoing: $(call-outgoing)
+	//  - menu: $(menu)
+	//  - expand-all: $(expand-all)
+	//  - feedback: $(feedback)
+	//  - git-pull-request-reviewer: $(git-pull-request-reviewer)
+	//  - group-by-ref-type: $(group-by-ref-type)
+	//  - ungroup-by-ref-type: $(ungroup-by-ref-type)
+	//  - account: $(account)
+	//  - git-pull-request-assignee: $(git-pull-request-assignee)
+	//  - bell-dot: $(bell-dot)
+	//  - debug-console: $(debug-console)
+	//  - library: $(library)
+	//  - output: $(output)
+	//  - run-all: $(run-all)
+	//  - sync-ignored: $(sync-ignored)
+	//  - pinned: $(pinned)
+	//  - github-inverted: $(github-inverted)
+	//  - server-process: $(server-process)
+	//  - server-environment: $(server-environment)
+	//  - pass: $(pass)
+	//  - issue-closed: $(issue-closed)
+	//  - stop-circle: $(stop-circle)
+	//  - play-circle: $(play-circle)
+	//  - record: $(record)
+	//  - debug-alt-small: $(debug-alt-small)
+	//  - vm-connect: $(vm-connect)
+	//  - cloud: $(cloud)
+	//  - merge: $(merge)
+	//  - export: $(export)
+	//  - graph-left: $(graph-left)
+	//  - magnet: $(magnet)
+	//  - notebook: $(notebook)
+	//  - redo: $(redo)
+	//  - check-all: $(check-all)
+	//  - pinned-dirty: $(pinned-dirty)
+	//  - pass-filled: $(pass-filled)
+	//  - circle-large-filled: $(circle-large-filled)
+	//  - circle-large: $(circle-large)
+	//  - circle-large-outline: $(circle-large-outline)
+	//  - combine: $(combine)
+	//  - gather: $(gather)
+	//  - table: $(table)
+	//  - variable-group: $(variable-group)
+	//  - type-hierarchy: $(type-hierarchy)
+	//  - type-hierarchy-sub: $(type-hierarchy-sub)
+	//  - type-hierarchy-super: $(type-hierarchy-super)
+	//  - git-pull-request-create: $(git-pull-request-create)
+	//  - run-above: $(run-above)
+	//  - run-below: $(run-below)
+	//  - notebook-template: $(notebook-template)
+	//  - debug-rerun: $(debug-rerun)
+	//  - workspace-trusted: $(workspace-trusted)
+	//  - workspace-untrusted: $(workspace-untrusted)
+	//  - workspace-unknown: $(workspace-unknown)
+	//  - terminal-cmd: $(terminal-cmd)
+	//  - terminal-debian: $(terminal-debian)
+	//  - terminal-linux: $(terminal-linux)
+	//  - terminal-powershell: $(terminal-powershell)
+	//  - terminal-tmux: $(terminal-tmux)
+	//  - terminal-ubuntu: $(terminal-ubuntu)
+	//  - terminal-bash: $(terminal-bash)
+	//  - arrow-swap: $(arrow-swap)
+	//  - copy: $(copy)
+	//  - person-add: $(person-add)
+	//  - filter-filled: $(filter-filled)
+	//  - wand: $(wand)
+	//  - debug-line-by-line: $(debug-line-by-line)
+	//  - inspect: $(inspect)
+	//  - layers: $(layers)
+	//  - layers-dot: $(layers-dot)
+	//  - layers-active: $(layers-active)
+	//  - compass: $(compass)
+	//  - compass-dot: $(compass-dot)
+	//  - compass-active: $(compass-active)
+	//  - azure: $(azure)
+	//  - issue-draft: $(issue-draft)
+	//  - git-pull-request-closed: $(git-pull-request-closed)
+	//  - git-pull-request-draft: $(git-pull-request-draft)
+	//  - debug-all: $(debug-all)
+	//  - debug-coverage: $(debug-coverage)
+	//  - run-errors: $(run-errors)
+	//  - folder-library: $(folder-library)
+	//  - debug-continue-small: $(debug-continue-small)
+	//  - beaker-stop: $(beaker-stop)
+	//  - graph-line: $(graph-line)
+	//  - graph-scatter: $(graph-scatter)
+	//  - pie-chart: $(pie-chart)
+	//  - bracket: $(bracket)
+	//  - bracket-dot: $(bracket-dot)
+	//  - bracket-error: $(bracket-error)
+	//  - lock-small: $(lock-small)
+	//  - azure-devops: $(azure-devops)
+	//  - verified-filled: $(verified-filled)
+	//  - newline: $(newline)
+	//  - layout: $(layout)
+	//  - layout-activitybar-left: $(layout-activitybar-left)
+	//  - layout-activitybar-right: $(layout-activitybar-right)
+	//  - layout-panel-left: $(layout-panel-left)
+	//  - layout-panel-center: $(layout-panel-center)
+	//  - layout-panel-justify: $(layout-panel-justify)
+	//  - layout-panel-right: $(layout-panel-right)
+	//  - layout-panel: $(layout-panel)
+	//  - layout-sidebar-left: $(layout-sidebar-left)
+	//  - layout-sidebar-right: $(layout-sidebar-right)
+	//  - layout-statusbar: $(layout-statusbar)
+	//  - layout-menubar: $(layout-menubar)
+	//  - layout-centered: $(layout-centered)
+	//  - target: $(target)
+	//  - indent: $(indent)
+	//  - record-small: $(record-small)
+	//  - error-small: $(error-small)
+	//  - terminal-decoration-error: $(terminal-decoration-error)
+	//  - arrow-circle-down: $(arrow-circle-down)
+	//  - arrow-circle-left: $(arrow-circle-left)
+	//  - arrow-circle-right: $(arrow-circle-right)
+	//  - arrow-circle-up: $(arrow-circle-up)
+	//  - layout-sidebar-right-off: $(layout-sidebar-right-off)
+	//  - layout-panel-off: $(layout-panel-off)
+	//  - layout-sidebar-left-off: $(layout-sidebar-left-off)
+	//  - blank: $(blank)
+	//  - heart-filled: $(heart-filled)
+	//  - map: $(map)
+	//  - map-horizontal: $(map-horizontal)
+	//  - fold-horizontal: $(fold-horizontal)
+	//  - map-filled: $(map-filled)
+	//  - map-horizontal-filled: $(map-horizontal-filled)
+	//  - fold-horizontal-filled: $(fold-horizontal-filled)
+	//  - circle-small: $(circle-small)
+	//  - bell-slash: $(bell-slash)
+	//  - bell-slash-dot: $(bell-slash-dot)
+	//  - comment-unresolved: $(comment-unresolved)
+	//  - git-pull-request-go-to-changes: $(git-pull-request-go-to-changes)
+	//  - git-pull-request-new-changes: $(git-pull-request-new-changes)
+	//  - search-fuzzy: $(search-fuzzy)
+	//  - comment-draft: $(comment-draft)
+	//  - send: $(send)
+	//  - sparkle: $(sparkle)
+	//  - insert: $(insert)
+	//  - mic: $(mic)
+	//  - thumbsdown-filled: $(thumbsdown-filled)
+	//  - thumbsup-filled: $(thumbsup-filled)
+	//  - coffee: $(coffee)
+	//  - snake: $(snake)
+	//  - game: $(game)
+	//  - vr: $(vr)
+	//  - chip: $(chip)
+	//  - piano: $(piano)
+	//  - music: $(music)
+	//  - mic-filled: $(mic-filled)
+	//  - repo-fetch: $(repo-fetch)
+	//  - copilot: $(copilot)
+	//  - lightbulb-sparkle: $(lightbulb-sparkle)
+	//  - robot: $(robot)
+	//  - sparkle-filled: $(sparkle-filled)
+	//  - diff-single: $(diff-single)
+	//  - diff-multiple: $(diff-multiple)
+	//  - surround-with: $(surround-with)
+	//  - share: $(share)
+	//  - git-stash: $(git-stash)
+	//  - git-stash-apply: $(git-stash-apply)
+	//  - git-stash-pop: $(git-stash-pop)
+	//  - vscode: $(vscode)
+	//  - vscode-insiders: $(vscode-insiders)
+	//  - code-oss: $(code-oss)
+	//  - run-coverage: $(run-coverage)
+	//  - run-all-coverage: $(run-all-coverage)
+	//  - coverage: $(coverage)
+	//  - github-project: $(github-project)
+	//  - map-vertical: $(map-vertical)
+	//  - fold-vertical: $(fold-vertical)
+	//  - map-vertical-filled: $(map-vertical-filled)
+	//  - fold-vertical-filled: $(fold-vertical-filled)
+	//  - go-to-search: $(go-to-search)
+	//  - percentage: $(percentage)
+	//  - sort-percentage: $(sort-percentage)
+	//  - attach: $(attach)
+	//  - go-to-editing-session: $(go-to-editing-session)
+	//  - edit-session: $(edit-session)
+	//  - code-review: $(code-review)
+	//  - copilot-warning: $(copilot-warning)
+	//  - python: $(python)
+	//  - copilot-large: $(copilot-large)
+	//  - copilot-warning-large: $(copilot-warning-large)
+	//  - keyboard-tab: $(keyboard-tab)
+	//  - copilot-blocked: $(copilot-blocked)
+	//  - copilot-not-connected: $(copilot-not-connected)
+	//  - flag: $(flag)
+	//  - lightbulb-empty: $(lightbulb-empty)
+	//  - symbol-method-arrow: $(symbol-method-arrow)
+	//  - copilot-unavailable: $(copilot-unavailable)
+	//  - repo-pinned: $(repo-pinned)
+	//  - keyboard-tab-above: $(keyboard-tab-above)
+	//  - keyboard-tab-below: $(keyboard-tab-below)
+	//  - git-pull-request-done: $(git-pull-request-done)
+	//  - mcp: $(mcp)
+	//  - extensions-large: $(extensions-large)
+	//  - layout-panel-dock: $(layout-panel-dock)
+	//  - layout-sidebar-left-dock: $(layout-sidebar-left-dock)
+	//  - layout-sidebar-right-dock: $(layout-sidebar-right-dock)
+	//  - copilot-in-progress: $(copilot-in-progress)
+	//  - copilot-error: $(copilot-error)
+	//  - copilot-success: $(copilot-success)
+	//  - chat-sparkle: $(chat-sparkle)
+	//  - search-sparkle: $(search-sparkle)
+	//  - edit-sparkle: $(edit-sparkle)
+	//  - copilot-snooze: $(copilot-snooze)
+	//  - send-to-remote-agent: $(send-to-remote-agent)
+	//  - comment-discussion-sparkle: $(comment-discussion-sparkle)
+	//  - chat-sparkle-warning: $(chat-sparkle-warning)
+	//  - chat-sparkle-error: $(chat-sparkle-error)
+	//  - cascade-browser: $(cascade-browser)
+	//  - lucide-file-text: $(lucide-file-text)
+	//  - lucide-list-checks: $(lucide-list-checks)
+	//  - lucide-git-pull-request: $(lucide-git-pull-request)
+	//  - lucide-images: $(lucide-images)
+	//  - lucide-network: $(lucide-network)
+	//  - lucide-image: $(lucide-image)
+	//  - lucide-film: $(lucide-film)
+	//  - lucide-file-diff: $(lucide-file-diff)
+	//  - lucide-file-image: $(lucide-file-image)
+	//  - lucide-file-video-camera: $(lucide-file-video-camera)
+	//  - chrome: $(chrome)
+	//  - lucide-book: $(lucide-book)
+	//  - collection: $(collection)
+	//  - new-collection: $(new-collection)
+	//  - thinking: $(thinking)
+	//  - build: $(build)
+	//  - comment-discussion-quote: $(comment-discussion-quote)
+	//  - cursor: $(cursor)
+	//  - eraser: $(eraser)
+	//  - file-text: $(file-text)
+	//  - git-lens: $(git-lens)
+	//  - quotes: $(quotes)
+	//  - rename: $(rename)
+	//  - run-with-deps: $(run-with-deps)
+	//  - debug-connected: $(debug-connected)
+	//  - strikethrough: $(strikethrough)
+	//  - open-in-product: $(open-in-product)
+	//  - index-zero: $(index-zero)
+	//  - agent: $(agent)
+	//  - edit-code: $(edit-code)
+	//  - repo-selected: $(repo-selected)
+	//  - skip: $(skip)
+	//  - merge-into: $(merge-into)
+	//  - git-branch-changes: $(git-branch-changes)
+	//  - git-branch-staged-changes: $(git-branch-staged-changes)
+	//  - git-branch-conflicts: $(git-branch-conflicts)
+	//  - git-branch: $(git-branch)
+	//  - git-branch-create: $(git-branch-create)
+	//  - git-branch-delete: $(git-branch-delete)
+	//  - search-large: $(search-large)
+	//  - terminal-git-bash: $(terminal-git-bash)
+	//  - window-active: $(window-active)
+	//  - forward: $(forward)
+	//  - download: $(download)
+	//  - clockface: $(clockface)
+	//  - unarchive: $(unarchive)
+	//  - session-in-progress: $(session-in-progress)
+	//  - collection-small: $(collection-small)
+	//  - vm-small: $(vm-small)
+	//  - cloud-small: $(cloud-small)
+	//  - dialog-error: $(dialog-error)
+	//  - dialog-warning: $(dialog-warning)
+	//  - dialog-info: $(dialog-info)
+	//  - dialog-close: $(dialog-close)
+	//  - tree-item-expanded: $(tree-item-expanded)
+	//  - tree-filter-on-type-on: $(tree-filter-on-type-on)
+	//  - tree-filter-on-type-off: $(tree-filter-on-type-off)
+	//  - tree-filter-clear: $(tree-filter-clear)
+	//  - tree-item-loading: $(tree-item-loading)
+	//  - menu-selection: $(menu-selection)
+	//  - menu-submenu: $(menu-submenu)
+	//  - menubar-more: $(menubar-more)
+	//  - scrollbar-button-left: $(scrollbar-button-left)
+	//  - scrollbar-button-right: $(scrollbar-button-right)
+	//  - scrollbar-button-up: $(scrollbar-button-up)
+	//  - scrollbar-button-down: $(scrollbar-button-down)
+	//  - toolbar-more: $(toolbar-more)
+	//  - quick-input-back: $(quick-input-back)
+	//  - drop-down-button: $(drop-down-button)
+	//  - symbol-customcolor: $(symbol-customcolor)
+	//  - export: $(export)
+	//  - workspace-unspecified: $(workspace-unspecified)
+	//  - newline: $(newline)
+	//  - thumbsdown-filled: $(thumbsdown-filled)
+	//  - thumbsup-filled: $(thumbsup-filled)
+	//  - git-fetch: $(git-fetch)
+	//  - lightbulb-sparkle-autofix: $(lightbulb-sparkle-autofix)
+	//  - debug-breakpoint-pending: $(debug-breakpoint-pending)
+	"terminal.integrated.tabs.defaultIcon": "terminal",
+
+	// Controls the terminal description, which appears to the right of the title. Variables are substituted based on the context:
+	// - `${cwd}`: the terminal's current working directory.
+	// - `${cwdFolder}`: the terminal's current working directory, displayed for multi-root workspaces or in a single root workspace when the value differs from the initial working directory. On Windows, this will only be displayed when shell integration is enabled.
+	// - `${workspaceFolder}`: the workspace in which the terminal was launched.
+	// - `${workspaceFolderName}`: the `name` of the workspace in which the terminal was launched.
+	// - `${local}`: indicates a local terminal in a remote workspace.
+	// - `${process}`: the name of the terminal process.
+	// - `${progress}`: the progress state as reported by the `OSC 9;4` sequence.
+	// - `${separator}`: a conditional separator (` - `) that only shows when it's surrounded by variables with values or static text.
+	// - `${sequence}`: the name provided to the terminal by the process.
+	// - `${task}`: indicates this terminal is associated with a task.
+	// - `${shellType}`: the detected shell type.
+	// - `${shellCommand}`: the command being executed according to shell integration. This also requires high confidence in the detected command line, which may not work in some prompt frameworks.
+	// - `${shellPromptInput}`: the shell's full prompt input according to shell integration.
+	"terminal.integrated.tabs.description": "${task}${separator}${local}${separator}${cwdFolder}",
+
+	// Controls whether terminal tab statuses support animation (eg. in progress tasks).
+	"terminal.integrated.tabs.enableAnimation": true,
+
+	// Controls whether terminal tabs display as a list to the side of the terminal. When this is disabled a dropdown will display instead.
+	"terminal.integrated.tabs.enabled": true,
+
+	// Controls whether focusing the terminal of a tab happens on double or single click.
+	//  - singleClick: Focus the terminal when clicking a terminal tab
+	//  - doubleClick: Focus the terminal when double-clicking a terminal tab
+	"terminal.integrated.tabs.focusMode": "doubleClick",
+
+	// Controls whether the terminal tabs view will hide under certain conditions.
+	//  - never: Never hide the terminal tabs view
+	//  - singleTerminal: Hide the terminal tabs view when there is only a single terminal opened
+	//  - singleGroup: Hide the terminal tabs view when there is only a single terminal group opened
+	"terminal.integrated.tabs.hideCondition": "singleTerminal",
+
+	// Controls the location of the terminal tabs, either to the left or right of the actual terminal(s).
+	//  - left: Show the terminal tabs view to the left of the terminal
+	//  - right: Show the terminal tabs view to the right of the terminal
+	"terminal.integrated.tabs.location": "right",
+
+	// Separator used by `terminal.integrated.tabs.title#` and `#terminal.integrated.tabs.description`.
+	"terminal.integrated.tabs.separator": " - ",
+
+	// Controls whether terminal split and kill buttons are displays next to the new terminal button.
+	//  - always: Always show the actions
+	//  - singleTerminal: Show the actions when it is the only terminal opened
+	//  - singleTerminalOrNarrow: Show the actions when it is the only terminal opened or when the tabs view is in its narrow textless state
+	//  - never: Never show the actions
+	"terminal.integrated.tabs.showActions": "singleTerminalOrNarrow",
+
+	// Shows the active terminal information in the view. This is particularly useful when the title within the tabs aren't visible.
+	//  - always: Always show the active terminal
+	//  - singleTerminal: Show the active terminal when it is the only terminal opened
+	//  - singleTerminalOrNarrow: Show the active terminal when it is the only terminal opened or when the tabs view is in its narrow textless state
+	//  - never: Never show the active terminal
+	"terminal.integrated.tabs.showActiveTerminal": "singleTerminalOrNarrow",
+
+	// Controls the terminal title. Variables are substituted based on the context:
+	// - `${cwd}`: the terminal's current working directory.
+	// - `${cwdFolder}`: the terminal's current working directory, displayed for multi-root workspaces or in a single root workspace when the value differs from the initial working directory. On Windows, this will only be displayed when shell integration is enabled.
+	// - `${workspaceFolder}`: the workspace in which the terminal was launched.
+	// - `${workspaceFolderName}`: the `name` of the workspace in which the terminal was launched.
+	// - `${local}`: indicates a local terminal in a remote workspace.
+	// - `${process}`: the name of the terminal process.
+	// - `${progress}`: the progress state as reported by the `OSC 9;4` sequence.
+	// - `${separator}`: a conditional separator (` - `) that only shows when it's surrounded by variables with values or static text.
+	// - `${sequence}`: the name provided to the terminal by the process.
+	// - `${task}`: indicates this terminal is associated with a task.
+	// - `${shellType}`: the detected shell type.
+	// - `${shellCommand}`: the command being executed according to shell integration. This also requires high confidence in the detected command line, which may not work in some prompt frameworks.
+	// - `${shellPromptInput}`: the shell's full prompt input according to shell integration.
+	"terminal.integrated.tabs.title": "${process}",
+
+	// The number of cells in a tab stop.
+	"terminal.integrated.tabStopWidth": 8,
+
+	// Controls what version of Unicode to use when evaluating the width of characters in the terminal. If you experience emoji or other wide characters not taking up the right amount of space or backspace either deleting too much or too little then you may want to try tweaking this setting.
+	//  - 6: Version 6 of Unicode. This is an older version which should work better on older systems.
+	//  - 11: Version 11 of Unicode. This version provides better support on modern systems that use modern versions of Unicode.
+	"terminal.integrated.unicodeVersion": "11",
+
+	// Controls whether or not WSL distros are shown in the terminal dropdown
+	"terminal.integrated.useWslProfiles": true,
+
+	// Whether to use ConPTY for Windows terminal process communication (requires Windows 10 build number 18309+). Winpty will be used if this is false.
+	"terminal.integrated.windowsEnableConpty": true,
+
+	// Whether to use the experimental conpty.dll (v1.22.250204002) shipped with Antigravity, instead of the one bundled with Windows.
+	"terminal.integrated.windowsUseConptyDll": false,
+
+	// A string containing all characters to be considered word separators when double-clicking to select word and in the fallback 'word' link detection. Since this is used for link detection, including characters such as `:` that are used when detecting links will cause the line and column part of links like `file:10:5` to be ignored.
+	"terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’“”|",
+
+	// Controls whether code cells in the interactive window are collapsed by default.
+	"interactiveWindow.collapseCellInputCode": "fromEditor",
+
+	// The limit of notebook output size in kilobytes (KB) where notebook files will no longer be backed up for hot reload. Use 0 for unlimited.
+	"notebook.backup.sizeLimit": 10000,
+
+	// When enabled, notebook breadcrumbs contain code cells.
+	"notebook.breadcrumbs.showCodeCells": true,
+
+	// Controls the verbosity of the cell execution time in the cell status bar.
+	//  - default: The cell execution duration is visible, with advanced information in the hover tooltip.
+	//  - verbose: The cell last execution timestamp and duration are visible, with advanced information in the hover tooltip.
+	"notebook.cellExecutionTimeVerbosity": "default",
+
+	// Show available diagnostics for cell failures.
+	"notebook.cellFailureDiagnostics": true,
+
+	// Controls where the focus indicator is rendered, either along the cell borders or on the left gutter.
+	"notebook.cellFocusIndicator": "gutter",
+
+	// Where the cell toolbar should be shown, or whether it should be hidden.
+	"notebook.cellToolbarLocation": {
+		"default": "right"
+	},
+
+	// Whether the cell toolbar should appear on hover or click.
+	"notebook.cellToolbarVisibility": "click",
+
+	// Control whether the notebook editor should be rendered in a compact form. For example, when turned on, it will decrease the left margin width.
+	"notebook.compactView": true,
+
+	// Control whether a confirmation prompt is required to delete a running cell.
+	"notebook.confirmDeleteRunningCell": true,
+
+	// Control whether outputs action should be rendered in the output toolbar.
+	"notebook.consolidatedOutputButton": true,
+
+	// Control whether extra actions are shown in a dropdown next to the run button.
+	"notebook.consolidatedRunButton": false,
+
+	// Defines a default notebook formatter which takes precedence over all other formatter settings. Must be the identifier of an extension contributing a formatter.
+	//  - null: None
+	//  - vscode.json-language-features: Provides rich language support for JSON files.
+	//  - vscode.typescript-language-features: Provides rich language support for JavaScript and TypeScript.
+	//  - vscode.css-language-features: Provides rich language support for CSS, LESS and SCSS files.
+	//  - golang.go: Rich Go language support for Visual Studio Code
+	//  - vscode.html-language-features: Provides rich language support for HTML and Handlebar files
+	//  - CodeSmith.markdown-inline-editor-vscode: WYSIWYG inline markdown editor - hide syntax, focus on content
+	//  - vscode.markdown-language-features: Provides rich language support for Markdown.
+	//  - vscode.markdown-math: Adds math support to Markdown in notebooks.
+	//  - vscode.php-language-features: Provides rich language support for PHP files.
+	//  - meta.pyrefly: Python autocomplete, typechecking, code navigation and more! Powered by Pyrefly, an open-source language server
+	//  - ms-python.python: Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, and more.
+	//  - Shopify.ruby-lsp: VS Code plugin for connecting with the Ruby LSP
+	//  - llvm-vs-code-extensions.vscode-clangd: C/C++ completion, navigation, and insights
+	//  - imaikosuke.vscode-wiki-links: Navigate notes with [[wiki-links]] and auto-completion. Automatically create notes from new inline [[wiki-links]].
+	//  - google.antigravity: Extension that powers many of the AI features in Antigravity.
+	//  - google.antigravity-code-executor: Execute generated code from cascade.
+	//  - google.antigravity-dev-containers: Use devcontainers within Antigravity
+	//  - google.antigravity-remote-openssh: Connect to remote machines over SSH using Antigravity
+	//  - google.antigravity-remote-wsl: Open any folder in the Windows Subsystem for Linux (WSL).
+	//  - vscode.configuration-editing: Provides capabilities (advanced IntelliSense, auto-fixing) in configuration files like settings, launch, and extension recommendation files.
+	//  - vscode.debug-auto-launch: Helper for auto-attach feature when node-debug extensions are not active.
+	//  - vscode.debug-server-ready: Open URI in browser if server under debugging is ready.
+	//  - ms-python.debugpy: Python Debugger extension using debugpy.
+	//  - vscode.emmet: Emmet support for Jetski
+	//  - vscode.extension-editing: Provides linting capabilities for authoring extensions.
+	//  - vscode.git: Git SCM Integration
+	//  - vscode.git-base: Git static contributions and pickers.
+	//  - vscode.github: GitHub features for the IDE
+	//  - vscode.github-authentication: GitHub Authentication Provider
+	//  - vscode.grunt: Extension to add Grunt capabilities to VS Code.
+	//  - vscode.gulp: Extension to add Gulp capabilities to VSCode.
+	//  - vscode.ipynb: Provides basic support for opening and reading Jupyter's .ipynb notebook files
+	//  - vscode.jake: Extension to add Jake capabilities to Jetski.
+	//  - ms-vscode.js-debug: An extension for debugging Node.js programs and Chrome.
+	//  - ms-vscode.js-debug-companion: Companion extension to js-debug that provides capability for remote debugging
+	//  - vscode.media-preview: Provides Jetski's built-in previews for images, audio, and video
+	//  - vscode.merge-conflict: Highlighting and commands for inline merge conflicts.
+	//  - vscode.mermaid-chat-features: Adds Mermaid diagram support to built-in chats.
+	//  - vscode.microsoft-authentication: Microsoft authentication provider
+	//  - vscode.npm: Extension to add task support for npm scripts.
+	//  - vscode.references-view: Reference Search results as separate, stable view in the sidebar
+	//  - vscode.search-result: Provides syntax highlighting and language features for tabbed search results.
+	//  - vscode.simple-browser: A very basic built-in webview for displaying web content.
+	//  - vscode.terminal-suggest: Extension to add terminal completions for zsh, bash, and fish terminals.
+	//  - vscode.tunnel-forwarding: Allows forwarding local ports to be accessible over the internet.
+	//  - ms-vscode.vscode-js-profile-table: Text visualizer for profiles taken from the JavaScript debugger
+	//  - ms-python.vscode-python-envs: Provides a unified python environment experience
+	"notebook.defaultFormatter": null,

@@ -1,0 +1,1000 @@
+	// Controls whether files should open in a new window when using a command line or file dialog.
+	// Note that there can still be cases where this setting is ignored (e.g. when using the `--new-window` or `--reuse-window` command line option).
+	//  - on: Files will open in a new window.
+	//  - off: Files will open in the window with the files' folder open or the last active window.
+	//  - default: Files will open in the window with the files' folder open or the last active window unless opened via the Dock or from Finder.
+	"window.openFilesInNewWindow": "off",
+
+	// Controls whether folders should open in a new window or replace the last active window.
+	// Note that there can still be cases where this setting is ignored (e.g. when using the `--new-window` or `--reuse-window` command line option).
+	//  - on: Folders will open in a new window.
+	//  - off: Folders will replace the last active window.
+	//  - default: Folders will open in a new window unless a folder is picked from within the application (e.g. via the File menu).
+	"window.openFoldersInNewWindow": "default",
+
+	// Controls whether a new empty window should open when starting a second instance without arguments or if the last running instance should get focus.
+	// Note that there can still be cases where this setting is ignored (e.g. when using the `--new-window` or `--reuse-window` command line option).
+	//  - on: Open a new empty window.
+	//  - off: Focus the last active running instance.
+	"window.openWithoutArgumentsInNewWindow": "off",
+
+	// Controls whether a window should restore to full screen mode if it was exited in full screen mode.
+	"window.restoreFullscreen": false,
+
+	// Controls how windows and editors within are being restored when opening.
+	//  - preserve: Always reopen all windows. If a folder or workspace is opened (e.g. from the command line) it opens as a new window unless it was opened before. If files are opened they will open in one of the restored windows together with editors that were previously opened.
+	//  - all: Reopen all windows unless a folder, workspace or file is opened (e.g. from the command line). If a file is opened, it will replace any of the editors that were previously opened in a window.
+	//  - folders: Reopen all windows that had folders or workspaces opened unless a folder, workspace or file is opened (e.g. from the command line). If a file is opened, it will replace any of the editors that were previously opened in a window.
+	//  - one: Reopen the last active window unless a folder, workspace or file is opened (e.g. from the command line). If a file is opened, it will replace any of the editors that were previously opened in a window.
+	//  - none: Never reopen a window. Unless a folder or workspace is opened (e.g. from the command line), an empty window will appear.
+	"window.restoreWindows": "all",
+
+	// Controls the window title based on the current context such as the opened workspace or active editor. Variables are substituted based on the context:
+	// - `${activeEditorShort}`: the file name (e.g. myFile.txt).
+	// - `${activeEditorMedium}`: the path of the file relative to the workspace folder (e.g. myFolder/myFileFolder/myFile.txt).
+	// - `${activeEditorLong}`: the full path of the file (e.g. /Users/Development/myFolder/myFileFolder/myFile.txt).
+	// - `${activeFolderShort}`: the name of the folder the file is contained in (e.g. myFileFolder).
+	// - `${activeFolderMedium}`: the path of the folder the file is contained in, relative to the workspace folder (e.g. myFolder/myFileFolder).
+	// - `${activeFolderLong}`: the full path of the folder the file is contained in (e.g. /Users/Development/myFolder/myFileFolder).
+	// - `${folderName}`: name of the workspace folder the file is contained in (e.g. myFolder).
+	// - `${folderPath}`: file path of the workspace folder the file is contained in (e.g. /Users/Development/myFolder).
+	// - `${rootName}`: name of the workspace with optional remote name and workspace indicator if applicable (e.g. myFolder, myRemoteFolder [SSH] or myWorkspace (Workspace)).
+	// - `${rootNameShort}`: shortened name of the workspace without suffixes (e.g. myFolder, myRemoteFolder or myWorkspace).
+	// - `${rootPath}`: file path of the opened workspace or folder (e.g. /Users/Development/myWorkspace).
+	// - `${profileName}`: name of the profile in which the workspace is opened (e.g. Data Science (Profile)). Ignored if default profile is used.
+	// - `${appName}`: e.g. Antigravity.
+	// - `${remoteName}`: e.g. SSH
+	// - `${dirty}`: an indicator for when the active editor has unsaved changes.
+	// - `${focusedView}`: the name of the view that is currently focused.
+	// - `${activeRepositoryName}`: the name of the active repository (e.g. vscode).
+	// - `${activeRepositoryBranchName}`: the name of the active branch in the active repository (e.g. main).
+	// - `${activeEditorState}`: provides information about the state of the active editor (e.g. modified). This will be appended by default when in screen reader mode with `accessibility.windowTitleOptimized` enabled.
+	// - `${separator}`: a conditional separator (" - ") that only shows when surrounded by variables with values or static text.
+	"window.title": "${rootName}${separator}${profileName}${separator}${activeEditorShort}",
+
+	// Adjust the appearance of the window title bar to be native by the OS or custom. Changes require a full restart to apply.
+	"window.titleBarStyle": "custom",
+
+	// Separator used by `window.title`.
+	"window.titleSeparator": " — ",
+
+	// Adjust the default zoom level for all windows. Each increment above `0` (e.g. `1`) or below (e.g. `-1`) represents zooming `20%` larger or smaller. You can also enter decimals to adjust the zoom level with a finer granularity. See `window.zoomPerWindow` for configuring if the 'Zoom In' and 'Zoom Out' commands apply the zoom level to all windows or only the active window.
+	"window.zoomLevel": 0,
+
+	// Controls if the 'Zoom In' and 'Zoom Out' commands apply the zoom level to all windows or only the active window. See `window.zoomLevel` for configuring a default zoom level for all windows.
+	"window.zoomPerWindow": true,
+
+	// If enabled, will automatically select a color theme based on the system color mode. If the system color mode is dark, `workbench.preferredDarkColorTheme#` is used, else `#workbench.preferredLightColorTheme`.
+	"window.autoDetectColorScheme": false,
+
+	// If enabled, will automatically change to high contrast theme if the OS is using a high contrast theme. The high contrast theme to use is specified by `workbench.preferredHighContrastColorTheme#` and `#workbench.preferredHighContrastLightColorTheme`.
+	"window.autoDetectHighContrast": true,
+
+	// The default prefix to invoke when the command center is clicked.
+	"window.commandCenterDefaultPrefix": "cs ",
+
+	// Whether to use the current selection as the search term when invoking the command center.
+	"window.commandCenterSeedWithSelection": true,
+
+	// Files
+	// Configure [glob patterns](https://aka.ms/vscode-glob-patterns) of file associations to languages (for example `"*.extension": "html"`). Patterns will match on the absolute path of a file if they contain a path separator and will match on the name of the file otherwise. These have precedence over the default associations of the languages installed.
+	"files.associations": {},
+
+	// When enabled, the editor will attempt to guess the character set encoding when opening files. This setting can also be configured per language. Note, this setting is not respected by text search. Only `files.encoding` is respected.
+	"files.autoGuessEncoding": false,
+
+	// Controls [auto save](https://code.visualstudio.com/docs/editor/codebasics#_save-auto-save) of editors that have unsaved changes.
+	//  - off: An editor with changes is never automatically saved.
+	//  - afterDelay: An editor with changes is automatically saved after the configured `files.autoSaveDelay`.
+	//  - onFocusChange: An editor with changes is automatically saved when the editor loses focus.
+	//  - onWindowChange: An editor with changes is automatically saved when the window loses focus.
+	"files.autoSave": "off",
+
+	// Controls the delay in milliseconds after which an editor with unsaved changes is saved automatically. Only applies when `files.autoSave` is set to `afterDelay`.
+	"files.autoSaveDelay": 1000,
+
+	// When enabled, will limit [auto save](https://code.visualstudio.com/docs/editor/codebasics#_save-auto-save) of editors to files that have no errors reported in them at the time the auto save is triggered. Only applies when `files.autoSave` is enabled.
+	"files.autoSaveWhenNoErrors": false,
+
+	// When enabled, will limit [auto save](https://code.visualstudio.com/docs/editor/codebasics#_save-auto-save) of editors to files that are inside the opened workspace. Only applies when `files.autoSave` is enabled.
+	"files.autoSaveWorkspaceFilesOnly": false,
+
+	// List of character set encodings that the editor should attempt to guess in the order they are listed. In case it cannot be determined, `files.encoding` is respected
+	//  - utf8: UTF-8
+	//  - utf16le: UTF-16 LE
+	//  - utf16be: UTF-16 BE
+	//  - windows1252: Western (Windows 1252)
+	//  - windows1250: Central European (Windows 1250)
+	//  - iso88592: Central European (ISO 8859-2)
+	//  - windows1251: Cyrillic (Windows 1251)
+	//  - cp866: Cyrillic (CP 866)
+	//  - cp1125: Cyrillic (CP 1125)
+	//  - iso88595: Cyrillic (ISO 8859-5)
+	//  - koi8r: Cyrillic (KOI8-R)
+	//  - windows1253: Greek (Windows 1253)
+	//  - iso88597: Greek (ISO 8859-7)
+	//  - windows1255: Hebrew (Windows 1255)
+	//  - iso88598: Hebrew (ISO 8859-8)
+	//  - cp950: Traditional Chinese (Big5)
+	//  - shiftjis: Japanese (Shift JIS)
+	//  - eucjp: Japanese (EUC-JP)
+	//  - euckr: Korean (EUC-KR)
+	//  - gb2312: Simplified Chinese (GB 2312)
+	"files.candidateGuessEncodings": [],
+
+	// The default language identifier that is assigned to new files. If configured to `${activeEditorLanguage}`, will use the language identifier of the currently active text editor if any.
+	"files.defaultLanguage": "",
+
+	// Default path for file dialogs, overriding user's home path. Only used in the absence of a context-specific path, such as most recently opened file or folder.
+	"files.dialog.defaultPath": "",
+
+	// Moves files/folders to the OS trash (recycle bin on Windows) when deleting. Disabling this will delete files/folders permanently.
+	"files.enableTrash": true,
+
+	// The default character set encoding to use when reading and writing files. This setting can also be configured per language.
+	//  - utf8: UTF-8
+	//  - utf8bom: UTF-8 with BOM
+	//  - utf16le: UTF-16 LE
+	//  - utf16be: UTF-16 BE
+	//  - windows1252: Western (Windows 1252)
+	//  - iso88591: Western (ISO 8859-1)
+	//  - iso88593: Western (ISO 8859-3)
+	//  - iso885915: Western (ISO 8859-15)
+	//  - macroman: Western (Mac Roman)
+	//  - cp437: DOS (CP 437)
+	//  - windows1256: Arabic (Windows 1256)
+	//  - iso88596: Arabic (ISO 8859-6)
+	//  - windows1257: Baltic (Windows 1257)
+	//  - iso88594: Baltic (ISO 8859-4)
+	//  - iso885914: Celtic (ISO 8859-14)
+	//  - windows1250: Central European (Windows 1250)
+	//  - iso88592: Central European (ISO 8859-2)
+	//  - cp852: Central European (CP 852)
+	//  - windows1251: Cyrillic (Windows 1251)
+	//  - cp866: Cyrillic (CP 866)
+	//  - cp1125: Cyrillic (CP 1125)
+	//  - iso88595: Cyrillic (ISO 8859-5)
+	//  - koi8r: Cyrillic (KOI8-R)
+	//  - koi8u: Cyrillic (KOI8-U)
+	//  - iso885913: Estonian (ISO 8859-13)
+	//  - windows1253: Greek (Windows 1253)
+	//  - iso88597: Greek (ISO 8859-7)
+	//  - windows1255: Hebrew (Windows 1255)
+	//  - iso88598: Hebrew (ISO 8859-8)
+	//  - iso885910: Nordic (ISO 8859-10)
+	//  - iso885916: Romanian (ISO 8859-16)
+	//  - windows1254: Turkish (Windows 1254)
+	//  - iso88599: Turkish (ISO 8859-9)
+	//  - windows1258: Vietnamese (Windows 1258)
+	//  - gbk: Simplified Chinese (GBK)
+	//  - gb18030: Simplified Chinese (GB18030)
+	//  - cp950: Traditional Chinese (Big5)
+	//  - big5hkscs: Traditional Chinese (Big5-HKSCS)
+	//  - shiftjis: Japanese (Shift JIS)
+	//  - eucjp: Japanese (EUC-JP)
+	//  - euckr: Korean (EUC-KR)
+	//  - windows874: Thai (Windows 874)
+	//  - iso885911: Latin/Thai (ISO 8859-11)
+	//  - koi8ru: Cyrillic (KOI8-RU)
+	//  - koi8t: Tajik (KOI8-T)
+	//  - gb2312: Simplified Chinese (GB 2312)
+	//  - cp865: Nordic DOS (CP 865)
+	//  - cp850: Western European DOS (CP 850)
+	"files.encoding": "utf8",
+
+	// The default end of line character.
+	//  - \n: LF
+	//  - \r\n: CRLF
+	//  - auto: Uses operating system specific end of line character.
+	"files.eol": "auto",
+
+	// Configure [glob patterns](https://aka.ms/vscode-glob-patterns) for excluding files and folders. For example, the File Explorer decides which files and folders to show or hide based on this setting. Refer to the `search.exclude#` setting to define search-specific excludes. Refer to the `#explorer.excludeGitIgnore` setting for ignoring files based on your `.gitignore`.
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"**/CVS": true,
+		"**/.ruby-lsp": true
+	},
+
+	// [Hot Exit](https://aka.ms/vscode-hot-exit) controls whether unsaved files are remembered between sessions, allowing the save prompt when exiting the editor to be skipped.
+	//  - off: Disable hot exit. A prompt will show when attempting to close a window with editors that have unsaved changes.
+	//  - onExit: Hot exit will be triggered when the last window is closed on Windows/Linux or when the `workbench.action.quit` command is triggered (command palette, keybinding, menu). All windows without folders opened will be restored upon next launch. A list of previously opened windows with unsaved files can be accessed via `File > Open Recent > More...`
+	//  - onExitAndWindowClose: Hot exit will be triggered when the last window is closed on Windows/Linux or when the `workbench.action.quit` command is triggered (command palette, keybinding, menu), and also for any window with a folder opened regardless of whether it's the last window. All windows without folders opened will be restored upon next launch. A list of previously opened windows with unsaved files can be accessed via `File > Open Recent > More...`
+	"files.hotExit": "onExit",
+
+	// When enabled, insert a final new line at the end of the file when saving it.
+	"files.insertFinalNewline": false,
+
+	// Timeout in milliseconds after which file participants for create, rename, and delete are cancelled. Use `0` to disable participants.
+	"files.participants.timeout": 60000,
+
+	// Configure paths or [glob patterns](https://aka.ms/vscode-glob-patterns) to exclude from being marked as read-only if they match as a result of the `files.readonlyInclude` setting. Glob patterns are always evaluated relative to the path of the workspace folder unless they are absolute paths. Files from readonly file system providers will always be read-only independent of this setting.
+	"files.readonlyExclude": {},
+
+	// Marks files as read-only when their file permissions indicate as such. This can be overridden via `files.readonlyInclude#` and `#files.readonlyExclude` settings.
+	"files.readonlyFromPermissions": false,
+
+	// Configure paths or [glob patterns](https://aka.ms/vscode-glob-patterns) to mark as read-only. Glob patterns are always evaluated relative to the path of the workspace folder unless they are absolute paths. You can exclude matching paths via the `files.readonlyExclude` setting. Files from readonly file system providers will always be read-only independent of this setting.
+	"files.readonlyInclude": {},
+
+	// Restore the undo stack when a file is reopened.
+	"files.restoreUndoStack": true,
+
+	// A save conflict can occur when a file is saved to disk that was changed by another program in the meantime. To prevent data loss, the user is asked to compare the changes in the editor with the version on disk. This setting should only be changed if you frequently encounter save conflict errors and may result in data loss if used without caution.
+	//  - askUser: Will refuse to save and ask for resolving the save conflict manually.
+	//  - overwriteFileOnDisk: Will resolve the save conflict by overwriting the file on disk with the changes in the editor.
+	"files.saveConflictResolution": "askUser",
+
+	// Enables the simple file dialog for opening and saving files and folders. The simple file dialog replaces the system file dialog when enabled.
+	"files.simpleDialog.enable": false,
+
+	// When enabled, will trim all new lines after the final new line at the end of the file when saving it.
+	"files.trimFinalNewlines": false,
+
+	// When enabled, will trim trailing whitespace when saving a file.
+	"files.trimTrailingWhitespace": false,
+
+	// When enabled, trailing whitespace will be removed from multiline strings and regexes will be removed on save or when executing 'editor.action.trimTrailingWhitespace'. This can cause whitespace to not be trimmed from lines when there isn't up-to-date token information.
+	"files.trimTrailingWhitespaceInRegexAndStrings": true,
+
+	// Configure paths or [glob patterns](https://aka.ms/vscode-glob-patterns) to exclude from file watching. Paths can either be relative to the watched folder or absolute. Glob patterns are matched relative from the watched folder. When you experience the file watcher process consuming a lot of CPU, make sure to exclude large folders that are of less interest (such as build output folders).
+	"files.watcherExclude": {
+		"**/.git/objects/**": true,
+		"**/.git/subtree-cache/**": true,
+		"**/.hg/store/**": true
+	},
+
+	// Configure extra paths to watch for changes inside the workspace. By default, all workspace folders will be watched recursively, except for folders that are symbolic links. You can explicitly add absolute or relative paths to support watching folders that are symbolic links. Relative paths will be resolved to an absolute path using the currently opened workspace.
+	"files.watcherInclude": [],
+
+	// Screencast Mode
+	// Controls the font size (in pixels) of the screencast mode keyboard.
+	"screencastMode.fontSize": 56,
+
+	// Options for customizing the keyboard overlay in screencast mode.
+	"screencastMode.keyboardOptions": {
+		"showKeys": true,
+		"showKeybindings": true,
+		"showCommands": true,
+		"showCommandGroups": false,
+		"showSingleEditorCursorMoves": true
+	},
+
+	// Controls how long (in milliseconds) the keyboard overlay is shown in screencast mode.
+	"screencastMode.keyboardOverlayTimeout": 800,
+
+	// Controls the color in hex (#RGB, #RGBA, #RRGGBB or #RRGGBBAA) of the mouse indicator in screencast mode.
+	"screencastMode.mouseIndicatorColor": "#FF0000",
+
+	// Controls the size (in pixels) of the mouse indicator in screencast mode.
+	"screencastMode.mouseIndicatorSize": 20,
+
+	// Controls the vertical offset of the screencast mode overlay from the bottom as a percentage of the workbench height.
+	"screencastMode.verticalOffset": 20,
+
+	// Zen Mode
+	// Controls whether turning on Zen Mode also centers the layout.
+	"zenMode.centerLayout": true,
+
+	// Controls whether turning on Zen Mode also puts the workbench into full screen mode.
+	"zenMode.fullScreen": true,
+
+	// Controls whether turning on Zen Mode also hides the activity bar either at the left or right of the workbench.
+	"zenMode.hideActivityBar": true,
+
+	// Controls whether turning on Zen Mode also hides the editor line numbers.
+	"zenMode.hideLineNumbers": true,
+
+	// Controls whether turning on Zen Mode also hides the status bar at the bottom of the workbench.
+	"zenMode.hideStatusBar": true,
+
+	// Controls whether a window should restore to Zen Mode if it was exited in Zen Mode.
+	"zenMode.restore": true,
+
+	// Controls whether turning on Zen Mode should show multiple editor tabs, a single editor tab, or hide the editor title area completely.
+	//  - multiple: Each editor is displayed as a tab in the editor title area.
+	//  - single: The active editor is displayed as a single large tab in the editor title area.
+	//  - none: The editor title area is not displayed.
+	"zenMode.showTabs": "multiple",
+
+	// Controls whether notifications do not disturb mode should be enabled while in Zen Mode. If true, only error notifications will pop out.
+	"zenMode.silentNotifications": true,
+
+	// File Explorer
+	// Controls whether the Explorer should automatically open a file when it is dropped into the explorer
+	"explorer.autoOpenDroppedFile": true,
+
+	// Controls whether the Explorer should automatically reveal and select files when opening them.
+	//  - true: Files will be revealed and selected.
+	//  - false: Files will not be revealed and selected.
+	//  - focusNoScroll: Files will not be scrolled into view, but will still be focused.
+	"explorer.autoReveal": true,
+
+	// Configure paths or [glob patterns](https://aka.ms/vscode-glob-patterns) for excluding files and folders from being revealed and selected in the Explorer when they are opened. Glob patterns are always evaluated relative to the path of the workspace folder unless they are absolute paths.
+	"explorer.autoRevealExclude": {
+		"**/node_modules": true,
+		"**/bower_components": true
+	},
+
+	// Controls whether the Explorer should render folders in a compact form. In such a form, single child folders will be compressed in a combined tree element. Useful for Java package structures, for example.
+	"explorer.compactFolders": true,
+
+	// Controls whether the Explorer should ask for confirmation when deleting a file via the trash.
+	"explorer.confirmDelete": true,
+
+	// Controls whether the Explorer should ask for confirmation to move files and folders via drag and drop.
+	"explorer.confirmDragAndDrop": true,
+
+	// Controls whether the Explorer should ask for confirmation when pasting native files and folders.
+	"explorer.confirmPasteNative": true,
+
+	// Controls whether the Explorer should ask for confirmation when undoing.
+	//  - verbose: Explorer will prompt before all undo operations.
+	//  - default: Explorer will prompt before destructive undo operations.
+	//  - light: Explorer will not prompt before undo operations when focused.
+	"explorer.confirmUndo": "default",
+
+	// The path separation character used when copying file paths.
+	//  - /: Use slash as path separation character.
+	//  - \: Use backslash as path separation character.
+	//  - auto: Uses operating system specific path separation character.
+	"explorer.copyPathSeparator": "auto",
+
+	// The path separation character used when copying relative file paths.
+	//  - /: Use slash as path separation character.
+	//  - \: Use backslash as path separation character.
+	//  - auto: Uses operating system specific path separation character.
+	"explorer.copyRelativePathSeparator": "auto",
+
+	// Controls whether file decorations should use badges.
+	"explorer.decorations.badges": true,
+
+	// Controls whether file decorations should use colors.
+	"explorer.decorations.colors": true,
+
+	// Controls whether the Explorer should allow to move files and folders via drag and drop. This setting only effects drag and drop from inside the Explorer.
+	"explorer.enableDragAndDrop": true,
+
+	// Controls whether the Explorer should support undoing file and folder operations.
+	"explorer.enableUndo": true,
+
+	// Controls whether entries in .gitignore should be parsed and excluded from the Explorer. Similar to `files.exclude`.
+	"explorer.excludeGitIgnore": false,
+
+	// Controls whether the Explorer should expand multi-root workspaces containing only one folder during initialization
+	"explorer.expandSingleFolderWorkspaces": true,
+
+	// Controls whether file nesting is enabled in the Explorer. File nesting allows for related files in a directory to be visually grouped together under a single parent file.
+	"explorer.fileNesting.enabled": false,
+
+	// Controls whether file nests are automatically expanded. `explorer.fileNesting.enabled` must be set for this to take effect.
+	"explorer.fileNesting.expand": true,
+
+	// Controls nesting of files in the Explorer. `explorer.fileNesting.enabled` must be set for this to take effect. Each __Item__ represents a parent pattern and may contain a single `*` character that matches any string. Each __Value__ represents a comma separated list of the child patterns that should be shown nested under a given parent. Child patterns may contain several special tokens:
+	// - `${capture}`: Matches the resolved value of the `*` from the parent pattern
+	// - `${basename}`: Matches the parent file's basename, the `file` in `file.ts`
+	// - `${extname}`: Matches the parent file's extension, the `ts` in `file.ts`
+	// - `${dirname}`: Matches the parent file's directory name, the `src` in `src/file.ts`
+	// - `*`:  Matches any string, may only be used once per child pattern
+	"explorer.fileNesting.patterns": {
+		"*.ts": "${capture}.js",
+		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+		"*.jsx": "${capture}.js",
+		"*.tsx": "${capture}.ts",
+		"tsconfig.json": "tsconfig.*.json",
+		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock"
+	},
+
+	// Controls which naming strategy to use when giving a new name to a duplicated Explorer item on paste.
+	//  - simple: Appends the word "copy" at the end of the duplicated name potentially followed by a number.
+	//  - smart: Adds a number at the end of the duplicated name. If some number is already part of the name, tries to increase that number.
+	//  - disabled: Disables incremental naming. If two files with the same name exist you will be prompted to overwrite the existing file.
+	"explorer.incrementalNaming": "simple",
+
+	// The minimum number of editor slots pre-allocated in the Open Editors pane. If set to 0 the Open Editors pane will dynamically resize based on the number of editors.
+	"explorer.openEditors.minVisible": 0,
+
+	// Controls the sorting order of editors in the Open Editors pane.
+	//  - editorOrder: Editors are ordered in the same order editor tabs are shown.
+	//  - alphabetical: Editors are ordered alphabetically by tab name inside each editor group.
+	//  - fullPath: Editors are ordered alphabetically by full path inside each editor group.
+	"explorer.openEditors.sortOrder": "editorOrder",
+
+	// The initial maximum number of editors shown in the Open Editors pane. Exceeding this limit will show a scroll bar and allow resizing the pane to display more items.
+	"explorer.openEditors.visible": 9,
+
+	// Controls the property-based sorting of files and folders in the Explorer. When `explorer.fileNesting.enabled` is enabled, also controls sorting of nested files.
+	//  - default: Files and folders are sorted by their names. Folders are displayed before files.
+	//  - mixed: Files and folders are sorted by their names. Files are interwoven with folders.
+	//  - filesFirst: Files and folders are sorted by their names. Files are displayed before folders.
+	//  - type: Files and folders are grouped by extension type then sorted by their names. Folders are displayed before files.
+	//  - modified: Files and folders are sorted by last modified date in descending order. Folders are displayed before files.
+	//  - foldersNestsFiles: Files and folders are sorted by their names. Folders are displayed before files. Files with nested children are displayed before other files.
+	"explorer.sortOrder": "default",
+
+	// Controls the lexicographic sorting of file and folder names in the Explorer.
+	//  - default: Uppercase and lowercase names are mixed together.
+	//  - upper: Uppercase names are grouped together before lowercase names.
+	//  - lower: Lowercase names are grouped together before uppercase names.
+	//  - unicode: Names are sorted in Unicode order.
+	"explorer.sortOrderLexicographicOptions": "default",
+
+	// Controls whether the file and folder sort order, should be reversed.
+	"explorer.sortOrderReverse": false,
+
+	// Search
+	// Controls the positioning of the actionbar on rows in the Search view.
+	//  - auto: Position the actionbar to the right when the Search view is narrow, and immediately after the content when the Search view is wide.
+	//  - right: Always position the actionbar to the right.
+	"search.actionsPosition": "right",
+
+	// Controls whether the search results will be collapsed or expanded.
+	//  - auto: Files with less than 10 results are expanded. Others are collapsed.
+	//  - alwaysCollapse
+	//  - alwaysExpand
+	"search.collapseResults": "alwaysExpand",
+
+	// Controls whether search file decorations should use badges.
+	"search.decorations.badges": true,
+
+	// Controls whether search file decorations should use colors.
+	"search.decorations.colors": true,
+
+	// Controls the default search result view mode.
+	//  - tree: Shows search results as a tree.
+	//  - list: Shows search results as a list.
+	"search.defaultViewMode": "list",
+
+	// Configure [glob patterns](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options) for excluding files and folders in fulltext searches and file search in quick open. To exclude files from the recently opened list in quick open, patterns must be absolute (for example `**/node_modules/**`). Inherits all glob patterns from the `files.exclude` setting.
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/bower_components": true,
+		"**/*.code-search": true,
+		"**/.ruby-lsp": true
+	},
+
+	// Show notebook editor rich content results for closed notebooks. Please refresh your search results after changing this setting.
+	"search.experimental.closedNotebookRichContentResults": false,
+
+	// Controls whether to follow symlinks while searching.
+	"search.followSymlinks": true,
+
+	// Controls whether the Search view should read or modify the shared find clipboard on macOS.
+	"search.globalFindClipboard": false,
+
+	// This setting is deprecated. You can drag the search icon to a new location instead.
+	// Controls whether the search will be shown as a view in the sidebar or as a panel in the panel area for more horizontal space.
+	"search.location": "sidebar",
+
+	// The search cache is kept in the extension host which never shuts down, so this setting is no longer needed.
+	// When enabled, the searchService process will be kept alive instead of being shut down after an hour of inactivity. This will keep the file search cache in memory.
+	"search.maintainFileSearchCache": false,
+
+	// Controls the maximum number of search results, this can be set to `null` (empty) to return unlimited results.
+	"search.maxResults": 20000,
+
+	// Controls where new `Search: Find in Files` and `Find in Folder` operations occur: either in the Search view, or in a search editor.
+	//  - view: Search in the Search view, either in the panel or side bars.
+	//  - reuseEditor: Search in an existing search editor if present, otherwise in a new search editor.
+	//  - newEditor: Search in a new search editor.
+	"search.mode": "view",
+
+	// Controls whether the last typed input to Quick Search should be restored when opening it the next time.
+	"search.quickAccess.preserveInput": false,
+
+	// Controls sorting order of editor history in quick open when filtering.
+	//  - default: History entries are sorted by relevance based on the filter value used. More relevant entries appear first.
+	//  - recency: History entries are sorted by recency. More recently opened entries appear first.
+	"search.quickOpen.history.filterSortOrder": "default",
+
+	// Whether to include results from recently opened files in the file results for Quick Open.
+	"search.quickOpen.includeHistory": true,
+
+	// Whether to include results from a global symbol search in the file results for Quick Open.
+	"search.quickOpen.includeSymbols": false,
+
+	// Number of threads to use for searching. When set to 0, the engine automatically determines this value.
+	"search.ripgrep.maxThreads": 0,
+
+	// The default number of surrounding context lines to use when creating new Search Editors. If using `search.searchEditor.reusePriorSearchConfiguration`, this can be set to `null` (empty) to use the prior Search Editor's configuration.
+	"search.searchEditor.defaultNumberOfContextLines": 1,
+
+	// Configure effect of double-clicking a result in a search editor.
+	//  - selectWord: Double-clicking selects the word under the cursor.
+	//  - goToLocation: Double-clicking opens the result in the active editor group.
+	//  - openLocationToSide: Double-clicking opens the result in the editor group to the side, creating one if it does not yet exist.
+	"search.searchEditor.doubleClickBehaviour": "goToLocation",
+
+	// When a search is triggered, focus the Search Editor results instead of the Search Editor input.
+	"search.searchEditor.focusResultsOnSearch": false,
+
+	// When enabled, new Search Editors will reuse the includes, excludes, and flags of the previously opened Search Editor.
+	"search.searchEditor.reusePriorSearchConfiguration": false,
+
+	// Configure effect of single-clicking a result in a search editor.
+	//  - default: Single-clicking does nothing.
+	//  - peekDefinition: Single-clicking opens a Peek Definition window.
+	"search.searchEditor.singleClickBehaviour": "default",
+
+	// Search all files as you type.
+	"search.searchOnType": true,
+
+	// When `search.searchOnType#` is enabled, controls the timeout in milliseconds between a character being typed and the search starting. Has no effect when `#search.searchOnType` is disabled.
+	"search.searchOnTypeDebouncePeriod": 300,
+
+	// Enable keyword suggestions in the Search view.
+	"search.searchView.keywordSuggestions": false,
+
+	// Controls the behavior of the semantic search results displayed in the Search view.
+	//  - manual: Only request semantic search results manually.
+	//  - runOnEmpty: Request semantic results automatically only when text search results are empty.
+	//  - auto: Request semantic results automatically with every search.
+	"search.searchView.semanticSearchBehavior": "manual",
+
+	// Update the search query to the editor's selected text when focusing the Search view. This happens either on click or when triggering the `workbench.views.search.focus` command.
+	"search.seedOnFocus": false,
+
+	// Enable seeding search from the word nearest the cursor when the active editor has no selection.
+	"search.seedWithNearestWord": false,
+
+	// Controls whether to show line numbers for search results.
+	"search.showLineNumbers": false,
+
+	// Search case-insensitively if the pattern is all lowercase, otherwise, search case-sensitively.
+	"search.smartCase": false,
+
+	// Controls sorting order of search results.
+	//  - default: Results are sorted by folder and file names, in alphabetical order.
+	//  - fileNames: Results are sorted by file names ignoring folder order, in alphabetical order.
+	//  - type: Results are sorted by file extensions, in alphabetical order.
+	//  - modified: Results are sorted by file last modified date, in descending order.
+	//  - countDescending: Results are sorted by count per file, in descending order.
+	//  - countAscending: Results are sorted by count per file, in ascending order.
+	"search.sortOrder": "default",
+
+	// Controls whether to use your global gitignore file (for example, from `$HOME/.config/git/ignore`) when searching for files. Requires `search.useIgnoreFiles` to be enabled.
+	"search.useGlobalIgnoreFiles": false,
+
+	// Controls whether to use `.gitignore` and `.ignore` files when searching for files.
+	"search.useIgnoreFiles": true,
+
+	// Controls whether to use `.gitignore` and `.ignore` files in parent directories when searching for files. Requires `search.useIgnoreFiles` to be enabled.
+	"search.useParentIgnoreFiles": false,
+
+	// Deprecated. PCRE2 will be used automatically when using regex features that are only supported by PCRE2.
+	// Whether to use the PCRE2 regex engine in text search. This enables using some advanced regex features like lookahead and backreferences. However, not all PCRE2 features are supported - only features that are also supported by JavaScript.
+	"search.usePCRE2": false,
+
+	// Controls whether to open Replace Preview when selecting or replacing a match.
+	"search.useReplacePreview": true,
+
+	// Deprecated. Consider "search.usePCRE2" for advanced regex feature support.
+	// This setting is deprecated and now falls back on "search.usePCRE2".
+	"search.useRipgrep": true,
+
+	// HTTP
+	// Controls whether use of Electron's fetch implementation instead of Node.js' should be enabled. All local extensions will get Electron's fetch implementation for the global fetch API.
+	"http.electronFetch": false,
+
+	// Controls the interval in seconds for checking network interface changes to invalidate the proxy cache. Set to -1 to disable. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.experimental.networkInterfaceCheckInterval": 300,
+
+	// Controls whether experimental loading of CA certificates from the OS should be enabled. This uses a more general approach than the default implementation. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.experimental.systemCertificatesV2": false,
+
+	// Controls whether Node.js' fetch implementation should be extended with additional support. Currently proxy support (`http.proxySupport#`) and system certificates (`#http.systemCertificates#`) are added when the corresponding settings are enabled. When during [remote development](https://aka.ms/vscode-remote) the `#http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.fetchAdditionalSupport": true,
+
+	// Specifies domain names for which proxy settings should be ignored for HTTP/HTTPS requests. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.noProxy": [],
+
+	// The proxy setting to use. If not set, will be inherited from the `http_proxy` and `https_proxy` environment variables. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.proxy": "",
+
+	// The value to send as the `Proxy-Authorization` header for every network request. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.proxyAuthorization": null,
+
+	// Overrides the principal service name for Kerberos authentication with the HTTP proxy. A default based on the proxy hostname is used when this is not set. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.proxyKerberosServicePrincipal": "",
+
+	// Controls whether the proxy server certificate should be verified against the list of supplied CAs. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.proxyStrictSSL": true,
+
+	// Use the proxy support for extensions. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	//  - off: Disable proxy support for extensions.
+	//  - on: Enable proxy support for extensions.
+	//  - fallback: Enable proxy support for extensions, fall back to request options, when no proxy found.
+	//  - override: Enable proxy support for extensions, override request options.
+	"http.proxySupport": "override",
+
+	// Controls whether CA certificates should be loaded from the OS. On Windows and macOS, a reload of the window is required after turning this off. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.systemCertificates": true,
+
+	// Controls whether system certificates should be loaded using Node.js built-in support. Reload the window after changing this setting. When during [remote development](https://aka.ms/vscode-remote) the `http.useLocalProxyConfiguration` setting is disabled this setting can be configured in the local and the remote settings separately.
+	"http.systemCertificatesNode": false,
+
+	// Controls whether in the remote extension host the local proxy configuration should be used. This setting only applies as a remote setting during [remote development](https://aka.ms/vscode-remote).
+	"http.useLocalProxyConfiguration": true,
+
+	// Keyboard
+	// Controls the dispatching logic for key presses to use either `code` (recommended) or `keyCode`.
+	"keyboard.dispatch": "code",
+
+	// Enables the macOS touchbar buttons on the keyboard if available.
+	"keyboard.touchbar.enabled": true,
+
+	// A set of identifiers for entries in the touchbar that should not show up (for example `workbench.action.navigateBack`).
+	"keyboard.touchbar.ignored": [],
+
+	// Update
+	// This setting is deprecated, please use 'update.mode' instead.
+	// Configure whether you receive automatic updates. Requires a restart after change. The updates are fetched from a Antigravity online service.
+	"update.channel": "default",
+
+	// Configure whether you receive automatic updates. Requires a restart after change. The updates are fetched from a Antigravity online service.
+	//  - none: Disable updates.
+	//  - manual: Disable automatic background update checks. Updates will be available if you manually check for updates.
+	//  - start: Check for updates only on startup. Disable automatic background update checks.
+	//  - default: Enable automatic update checks. Code will check for updates automatically and periodically.
+	"update.mode": "default",
+
+	// Agent Window
+	// When enabled, will open a special window on startup which is a special, non-code-editor window for interfacing with Antigravity's agent-first experience.
+	"antigravity.enableAgentMode": true,
+
+	// Comments
+	// Controls whether the comment thread should collapse when the thread is resolved.
+	"comments.collapseOnResolve": true,
+
+	// Controls whether the comments widget scrolls or expands.
+	"comments.maxHeight": true,
+
+	// This setting is deprecated in favor of `comments.openView`.
+	// Controls when the comments panel should open.
+	"comments.openPanel": "openOnSessionStartWithComments",
+
+	// Controls when the comments view should open.
+	//  - never: The comments view will never be opened.
+	//  - file: The comments view will open when a file with comments is active.
+	//  - firstFile: If the comments view has not been opened yet during this session it will open the first time during a session that a file with comments is active.
+	//  - firstFileUnresolved: If the comments view has not been opened yet during this session and the comment is not resolved, it will open the first time during a session that a file with comments is active.
+	"comments.openView": "firstFile",
+
+	// Controls whether a confirmation dialog is shown when collapsing a comment thread.
+	//  - whenHasUnsubmittedComments: Show a confirmation dialog when collapsing a comment thread with unsubmitted comments.
+	//  - never: Never show a confirmation dialog when collapsing a comment thread.
+	"comments.thread.confirmOnCollapse": "whenHasUnsubmittedComments",
+
+	// Determines if relative time will be used in comment timestamps (ex. '1 day ago').
+	"comments.useRelativeTime": true,
+
+	// Controls the visibility of the comments bar and comment threads in editors that have commenting ranges and comments. Comments are still accessible via the Comments view and will cause commenting to be toggled on in the same way running the command "Comments: Toggle Editor Commenting" toggles comments.
+	"comments.visible": true,
+
+	// Debug
+	// Allow setting breakpoints in any file.
+	"debug.allowBreakpointsEverywhere": false,
+
+	// Controls whether variables that are lazily resolved, such as getters, are automatically resolved and expanded by the debugger.
+	//  - auto: When in screen reader optimized mode, automatically expand lazy variables.
+	//  - on: Always automatically expand lazy variables.
+	//  - off: Never automatically expand lazy variables.
+	"debug.autoExpandLazyVariables": "auto",
+
+	// At the end of a debug session, all the read-only tabs associated with that session will be closed
+	"debug.closeReadonlyTabsOnEnd": false,
+
+	// Controls whether to confirm when the window closes if there are active debug sessions.
+	//  - never: Never confirm.
+	//  - always: Always confirm if there are debug sessions.
+	"debug.confirmOnExit": "never",
+
+	// Controls whether suggestions should be accepted on Enter in the Debug Console. Enter is also used to evaluate whatever is typed in the Debug Console.
+	"debug.console.acceptSuggestionOnEnter": "off",
+
+	// Controls if the Debug Console should be automatically closed when the debug session ends.
+	"debug.console.closeOnEnd": false,
+
+	// Controls if the Debug Console should collapse identical lines and show a number of occurrences with a badge.
+	"debug.console.collapseIdenticalLines": true,
+
+	// Controls the font family in the Debug Console.
+	"debug.console.fontFamily": "default",
+
+	// Controls the font size in pixels in the Debug Console.
+	"debug.console.fontSize": 12,
+
+	// Controls if the Debug Console should suggest previously typed input.
+	"debug.console.historySuggestions": true,
+
+	// Controls the line height in pixels in the Debug Console. Use 0 to compute the line height from the font size.
+	"debug.console.lineHeight": 0,
+
+	// Controls the maximum number of lines in the Debug Console.
+	"debug.console.maximumLines": 10000,
+
+	// Controls if the lines should wrap in the Debug Console.
+	"debug.console.wordWrap": true,
+
+	// Show Source Code in Disassembly View.
+	"debug.disassemblyView.showSourceCode": true,
+
+	// Color of the status bar when the debugger is active.
+	"debug.enableStatusBarColor": true,
+
+	// Controls whether the editor should be focused when the debugger breaks.
+	"debug.focusEditorOnBreak": true,
+
+	// Controls whether the workbench window should be focused when the debugger breaks.
+	"debug.focusWindowOnBreak": true,
+
+	// Controls the action to perform when clicking the editor gutter with the middle mouse button.
+	//  - logpoint: Add Logpoint.
+	//  - conditionalBreakpoint: Add Conditional Breakpoint.
+	//  - triggeredBreakpoint: Add Triggered Breakpoint.
+	//  - none: Don't perform any action.
+	"debug.gutterMiddleClickAction": "logpoint",
+
+	// Hide 'Start Debugging' control in title bar of 'Run and Debug' view while debugging is active. Only relevant when `debug.toolBarLocation` is not `docked`.
+	"debug.hideLauncherWhileDebugging": false,
+
+	// Hide the warning shown when a `preLaunchTask` has been running for a while.
+	"debug.hideSlowPreLaunchWarning": false,
+
+	// Show variable values inline in editor while debugging.
+	//  - on: Always show variable values inline in editor while debugging.
+	//  - off: Never show variable values inline in editor while debugging.
+	//  - auto: Show variable values inline in editor while debugging when the language supports inline value locations.
+	"debug.inlineValues": "auto",
+
+	// Controls when the internal Debug Console should open.
+	"debug.internalConsoleOptions": "openOnFirstSessionStart",
+
+	// Controls what to do when errors are encountered after running a preLaunchTask.
+	//  - debugAnyway: Ignore task errors and start debugging.
+	//  - showErrors: Show the Problems view and do not start debugging.
+	//  - prompt: Prompt user.
+	//  - abort: Cancel debugging.
+	"debug.onTaskErrors": "prompt",
+
+	// Controls when the debug view should open.
+	"debug.openDebug": "openOnDebugBreak",
+
+	// Automatically open the explorer view at the end of a debug session.
+	"debug.openExplorerOnEnd": false,
+
+	// Controls what editors to save before starting a debug session.
+	//  - allEditorsInActiveGroup: Save all editors in the active group before starting a debug session.
+	//  - nonUntitledEditorsInActiveGroup: Save all editors in the active group except untitled ones before starting a debug session.
+	//  - none: Don't save any editors before starting a debug session.
+	"debug.saveBeforeStart": "allEditorsInActiveGroup",
+
+	// Controls whether breakpoints should be shown in the overview ruler.
+	"debug.showBreakpointsInOverviewRuler": false,
+
+	// Controls whether inline breakpoints candidate decorations should be shown in the editor while debugging.
+	"debug.showInlineBreakpointCandidates": true,
+
+	// Controls when the debug status bar item should be visible.
+	//  - never: Never show debug item in status bar
+	//  - always: Always show debug item in status bar
+	//  - onFirstSessionStart: Show debug item in status bar only after debug was started for the first time
+	"debug.showInStatusBar": "onFirstSessionStart",
+
+	// Controls whether the debug sub-sessions are shown in the debug tool bar. When this setting is false the stop command on a sub-session will also stop the parent session.
+	"debug.showSubSessionsInToolBar": false,
+
+	// Show variable type in variable pane during debug session
+	"debug.showVariableTypes": false,
+
+	// Before starting a new debug session in an integrated or external terminal, clear the terminal.
+	"debug.terminal.clearBeforeReusing": false,
+
+	// Controls the location of the debug toolbar. Either `floating` in all views, `docked` in the debug view, `commandCenter` (requires `window.commandCenter`), or `hidden`.
+	//  - floating: Show debug toolbar in all views.
+	//  - docked: Show debug toolbar only in debug views.
+	//  - commandCenter: `(Experimental)` Show debug toolbar in the command center.
+	//  - hidden: Do not show debug toolbar.
+	"debug.toolBarLocation": "floating",
+
+	// Global debug launch configuration. Should be used as an alternative to 'launch.json' that is shared across workspaces.
+	"launch": {
+		"configurations": [],
+		"compounds": []
+	},
+
+	// HTML
+	// Enable/disable autoclosing of HTML tags.
+	"html.autoClosingTags": true,
+
+	// Enable/disable auto creation of quotes for HTML attribute assignment. The type of quotes can be configured by `html.completion.attributeDefaultValue`.
+	"html.autoCreateQuotes": true,
+
+	// Controls the default value for attributes when completion is accepted.
+	//  - doublequotes: Attribute value is set to "".
+	//  - singlequotes: Attribute value is set to ''.
+	//  - empty: Attribute value is not set.
+	"html.completion.attributeDefaultValue": "doublequotes",
+
+	// A list of relative file paths pointing to JSON files following the [custom data format](https://github.com/microsoft/vscode-html-languageservice/blob/master/docs/customData.md).
+	// 
+	// The IDE loads custom data on startup to enhance its HTML support for the custom HTML tags, attributes and attribute values you specify in the JSON files.
+	// 
+	// The file paths are relative to workspace and only workspace folder settings are considered.
+	"html.customData": [],
+
+	// List of tags, comma separated, where the content shouldn't be reformatted. `null` defaults to the `pre` tag.
+	"html.format.contentUnformatted": "pre,code,textarea",
+
+	// Enable/disable default HTML formatter.
+	"html.format.enable": true,
+
+	// List of tags, comma separated, that should have an extra newline before them. `null` defaults to `"head, body, /html"`.
+	"html.format.extraLiners": "head, body, /html",
+
+	// Format and indent `{{#foo}}` and `{{/foo}}`.
+	"html.format.indentHandlebars": false,
+
+	// Indent `<head>` and `<body>` sections.
+	"html.format.indentInnerHtml": false,
+
+	// Maximum number of line breaks to be preserved in one chunk. Use `null` for unlimited.
+	"html.format.maxPreserveNewLines": null,
+
+	// Controls whether existing line breaks before elements should be preserved. Only works before elements, not inside tags or for text.
+	"html.format.preserveNewLines": true,
+
+	// Honor django, erb, handlebars and php templating language tags.
+	"html.format.templating": false,
+
+	// List of tags, comma separated, that shouldn't be reformatted. `null` defaults to all tags listed at https://www.w3.org/TR/html5/dom.html#phrasing-content.
+	"html.format.unformatted": "wbr",
+
+	// Keep text content together between this string.
+	"html.format.unformattedContentDelimiter": "",
+
+	// Wrap attributes.
+	//  - auto: Wrap attributes only when line length is exceeded.
+	//  - force: Wrap each attribute except first.
+	//  - force-aligned: Wrap each attribute except first and keep aligned.
+	//  - force-expand-multiline: Wrap each attribute.
+	//  - aligned-multiple: Wrap when line length is exceeded, align attributes vertically.
+	//  - preserve: Preserve wrapping of attributes.
+	//  - preserve-aligned: Preserve wrapping of attributes but align.
+	"html.format.wrapAttributes": "auto",
+
+	// Indent wrapped attributes to after N characters. Use `null` to use the default indent size. Ignored if `html.format.wrapAttributes` is set to `aligned`.
+	"html.format.wrapAttributesIndentSize": null,
+
+	// Maximum amount of characters per line (0 = disable).
+	"html.format.wrapLineLength": 120,
+
+	// Show tag and attribute documentation in hover.
+	"html.hover.documentation": true,
+
+	// Show references to MDN in hover.
+	"html.hover.references": true,
+
+	// Deprecated in favor of `editor.linkedEditing`
+	// Enable/disable mirroring cursor on matching HTML tag.
+	"html.mirrorCursorOnMatchingTag": false,
+
+	// Controls whether the built-in HTML language support suggests closing tags. When disabled, end tag completions like `</div>` will not be shown.
+	"html.suggest.hideEndTagSuggestions": false,
+
+	// Controls whether the built-in HTML language support suggests HTML5 tags, properties and values.
+	"html.suggest.html5": true,
+
+	// Traces the communication between the IDE and the HTML language server.
+	"html.trace.server": "off",
+
+	// Controls whether the built-in HTML language support validates embedded scripts.
+	"html.validate.scripts": true,
+
+	// Controls whether the built-in HTML language support validates embedded styles.
+	"html.validate.styles": true,
+
+	// JSON
+	// The setting `json.colorDecorators.enable` has been deprecated in favor of `editor.colorDecorators`.
+	// Enables or disables color decorators
+	"json.colorDecorators.enable": true,
+
+	// Enable/disable default JSON formatter
+	"json.format.enable": true,
+
+	// Keep all existing new lines when formatting.
+	"json.format.keepLines": false,
+
+	// The maximum number of outline symbols and folding regions computed (limited for performance reasons).
+	"json.maxItemsComputed": 5000,
+
+	// When enabled, JSON schemas can be fetched from http and https locations.
+	"json.schemaDownload.enable": true,
+
+	// Associate schemas to JSON files in the current project.
+	"json.schemas": [],
+
+	// Traces the communication between the IDE and the JSON language server.
+	"json.trace.server": "off",
+
+	// Enable/disable JSON validation.
+	"json.validate.enable": true,
+
+	// Markdown
+	// Configures the path and file name of files created by copy/paste or drag and drop. This is a map of globs that match against a Markdown document path to the destination path where the new file should be created.
+	// 
+	// The destination path may use the following variables:
+	// 
+	// - `${documentDirName}` — Absolute parent directory path of the Markdown document, e.g. `/Users/me/myProject/docs`.
+	// - `${documentRelativeDirName}` — Relative parent directory path of the Markdown document, e.g. `docs`. This is the same as `${documentDirName}` if the file is not part of a workspace.
+	// - `${documentFileName}` — The full filename of the Markdown document, e.g. `README.md`.
+	// - `${documentBaseName}` — The basename of the Markdown document, e.g. `README`.
+	// - `${documentExtName}` — The extension of the Markdown document, e.g. `md`.
+	// - `${documentFilePath}` — Absolute path of the Markdown document, e.g. `/Users/me/myProject/docs/README.md`.
+	// - `${documentRelativeFilePath}` — Relative path of the Markdown document, e.g. `docs/README.md`. This is the same as `${documentFilePath}` if the file is not part of a workspace.
+	// - `${documentWorkspaceFolder}` — The workspace folder for the Markdown document, e.g. `/Users/me/myProject`. This is the same as `${documentDirName}` if the file is not part of a workspace.
+	// - `${fileName}` — The file name of the dropped file, e.g. `image.png`.
+	// - `${fileExtName}` — The extension of the dropped file, e.g. `png`.
+	// - `${unixTime}` — The current Unix timestamp in milliseconds.
+	// - `${isoTime}` — The current time in ISO 8601 format, e.g. '2025-06-06T08:40:32.123Z'.
+	"markdown.copyFiles.destination": {},
+
+	// Controls if files created by drop or paste should overwrite existing files.
+	//  - nameIncrementally: If a file with the same name already exists, append a number to the file name, for example: `image.png` becomes `image-1.png`.
+	//  - overwrite: If a file with the same name already exists, overwrite it.
+	"markdown.copyFiles.overwriteBehavior": "nameIncrementally",
+
+	// Controls if files outside of the workspace that are dropped into a Markdown editor should be copied into the workspace.
+	// 
+	// Use `markdown.copyFiles.destination` to configure where copied dropped files should be created
+	//  - mediaFiles: Try to copy external image and video files into the workspace.
+	//  - never: Do not copy external files into the workspace.
+	"markdown.editor.drop.copyIntoWorkspace": "mediaFiles",
+
+	// Enable dropping files into a Markdown editor while holding Shift. Requires enabling `editor.dropIntoEditor.enabled`.
+	//  - always: Always insert Markdown links.
+	//  - smart: Smartly create Markdown links by default when not dropping into a code block or other special element. Use the drop widget to switch between pasting as plain text or as Markdown links.
+	//  - never: Never create Markdown links.
+	"markdown.editor.drop.enabled": "smart",
+
+	// Snippet used when adding audio to Markdown. This snippet can use the following variables:
+	// - `${src}` — The resolved path of the audio  file.
+	// - `${title}` — The title used for the audio. A snippet placeholder will automatically be created for this variable.
+	"markdown.editor.filePaste.audioSnippet": "<audio controls src=\"${src}\" title=\"${title}\"></audio>",
+
+	// Controls if files outside of the workspace that are pasted into a Markdown editor should be copied into the workspace.
+	// 
+	// Use `markdown.copyFiles.destination` to configure where copied files should be created.
+	//  - mediaFiles: Try to copy external image and video files into the workspace.
+	//  - never: Do not copy external files into the workspace.
+	"markdown.editor.filePaste.copyIntoWorkspace": "mediaFiles",
+
+	// Enable pasting files into a Markdown editor to create Markdown links. Requires enabling `editor.pasteAs.enabled`.
+	//  - always: Always insert Markdown links.
+	//  - smart: Smartly create Markdown links by default when not pasting into a code block or other special element. Use the paste widget to switch between pasting as plain text or as Markdown links.
+	//  - never: Never create Markdown links.
+	"markdown.editor.filePaste.enabled": "smart",
+
+	// Snippet used when adding videos to Markdown. This snippet can use the following variables:
+	// - `${src}` — The resolved path of the video file.
+	// - `${title}` — The title used for the video. A snippet placeholder will automatically be created for this variable.
+	"markdown.editor.filePaste.videoSnippet": "<video controls src=\"${src}\" title=\"${title}\"></video>",
+
+	// Controls if Markdown links are created when URLs are pasted into a Markdown editor. Requires enabling `editor.pasteAs.enabled`.
+	//  - always: Always insert Markdown links.
+	//  - smart: Smartly create Markdown links by default when not pasting into a code block or other special element. Use the paste widget to switch between pasting as plain text or as Markdown links.
+	//  - smartWithSelection: Smartly create Markdown links by default when you have selected text and are not pasting into a code block or other special element. Use the paste widget to switch between pasting as plain text or as Markdown links.
+	//  - never: Never create Markdown links.
+	"markdown.editor.pasteUrlAsFormattedLink.enabled": "smartWithSelection",
+
+	// Enable/disable a paste option that updates links and reference in text that is copied and pasted between Markdown editors.
+	// 
+	// To use this feature, after pasting text that contains updatable links, just click on the Paste Widget and select `Paste and update pasted links`.
+	"markdown.editor.updateLinksOnPaste.enabled": true,
+
+	// Controls where links in Markdown files should be opened.
+	//  - currentGroup: Open links in the active editor group.
+	//  - beside: Open links beside the active editor.

@@ -1,0 +1,1000 @@
+	//  - legacy: Uses the legacy diffing algorithm.
+	//  - advanced: Uses the advanced diffing algorithm.
+	"mergeEditor.diffAlgorithm": "advanced",
+
+	// Controls if deletions in base or one of the inputs should be indicated by a vertical bar.
+	"mergeEditor.showDeletionMarkers": true,
+
+	// Enable experimental multi diff editor.
+	"multiDiffEditor.experimental.enabled": true,
+
+	// Remote
+	// When enabled, new running processes are detected and ports that they listen on are automatically forwarded. Disabling this setting will not prevent all ports from being forwarded. Even when disabled, extensions will still be able to cause ports to be forwarded, and opening some URLs will still cause ports to forwarded. Also see `remote.autoForwardPortsSource`.
+	"remote.autoForwardPorts": true,
+
+	// The number of auto forwarded ports that will trigger the switch from `process` to `hybrid` when automatically forwarding ports and `remote.autoForwardPortsSource` is set to `process` by default. Set to `0` to disable the fallback. When `remote.autoForwardPortsFallback` hasn't been configured, but `remote.autoForwardPortsSource` has, `remote.autoForwardPortsFallback` will be treated as though it's set to `0`.
+	"remote.autoForwardPortsFallback": 20,
+
+	// Sets the source from which ports are automatically forwarded when `remote.autoForwardPorts#` is true. When `#remote.autoForwardPorts#` is false, `#remote.autoForwardPortsSource` will be used to find information about ports that have already been forwarded. On Windows and macOS remotes, the `process` and `hybrid` options have no effect and `output` will be used.
+	//  - process: Ports will be automatically forwarded when discovered by watching for processes that are started and include a port.
+	//  - output: Ports will be automatically forwarded when discovered by reading terminal and debug output. Not all processes that use ports will print to the integrated terminal or debug console, so some ports will be missed. Ports forwarded based on output will not be "un-forwarded" until reload or until the port is closed by the user in the Ports view.
+	//  - hybrid: Ports will be automatically forwarded when discovered by reading terminal and debug output. Not all processes that use ports will print to the integrated terminal or debug console, so some ports will be missed. Ports will be "un-forwarded" by watching for processes that listen on that port to be terminated.
+	"remote.autoForwardPortsSource": "process",
+
+	// List of extensions to install upon connection to a remote when already installed locally.
+	"remote.defaultExtensionsIfInstalledLocally": [],
+
+	// When enabled extensions are downloaded locally and installed on remote.
+	"remote.downloadExtensionsLocally": false,
+
+	// Override the kind of an extension. `ui` extensions are installed and run on the local machine while `workspace` extensions are run on the remote. By overriding an extension's default kind using this setting, you specify if that extension should be installed and enabled locally or remotely.
+	"remote.extensionKind": {
+		"pub.name": [
+			"ui"
+		]
+	},
+
+	// Controls whether local URLs with a port will be forwarded when opened from the terminal and the debug console.
+	"remote.forwardOnOpen": true,
+
+	// Specifies the local host name that will be used for port forwarding.
+	"remote.localPortHost": "localhost",
+
+	// Set default properties that are applied to all ports that don't get properties from the setting `remote.portsAttributes`. For example:
+	// 
+	// ```
+	// {
+	//   "onAutoForward": "ignore"
+	// }
+	// ```
+	"remote.otherPortsAttributes": {},
+
+	// Set properties that are applied when a specific port number is forwarded. For example:
+	// 
+	// ```
+	// "3000": {
+	//   "label": "Application"
+	// },
+	// "40000-55000": {
+	//   "onAutoForward": "ignore"
+	// },
+	// ".+\\/server.js": {
+	//  "onAutoForward": "openPreview"
+	// }
+	// ```
+	"remote.portsAttributes": {
+		"443": {
+			"protocol": "https"
+		},
+		"8443": {
+			"protocol": "https"
+		}
+	},
+
+	// Restores the ports you forwarded in a workspace.
+	"remote.restoreForwardedPorts": true,
+
+	// Accessibility
+	// On keypress, close the Accessible View and focus the element from which it was invoked.
+	"accessibility.accessibleView.closeOnKeyPress": true,
+
+	// Controls whether variable changes should be announced in the debug watch view.
+	"accessibility.debugWatchVariableAnnouncements": true,
+
+	// Controls whether files should be opened when the chat agent has applied edits to them.
+	"accessibility.openChatEditedFiles": false,
+
+	// Control whether focus should automatically be sent to the REPL when code is executed.
+	"accessibility.replEditor.autoFocusReplExecution": "input",
+
+	// Controls whether the output from an execution in the native REPL will be announced.
+	"accessibility.replEditor.readLastExecutionOutput": true,
+
+	// Whether or not position changes should be debounced
+	"accessibility.signalOptions.debouncePositionChanges": false,
+
+	// 
+	"accessibility.signalOptions.experimental.delays.errorAtPosition": {},
+
+	// Delays for all signals besides error and warning at position
+	"accessibility.signalOptions.experimental.delays.general": {},
+
+	// 
+	"accessibility.signalOptions.experimental.delays.warningAtPosition": {},
+
+	// The volume of the sounds in percent (0-100).
+	"accessibility.signalOptions.volume": 70,
+
+	// Plays a sound / audio cue when revealing a file with changes from chat edits
+	"accessibility.signals.chatEditModifiedFile": {
+		"sound": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a chat request is made.
+	"accessibility.signals.chatRequestSent": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a sound / audio cue when the response has been received.
+	"accessibility.signals.chatResponseReceived": {
+		"sound": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when user action is required in the chat.
+	"accessibility.signals.chatUserActionRequired": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a feature is cleared (for example, the terminal, Debug Console, or Output channel).
+	"accessibility.signals.clear": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a sound / audio cue when the code action has been applied.
+	"accessibility.signals.codeActionApplied": {
+		"sound": "auto"
+	},
+
+	// Plays a sound / audio cue - when a code action has been triggered.
+	"accessibility.signals.codeActionTriggered": {
+		"sound": "auto"
+	},
+
+	// Plays a sound / audio cue when the focus moves to an deleted line in Accessible Diff Viewer mode or to the next/previous change.
+	"accessibility.signals.diffLineDeleted": {
+		"sound": "auto"
+	},
+
+	// Plays a sound / audio cue when the focus moves to an inserted line in Accessible Diff Viewer mode or to the next/previous change.
+	"accessibility.signals.diffLineInserted": {
+		"sound": "auto"
+	},
+
+	// Plays a sound / audio cue when the focus moves to an modified line in Accessible Diff Viewer mode or to the next/previous change.
+	"accessibility.signals.diffLineModified": {
+		"sound": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when edits are kept.
+	"accessibility.signals.editsKept": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when edits have been undone.
+	"accessibility.signals.editsUndone": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a file or notebook is formatted.
+	"accessibility.signals.format": {
+		"sound": "never",
+		"announcement": "never"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when the active line has a breakpoint.
+	"accessibility.signals.lineHasBreakpoint": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when the active line has an error.
+	"accessibility.signals.lineHasError": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - the active line has a folded area that can be unfolded.
+	"accessibility.signals.lineHasFoldedArea": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a sound / audio cue when the active line has an inline suggestion.
+	"accessibility.signals.lineHasInlineSuggestion": {
+		"sound": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when the active line has a warning.
+	"accessibility.signals.lineHasWarning": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound / audio cue and/or announcement (alert) when there is a next edit suggestion.
+	"accessibility.signals.nextEditSuggestion": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when trying to read a line with inlay hints that has no inlay hints.
+	"accessibility.signals.noInlayHints": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a notebook cell execution is successfully completed.
+	"accessibility.signals.notebookCellCompleted": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a notebook cell execution fails.
+	"accessibility.signals.notebookCellFailed": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when the debugger stopped on a breakpoint.
+	"accessibility.signals.onDebugBreak": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when the active line has a warning.
+	"accessibility.signals.positionHasError": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when the active line has a warning.
+	"accessibility.signals.positionHasWarning": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - on loop while progress is occurring.
+	"accessibility.signals.progress": {
+		"sound": "auto",
+		"announcement": "off"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a file is saved.
+	"accessibility.signals.save": {
+		"sound": "never",
+		"announcement": "never"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a task is completed.
+	"accessibility.signals.taskCompleted": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a task fails (non-zero exit code).
+	"accessibility.signals.taskFailed": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when the terminal bell is ringing.
+	"accessibility.signals.terminalBell": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a terminal command fails (non-zero exit code) or when a command with such an exit code is navigated to in the accessible view.
+	"accessibility.signals.terminalCommandFailed": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when a terminal command succeeds (zero exit code) or when a command with such an exit code is navigated to in the accessible view.
+	"accessibility.signals.terminalCommandSucceeded": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a signal - sound (audio cue) and/or announcement (alert) - when terminal Quick Fixes are available.
+	"accessibility.signals.terminalQuickFix": {
+		"sound": "auto",
+		"announcement": "auto"
+	},
+
+	// Plays a sound / audio cue when the voice recording has started.
+	"accessibility.signals.voiceRecordingStarted": {
+		"sound": "on"
+	},
+
+	// Plays a sound / audio cue when the voice recording has stopped.
+	"accessibility.signals.voiceRecordingStopped": {
+		"sound": "auto"
+	},
+
+	// Controls whether links should be underlined in the workbench.
+	"accessibility.underlineLinks": false,
+
+	// Controls whether verbose progress announcements should be made when a chat request is in progress, including information like searched text for <search term> with X results, created file <file_name>, or read file <file path>.
+	"accessibility.verboseChatProgressUpdates": true,
+
+	// Provide information about actions that can be taken in the comment widget or in a file which contains comments.
+	"accessibility.verbosity.comments": true,
+
+	// Provide information about how to access the debug console accessibility help dialog when the debug console or run and debug viewlet is focused. Note that a reload of the window is required for this to take effect.
+	"accessibility.verbosity.debug": true,
+
+	// Provide information about how to navigate changes in the diff editor when it is focused.
+	"accessibility.verbosity.diffEditor": true,
+
+	// Indicate when a diff editor becomes the active editor.
+	"accessibility.verbosity.diffEditorActive": true,
+
+	// Provide information about relevant actions in an empty text editor.
+	"accessibility.verbosity.emptyEditorHint": true,
+
+	// Provide information about how to open the hover in an Accessible View.
+	"accessibility.verbosity.hover": true,
+
+	// Provide information about how to access the inline editor chat accessibility help menu and alert with hints that describe how to use the feature when the input is focused.
+	"accessibility.verbosity.inlineChat": true,
+
+	// Provide information about how to access the inline completions hover and Accessible View.
+	"accessibility.verbosity.inlineCompletions": true,
+
+	// Provide information about how to change a keybinding in the keybindings editor when a row is focused.
+	"accessibility.verbosity.keybindingsEditor": true,
+
+	// Provide information about how to focus the cell container or inner editor when a notebook cell is focused.
+	"accessibility.verbosity.notebook": true,
+
+	// Provide information about how to open the notification in an Accessible View.
+	"accessibility.verbosity.notification": true,
+
+	// Provide information about how to access the chat help menu when the chat input is focused.
+	"accessibility.verbosity.panelChat": true,
+
+	// Provide information about how to access the REPL editor accessibility help menu when the REPL editor is focused.
+	"accessibility.verbosity.replEditor": true,
+
+	// Provide information about how to access the source control accessibility help menu when the input is focused.
+	"accessibility.verbosity.sourceControl": true,
+
+	// Provide information about how to access the terminal accessibility help menu when the terminal is focused.
+	"accessibility.verbosity.terminal": true,
+
+	// Provide information about how to open the chat terminal output in the Accessible View.
+	"accessibility.verbosity.terminalChatOutput": true,
+
+	// Provide information about how to open the walkthrough in an Accessible View.
+	"accessibility.verbosity.walkthrough": true,
+
+	// Controls whether the `window.title` should be optimized for screen readers when in screen reader mode. When enabled, the window title will have `activeEditorState` appended to the end.
+	"accessibility.windowTitleOptimized": true,
+
+	// Set the color mode for native UI elements such as native dialogs, menus and title bar. Even if your OS is configured in light color mode, you can select a dark system color theme for the window. You can also configure to automatically adjust based on the `workbench.colorTheme` setting.
+	// 
+	// Note: This setting is ignored when `window.autoDetectColorScheme` is enabled.
+	//  - default: Native widget colors match the system colors.
+	//  - auto: Use light native widget colors for light color themes and dark for dark color themes.
+	//  - light: Use light native widget colors.
+	//  - dark: Use dark native widget colors.
+	"window.systemColorTheme": "default",
+
+	// The name under which the remote tunnel access is registered. If not set, the host name is used.
+	"remote.tunnels.access.hostNameOverride": "",
+
+	// Prevent this computer from sleeping when remote tunnel access is turned on.
+	"remote.tunnels.access.preventSleep": false,
+
+	// Antigravity Editor
+	// Enable the Cursor-import commands in the palette
+	"antigravity.enableCursorImportCursor": false,
+
+	// Changes the base URL for marketplace search results. [Available Options](https://github.com/VSCodium/vscodium/blob/master/docs/index.md#extensions-marketplace). You must restart Antigravity to use the new marketplace after changing this value.
+	"antigravity.marketplaceExtensionGalleryServiceURL": "https://open-vsx.org/vscode/gallery",
+
+	// Changes the base URL on each extension page. [Available Options](https://github.com/VSCodium/vscodium/blob/master/docs/index.md#extensions-marketplace). You must restart Antigravity to use the new marketplace after changing this value.
+	"antigravity.marketplaceGalleryItemURL": "https://open-vsx.org/vscode/item",
+
+	// Keep the Language Server running after the editor is closed.
+	"antigravity.persistentLanguageServer": false,
+
+	// Jetski will attempt to compute embeddings for workspaces up to this many files. This file count ignores .gitignore and binary files. Raising this limit from the default value may lead to performance issues. Values 0 or below will be treated as unlimited.
+	"antigravity.searchMaxWorkspaceFileCount": 5000,
+
+	// Antigravity Remote - Dev Containers
+	// Enable SSH agent forwarding when connecting to devcontainers.
+	"remote.antigravityDevContainers.enableSSHAgentForwarding": true,
+
+	// Disable the server checksum verification. This is only recommended for development and testing.
+	"remote.antigravityDevContainers.experimental.disableServerChecksum": false,
+
+	// Antigravity Remote - SSH
+	// The absolute file path to a custom SSH config file.
+	"remote.antigravitySSH.configFile": "",
+
+	// Experimental: Disable the server checksum verification. This is only recommended for development and testing.
+	"remote.antigravitySSH.experimental.disableServerChecksum": false,
+
+	// Experimental: The name of the server binary, use this if you are using a client without a corresponding server release, or if you are iterating on remote extensions.
+	"remote.antigravitySSH.experimental.serverBinaryName": "",
+
+	// Experimental: The URL from where the Antigravity server will be downloaded. The following variables can be substituted: ${os}, ${arch}, ${ideVersion}, ${vscodeVersion} ${commit}, ${quality}.
+	"remote.antigravitySSH.experimental.serverDownloadUrlTemplate": "https://antigravity-stable.codeiumdata.com/${os}-reh-${arch}/${quality}/${commit}/antigravity-reh-${os}-${arch}-${ideVersion}.tar.gz",
+
+	// The absolute file path to the SSH executable. If empty, will use the ssh on the PATH.
+	"remote.antigravitySSH.path": "",
+
+	// WSL
+	// Experimental: Disable the server checksum verification. This is only recommended for development and testing.
+	"remote.WSL.experimental.disableServerChecksum": false,
+
+	// The URL from where the Antigravity server will be downloaded. The following variables can be substituted: ${os}, ${arch}, ${ideVersion}, ${vscodeVersion} ${commit}, ${quality}.
+	"remote.WSL.serverDownloadUrlTemplate": "https://antigravity-stable.codeiumdata.com/${os}-reh-${arch}/${quality}/${commit}/antigravity-reh-${os}-${arch}-${ideVersion}.tar.gz",
+
+	// Emmet
+	// An array of languages where Emmet abbreviations should not be expanded.
+	"emmet.excludeLanguages": [
+		"markdown"
+	],
+
+	// An array of paths, where each path can contain Emmet syntaxProfiles and/or snippet files.
+	// In case of conflicts, the profiles/snippets of later paths will override those of earlier paths.
+	// See https://code.visualstudio.com/docs/editor/emmet for more information and an example snippet file.
+	"emmet.extensionsPath": [],
+
+	// Enable Emmet abbreviations in languages that are not supported by default. Add a mapping here between the language and Emmet supported language.
+	//  For example: `{"vue-html": "html", "javascript": "javascriptreact"}`
+	"emmet.includeLanguages": {},
+
+	// When set to `false`, the whole file is parsed to determine if current position is valid for expanding Emmet abbreviations. When set to `true`, only the content around the current position in CSS/SCSS/Less files is parsed.
+	"emmet.optimizeStylesheetParsing": true,
+
+	// Preferences used to modify behavior of some actions and resolvers of Emmet.
+	"emmet.preferences": {},
+
+	// Shows possible Emmet abbreviations as suggestions. Not applicable in stylesheets or when emmet.showExpandedAbbreviation is set to `"never"`.
+	"emmet.showAbbreviationSuggestions": true,
+
+	// Shows expanded Emmet abbreviations as suggestions.
+	// The option `"inMarkupAndStylesheetFilesOnly"` applies to html, haml, jade, slim, xml, xsl, css, scss, sass, less and stylus.
+	// The option `"always"` applies to all parts of the file regardless of markup/css.
+	"emmet.showExpandedAbbreviation": "always",
+
+	// If `true`, then Emmet suggestions will show up as snippets allowing you to order them as per `editor.snippetSuggestions` setting.
+	"emmet.showSuggestionsAsSnippets": false,
+
+	// Define profile for specified syntax or use your own profile with specific rules.
+	"emmet.syntaxProfiles": {},
+
+	// When enabled, Emmet abbreviations are expanded when pressing TAB, even when completions do not show up. When disabled, completions that show up can still be accepted by pressing TAB.
+	"emmet.triggerExpansionOnTab": false,
+
+	// If `true`, Emmet will use inline completions to suggest expansions. To prevent the non-inline completion item provider from showing up as often while this setting is `true`, turn `editor.quickSuggestions` to `inline` or `off` for the `other` item.
+	"emmet.useInlineCompletions": false,
+
+	// Variables to be used in Emmet snippets.
+	"emmet.variables": {},
+
+	// Git
+	// Controls whether force push (with or without lease) is enabled.
+	"git.allowForcePush": false,
+
+	// Controls whether commits without running pre-commit and commit-msg hooks are allowed.
+	"git.allowNoVerifyCommit": false,
+
+	// Always show the Staged Changes resource group.
+	"git.alwaysShowStagedChangesResourceGroup": false,
+
+	// Controls the signoff flag for all commits.
+	"git.alwaysSignOff": false,
+
+	// When set to true, commits will automatically be fetched from the default remote of the current Git repository. Setting to `all` will fetch from all remotes.
+	"git.autofetch": false,
+
+	// Duration in seconds between each automatic git fetch, when `git.autofetch` is enabled.
+	"git.autofetchPeriod": 180,
+
+	// Whether auto refreshing is enabled.
+	"git.autorefresh": true,
+
+	// Configures when repositories should be automatically detected.
+	//  - true: Scan for both subfolders of the current opened folder and parent folders of open files.
+	//  - false: Disable automatic repository scanning.
+	//  - subFolders: Scan for subfolders of the currently opened folder.
+	//  - openEditors: Scan for parent folders of open files.
+	"git.autoRepositoryDetection": true,
+
+	// Stash any changes before pulling and restore them after successful pull.
+	"git.autoStash": false,
+
+	// Controls whether to show blame information in the editor using editor decorations.
+	"git.blame.editorDecoration.enabled": false,
+
+	// Template for the blame information editor decoration. Supported variables:
+	// 
+	// * `hash`: Commit hash
+	// 
+	// * `hashShort`: First N characters of the commit hash according to `git.commitShortHashLength`
+	// 
+	// * `subject`: First line of the commit message
+	// 
+	// * `authorName`: Author name
+	// 
+	// * `authorEmail`: Author email
+	// 
+	// * `authorDate`: Author date
+	// 
+	// * `authorDateAgo`: Time difference between now and the author date
+	// 
+	// 
+	"git.blame.editorDecoration.template": "${subject}, ${authorName} (${authorDateAgo})",
+
+	// Controls whether to show blame information in the status bar.
+	"git.blame.statusBarItem.enabled": true,
+
+	// Template for the blame information status bar item. Supported variables:
+	// 
+	// * `hash`: Commit hash
+	// 
+	// * `hashShort`: First N characters of the commit hash according to `git.commitShortHashLength`
+	// 
+	// * `subject`: First line of the commit message
+	// 
+	// * `authorName`: Author name
+	// 
+	// * `authorEmail`: Author email
+	// 
+	// * `authorDate`: Author date
+	// 
+	// * `authorDateAgo`: Time difference between now and the author date
+	// 
+	// 
+	"git.blame.statusBarItem.template": "${authorName} (${authorDateAgo})",
+
+	// Prefix used when creating a new branch.
+	"git.branchPrefix": "",
+
+	// List of protected branches. By default, a prompt is shown before changes are committed to a protected branch. The prompt can be controlled using the `git.branchProtectionPrompt`  setting.
+	"git.branchProtection": [],
+
+	// Controls whether a prompt is being shown before changes are committed to a protected branch.
+	//  - alwaysCommit: Always commit changes to the protected branch.
+	//  - alwaysCommitToNewBranch: Always commit changes to a new branch.
+	//  - alwaysPrompt: Always prompt before changes are committed to a protected branch.
+	"git.branchProtectionPrompt": "alwaysPrompt",
+
+	// List of dictionaries used for the randomly generated branch name. Each value represents the dictionary used to generate the segment of the branch name. Supported dictionaries: `adjectives`, `animals`, `colors` and `numbers`.
+	//  - adjectives: A random adjective
+	//  - animals: A random animal name
+	//  - colors: A random color name
+	//  - numbers: A random number between 100 and 999
+	"git.branchRandomName.dictionary": [
+		"adjectives",
+		"animals"
+	],
+
+	// Controls whether a random name is generated when creating a new branch.
+	"git.branchRandomName.enable": false,
+
+	// Controls the sort order for branches.
+	"git.branchSortOrder": "committerdate",
+
+	// A regular expression to validate new branch names.
+	"git.branchValidationRegex": "",
+
+	// The character to replace whitespace in new branch names, and to separate segments of a randomly generated branch name.
+	"git.branchWhitespaceChar": "-",
+
+	// Controls what type of Git refs are listed when running `Checkout to...`.
+	//  - local: Local branches
+	//  - tags: Tags
+	//  - remote: Remote branches
+	"git.checkoutType": [
+		"local",
+		"remote",
+		"tags"
+	],
+
+	// Controls whether the diff editor should be automatically closed when changes are stashed, committed, discarded, staged, or unstaged.
+	"git.closeDiffOnOperation": false,
+
+	// List of git commands (ex: commit, push) that would have their `stdout` logged to the [git output](command:git.showOutput). If the git command has a client-side hook configured, the client-side hook's `stdout` will also be logged to the [git output](command:git.showOutput).
+	"git.commandsToLog": [],
+
+	// Controls the length of the commit short hash.
+	"git.commitShortHashLength": 7,
+
+	// Always confirm the creation of empty commits for the 'Git: Commit Empty' command.
+	"git.confirmEmptyCommits": true,
+
+	// Controls whether to ask for confirmation before force-pushing.
+	"git.confirmForcePush": true,
+
+	// Controls whether to ask for confirmation before committing without verification.
+	"git.confirmNoVerifyCommit": true,
+
+	// Confirm before synchronizing Git repositories.
+	"git.confirmSync": true,
+
+	// Controls the Git count badge.
+	//  - all: Count all changes.
+	//  - tracked: Count only tracked changes.
+	//  - off: Turn off counter.
+	"git.countBadge": "all",
+
+	// Controls whether Git contributes colors and badges to the Explorer and the Open Editors view.
+	"git.decorations.enabled": true,
+
+	// The name of the default branch (example: main, trunk, development) when initializing a new Git repository. When set to empty, the default branch name configured in Git will be used. **Note:** Requires Git version `2.28.0` or later.
+	"git.defaultBranchName": "main",
+
+	// The default location to clone a Git repository.
+	"git.defaultCloneDirectory": null,
+
+	// Controls whether to automatically detect Git submodules.
+	"git.detectSubmodules": true,
+
+	// Controls the limit of Git submodules detected.
+	"git.detectSubmodulesLimit": 10,
+
+	// Controls whether to automatically detect Git worktrees.
+	"git.detectWorktrees": true,
+
+	// Controls the limit of Git worktrees detected.
+	"git.detectWorktreesLimit": 50,
+
+	// Controls whether to check for unresolved diagnostics before committing.
+	"git.diagnosticsCommitHook.enabled": false,
+
+	// Controls the list of sources (**Item**) and the minimum severity (**Value**) to be considered before committing. **Note:** To ignore diagnostics from a particular source, add the source to the list and set the minimum severity to `none`.
+	"git.diagnosticsCommitHook.sources": {
+		"*": "error"
+	},
+
+	// Controls whether discarding untracked changes moves the file(s) to the Recycle Bin (Windows), Trash (macOS, Linux) instead of deleting them permanently. **Note:** This setting has no effect when connected to a remote or when running in Linux as a snap package.
+	"git.discardUntrackedChangesToTrash": true,
+
+	// Enables commit signing with GPG, X.509, or SSH.
+	"git.enableCommitSigning": false,
+
+	// Whether Git is enabled.
+	"git.enabled": true,
+
+	// Commit all changes when there are no staged changes.
+	"git.enableSmartCommit": true,
+
+	// Controls whether the Git Sync command appears in the status bar.
+	"git.enableStatusBarSync": true,
+
+	// When enabled, fetch all branches when pulling. Otherwise, fetch just the current one.
+	"git.fetchOnPull": false,
+
+	// Push all annotated tags when running the sync command.
+	"git.followTagsWhenSync": false,
+
+	// This setting is now deprecated, please use `github.gitAuthentication` instead.
+	// 
+	"git.githubAuthentication": null,
+
+	// List of Git repositories to ignore.
+	"git.ignoredRepositories": [],
+
+	// Ignores the legacy Git warning.
+	"git.ignoreLegacyWarning": false,
+
+	// Ignores the warning when there are too many changes in a repository.
+	"git.ignoreLimitWarning": false,
+
+	// Ignores the warning when Git is missing.
+	"git.ignoreMissingGitWarning": false,
+
+	// Ignores the warning when it looks like the branch might have been rebased when pulling.
+	"git.ignoreRebaseWarning": false,
+
+	// Ignore modifications to submodules in the file tree.
+	"git.ignoreSubmodules": false,
+
+	// Ignores the warning when Git 2.25 - 2.26 is installed on Windows.
+	"git.ignoreWindowsGit27Warning": false,
+
+	// Controls whether to show commit message input validation diagnostics.
+	"git.inputValidation": false,
+
+	// Controls the commit message length threshold for showing a warning.
+	"git.inputValidationLength": 72,
+
+	// Controls the commit message subject length threshold for showing a warning. Unset it to inherit the value of `git.inputValidationLength`.
+	"git.inputValidationSubjectLength": 50,
+
+	// Open the merge editor for files that are currently under conflict.
+	"git.mergeEditor": false,
+
+	// Controls whether to open a repository automatically after cloning.
+	//  - always: Always open in current window.
+	//  - alwaysNewWindow: Always open in a new window.
+	//  - whenNoFolderOpen: Only open in current window when no folder is opened.
+	//  - prompt: Always prompt for action.
+	"git.openAfterClone": "prompt",
+
+	// Controls whether the diff editor should be opened when clicking a change. Otherwise the regular editor will be opened.
+	"git.openDiffOnClick": true,
+
+	// Control whether a repository in parent folders of workspaces or open files should be opened.
+	//  - always: Always open a repository in parent folders of workspaces or open files.
+	//  - never: Never open a repository in parent folders of workspaces or open files.
+	//  - prompt: Prompt before opening a repository the parent folders of workspaces or open files.
+	"git.openRepositoryInParentFolders": "always",
+
+	// Controls whether to optimistically update the state of the Source Control view after running git commands.
+	"git.optimisticUpdate": true,
+
+	// Path and filename of the git executable, e.g. `C:\Program Files\Git\bin\git.exe` (Windows). This can also be an array of string values containing multiple paths to look up.
+	"git.path": null,
+
+	// Run a git command after a successful commit.
+	//  - none: Don't run any command after a commit.
+	//  - push: Run 'git push' after a successful commit.
+	//  - sync: Run 'git pull' and 'git push' after a successful commit.
+	"git.postCommitCommand": "none",
+
+	// Controls whether Git should check for unsaved files before committing.
+	//  - always: Check for any unsaved files.
+	//  - staged: Check only for unsaved staged files.
+	//  - never: Disable this check.
+	"git.promptToSaveFilesBeforeCommit": "always",
+
+	// Controls whether Git should check for unsaved files before stashing changes.
+	//  - always: Check for any unsaved files.
+	//  - staged: Check only for unsaved staged files.
+	//  - never: Disable this check.
+	"git.promptToSaveFilesBeforeStash": "always",
+
+	// Prune when fetching.
+	"git.pruneOnFetch": false,
+
+	// Controls whether a branch that does not have outgoing commits is fast-forwarded before it is checked out.
+	"git.pullBeforeCheckout": false,
+
+	// Fetch all tags when pulling.
+	"git.pullTags": true,
+
+	// Force Git to use rebase when running the sync command.
+	"git.rebaseWhenSync": false,
+
+	// Remember the last git command that ran after a commit.
+	"git.rememberPostCommitCommand": false,
+
+	// Automatically replace the local tags with the remote tags in case of a conflict when running the pull command.
+	"git.replaceTagsWhenPull": false,
+
+	// List of folders that are ignored while scanning for Git repositories when `git.autoRepositoryDetection` is set to `true` or `subFolders`.
+	"git.repositoryScanIgnoredFolders": [
+		"node_modules"
+	],
+
+	// Controls the depth used when scanning workspace folders for Git repositories when `git.autoRepositoryDetection` is set to `true` or `subFolders`. Can be set to `-1` for no limit.
+	"git.repositoryScanMaxDepth": 1,
+
+	// Controls whether to require explicit Git user configuration or allow Git to guess if missing.
+	"git.requireGitUserConfig": true,
+
+	// List of paths to search for Git repositories in.
+	"git.scanRepositories": [],
+
+	// Controls whether an action button is shown in the Source Control view.
+	"git.showActionButton": {
+		"commit": true,
+		"publish": true,
+		"sync": true
+	},
+
+	// Controls whether to show the commit input in the Git source control panel.
+	"git.showCommitInput": true,
+
+	// Controls whether to show an inline Open File action in the Git changes view.
+	"git.showInlineOpenFileAction": true,
+
+	// Controls whether Git actions should show progress.
+	"git.showProgress": true,
+
+	// Controls whether to show a notification when a push is successful.
+	"git.showPushSuccessNotification": false,
+
+	// Controls whether to show the details of the last commit for Git refs in the checkout, branch, and tag pickers.
+	"git.showReferenceDetails": true,
+
+	// Controls the threshold of the similarity index (the amount of additions/deletions compared to the file's size) for changes in a pair of added/deleted files to be considered a rename. **Note:** Requires Git version `2.18.0` or later.
+	"git.similarityThreshold": 50,
+
+	// Control which changes are automatically staged by Smart Commit.
+	//  - all: Automatically stage all changes.
+	//  - tracked: Automatically stage tracked changes only.
+	"git.smartCommitChanges": "all",
+
+	// Controls how to limit the number of changes that can be parsed from Git status command. Can be set to 0 for no limit.
+	"git.statusLimit": 10000,
+
+	// Suggests to enable smart commit (commit all changes when there are no staged changes).
+	"git.suggestSmartCommit": true,
+
+	// Controls whether a notification comes up when running the Sync action, which allows the user to cancel the operation.
+	"git.supportCancellation": false,
+
+	// Controls whether to enable the IDE to be the authentication handler for Git processes spawned in the Integrated Terminal. Note: Terminals need to be restarted to pick up a change in this setting.
+	"git.terminalAuthentication": true,
+
+	// Controls whether to enable the IDE to be the Git editor for Git processes spawned in the integrated terminal. Note: Terminals need to be restarted to pick up a change in this setting.
+	"git.terminalGitEditor": false,
+
+	// Controls which date to use for items in the Timeline view.
+	//  - committed: Use the committed date
+	//  - authored: Use the authored date
+	"git.timeline.date": "committed",
+
+	// Controls whether to show the commit author in the Timeline view.
+	"git.timeline.showAuthor": true,
+
+	// Controls whether to show uncommitted changes in the Timeline view.
+	"git.timeline.showUncommitted": false,
+
+	// Controls how untracked changes behave.
+	//  - mixed: All changes, tracked and untracked, appear together and behave equally.
+	//  - separate: Untracked changes appear separately in the Source Control view. They are also excluded from several actions.
+	//  - hidden: Untracked changes are hidden and excluded from several actions.
+	"git.untrackedChanges": "mixed",
+
+	// Controls whether to use the message from the commit input box as the default stash message.
+	"git.useCommitInputAsStashMessage": false,
+
+	// Controls whether a full text editor will be used to author commit messages, whenever no message is provided in the commit input box.
+	"git.useEditorAsCommitInput": true,
+
+	// Controls whether force pushing uses the safer force-if-includes variant. Note: This setting requires the `git.useForcePushWithLease` setting to be enabled, and Git version `2.30.0` or later.
+	"git.useForcePushIfIncludes": true,
+
+	// Controls whether force pushing uses the safer force-with-lease variant.
+	"git.useForcePushWithLease": true,
+
+	// Controls whether GIT_ASKPASS should be overwritten to use the integrated version.
+	"git.useIntegratedAskPass": true,
+
+	// Enable verbose output when `git.useEditorAsCommitInput` is enabled.
+	"git.verboseCommit": false,
+
+	// GitHub
+	// Controls whether to query repository rules for GitHub repositories
+	"github.branchProtection": true,
+
+	// Controls whether to enable automatic GitHub authentication for git commands within the IDE.
+	"github.gitAuthentication": true,
+
+	// Controls which protocol is used to clone a GitHub repository
+	"github.gitProtocol": "https",
+
+	// Controls whether to show the GitHub avatar of the commit author in various hovers (ex: Git blame, Timeline, Source Control Graph, etc.)
+	"github.showAvatar": true,
+
+	// GHE.com & GitHub Enterprise Server Authentication
+	// When true, prioritize the device code flow for authentication instead of other available flows. This is useful for environments like WSL where the local server or URL handler flows may not work as expected.
+	"github-authentication.preferDeviceCodeFlow": false,
+
+	// When true, uses Electron's built-in fetch function for HTTP requests. When false, uses the Node.js global fetch function. This setting only applies when running in the Electron environment. **Note:** A restart is required for this setting to take effect.
+	"github-authentication.useElectronFetch": true,
+
+	// The URI for your GHE.com or GitHub Enterprise Server instance.
+	// 
+	// Examples:
+	// * GHE.com: `https://octocat.ghe.com`
+	// * GitHub Enterprise Server: `https://github.octocat.com`
+	// 
+	// > **Note:** This should _not_ be set to a GitHub.com URI. If your account exists on GitHub.com or is a GitHub Enterprise Managed User, you do not need any additional configuration and can simply log in to GitHub.
+	"github-enterprise.uri": "",
+
+	// Grunt
+	// Controls enablement of Grunt task detection. Grunt task detection can cause files in any open workspace to be executed.
+	"grunt.autoDetect": "off",
+
+	// Gulp
+	// Controls enablement of Gulp task detection. Gulp task detection can cause files in any open workspace to be executed.
+	"gulp.autoDetect": "off",
+
+	// .ipynb Support
+	// Experimental feature to serialize the Jupyter notebook in a worker thread.
+	"ipynb.experimental.serialization": true,
+
+	// Enable/disable pasting of images into Markdown cells in ipynb notebook files. Pasted images are inserted as attachments to the cell.
+	"ipynb.pasteImagesAsAttachments.enabled": true,
+
+	// Jake
+	// Controls enablement of Jake task detection. Jake task detection can cause files in any open workspace to be executed.
+	"jake.autoDetect": "off",
+
+	// Markdown Math
+	// Enable/disable rendering math in the built-in Markdown preview.
+	"markdown.math.enabled": true,
+
+	// A collection of custom macros. Each macro is a key-value pair where the key is a new command name and the value is the expansion of the macro.
+	"markdown.math.macros": {},
+
+	// Media Previewer
+	// Start playing videos on mute automatically.
+	"mediaPreview.video.autoPlay": false,
+
+	// Loop videos over again automatically.
+	"mediaPreview.video.loop": false,
+
+	// Merge Conflict
+	// Whether to automatically navigate to the next merge conflict after resolving a merge conflict.
+	"merge-conflict.autoNavigateNextConflict.enabled": false,
+
+	// Create a CodeLens for merge conflict blocks within editor.
+	"merge-conflict.codeLens.enabled": true,
+
+	// Create decorators for merge conflict blocks within editor.
+	"merge-conflict.decorators.enabled": true,
+
+	// Controls where the diff view should be opened when comparing changes in merge conflicts.
+	//  - Current: Open the diff view in the current editor group.
+	//  - Beside: Open the diff view next to the current editor group.
+	//  - Below: Open the diff view below the current editor group.
+	"merge-conflict.diffViewPosition": "Current",
+
+	// Mermaid Chat Features
+	// Enable a tool for experimental Mermaid diagram rendering in chat responses.
+	"mermaid-chat.enabled": false,
+
+	// Microsoft Sovereign Cloud
+	// The custom configuration for the Sovereign Cloud to use with the Microsoft Sovereign Cloud authentication provider. This along with setting `microsoft-sovereign-cloud.environment` to `custom` is required to use this feature.
+	"microsoft-sovereign-cloud.customEnvironment": {},
+
+	// The Sovereign Cloud to use for authentication. If you select `custom`, you must also set the `microsoft-sovereign-cloud.customEnvironment` setting.
+	//  - ChinaCloud: Azure China
+	//  - USGovernment: Azure US Government
+	//  - custom: A custom Microsoft Sovereign Cloud
+	"microsoft-sovereign-cloud.environment": "",
+
+	// Microsoft
+	// The authentication implementation to use for signing in with a Microsoft account.
+	//  - msal: Use the Microsoft Authentication Library (MSAL) to sign in with a Microsoft account.
+	//  - msal-no-broker: Use the Microsoft Authentication Library (MSAL) to sign in with a Microsoft account using a browser. This is useful if you are having issues with the native broker.
+	"microsoft-authentication.implementation": "msal",
+
+	// JavaScript Debugger
+	// Configures which processes to automatically attach and debug when `debug.node.autoAttach` is on. A Node process launched with the `--inspect` flag will always be attached to, regardless of this setting.
+	//  - always: Auto attach to every Node.js process launched in the terminal.
+	//  - smart: Auto attach when running scripts that aren't in a node_modules folder.
+	//  - onlyWithFlag: Only auto attach when the `--inspect` is given.
+	//  - disabled: Auto attach is disabled and not shown in status bar.
+	"debug.javascript.autoAttachFilter": "disabled",
+
+	// Configures glob patterns for determining when to attach in "smart" `debug.javascript.autoAttachFilter` mode. `$KNOWN_TOOLS$` is replaced with a list of names of common test and code runners. [Read more on the VS Code docs](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_auto-attach-smart-patterns).
+	"debug.javascript.autoAttachSmartPattern": [
+		"${workspaceFolder}/**",
+		"!**/node_modules/**",
+		"**/$KNOWN_TOOLS$/**"
+	],
+
+	// When debugging a remote web app, configures whether to automatically tunnel the remote server to your local machine.
+	"debug.javascript.automaticallyTunnelRemoteServer": true,
+
+	// Whether to stop when conditional breakpoints throw an error.
+	"debug.javascript.breakOnConditionalError": false,
+
+	// Where a "Run" and "Debug" code lens should be shown in your npm scripts. It may be on "all", scripts, on "top" of the script section, or "never".
+	"debug.javascript.codelens.npmScripts": "top",
+
+	// Options used when debugging open links clicked from inside the JavaScript Debug Terminal. Can be set to "off" to disable this behavior, or "always" to enable debugging in all terminals.
+	"debug.javascript.debugByLinkOptions": "on",
+
+	// The default `runtimeExecutable` used for launch configurations, if unspecified. This can be used to config custom paths to Node.js or browser installations.
+	"debug.javascript.defaultRuntimeExecutable": {
+		"pwa-node": "node"
+	},
+
+	// Enables the experimental network view for targets that support it.
+	"debug.javascript.enableNetworkView": true,
+
+	// Default options used when debugging a process through the `Debug: Attach to Node.js Process` command
+	"debug.javascript.pickAndAttachOptions": {},
+
+	// Request options to use when loading resources, such as source maps, in the debugger. You may need to configure this if your sourcemaps require authentication or use a self-signed certificate, for instance. Options are used to create a request using the [`got`](https://github.com/sindresorhus/got) library.
+	// 
+	// A common case to disable certificate verification can be done by passing `{ "https": { "rejectUnauthorized": false } }`.
+	"debug.javascript.resourceRequestOptions": {},
+
+	// Default launch options for the JavaScript debug terminal and npm scripts.

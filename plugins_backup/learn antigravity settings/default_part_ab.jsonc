@@ -1,0 +1,1000 @@
+
+	// Controls whether remembered suggestion selections are shared between multiple workspaces and windows (needs `editor.suggestSelection`).
+	"editor.suggest.shareSuggestSelections": false,
+
+	// When enabled IntelliSense shows `class`-suggestions.
+	"editor.suggest.showClasses": true,
+
+	// When enabled IntelliSense shows `color`-suggestions.
+	"editor.suggest.showColors": true,
+
+	// When enabled IntelliSense shows `constant`-suggestions.
+	"editor.suggest.showConstants": true,
+
+	// When enabled IntelliSense shows `constructor`-suggestions.
+	"editor.suggest.showConstructors": true,
+
+	// When enabled IntelliSense shows `customcolor`-suggestions.
+	"editor.suggest.showCustomcolors": true,
+
+	// When enabled IntelliSense shows `deprecated`-suggestions.
+	"editor.suggest.showDeprecated": true,
+
+	// When enabled IntelliSense shows `enumMember`-suggestions.
+	"editor.suggest.showEnumMembers": true,
+
+	// When enabled IntelliSense shows `enum`-suggestions.
+	"editor.suggest.showEnums": true,
+
+	// When enabled IntelliSense shows `event`-suggestions.
+	"editor.suggest.showEvents": true,
+
+	// When enabled IntelliSense shows `field`-suggestions.
+	"editor.suggest.showFields": true,
+
+	// When enabled IntelliSense shows `file`-suggestions.
+	"editor.suggest.showFiles": true,
+
+	// When enabled IntelliSense shows `folder`-suggestions.
+	"editor.suggest.showFolders": true,
+
+	// When enabled IntelliSense shows `function`-suggestions.
+	"editor.suggest.showFunctions": true,
+
+	// Controls whether to show or hide icons in suggestions.
+	"editor.suggest.showIcons": true,
+
+	// Controls whether suggest details show inline with the label or only in the details widget.
+	"editor.suggest.showInlineDetails": true,
+
+	// When enabled IntelliSense shows `interface`-suggestions.
+	"editor.suggest.showInterfaces": true,
+
+	// When enabled IntelliSense shows `issues`-suggestions.
+	"editor.suggest.showIssues": true,
+
+	// When enabled IntelliSense shows `keyword`-suggestions.
+	"editor.suggest.showKeywords": true,
+
+	// When enabled IntelliSense shows `method`-suggestions.
+	"editor.suggest.showMethods": true,
+
+	// When enabled IntelliSense shows `module`-suggestions.
+	"editor.suggest.showModules": true,
+
+	// When enabled IntelliSense shows `operator`-suggestions.
+	"editor.suggest.showOperators": true,
+
+	// When enabled IntelliSense shows `property`-suggestions.
+	"editor.suggest.showProperties": true,
+
+	// When enabled IntelliSense shows `reference`-suggestions.
+	"editor.suggest.showReferences": true,
+
+	// When enabled IntelliSense shows `snippet`-suggestions.
+	"editor.suggest.showSnippets": true,
+
+	// Controls the visibility of the status bar at the bottom of the suggest widget.
+	"editor.suggest.showStatusBar": false,
+
+	// When enabled IntelliSense shows `struct`-suggestions.
+	"editor.suggest.showStructs": true,
+
+	// When enabled IntelliSense shows `typeParameter`-suggestions.
+	"editor.suggest.showTypeParameters": true,
+
+	// When enabled IntelliSense shows `unit`-suggestions.
+	"editor.suggest.showUnits": true,
+
+	// When enabled IntelliSense shows `user`-suggestions.
+	"editor.suggest.showUsers": true,
+
+	// When enabled IntelliSense shows `value`-suggestions.
+	"editor.suggest.showValues": true,
+
+	// When enabled IntelliSense shows `variable`-suggestions.
+	"editor.suggest.showVariables": true,
+
+	// When enabled IntelliSense shows `text`-suggestions.
+	"editor.suggest.showWords": true,
+
+	// Controls whether an active snippet prevents quick suggestions.
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
+
+	// Font size for the suggest widget. When set to `0`, the value of `editor.fontSize` is used.
+	"editor.suggestFontSize": 0,
+
+	// Line height for the suggest widget. When set to `0`, the value of `editor.lineHeight` is used. The minimum value is 8.
+	"editor.suggestLineHeight": 0,
+
+	// Controls whether suggestions should automatically show up when typing trigger characters.
+	"editor.suggestOnTriggerCharacters": true,
+
+	// Controls how suggestions are pre-selected when showing the suggest list.
+	//  - first: Always select the first suggestion.
+	//  - recentlyUsed: Select recent suggestions unless further typing selects one, e.g. `console.| -> console.log` because `log` has been completed recently.
+	//  - recentlyUsedByPrefix: Select suggestions based on previous prefixes that have completed those suggestions, e.g. `co -> console` and `con -> const`.
+	"editor.suggestSelection": "first",
+
+	// Enables tab completions.
+	//  - on: Tab complete will insert the best matching suggestion when pressing tab.
+	//  - off: Disable tab completions.
+	//  - onlySnippets: Tab complete snippets when their prefix match. Works best when 'quickSuggestions' aren't enabled.
+	"editor.tabCompletion": "off",
+
+	// Controls whether the editor receives tabs or defers them to the workbench for navigation.
+	"editor.tabFocusMode": false,
+
+	// The number of spaces a tab is equal to. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
+	"editor.tabSize": 4,
+
+	// Remove trailing auto inserted whitespace.
+	"editor.trimAutoWhitespace": true,
+
+	// Controls whether the editor will also delete the next line's indentation whitespace when deleting a newline.
+	"editor.trimWhitespaceOnDelete": false,
+
+	// Controls whether clicking on the empty content after a folded line will unfold the line.
+	"editor.unfoldOnClickAfterEndOfLine": false,
+
+	// Defines allowed characters that are not being highlighted.
+	"editor.unicodeHighlight.allowedCharacters": {},
+
+	// Unicode characters that are common in allowed locales are not being highlighted.
+	"editor.unicodeHighlight.allowedLocales": {
+		"_os": true,
+		"_vscode": true
+	},
+
+	// Controls whether characters are highlighted that can be confused with basic ASCII characters, except those that are common in the current user locale.
+	"editor.unicodeHighlight.ambiguousCharacters": true,
+
+	// Controls whether characters in comments should also be subject to Unicode highlighting.
+	"editor.unicodeHighlight.includeComments": "inUntrustedWorkspace",
+
+	// Controls whether characters in strings should also be subject to Unicode highlighting.
+	"editor.unicodeHighlight.includeStrings": true,
+
+	// Controls whether characters that just reserve space or have no width at all are highlighted.
+	"editor.unicodeHighlight.invisibleCharacters": true,
+
+	// Controls whether all non-basic ASCII characters are highlighted. Only characters between U+0020 and U+007E, tab, line-feed and carriage-return are considered basic ASCII.
+	"editor.unicodeHighlight.nonBasicASCII": "inUntrustedWorkspace",
+
+	// Remove unusual line terminators that might cause problems.
+	//  - auto: Unusual line terminators are automatically removed.
+	//  - off: Unusual line terminators are ignored.
+	//  - prompt: Unusual line terminators prompt to be removed.
+	"editor.unusualLineTerminators": "prompt",
+
+	// Spaces and tabs are inserted and deleted in alignment with tab stops.
+	"editor.useTabStops": true,
+
+	// Controls whether completions should be computed based on words in the document and from which documents they are computed.
+	//  - off: Turn off Word Based Suggestions.
+	//  - currentDocument: Only suggest words from the active document.
+	//  - matchingDocuments: Suggest words from all open documents of the same language.
+	//  - allDocuments: Suggest words from all open documents.
+	"editor.wordBasedSuggestions": "matchingDocuments",
+
+	// Controls the word break rules used for Chinese/Japanese/Korean (CJK) text.
+	//  - normal: Use the default line break rule.
+	//  - keepAll: Word breaks should not be used for Chinese/Japanese/Korean (CJK) text. Non-CJK text behavior is the same as for normal.
+	"editor.wordBreak": "normal",
+
+	// Locales to be used for word segmentation when doing word related navigations or operations. Specify the BCP 47 language tag of the word you wish to recognize (e.g., ja, zh-CN, zh-Hant-TW, etc.).
+	"editor.wordSegmenterLocales": [],
+
+	// Characters that will be used as word separators when doing word related navigations or operations.
+	"editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+
+	// Controls how lines should wrap.
+	//  - off: Lines will never wrap.
+	//  - on: Lines will wrap at the viewport width.
+	//  - wordWrapColumn: Lines will wrap at `editor.wordWrapColumn`.
+	//  - bounded: Lines will wrap at the minimum of viewport and `editor.wordWrapColumn`.
+	"editor.wordWrap": "off",
+
+	// Controls the wrapping column of the editor when `editor.wordWrap` is `wordWrapColumn` or `bounded`.
+	"editor.wordWrapColumn": 80,
+
+	// Controls whether literal `\n` shall trigger a wordWrap when `editor.wordWrap` is enabled.
+	// 
+	// For example:
+	// ```c
+	// char* str="hello\nworld"
+	// ```
+	// will be displayed as
+	// ```c
+	// char* str="hello\n
+	//            world"
+	// ```
+	"editor.wrapOnEscapedLineFeeds": false,
+
+	// Controls the indentation of wrapped lines.
+	//  - none: No indentation. Wrapped lines begin at column 1.
+	//  - same: Wrapped lines get the same indentation as the parent.
+	//  - indent: Wrapped lines get +1 indentation toward the parent.
+	//  - deepIndent: Wrapped lines get +2 indentation toward the parent.
+	"editor.wrappingIndent": "same",
+
+	// Controls the algorithm that computes wrapping points. Note that when in accessibility mode, advanced will be used for the best experience.
+	//  - simple: Assumes that all characters are of the same width. This is a fast algorithm that works correctly for monospace fonts and certain scripts (like Latin characters) where glyphs are of equal width.
+	//  - advanced: Delegates wrapping points computation to the browser. This is a slow algorithm, that might cause freezes for large files, but it works correctly in all cases.
+	"editor.wrappingStrategy": "simple",
+
+	// Run a series of Code Actions for a notebook on save. Code Actions must be specified and the editor must not be shutting down. When `files.autoSave` is set to `afterDelay`, Code Actions will only be run when the file is saved explicitly. Example: `"notebook.source.organizeImports": "explicit"`
+	"notebook.codeActionsOnSave": {},
+
+	// Source Control
+	// Controls whether inline actions are always visible in the Source Control view.
+	"scm.alwaysShowActions": false,
+
+	// Controls whether repositories should always be visible in the Source Control view.
+	"scm.alwaysShowRepositories": false,
+
+	// Controls whether the Source Control view should automatically reveal and select files when opening them.
+	"scm.autoReveal": true,
+
+	// Controls whether the Source Control view should render folders in a compact form. In such a form, single child folders will be compressed in a combined tree element.
+	"scm.compactFolders": true,
+
+	// Controls the count badge on the Source Control icon on the Activity Bar.
+	//  - all: Show the sum of all Source Control Provider count badges.
+	//  - focused: Show the count badge of the focused Source Control Provider.
+	//  - off: Disable the Source Control count badge.
+	"scm.countBadge": "all",
+
+	// Controls the default Source Control repository view mode.
+	//  - tree: Show the repository changes as a tree.
+	//  - list: Show the repository changes as a list.
+	"scm.defaultViewMode": "list",
+
+	// Controls the default Source Control repository changes sort order when viewed as a list.
+	//  - name: Sort the repository changes by file name.
+	//  - path: Sort the repository changes by path.
+	//  - status: Sort the repository changes by Source Control status.
+	"scm.defaultViewSortKey": "path",
+
+	// Controls diff decorations in the editor.
+	//  - all: Show the diff decorations in all available locations.
+	//  - gutter: Show the diff decorations only in the editor gutter.
+	//  - overview: Show the diff decorations only in the overview ruler.
+	//  - minimap: Show the diff decorations only in the minimap.
+	//  - none: Do not show the diff decorations.
+	"scm.diffDecorations": "all",
+
+	// Controls the behavior of Source Control diff gutter decorations.
+	//  - diff: Show the inline diff Peek view on click.
+	//  - none: Do nothing.
+	"scm.diffDecorationsGutterAction": "diff",
+
+	// Controls whether a pattern is used for the diff decorations in gutter.
+	"scm.diffDecorationsGutterPattern": {
+		"added": false,
+		"modified": true
+	},
+
+	// Controls the visibility of the Source Control diff decorator in the gutter.
+	//  - always: Show the diff decorator in the gutter at all times.
+	//  - hover: Show the diff decorator in the gutter only on hover.
+	"scm.diffDecorationsGutterVisibility": "always",
+
+	// Controls the width(px) of diff decorations in gutter (added & modified).
+	"scm.diffDecorationsGutterWidth": 3,
+
+	// Controls whether leading and trailing whitespace is ignored in Source Control diff gutter decorations.
+	//  - true: Ignore leading and trailing whitespace.
+	//  - false: Do not ignore leading and trailing whitespace.
+	//  - inherit: Inherit from `diffEditor.ignoreTrimWhitespace`.
+	"scm.diffDecorationsIgnoreTrimWhitespace": "false",
+
+	// Controls which badges are shown in the Source Control Graph view. The badges are shown on the right side of the graph indicating the names of history item groups.
+	//  - all: Show badges of all history item groups in the Source Control Graph view.
+	//  - filter: Show only the badges of history item groups used as a filter in the Source Control Graph view.
+	"scm.graph.badges": "filter",
+
+	// Controls whether the Source Control Graph view will load the next page of items when you scroll to the end of the list.
+	"scm.graph.pageOnScroll": true,
+
+	// The number of items to show in the Source Control Graph view by default and when loading more items.
+	"scm.graph.pageSize": 50,
+
+	// Controls whether to show incoming changes in the Source Control Graph view.
+	"scm.graph.showIncomingChanges": true,
+
+	// Controls whether to show outgoing changes in the Source Control Graph view.
+	"scm.graph.showOutgoingChanges": true,
+
+	// Controls the font for the input message. Use `default` for the workbench user interface font family, `editor` for the `editor.fontFamily`'s value, or a custom font family.
+	"scm.inputFontFamily": "default",
+
+	// Controls the font size for the input message in pixels.
+	"scm.inputFontSize": 13,
+
+	// Controls the maximum number of lines that the input will auto-grow to.
+	"scm.inputMaxLineCount": 10,
+
+	// Controls the minimum number of lines that the input will auto-grow from.
+	"scm.inputMinLineCount": 1,
+
+	// Controls the count badges on Source Control Provider headers. These headers appear in the Source Control view when there is more than one provider or when the `scm.alwaysShowRepositories` setting is enabled, and in the Source Control Repositories view.
+	//  - hidden: Hide Source Control Provider count badges.
+	//  - auto: Only show count badge for Source Control Provider when non-zero.
+	//  - visible: Show Source Control Provider count badges.
+	"scm.providerCountBadge": "hidden",
+
+	// Controls whether to show repository artifacts in the Source Control Repositories view. This feature is experimental and only works when `scm.repositories.selectionMode` is set to `single`.
+	"scm.repositories.explorer": false,
+
+	// Controls the selection mode of the repositories in the Source Control Repositories view.
+	//  - multiple: Multiple repositories can be selected at the same time.
+	//  - single: Only one repository can be selected at a time.
+	"scm.repositories.selectionMode": "multiple",
+
+	// Controls the sort order of the repositories in the source control repositories view.
+	//  - discovery time: Repositories in the Source Control Repositories view are sorted by discovery time. Repositories in the Source Control view are sorted in the order that they were selected.
+	//  - name: Repositories in the Source Control Repositories and Source Control views are sorted by repository name.
+	//  - path: Repositories in the Source Control Repositories and Source Control views are sorted by repository path.
+	"scm.repositories.sortOrder": "discovery time",
+
+	// Controls how many repositories are visible in the Source Control Repositories section. Set to 0, to be able to manually resize the view.
+	"scm.repositories.visible": 10,
+
+	// Controls whether an action button can be shown in the Source Control view.
+	"scm.showActionButton": true,
+
+	// Controls whether an action button can be shown in the Source Control input.
+	"scm.showInputActionButton": true,
+
+	// Controls the default working set to use when switching to a source control history item group that does not have a working set.
+	//  - empty: Use an empty working set when switching to a source control history item group that does not have a working set.
+	//  - current: Use the current working set when switching to a source control history item group that does not have a working set.
+	"scm.workingSets.default": "current",
+
+	// Controls whether to store editor working sets when switching between source control history item groups.
+	"scm.workingSets.enabled": false,
+
+	// Security
+	// If enabled, a dialog will ask for confirmation whenever a local file or workspace is about to open through a protocol handler.
+	"security.promptForLocalFileProtocolHandling": true,
+
+	// If enabled, a dialog will ask for confirmation whenever a remote file or workspace is about to open through a protocol handler.
+	"security.promptForRemoteFileProtocolHandling": true,
+
+	// Controls when the restricted mode banner is shown.
+	//  - always: Show the banner every time an untrusted workspace is open.
+	//  - untilDismissed: Show the banner when an untrusted workspace is opened until dismissed.
+	//  - never: Do not show the banner when an untrusted workspace is open.
+	"security.workspace.trust.banner": "untilDismissed",
+
+	// Controls whether or not the empty window is trusted by default within the IDE. When used with `security.workspace.trust.untrustedFiles`, you can enable the full functionality of the IDE without prompting in an empty window.
+	"security.workspace.trust.emptyWindow": true,
+
+	// Controls whether or not Workspace Trust is enabled within the IDE.
+	"security.workspace.trust.enabled": true,
+
+	// Controls when the startup prompt to trust a workspace is shown.
+	//  - always: Ask for trust every time an untrusted workspace is opened.
+	//  - once: Ask for trust the first time an untrusted workspace is opened.
+	//  - never: Do not ask for trust when an untrusted workspace is opened.
+	"security.workspace.trust.startupPrompt": "once",
+
+	// Controls how to handle opening untrusted files in a trusted workspace. This setting also applies to opening files in an empty window which is trusted via `security.workspace.trust.emptyWindow`.
+	//  - prompt: Ask how to handle untrusted files for each workspace. Once untrusted files are introduced to a trusted workspace, you will not be prompted again.
+	//  - open: Always allow untrusted files to be introduced to a trusted workspace without prompting.
+	//  - newWindow: Always open untrusted files in a separate window in restricted mode without prompting.
+	"security.workspace.trust.untrustedFiles": "prompt",
+
+	// Workbench
+	// Whether to dim unfocused editors and terminals, which makes it more clear where typed input will go to. This works with the majority of editors with the notable exceptions of those that utilize iframes like notebooks and extension webview editors.
+	"accessibility.dimUnfocused.enabled": false,
+
+	// The opacity fraction (0.2 to 1.0) to use for unfocused editors and terminals. This will only take effect when `accessibility.dimUnfocused.enabled` is enabled.
+	"accessibility.dimUnfocused.opacity": 0.75,
+
+	// Controls whether the Accessible View is hidden.
+	"accessibility.hideAccessibleView": false,
+
+	// Controls the height of editor tabs. Also applies to the title control bar when `workbench.editor.showTabs` is not set to `multiple`.
+	"window.density.editorTabHeight": "default",
+
+	// Controls the behavior of clicking an Activity Bar icon in the workbench. This value is ignored when `workbench.activityBar.location` is not set to `default`.
+	//  - toggle: Hide the Primary Side Bar if the clicked item is already visible.
+	//  - focus: Focus the Primary Side Bar if the clicked item is already visible.
+	"workbench.activityBar.iconClickBehavior": "toggle",
+
+	// Controls the location of the Activity Bar relative to the Primary Side Bar.
+	//  - default: Show the Activity Bar on the side of the Primary Side Bar.
+	//  - top: Show the Activity Bar on top of the Primary Side Bar.
+	//  - bottom: Show the Activity Bar at the bottom of the Primary Side Bar.
+	//  - hidden: Hide the Activity Bar in the Primary Side Bar.
+	"workbench.activityBar.location": "default",
+
+	// Controls the location of the Secondary Activity Bar relative to the Secondary Side Bar.
+	//  - default: Show the Secondary Activity Bar on the side of the Secondary Side Bar.
+	//  - top: Show the Secondary Activity Bar on top of the Secondary Side Bar.
+	//  - bottom: Show the Secondary Activity Bar at the bottom of the Secondary Side Bar.
+	//  - hidden: Hide the Secondary Activity Bar in the Secondary Side Bar.
+	"workbench.auxiliaryActivityBar.location": "hidden",
+
+	// Controls whether to automatically resume available working changes stored in the cloud for the current workspace.
+	//  - onReload: Automatically resume available working changes from the cloud on window reload.
+	//  - off: Never attempt to resume working changes from the cloud.
+	"workbench.cloudChanges.autoResume": "onReload",
+
+	// Controls whether to prompt the user to store working changes in the cloud when using Continue Working On.
+	//  - prompt: Prompt the user to sign in to store working changes in the cloud with Continue Working On.
+	//  - off: Do not store working changes in the cloud with Continue Working On unless the user has already turned on Cloud Changes.
+	"workbench.cloudChanges.continueOn": "prompt",
+
+	// Controls where the command palette should ask chat questions.
+	//  - chatView: Ask chat questions in the Chat view.
+	//  - quickChat: Ask chat questions in Quick Chat.
+	"workbench.commandPalette.experimental.askChatLocation": "chatView",
+
+	// Controls whether the command palette should include similar commands. You must have an extension installed that provides Natural Language support.
+	"workbench.commandPalette.experimental.enableNaturalLanguageSearch": true,
+
+	// Controls whether the command palette should have a list of commonly used commands.
+	"workbench.commandPalette.experimental.suggestCommands": true,
+
+	// Controls the number of recently used commands to keep in history for the command palette. Set to 0 to disable command history.
+	"workbench.commandPalette.history": 5,
+
+	// Controls whether the last typed input to the command palette should be restored when opening it the next time.
+	"workbench.commandPalette.preserveInput": false,
+
+	// Controls whether the command palette shows 'Ask in Chat' option at the bottom.
+	"workbench.commandPalette.showAskInChat": true,
+
+	// Controls whether to always show the editor actions, even when the editor group is not active.
+	"workbench.editor.alwaysShowEditorActions": false,
+
+	// If an editor matching one of the listed types is opened as the first in an editor group and more than one group is open, the group is automatically locked. Locked groups will only be used for opening editors when explicitly chosen by a user gesture (for example drag and drop), but not by default. Consequently, the active editor in a locked group is less likely to be replaced accidentally with a different editor.
+	"workbench.editor.autoLockGroups": {
+		"default": false,
+		"workbench.editor.chatSession": false,
+		"workbench.editorinputs.searchEditorInput": false,
+		"workbench.editor.processExplorer": true,
+		"notebookOutputEditor": false,
+		"jupyter-notebook": false,
+		"repl": false,
+		"workbench.editors.gettingStartedInput": false,
+		"antigravity.globalArtifactsEditorInput": false,
+		"antigravity.artifactsEditorInput": false,
+		"terminalEditor": true,
+		"antigravity.workflowEditor": false,
+		"antigravity.ruleEditor": false,
+		"imagePreview.previewEditor": false,
+		"vscode.audioPreview": false,
+		"vscode.videoPreview": false,
+		"jsProfileVisualizer.cpuprofile.table": false,
+		"jsProfileVisualizer.heapprofile.table": false,
+		"jsProfileVisualizer.heapsnapshot.table": false,
+		"workbench.input.interactive": false,
+		"mainThreadWebview-markdown.preview": false,
+		"mainThreadWebview-simpleBrowser.view": true,
+		"mainThreadWebview-browserPreview": true
+	},
+
+	// Controls if the centered layout should automatically resize to maximum width when more than one group is open. Once only one group is open it will resize back to the original centered width.
+	"workbench.editor.centeredLayoutAutoResize": true,
+
+	// Controls whether the centered layout tries to maintain constant width when the window is resized.
+	"workbench.editor.centeredLayoutFixedWidth": false,
+
+	// Controls the behavior of empty editor groups when the last tab in the group is closed. When enabled, empty groups will automatically close. When disabled, empty groups will remain part of the grid.
+	"workbench.editor.closeEmptyGroups": true,
+
+	// Controls whether editors showing a file that was opened during the session should close automatically when getting deleted or renamed by some other process. Disabling this will keep the editor open  on such an event. Note that deleting from within the application will always close the editor and that editors with unsaved changes will never close to preserve your data.
+	"workbench.editor.closeOnFileDelete": false,
+
+	// Controls whether the custom workbench editor labels should be applied.
+	"workbench.editor.customLabels.enabled": true,
+
+	// Controls the rendering of the editor label. Each __Item__ is a pattern that matches a file path. Both relative and absolute file paths are supported. The relative path must include the WORKSPACE_FOLDER (e.g `WORKSPACE_FOLDER/src/**.tsx` or `*/src/**.tsx`). Absolute patterns must start with a `/`. In case multiple patterns match, the longest matching path will be picked. Each __Value__ is the template for the rendered editor when the __Item__ matches. Variables are substituted based on the context:
+	// - `${dirname}`: name of the folder in which the file is located (e.g. `WORKSPACE_FOLDER/folder/file.txt -> folder`).
+	// - `${dirname(N)}`: name of the nth parent folder in which the file is located (e.g. `N=2: WORKSPACE_FOLDER/static/folder/file.txt -> WORKSPACE_FOLDER`). Folders can be picked from the start of the path by using negative numbers (e.g. `N=-1: WORKSPACE_FOLDER/folder/file.txt -> WORKSPACE_FOLDER`). If the __Item__ is an absolute pattern path, the first folder (`N=-1`) refers to the first folder in the absolute path, otherwise it corresponds to the workspace folder.
+	// - `${filename}`: name of the file without the file extension (e.g. `WORKSPACE_FOLDER/folder/file.txt -> file`).
+	// - `${extname}`: the file extension (e.g. `WORKSPACE_FOLDER/folder/file.txt -> txt`).
+	// - `${extname(N)}`: the nth extension of the file separated by '.' (e.g. `N=2: WORKSPACE_FOLDER/folder/file.ext1.ext2.ext3 -> ext1`). Extension can be picked from the start of the extension by using negative numbers (e.g. `N=-1: WORKSPACE_FOLDER/folder/file.ext1.ext2.ext3 -> ext2`).
+	// 
+	// Example: `"**/static/**/*.html": "${filename} - ${dirname} (${extname})"` will render a file `WORKSPACE_FOLDER/static/folder/file.html` as `file - folder (html)`.
+	"workbench.editor.customLabels.patterns": {},
+
+	// Controls whether editor file decorations should use badges.
+	"workbench.editor.decorations.badges": true,
+
+	// Controls whether editor file decorations should use colors.
+	"workbench.editor.decorations.colors": true,
+
+	// The default editor for files detected as binary. If undefined, the user will be presented with a picker.
+	"workbench.editor.defaultBinaryEditor": "",
+
+	// Controls how the editor group is resized when double clicking on a tab. This value is ignored when `workbench.editor.showTabs` is not set to `multiple`.
+	//  - maximize: All other editor groups are hidden and the current editor group is maximized to take up the entire editor area.
+	//  - expand: The editor group takes as much space as possible by making all other editor groups as small as possible.
+	//  - off: No editor group is resized when double clicking on a tab.
+	"workbench.editor.doubleClickTabToToggleEditorGroupSizes": "expand",
+
+	// Controls if editors can be dragged out of the window to open them in a new window. Press and hold the `Alt` key while dragging to toggle this dynamically.
+	"workbench.editor.dragToOpenWindow": true,
+
+	// Controls where the editor actions are shown.
+	//  - default: Show editor actions in the window title bar when `workbench.editor.showTabs` is set to `none`. Otherwise, editor actions are shown in the editor tab bar.
+	//  - titleBar: Show editor actions in the window title bar. If `window.customTitleBarVisibility` is set to `never`, editor actions are hidden.
+	//  - hidden: Editor actions are not shown.
+	"workbench.editor.editorActionsLocation": "default",
+
+	// Controls if the empty editor text hint should be visible in the editor.
+	"workbench.editor.empty.hint": "text",
+
+	// Controls whether preview mode is used when editors open. There is a maximum of one preview mode editor per editor group. This editor displays its filename in italics on its tab or title label and in the Open Editors view. Its contents will be replaced by the next editor opened in preview mode. Making a change in a preview mode editor will persist it, as will a double-click on its label, or the 'Keep Open' option in its label context menu. Opening a file from Explorer with a double-click persists its editor immediately.
+	"workbench.editor.enablePreview": true,
+
+	// Controls whether editors remain in preview when a code navigation is started from them. Preview editors do not stay open, and are reused until explicitly set to be kept open (via double-click or editing). This value is ignored when `workbench.editor.showTabs` is not set to `multiple`.
+	"workbench.editor.enablePreviewFromCodeNavigation": false,
+
+	// Controls whether editors opened from Quick Open show as preview editors. Preview editors do not stay open, and are reused until explicitly set to be kept open (via double-click or editing). When enabled, hold Ctrl before selection to open an editor as a non-preview. This value is ignored when `workbench.editor.showTabs` is not set to `multiple`.
+	"workbench.editor.enablePreviewFromQuickOpen": false,
+
+	// Controls whether editors are closed in most recently used order or from left to right.
+	"workbench.editor.focusRecentEditorAfterClose": true,
+
+	// Controls whether a top border is drawn on tabs for editors that have unsaved changes. This value is ignored when `workbench.editor.showTabs` is not set to multiple.
+	"workbench.editor.highlightModifiedTabs": false,
+
+	// Enables use of editor history in language detection. This causes automatic language detection to favor languages that have been recently opened and allows for automatic language detection to operate with smaller inputs.
+	"workbench.editor.historyBasedLanguageDetection": true,
+
+	// Controls the format of the label for an editor.
+	//  - default: Show the name of the file. When tabs are enabled and two files have the same name in one group the distinguishing sections of each file's path are added. When tabs are disabled, the path relative to the workspace folder is shown if the editor is active.
+	//  - short: Show the name of the file followed by its directory name.
+	//  - medium: Show the name of the file followed by its path relative to the workspace folder.
+	//  - long: Show the name of the file followed by its absolute path.
+	"workbench.editor.labelFormat": "default",
+
+	// Controls whether the language in a text editor is automatically detected unless the language has been explicitly set by the language picker. This can also be scoped by language so you can specify which languages you do not want to be switched off of. This is useful for languages like Markdown that often contain other languages that might trick language detection into thinking it's the embedded language and not Markdown.
+	"workbench.editor.languageDetection": true,
+
+	// When enabled, shows a status bar Quick Fix when the editor language doesn't match detected content language.
+	"workbench.editor.languageDetectionHints": {
+		"untitledEditors": true,
+		"notebookEditors": true
+	},
+
+	// Controls if the number of opened editors should be limited or not. When enabled, less recently used editors will close to make space for newly opening editors.
+	"workbench.editor.limit.enabled": false,
+
+	// Controls if the maximum number of opened editors should exclude dirty editors for counting towards the configured limit.
+	"workbench.editor.limit.excludeDirty": false,
+
+	// Controls if the limit of maximum opened editors should apply per editor group or across all editor groups.
+	"workbench.editor.limit.perEditorGroup": false,
+
+	// Controls the maximum number of opened editors. Use the `workbench.editor.limit.perEditorGroup` setting to control this limit per editor group or across all groups.
+	"workbench.editor.limit.value": 10,
+
+	// Enables the use of mouse buttons four and five for commands 'Go Back' and 'Go Forward'.
+	"workbench.editor.mouseBackForwardToNavigate": true,
+
+	// Controls the scope of history navigation in editors for commands such as 'Go Back' and 'Go Forward'.
+	//  - default: Navigate across all opened editors and editor groups.
+	//  - editorGroup: Navigate only in editors of the active editor group.
+	//  - editor: Navigate only in the active editor.
+	"workbench.editor.navigationScope": "default",
+
+	// Controls where editors open. Select `left` or `right` to open editors to the left or right of the currently active one. Select `first` or `last` to open editors independently from the currently active one.
+	"workbench.editor.openPositioning": "right",
+
+	// Controls the default direction of editors that are opened side by side (for example, from the Explorer). By default, editors will open on the right hand side of the currently active one. If changed to `down`, the editors will open below the currently active one. This also impacts the split editor action in the editor toolbar.
+	"workbench.editor.openSideBySideDirection": "right",
+
+	// Controls the size of pinned editor tabs. Pinned tabs are sorted to the beginning of all opened tabs and typically do not close until unpinned. This value is ignored when `workbench.editor.showTabs` is not set to `multiple`.
+	//  - normal: A pinned tab inherits the look of non pinned tabs.
+	//  - compact: A pinned tab will show in a compact form with only icon or first letter of the editor name.
+	//  - shrink: A pinned tab shrinks to a compact fixed size showing parts of the editor name.
+	"workbench.editor.pinnedTabSizing": "normal",
+
+	// When enabled, displays pinned tabs in a separate row above all other tabs. This value is ignored when `workbench.editor.showTabs` is not set to `multiple`.
+	"workbench.editor.pinnedTabsOnSeparateRow": false,
+
+	// When enabled, a language detection model that takes into account editor history will be given higher precedence.
+	"workbench.editor.preferHistoryBasedLanguageDetection": false,
+
+	// Controls whether pinned editors should close when keyboard or middle mouse click is used for closing.
+	//  - keyboardAndMouse: Always prevent closing the pinned editor when using mouse middle click or keyboard.
+	//  - keyboard: Prevent closing the pinned editor when using the keyboard.
+	//  - mouse: Prevent closing the pinned editor when using mouse middle click.
+	//  - never: Never prevent closing a pinned editor.
+	"workbench.editor.preventPinnedEditorClose": "keyboardAndMouse",
+
+	// Restores the last editor view state (such as scroll position) when re-opening editors after they have been closed. Editor view state is stored per editor group and discarded when a group closes. Use the `workbench.editor.sharedViewState` setting to use the last known view state across all editor groups in case no previous view state was found for a editor group.
+	"workbench.editor.restoreViewState": true,
+
+	// Controls whether an editor is revealed in any of the visible groups if opened. If disabled, an editor will prefer to open in the currently active editor group. If enabled, an already opened editor will be revealed instead of opened again in the currently active editor group. Note that there are some cases where this setting is ignored, such as when forcing an editor to open in a specific group or to the side of the currently active group.
+	"workbench.editor.revealIfOpen": false,
+
+	// Controls whether scrolling over tabs will open them or not. By default tabs will only reveal upon scrolling, but not open. You can press and hold the Shift-key while scrolling to change this behavior for that duration. This value is ignored when `workbench.editor.showTabs` is not set to `multiple`.
+	"workbench.editor.scrollToSwitchTabs": false,
+
+	// Preserves the most recent editor view state (such as scroll position) across all editor groups and restores that if no specific editor view state is found for the editor group.
+	"workbench.editor.sharedViewState": false,
+
+	// Controls whether opened editors should show with an icon or not. This requires a file icon theme to be enabled as well.
+	"workbench.editor.showIcons": true,
+
+	// When enabled, will show the tab index. This value is ignored when `workbench.editor.showTabs` is not set to `multiple`.
+	"workbench.editor.showTabIndex": false,
+
+	// Controls whether opened editors should show as individual tabs, one single large tab or if the title area should not be shown.
+	//  - multiple: Each editor is displayed as a tab in the editor title area.
+	//  - single: The active editor is displayed as a single large tab in the editor title area.
+	//  - none: The editor title area is not displayed.
+	"workbench.editor.showTabs": "multiple",
+
+	// Controls the layout for when an editor is split in an editor group to be either vertical or horizontal.
+	//  - vertical: Editors are positioned from top to bottom.
+	//  - horizontal: Editors are positioned from left to right.
+	"workbench.editor.splitInGroupLayout": "horizontal",
+
+	// Controls if editor groups can be split from drag and drop operations by dropping an editor or file on the edges of the editor area.
+	"workbench.editor.splitOnDragAndDrop": true,
+
+	// Controls the size of editor groups when splitting them.
+	//  - auto: Splits the active editor group to equal parts, unless all editor groups are already in equal parts. In that case, splits all the editor groups to equal parts.
+	//  - distribute: Splits all the editor groups to equal parts.
+	//  - split: Splits the active editor group to equal parts.
+	"workbench.editor.splitSizing": "auto",
+
+	// Navigate between open files using three-finger swipe horizontally. Note that System Preferences > Trackpad > More Gestures must be set to 'Swipe with two or three fingers'.
+	"workbench.editor.swipeToNavigate": false,
+
+	// Controls the visibility of the tab close action button.
+	"workbench.editor.tabActionCloseVisibility": true,
+
+	// Controls the position of the editor's tabs action buttons (close, unpin). This value is ignored when `workbench.editor.showTabs` is not set to `multiple`.
+	"workbench.editor.tabActionLocation": "right",
+
+	// Controls the visibility of the tab unpin action button.
+	"workbench.editor.tabActionUnpinVisibility": true,
+
+	// Controls the size of editor tabs. This value is ignored when `workbench.editor.showTabs` is not set to `multiple`.
+	//  - fit: Always keep tabs large enough to show the full editor label.
+	//  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
+	//  - fixed: Make all tabs the same size, while allowing them to get smaller when the available space is not enough to show all tabs at once.
+	"workbench.editor.tabSizing": "fit",
+
+	// Controls the maximum width of tabs when `workbench.editor.tabSizing` size is set to `fixed`.
+	"workbench.editor.tabSizingFixedMaxWidth": 160,
+
+	// Controls the minimum width of tabs when `workbench.editor.tabSizing` size is set to `fixed`.
+	"workbench.editor.tabSizingFixedMinWidth": 50,
+
+	// Controls the height of the scrollbars used for tabs and breadcrumbs in the editor title area.
+	//  - default: The default size.
+	//  - large: Increases the size, so it can be grabbed more easily with the mouse.
+	"workbench.editor.titleScrollbarSizing": "default",
+
+	// Controls the visibility of the scrollbars used for tabs and breadcrumbs in the editor title area.
+	//  - auto: The horizontal scrollbar will be visible only when necessary.
+	//  - visible: The horizontal scrollbar will always be visible.
+	//  - hidden: The horizontal scrollbar will always be hidden.
+	"workbench.editor.titleScrollbarVisibility": "auto",
+
+	// Controls the format of the label for an untitled editor.
+	//  - content: The name of the untitled file is derived from the contents of its first line unless it has an associated file path. It will fallback to the name in case the line is empty or contains no word characters.
+	//  - name: The name of the untitled file is not derived from the contents of the file.
+	"workbench.editor.untitled.labelFormat": "content",
+
+	// Controls whether tabs should be wrapped over multiple lines when exceeding available space or whether a scrollbar should appear instead. This value is ignored when `workbench.editor.showTabs` is not set to '`multiple`'.
+	"workbench.editor.wrapTabs": false,
+
+	// Configure [glob patterns](https://aka.ms/vscode-glob-patterns) to editors (for example `"*.hex": "hexEditor.hexedit"`). These have precedence over the default behavior.
+	"workbench.editorAssociations": {},
+
+	// Controls the minimum size of a file in MB before asking for confirmation when opening in the editor. Note that this setting may not apply to all editor types and environments.
+	"workbench.editorLargeFileConfirmation": 1024,
+
+	// Fetches experiments to run from a Microsoft online service.
+	"workbench.enableExperiments": true,
+
+	// Controls whether to automatically store available working changes in the cloud for the current workspace. This setting has no effect in the web.
+	//  - onShutdown: Automatically store current working changes in the cloud on window close.
+	//  - off: Never attempt to automatically store working changes in the cloud.
+	"workbench.experimental.cloudChanges.autoStore": "off",
+
+	// Controls whether to surface cloud changes which partially match the current session.
+	"workbench.experimental.cloudChanges.partialMatches.enabled": false,
+
+	// Controls whether to render the Share action next to the command center when `window.commandCenter` is `true`.
+	"workbench.experimental.share.enabled": false,
+
+	// Configure the browser to use for opening http or https links externally. This can either be the name of the browser (`edge`, `chrome`, `firefox`) or an absolute path to the browser's executable. Will use the system default if not set.
+	"workbench.externalBrowser": "",
+
+	// Configure the opener to use for external URIs (http, https).
+	"workbench.externalUriOpeners": {},
+
+	// Controls font aliasing method in the workbench.
+	//  - default: Sub-pixel font smoothing. On most non-retina displays this will give the sharpest text.
+	//  - antialiased: Smooth the font on the level of the pixel, as opposed to the subpixel. Can make the font appear lighter overall.
+	//  - none: Disables font smoothing. Text will show with jagged sharp edges.
+	//  - auto: Applies `default` or `antialiased` automatically based on the DPI of displays.
+	"workbench.fontAliasing": "default",
+
+	// Controls the delay in milliseconds after which the hover is shown for workbench items (ex. some extension provided tree view items). Already visible items may require a refresh before reflecting this setting change.
+	"workbench.hover.delay": 300,
+
+	// Controls whether the layout control is shown in the custom title bar. This setting only has an effect when `window.customTitleBarVisibility` is not set to `never`.
+	"workbench.layoutControl.enabled": true,
+
+	// Controls whether the layout control in the custom title bar is displayed as a single menu button or with multiple UI toggles.
+	//  - menu: Shows a single button with a dropdown of layout options.
+	//  - toggles: Shows several buttons for toggling the visibility of the panels and side bar.
+	//  - both: Shows both the dropdown and toggle buttons.
+	"workbench.layoutControl.type": "both",
+
+	// Controls the type of matching used when searching lists and trees in the workbench.
+	//  - fuzzy: Use fuzzy matching when searching.
+	//  - contiguous: Use contiguous matching when searching.
+	"workbench.list.defaultFindMatchType": "fuzzy",
+
+	// Controls the default find mode for lists and trees in the workbench.
+	//  - highlight: Highlight elements when searching. Further up and down navigation will traverse only the highlighted elements.
+	//  - filter: Filter elements when searching.
+	"workbench.list.defaultFindMode": "highlight",
+
+	// Scrolling speed multiplier when pressing `Alt`.
+	"workbench.list.fastScrollSensitivity": 5,
+
+	// Controls whether lists and trees support horizontal scrolling in the workbench. Warning: turning on this setting has a performance implication.
+	"workbench.list.horizontalScrolling": false,
+
+	// Please use 'workbench.list.defaultFindMode' and	'workbench.list.typeNavigationMode' instead.
+	// Controls the keyboard navigation style for lists and trees in the workbench. Can be simple, highlight and filter.
+	//  - simple: Simple keyboard navigation focuses elements which match the keyboard input. Matching is done only on prefixes.
+	//  - highlight: Highlight keyboard navigation highlights elements which match the keyboard input. Further up and down navigation will traverse only the highlighted elements.
+	//  - filter: Filter keyboard navigation will filter out and hide all the elements which do not match the keyboard input.
+	"workbench.list.keyboardNavigation": "highlight",
+
+	// A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events.
+	"workbench.list.mouseWheelScrollSensitivity": 1,
+
+	// The modifier to be used to add an item in trees and lists to a multi-selection with the mouse (for example in the explorer, open editors and scm view). The 'Open to Side' mouse gestures - if supported - will adapt such that they do not conflict with the multiselect modifier.
+	//  - ctrlCmd: Maps to `Control` on Windows and Linux and to `Command` on macOS.
+	//  - alt: Maps to `Alt` on Windows and Linux and to `Option` on macOS.
+	"workbench.list.multiSelectModifier": "ctrlCmd",
+
+	// Controls how to open items in trees and lists using the mouse (if supported). Note that some trees and lists might choose to ignore this setting if it is not applicable.
+	"workbench.list.openMode": "singleClick",
+
+	// Controls whether clicks in the scrollbar scroll page by page.
+	"workbench.list.scrollByPage": false,
+
+	// Controls whether lists and trees have smooth scrolling.
+	"workbench.list.smoothScrolling": false,
+
+	// Controls how type navigation works in lists and trees in the workbench. When set to `trigger`, type navigation begins once the `list.triggerTypeNavigation` command is run.
+	"workbench.list.typeNavigationMode": "automatic",
+
+	// Controls whether local file history is enabled. When enabled, the file contents of an editor that is saved will be stored to a backup location to be able to restore or review the contents later. Changing this setting has no effect on existing local file history entries.
+	"workbench.localHistory.enabled": true,
+
+	// Configure paths or [glob patterns](https://aka.ms/vscode-glob-patterns) for excluding files from the local file history. Glob patterns are always evaluated relative to the path of the workspace folder unless they are absolute paths. Changing this setting has no effect on existing local file history entries.
+	"workbench.localHistory.exclude": {},
+
+	// Controls the maximum number of local file history entries per file. When the number of local file history entries exceeds this number for a file, the oldest entries will be discarded.
+	"workbench.localHistory.maxFileEntries": 50,
+
+	// Controls the maximum size of a file (in KB) to be considered for local file history. Files that are larger will not be added to the local file history. Changing this setting has no effect on existing local file history entries.
+	"workbench.localHistory.maxFileSize": 256,
+
+	// Configure an interval in seconds during which the last entry in local file history is replaced with the entry that is being added. This helps reduce the overall number of entries that are added, for example when auto save is enabled. This setting is only applied to entries that have the same source of origin. Changing this setting has no effect on existing local file history entries.
+	"workbench.localHistory.mergeWindow": 10,
+
+	// Controls whether the navigation control is shown in the custom title bar. This setting only has an effect when `window.customTitleBarVisibility` is not set to `never`.
+	"workbench.navigationControl.enabled": true,
+
+	// Controls the default location of the panel (Terminal, Debug Console, Output, Problems) in a new workspace. It can either show at the bottom, top, right, or left of the editor area.
+	"workbench.panel.defaultLocation": "bottom",
+
+	// Controls whether the panel opens maximized. It can either always open maximized, never open maximized, or open to the last state it was in before being closed.
+	//  - always: Always maximize the panel when opening it.
+	//  - never: Never maximize the panel when opening it.
+	//  - preserve: Open the panel to the state that it was in, before it was closed.
+	"workbench.panel.opensMaximized": "preserve",
+
+	// Controls whether activity items in the panel title are shown as label or icon.
+	"workbench.panel.showLabels": true,
+
+	// Controls whether Quick Open should close automatically once it loses focus.
+	"workbench.quickOpen.closeOnFocusLost": true,
+
+	// Controls whether the last typed input to Quick Open should be restored when opening it the next time.
+	"workbench.quickOpen.preserveInput": false,
+
+	// Controls whether the workbench should render with fewer animations.
+	//  - on: Always render with reduced motion.
+	//  - off: Do not render with reduced motion
+	//  - auto: Render with reduced motion based on OS configuration.
+	"workbench.reduceMotion": "auto",
+
+	// When enabled, remote extensions recommendations will be shown in the Remote Indicator menu.
+	"workbench.remoteIndicator.showExtensionRecommendations": true,
+
+	// Controls the hover feedback delay in milliseconds of the dragging area in between views/editors.
+	"workbench.sash.hoverDelay": 300,
+
+	// Controls the feedback area size in pixels of the dragging area in between views/editors. Set it to a larger value if you feel it's hard to resize views using the mouse.
+	"workbench.sash.size": 4,
+
+	// Controls the default visibility of the secondary side bar in workspaces or empty windows that are opened for the first time.
+	//  - hidden: The secondary side bar is hidden by default.
+	//  - visibleInWorkspace: The secondary side bar is visible by default if a workspace is opened.
+	//  - visible: The secondary side bar is visible by default.
+	//  - maximizedInWorkspace: The secondary side bar is visible and maximized by default if a workspace is opened.
+	//  - maximized: The secondary side bar is visible and maximized by default.
+	"workbench.secondarySideBar.defaultVisibility": "visibleInWorkspace",
+
+	// Controls whether activity items in the secondary side bar title are shown as label or icon. This setting only has an effect when `workbench.activityBar.location` is not set to `top`.
+	"workbench.secondarySideBar.showLabels": true,
+
+	// Configure settings to be applied for all profiles.
+	"workbench.settings.applyToAllProfiles": [],
+
+	// Determines which Settings editor to use by default.
+	//  - ui: Use the settings UI editor.
+	//  - json: Use the JSON file editor.
+	"workbench.settings.editor": "ui",
+
+	// Controls whether to enable the natural language search mode for settings. The natural language search is provided by a Microsoft online service.
+	"workbench.settings.enableNaturalLanguageSearch": true,
+
+	// Controls whether opening keybinding settings also opens an editor showing all default keybindings.
+	"workbench.settings.openDefaultKeybindings": false,
+
+	// Controls whether opening settings also opens an editor showing all default settings.
+	"workbench.settings.openDefaultSettings": false,
+
+	// Controls the behavior of the Settings editor Table of Contents while searching. If this setting is being changed in the Settings editor, the setting will take effect after the search query is modified.
+	//  - hide: Hide the Table of Contents while searching.
+	//  - filter: Filter the Table of Contents to just categories that have matching settings. Clicking on a category will filter the results to that category.
+	"workbench.settings.settingsSearchTocBehavior": "filter",
+
+	// Controls whether the AI search results toggle is shown in the search bar in the Settings editor after doing a search and once AI search results are available.
+	"workbench.settings.showAISearchToggle": true,
+
+	// Controls whether to use the split JSON editor when editing settings as JSON.
+	"workbench.settings.useSplitJSON": false,
+
+	// Controls the location of the primary side bar and activity bar. They can either show on the left or right of the workbench. The secondary side bar will show on the opposite side of the workbench.
+	"workbench.sideBar.location": "left",
+
+	// Controls which editor is shown at startup, if none are restored from the previous session.
+	//  - none: Start without an editor.
+	//  - welcomePage: Open the Welcome page, with content to aid in getting started with VS Code and extensions.
+	//  - readme: Open the README when opening a folder that contains one, fallback to 'welcomePage' otherwise. Note: This is only observed as a global configuration, it will be ignored if set in a workspace or folder configuration.
+	//  - newUntitledFile: Open a new untitled text file (only applies when opening an empty window).
+	//  - welcomePageInEmptyWorkbench: Open the Welcome page when opening an empty workbench.
+	//  - terminal: Open a new terminal in the editor area.
+	"workbench.startupEditor": "welcomePage",
+
+	// Controls the visibility of the status bar at the bottom of the workbench.
+	"workbench.statusBar.visible": true,
+
+	// When enabled, will show the watermark tips when no editor is open.
+	"workbench.tips.enabled": true,
+
+	// Controls whether sticky scrolling is enabled in trees.
+	"workbench.tree.enableStickyScroll": true,
+
+	// Controls how tree folders are expanded when clicking the folder names. Note that some trees and lists might choose to ignore this setting if it is not applicable.
+	"workbench.tree.expandMode": "singleClick",
+
+	// Controls tree indentation in pixels.
+	"workbench.tree.indent": 8,
+
+	// Controls whether the tree should render indent guides.
+	"workbench.tree.renderIndentGuides": "onHover",
+
+	// Controls the number of sticky elements displayed in the tree when `workbench.tree.enableStickyScroll` is enabled.
+	"workbench.tree.stickyScrollMaxItemCount": 7,
+
+	// When enabled, trusted domain prompts will appear when opening links in trusted workspaces.
+	"workbench.trustedDomains.promptInTrustedWorkspace": false,
+
+	// Controls the visibility of view header actions. View header actions may either be always visible, or only visible when that view is focused or hovered over.
+	"workbench.view.alwaysShowHeaderActions": false,
+
+	// If an extension requests a hidden view to be shown, display a clickable status bar indicator instead.
+	"workbench.view.showQuietly": {},
+
+	// Deprecated, use the global `workbench.reduceMotion`.
+	// When enabled, reduce motion in welcome page.
+	"workbench.welcomePage.preferReducedMotion": false,
+
+	// When enabled, an extension's walkthrough will open upon install of the extension.
+	"workbench.welcomePage.walkthroughs.openOnInstall": true,
+
+	// Overrides colors from the currently selected color theme.
+	"workbench.colorCustomizations": {},
+
+	// Specifies the color theme used in the workbench when `window.autoDetectColorScheme` is not enabled.
+	"workbench.colorTheme": "Default Dark Modern",
+
+	// Specifies the file icon theme used in the workbench or 'null' to not show any file icons.
+	//  - null: No file icons
+	//  - vs-minimal
+	//  - vs-seti
+	//  - symbols
+	"workbench.iconTheme": "symbols",
+
+	// Specifies the color theme when system color mode is dark and `window.autoDetectColorScheme` is enabled.
+	"workbench.preferredDarkColorTheme": "Default Dark Modern",
+
+	// Specifies the color theme when in high contrast dark mode and `window.autoDetectHighContrast` is enabled.
+	"workbench.preferredHighContrastColorTheme": "Default High Contrast",
+
+	// Specifies the color theme when in high contrast light mode and `window.autoDetectHighContrast` is enabled.
+	"workbench.preferredHighContrastLightColorTheme": "Default High Contrast Light",
+
+	// Specifies the color theme when system color mode is light and `window.autoDetectColorScheme` is enabled.
+	"workbench.preferredLightColorTheme": "Default Light Modern",
+
+	// Specifies the product icon theme used.
+	//  - Default: Default
+	"workbench.productIconTheme": "Default",
+
+	// Window
+	// If enabled, clicking on an inactive window will both activate the window and trigger the element under the mouse if it is clickable. If disabled, clicking anywhere on an inactive window will activate it only and a second click is required on the element.
+	"window.clickThroughInactive": true,
+
+	// Controls whether closing the last editor should also close the window. This setting only applies for windows that do not show folders.
+	"window.closeWhenEmpty": false,
+
+	// Controls whether to show a confirmation dialog before closing a window or quitting the application.
+	//  - always: Always ask for confirmation.
+	//  - keyboardOnly: Only ask for confirmation if a keybinding was used.
+	//  - never: Never explicitly ask for confirmation.
+	"window.confirmBeforeClose": "never",
+
+	// Controls whether a confirmation dialog shows asking to save or discard an opened untitled workspace in the window when switching to another workspace. Disabling the confirmation dialog will always discard the untitled workspace.
+	"window.confirmSaveUntitledWorkspace": true,
+
+	// Adjust when the custom title bar should be shown. The custom title bar can be hidden when in full screen mode with `windowed`. The custom title bar can only be hidden in non full screen mode with `never` when `window.titleBarStyle` is set to `native`.
+	//  - auto: Automatically changes custom title bar visibility.
+	//  - windowed: Hide custom titlebar in full screen. When not in full screen, automatically change custom title bar visibility.
+	//  - never: Hide custom titlebar when `window.titleBarStyle` is set to `native`.
+	"window.customTitleBarVisibility": "auto",
+
+	// Adjust the appearance of dialogs to be native by the OS or custom.
+	"window.dialogStyle": "custom",
+
+	// If enabled, this setting will close the window when the application icon in the title bar is double-clicked. The window will not be able to be dragged by the icon. This setting is effective only if `window.titleBarStyle` is set to `custom`.
+	"window.doubleClickIconToClose": false,
+
+	// Adjust the context menu appearances to either be native by the OS, custom, or inherited from the title bar style defined in `window.titleBarStyle`.
+	//  - custom: Use the custom context menu.
+	//  - native: Use the native context menu.
+	//  - inherit: Matches the context menu style to the title bar style defined in `window.titleBarStyle`.
+	"window.menuStyle": "native",
+
+	// Controls if native full-screen should be used on macOS. Disable this option to prevent macOS from creating a new space when going full-screen.
+	"window.nativeFullScreen": true,
+
+	// Enables macOS native window tabs. Note that changes require a full restart to apply and that native tabs will disable a custom title bar style if configured.
+	"window.nativeTabs": false,
+
+	// Controls the dimensions of opening a new window when at least one window is already opened. Note that this setting does not have an impact on the first window that is opened. The first window will always restore the size and location as you left it before closing.
+	//  - default: Open new windows in the center of the screen.
+	//  - inherit: Open new windows with same dimension as last active one.
+	//  - offset: Open new windows with same dimension as last active one with an offset position.
+	//  - maximized: Open new windows maximized.
+	//  - fullscreen: Open new windows in full screen mode.
+	"window.newWindowDimensions": "default",
+
+	// Specifies the profile to use when opening a new window. If a profile name is provided, the new window will use that profile. If no profile name is provided, the new window will use the profile of the active window or the Default profile if no active window exists.
+	"window.newWindowProfile": null,
+

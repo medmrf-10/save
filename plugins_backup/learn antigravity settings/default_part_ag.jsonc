@@ -1,0 +1,1000 @@
+
+	// Whether to use the enhanced text diff editor for notebook.
+	"notebook.diff.enablePreview": true,
+
+	// Enable the command to toggle the experimental notebook inline diff editor.
+	"notebook.diff.experimental.toggleInline": false,
+
+	// Hide Metadata Differences
+	"notebook.diff.ignoreMetadata": false,
+
+	// Hide Outputs Differences
+	"notebook.diff.ignoreOutputs": false,
+
+	// Whether to render the overview ruler in the diff editor for notebook.
+	"notebook.diff.overviewRuler": false,
+
+	// Priority list for output mime types
+	"notebook.displayOrder": [],
+
+	// Control whether the notebook editor should allow moving cells through drag and drop.
+	"notebook.dragAndDropEnabled": true,
+
+	// Settings for code editors used in notebooks. This can be used to customize most editor.* settings.
+	"notebook.editorOptionsCustomizations": {},
+
+	// Enable experimental generate action to create code cell with inline chat enabled.
+	"notebook.experimental.generate": true,
+
+	// Enables the incremental saving of notebooks between processes and across Remote connections. When enabled, only the changes to the notebook are sent to the extension host, improving performance for large notebooks and slow network connections.
+	"notebook.experimental.remoteSave": false,
+
+	// Customize the Find Widget behavior for searching within notebook cells. When both markup source and markup preview are enabled, the Find Widget will search either the source code or preview based on the current state of the cell.
+	"notebook.find.filters": {
+		"markupSource": true,
+		"markupPreview": true,
+		"codeSource": true,
+		"codeOutput": true
+	},
+
+	// Format a notebook cell upon execution. A formatter must be available.
+	"notebook.formatOnCellExecution": false,
+
+	// Format a notebook on save. A formatter must be available and the editor must not be shutting down. When `files.autoSave` is set to `afterDelay`, the file will only be formatted when saved explicitly.
+	"notebook.formatOnSave.enabled": false,
+
+	// Control whether to render a global toolbar inside the notebook editor.
+	"notebook.globalToolbar": true,
+
+	// Control whether the actions on the notebook toolbar should render label or not.
+	"notebook.globalToolbarShowLabel": "always",
+
+	// When enabled, the Go to Symbol Quick Pick will display full code symbols from the notebook, as well as Markdown headers.
+	"notebook.gotoSymbols.showAllSymbols": true,
+
+	// Control whether to show inline values within notebook code cells after cell execution. Values will remain until the cell is edited, re-executed, or explicitly cleared via the Clear All Outputs toolbar button or the `Notebook: Clear Inline Values` command.
+	//  - on: Always show inline values, with a regex fallback if no inline value provider is registered. Note: There may be a performance impact in larger cells if the fallback is used.
+	//  - auto: Show inline values only when an inline value provider is registered.
+	//  - off: Never show inline values.
+	"notebook.inlineValues": "off",
+
+	// When enabled, insert a final new line into the end of code cells when saving a notebook.
+	"notebook.insertFinalNewline": false,
+
+	// Control where the insert cell actions should appear.
+	//  - betweenCells: A toolbar that appears on hover between cells.
+	//  - notebookToolbar: The toolbar at the top of the notebook editor.
+	//  - both: Both toolbars.
+	//  - hidden: The insert actions don't appear anywhere.
+	"notebook.insertToolbarLocation": "both",
+
+	// Controls the display of line numbers in the cell editor.
+	"notebook.lineNumbers": "off",
+
+	// Controls the line height in pixels of markdown cells in notebooks. When set to `0`, `normal` will be used
+	"notebook.markdown.lineHeight": 0,
+
+	// Controls the font family of rendered markup in notebooks. When left blank, this will fall back to the default workbench font family.
+	"notebook.markup.fontFamily": "",
+
+	// Controls the font size in pixels of rendered markup in notebooks. When set to `0`, 120% of `editor.fontSize` is used.
+	"notebook.markup.fontSize": 0,
+
+	// Experimental. Enables a limited set of multi cursor controls across multiple cells in the notebook editor. Currently supported are core editor actions (typing/cut/copy/paste/composition) and a limited subset of editor commands.
+	"notebook.multiCursor.enabled": false,
+
+	// When enabled cursor can navigate to the next/previous cell when the current cursor in the cell editor is at the first/last line.
+	"notebook.navigation.allowNavigateToSurroundingCells": true,
+
+	// When enabled, notebook outline shows code cells.
+	"notebook.outline.showCodeCells": false,
+
+	// When enabled, notebook outline shows code cell symbols. Relies on `notebook.outline.showCodeCells` being enabled.
+	"notebook.outline.showCodeCellSymbols": true,
+
+	// When enabled, notebook outline will show only markdown cells containing a header.
+	"notebook.outline.showMarkdownHeadersOnly": true,
+
+	// The font family of the output text within notebook cells. When set to empty, the `editor.fontFamily` is used.
+	"notebook.output.fontFamily": "",
+
+	// Font size for the output text within notebook cells. When set to 0, `editor.fontSize` is used.
+	"notebook.output.fontSize": 0,
+
+	// Line height of the output text within notebook cells.
+	//  - When set to 0, editor line height is used.
+	//  - Values between 0 and 8 will be used as a multiplier with the font size.
+	//  - Values greater than or equal to 8 will be used as effective values.
+	"notebook.output.lineHeight": 0,
+
+	// Control whether to disable filepath links in the output of notebook cells.
+	"notebook.output.linkifyFilePaths": true,
+
+	// Control whether to render error output in a minimal style.
+	"notebook.output.minimalErrorRendering": false,
+
+	// Initially render notebook outputs in a scrollable region when longer than the limit.
+	"notebook.output.scrolling": false,
+
+	// Controls how many lines of text are displayed in a text output. If `notebook.output.scrolling` is enabled, this setting is used to determine the scroll height of the output.
+	"notebook.output.textLineLimit": 30,
+
+	// Controls whether the lines in output should wrap.
+	"notebook.output.wordWrap": false,
+
+	// How far to scroll when revealing the next cell upon running notebook.cell.executeAndSelectBelow.
+	//  - fullCell: Scroll to fully reveal the next cell.
+	//  - firstLine: Scroll to reveal the first line of the next cell.
+	//  - none: Do not scroll.
+	"notebook.scrolling.revealNextCellOnExecute": "fullCell",
+
+	// Whether the cell status bar should be shown.
+	//  - hidden: The cell status bar is always hidden.
+	//  - visible: The cell status bar is always visible.
+	//  - visibleAfterExecute: The cell status bar is hidden until the cell has executed. Then it becomes visible to show the execution status.
+	"notebook.showCellStatusBar": "visible",
+
+	// Controls when the Markdown header folding arrow is shown.
+	//  - always: The folding controls are always visible.
+	//  - never: Never show the folding controls and reduce the gutter size.
+	//  - mouseover: The folding controls are visible only on mouseover.
+	"notebook.showFoldingControls": "mouseover",
+
+	// Experimental. Control whether to render notebook Sticky Scroll headers in the notebook editor.
+	"notebook.stickyScroll.enabled": false,
+
+	// Control whether nested sticky lines appear to stack flat or indented.
+	//  - flat: Nested sticky lines appear flat.
+	//  - indented: Nested sticky lines appear indented.
+	"notebook.stickyScroll.mode": "indented",
+
+	// Whether to use separate undo/redo stack for each cell.
+	"notebook.undoRedoPerCell": true,
+
+	// Enable the experimental notebook variables view within the debug panel.
+	"notebook.variablesView": false,
+
+	// Tasks
+	// Enable automatic tasks - note that tasks won't run in an untrusted workspace.
+	//  - on: Always
+	//  - off: Never
+	"task.allowAutomaticTasks": "on",
+
+	// Controls enablement of `provideTasks` for all task provider extension. If the Tasks: Run Task command is slow, disabling auto detect for task providers may help. Individual extensions may also provide settings that disable auto detection.
+	"task.autoDetect": "on",
+
+	// Controls the minimum task runtime in milliseconds before showing an OS notification when the task finishes while the window is not in focus. Set to -1 to disable notifications. Set to 0 to always show notifications. This includes a window badge as well as notification toast.
+	"task.notifyWindowOnTaskCompletion": 60000,
+
+	// Configures whether to show the problem matcher prompt when running a task. Set to `true` to never prompt, or use a dictionary of task types to turn off prompting only for specific task types.
+	"task.problemMatchers.neverPrompt": false,
+
+	// Controls whether to show the task detail for tasks that have a detail in task quick picks, such as Run Task.
+	"task.quickOpen.detail": true,
+
+	// Controls the number of recent items tracked in task quick open dialog.
+	"task.quickOpen.history": 30,
+
+	// Causes the Tasks: Run Task command to use the slower "show all" behavior instead of the faster two level picker where tasks are grouped by provider.
+	"task.quickOpen.showAll": false,
+
+	// Controls whether the task quick pick is skipped when there is only one task to pick from.
+	"task.quickOpen.skip": false,
+
+	// On window reload, reconnect to tasks that have problem matchers.
+	"task.reconnection": true,
+
+	// Save all dirty editors before running a task.
+	//  - always: Always saves all editors before running.
+	//  - never: Never saves editors before running.
+	//  - prompt: Prompts whether to save editors before running.
+	"task.saveBeforeRun": "always",
+
+	// Configures whether a warning is shown when a provider is slow
+	"task.slowProviderWarning": true,
+
+	// Enable verbose logging for tasks.
+	"task.verboseLogging": false,
+
+	// Terminal Suggest Providers
+	// Controls which suggestions automatically show up while typing. Suggestion providers are enabled by default.
+	"terminal.integrated.suggest.providers": {
+		"lsp": true,
+		"vscode.terminal-suggest": true
+	},
+
+	// Show Errors & Warnings on files and folder. Overwritten by `problems.visibility` when it is off.
+	"problems.decorations.enabled": true,
+
+	// Breadcrumb Navigation
+	// Enable/disable navigation breadcrumbs.
+	"breadcrumbs.enabled": true,
+
+	// Controls whether and how file paths are shown in the breadcrumbs view.
+	//  - on: Show the file path in the breadcrumbs view.
+	//  - off: Do not show the file path in the breadcrumbs view.
+	//  - last: Only show the last element of the file path in the breadcrumbs view.
+	"breadcrumbs.filePath": "on",
+
+	// Render breadcrumb items with icons.
+	"breadcrumbs.icons": true,
+
+	// When enabled breadcrumbs show `array`-symbols.
+	"breadcrumbs.showArrays": true,
+
+	// When enabled breadcrumbs show `boolean`-symbols.
+	"breadcrumbs.showBooleans": true,
+
+	// When enabled breadcrumbs show `class`-symbols.
+	"breadcrumbs.showClasses": true,
+
+	// When enabled breadcrumbs show `constant`-symbols.
+	"breadcrumbs.showConstants": true,
+
+	// When enabled breadcrumbs show `constructor`-symbols.
+	"breadcrumbs.showConstructors": true,
+
+	// When enabled breadcrumbs show `enumMember`-symbols.
+	"breadcrumbs.showEnumMembers": true,
+
+	// When enabled breadcrumbs show `enum`-symbols.
+	"breadcrumbs.showEnums": true,
+
+	// When enabled breadcrumbs show `event`-symbols.
+	"breadcrumbs.showEvents": true,
+
+	// When enabled breadcrumbs show `field`-symbols.
+	"breadcrumbs.showFields": true,
+
+	// When enabled breadcrumbs show `file`-symbols.
+	"breadcrumbs.showFiles": true,
+
+	// When enabled breadcrumbs show `function`-symbols.
+	"breadcrumbs.showFunctions": true,
+
+	// When enabled breadcrumbs show `interface`-symbols.
+	"breadcrumbs.showInterfaces": true,
+
+	// When enabled breadcrumbs show `key`-symbols.
+	"breadcrumbs.showKeys": true,
+
+	// When enabled breadcrumbs show `method`-symbols.
+	"breadcrumbs.showMethods": true,
+
+	// When enabled breadcrumbs show `module`-symbols.
+	"breadcrumbs.showModules": true,
+
+	// When enabled breadcrumbs show `namespace`-symbols.
+	"breadcrumbs.showNamespaces": true,
+
+	// When enabled breadcrumbs show `null`-symbols.
+	"breadcrumbs.showNull": true,
+
+	// When enabled breadcrumbs show `number`-symbols.
+	"breadcrumbs.showNumbers": true,
+
+	// When enabled breadcrumbs show `object`-symbols.
+	"breadcrumbs.showObjects": true,
+
+	// When enabled breadcrumbs show `operator`-symbols.
+	"breadcrumbs.showOperators": true,
+
+	// When enabled breadcrumbs show `package`-symbols.
+	"breadcrumbs.showPackages": true,
+
+	// When enabled breadcrumbs show `property`-symbols.
+	"breadcrumbs.showProperties": true,
+
+	// When enabled breadcrumbs show `string`-symbols.
+	"breadcrumbs.showStrings": true,
+
+	// When enabled breadcrumbs show `struct`-symbols.
+	"breadcrumbs.showStructs": true,
+
+	// When enabled breadcrumbs show `typeParameter`-symbols.
+	"breadcrumbs.showTypeParameters": true,
+
+	// When enabled breadcrumbs show `variable`-symbols.
+	"breadcrumbs.showVariables": true,
+
+	// Controls whether and how symbols are shown in the breadcrumbs view.
+	//  - on: Show all symbols in the breadcrumbs view.
+	//  - off: Do not show symbols in the breadcrumbs view.
+	//  - last: Only show the current symbol in the breadcrumbs view.
+	"breadcrumbs.symbolPath": "on",
+
+	// Controls how symbols are sorted in the breadcrumbs outline view.
+	//  - position: Show symbol outline in file position order.
+	//  - name: Show symbol outline in alphabetical order.
+	//  - type: Show symbol outline in symbol type order.
+	"breadcrumbs.symbolSortOrder": "position",
+
+	// Problems
+	// Controls whether Problems view should automatically reveal files when opening them.
+	"problems.autoReveal": true,
+
+	// Controls the default view mode of the Problems view.
+	"problems.defaultViewMode": "tree",
+
+	// When enabled shows the current problem in the status bar.
+	"problems.showCurrentInStatus": false,
+
+	// Controls the order in which problems are navigated.
+	//  - severity: Navigate problems ordered by severity
+	//  - position: Navigate problems ordered by position
+	"problems.sortOrder": "severity",
+
+	// Controls whether the problems are visible throughout the editor and workbench.
+	"problems.visibility": true,
+
+	// Telemetry
+	// If this setting is false, no telemetry will be sent regardless of the new setting's value. Deprecated due to being combined into the `telemetry.telemetryLevel` setting.
+	// Enable crash reports to be collected. This helps us improve stability. 
+	// This option requires restart to take effect.
+	"telemetry.enableCrashReporter": true,
+
+	// If this setting is false, no telemetry will be sent regardless of the new setting's value. Deprecated in favor of the `telemetry.telemetryLevel` setting.
+	// Enable diagnostic data to be collected. This helps us to better understand how Antigravity is performing and where improvements need to be made.
+	"telemetry.enableTelemetry": true,
+
+	// Enable feedback mechanisms such as the issue reporter, surveys, and other feedback options.
+	"telemetry.feedback.enabled": true,
+
+	// 
+	// To manage how Antigravity stores code snippet telemetry, visit your [IDE Account Settings](command:workbench.action.openAntigravitySettingsWithId?%5B%22disableCodeSnippetTelemetry%22%5D).
+	// 
+	// Controls Antigravity IDE telemetry, first-party extension telemetry, and participating third-party extension telemetry. Some third party extensions might not respect this setting. Consult the specific extension's documentation to be sure. Telemetry helps us better understand how Antigravity is performing, where improvements need to be made, and how features are being used. Read more about the [data we collect](https://aka.ms/vscode-telemetry). A full restart of the application is necessary for crash reporting changes to take effect.
+	// 
+	// &nbsp;
+	// 
+	// The following table outlines the data sent with each setting:
+	// 
+	// |       | Crash Reports | Error Telemetry | Usage Data |
+	// |:------|:-------------:|:---------------:|:----------:|
+	// | all   |       ✓       |        ✓        |     ✓      |
+	// | error |       ✓       |        ✓        |     -      |
+	// | crash |       ✓       |        -        |     -      |
+	// | off   |       -       |        -        |     -      |
+	// 
+	// 
+	// &nbsp;
+	// 
+	// ****Note:*** If this setting is 'off', no telemetry will be sent regardless of other telemetry settings. If this setting is set to anything except 'off' and telemetry is disabled with deprecated settings, no telemetry will be sent.*
+	// 
+	//  - all: Sends usage data, errors, and crash reports.
+	//  - error: Sends general error telemetry and crash reports.
+	//  - crash: Sends OS level crash reports.
+	//  - off: Disables all product telemetry.
+	"telemetry.telemetryLevel": "all",
+
+	// Outline
+	// Controls whether Outline items are collapsed or expanded.
+	//  - alwaysCollapse: Collapse all items.
+	//  - alwaysExpand: Expand all items.
+	"outline.collapseItems": "alwaysExpand",
+
+	// Render Outline elements with icons.
+	"outline.icons": true,
+
+	// Use badges for errors and warnings on Outline elements. Overwritten by `problems.visibility` when it is off.
+	"outline.problems.badges": true,
+
+	// Use colors for errors and warnings on Outline elements. Overwritten by `problems.visibility` when it is off.
+	"outline.problems.colors": true,
+
+	// Show errors and warnings on Outline elements. Overwritten by `problems.visibility` when it is off.
+	"outline.problems.enabled": true,
+
+	// When enabled, Outline shows `array`-symbols.
+	"outline.showArrays": true,
+
+	// When enabled, Outline shows `boolean`-symbols.
+	"outline.showBooleans": true,
+
+	// When enabled, Outline shows `class`-symbols.
+	"outline.showClasses": true,
+
+	// When enabled, Outline shows `constant`-symbols.
+	"outline.showConstants": true,
+
+	// When enabled, Outline shows `constructor`-symbols.
+	"outline.showConstructors": true,
+
+	// When enabled, Outline shows `enumMember`-symbols.
+	"outline.showEnumMembers": true,
+
+	// When enabled, Outline shows `enum`-symbols.
+	"outline.showEnums": true,
+
+	// When enabled, Outline shows `event`-symbols.
+	"outline.showEvents": true,
+
+	// When enabled, Outline shows `field`-symbols.
+	"outline.showFields": true,
+
+	// When enabled, Outline shows `file`-symbols.
+	"outline.showFiles": true,
+
+	// When enabled, Outline shows `function`-symbols.
+	"outline.showFunctions": true,
+
+	// When enabled, Outline shows `interface`-symbols.
+	"outline.showInterfaces": true,
+
+	// When enabled, Outline shows `key`-symbols.
+	"outline.showKeys": true,
+
+	// When enabled, Outline shows `method`-symbols.
+	"outline.showMethods": true,
+
+	// When enabled, Outline shows `module`-symbols.
+	"outline.showModules": true,
+
+	// When enabled, Outline shows `namespace`-symbols.
+	"outline.showNamespaces": true,
+
+	// When enabled, Outline shows `null`-symbols.
+	"outline.showNull": true,
+
+	// When enabled, Outline shows `number`-symbols.
+	"outline.showNumbers": true,
+
+	// When enabled, Outline shows `object`-symbols.
+	"outline.showObjects": true,
+
+	// When enabled, Outline shows `operator`-symbols.
+	"outline.showOperators": true,
+
+	// When enabled, Outline shows `package`-symbols.
+	"outline.showPackages": true,
+
+	// When enabled, Outline shows `property`-symbols.
+	"outline.showProperties": true,
+
+	// When enabled, Outline shows `string`-symbols.
+	"outline.showStrings": true,
+
+	// When enabled, Outline shows `struct`-symbols.
+	"outline.showStructs": true,
+
+	// When enabled, Outline shows `typeParameter`-symbols.
+	"outline.showTypeParameters": true,
+
+	// When enabled, Outline shows `variable`-symbols.
+	"outline.showVariables": true,
+
+	// Timeline
+	// Controls whether the Timeline view will load the next page of items when you scroll to the end of the list.
+	"timeline.pageOnScroll": true,
+
+	// The number of items to show in the Timeline view by default and when loading more items. Setting to `null` will automatically choose a page size based on the visible area of the Timeline view.
+	"timeline.pageSize": 50,
+
+	// Default Language Configuration Overrides
+	// Configure settings to be overridden for chatagent.
+	"[chatagent]":  {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"editor.unicodeHighlight.ambiguousCharacters": false,
+		"editor.unicodeHighlight.invisibleCharacters": false,
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.wordWrap": "on",
+		"editor.quickSuggestions": {
+				"comments": "off",
+				"strings": "on",
+				"other": "on"
+		},
+		"editor.wordBasedSuggestions": "off"
+	},
+
+	// Configure settings to be overridden for clojure.
+	"[clojure]":  {
+		"diffEditor.ignoreTrimWhitespace": false
+	},
+
+	// Configure settings to be overridden for coffeescript.
+	"[coffeescript]":  {
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.defaultColorDecorators": "never"
+	},
+
+	// Configure settings to be overridden for csharp.
+	"[csharp]":  {
+		"editor.maxTokenizationLineLength": 2500
+	},
+
+	// Configure settings to be overridden for css.
+	"[css]":  {
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure settings to be overridden for dockercompose.
+	"[dockercompose]":  {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced"
+	},
+
+	// Configure settings to be overridden for dockerfile.
+	"[dockerfile]":  {
+		"editor.quickSuggestions": {
+				"strings": true
+		}
+	},
+
+	// Configure settings to be overridden for fsharp.
+	"[fsharp]":  {
+		"diffEditor.ignoreTrimWhitespace": false
+	},
+
+	// Configure settings to be overridden for git-commit.
+	"[git-commit]":  {
+		"editor.rulers": [
+				50,
+				72
+		],
+		"editor.wordWrap": "off",
+		"workbench.editor.restoreViewState": false
+	},
+
+	// Configure settings to be overridden for git-rebase.
+	"[git-rebase]":  {
+		"workbench.editor.restoreViewState": false
+	},
+
+	// Configure settings to be overridden for go.
+	"[go]":  {
+		"editor.insertSpaces": false,
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+				"source.organizeImports": "explicit"
+		}
+	},
+
+	// Configure settings to be overridden for handlebars.
+	"[handlebars]":  {
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure settings to be overridden for html.
+	"[html]":  {
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure settings to be overridden for instructions.
+	"[instructions]":  {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"editor.unicodeHighlight.ambiguousCharacters": false,
+		"editor.unicodeHighlight.invisibleCharacters": false,
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.wordWrap": "on",
+		"editor.quickSuggestions": {
+				"comments": "off",
+				"strings": "on",
+				"other": "on"
+		},
+		"editor.wordBasedSuggestions": "off"
+	},
+
+	// Configure settings to be overridden for jade.
+	"[jade]":  {
+		"diffEditor.ignoreTrimWhitespace": false
+	},
+
+	// Configure settings to be overridden for javascript.
+	"[javascript]":  {
+		"editor.maxTokenizationLineLength": 2500
+	},
+
+	// Configure settings to be overridden for json.
+	"[json]":  {
+		"editor.quickSuggestions": {
+				"strings": true
+		},
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure settings to be overridden for jsonc.
+	"[jsonc]":  {
+		"editor.quickSuggestions": {
+				"strings": true
+		},
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure settings to be overridden for julia.
+	"[julia]":  {
+		"editor.defaultColorDecorators": "never"
+	},
+
+	// Configure settings to be overridden for less.
+	"[less]":  {
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure settings to be overridden for makefile.
+	"[makefile]":  {
+		"editor.insertSpaces": false
+	},
+
+	// Configure settings to be overridden for markdown.
+	"[markdown]":  {
+		"editor.unicodeHighlight.ambiguousCharacters": false,
+		"editor.unicodeHighlight.invisibleCharacters": false,
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.wordWrap": "on",
+		"editor.quickSuggestions": {
+				"comments": "off",
+				"strings": "off",
+				"other": "off"
+		}
+	},
+
+	// Configure settings to be overridden for plaintext.
+	"[plaintext]":  {
+		"editor.unicodeHighlight.ambiguousCharacters": false,
+		"editor.unicodeHighlight.invisibleCharacters": false
+	},
+
+	// Configure settings to be overridden for prompt.
+	"[prompt]":  {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"editor.unicodeHighlight.ambiguousCharacters": false,
+		"editor.unicodeHighlight.invisibleCharacters": false,
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.wordWrap": "on",
+		"editor.quickSuggestions": {
+				"comments": "off",
+				"strings": "on",
+				"other": "on"
+		},
+		"editor.wordBasedSuggestions": "off"
+	},
+
+	// Configure settings to be overridden for python.
+	"[python]":  {
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.defaultColorDecorators": "never"
+	},
+
+	// Configure settings to be overridden for ruby.
+	"[ruby]":  {
+		"editor.defaultColorDecorators": "never",
+		"editor.defaultFormatter": "Shopify.ruby-lsp",
+		"editor.formatOnSave": true,
+		"editor.tabSize": 2,
+		"editor.insertSpaces": true,
+		"editor.semanticHighlighting.enabled": true,
+		"editor.formatOnType": true,
+		"editor.wordSeparators": "`~@#$%^&*()-=+[{]}\\|;:'\",.<>/"
+	},
+
+	// Configure settings to be overridden for scss.
+	"[scss]":  {
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure settings to be overridden for search-result.
+	"[search-result]":  {
+		"editor.lineNumbers": "off"
+	},
+
+	// Configure settings to be overridden for shellscript.
+	"[shellscript]":  {
+		"files.eol": "\n",
+		"editor.defaultColorDecorators": "never"
+	},
+
+	// Configure settings to be overridden for snippets.
+	"[snippets]":  {
+		"editor.quickSuggestions": {
+				"strings": true
+		},
+		"editor.suggest.insertMode": "replace"
+	},
+
+	// Configure settings to be overridden for yaml.
+	"[yaml]":  {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.defaultColorDecorators": "never",
+		"editor.quickSuggestions": {
+				"strings": "on"
+		}
+	},
+
+	// Enable/disable the ability to preview changes before renaming
+	"editor.rename.enablePreview": true,
+
+	// Overrides editor semantic token color and styles from the currently selected color theme.
+	"editor.semanticTokenColorCustomizations": {
+		"rules": {
+			"variable.readonly:python": "#4EC9B0"
+		}
+	},
+
+	// Overrides editor syntax colors and font style from the currently selected color theme.
+	"editor.tokenColorCustomizations": {},
+
+	// Whether the inline chat also renders an accessible diff viewer for its changes.
+	//  - auto: The accessible diff viewer is based on screen reader mode being enabled.
+	//  - on: The accessible diff viewer is always enabled.
+	//  - off: The accessible diff viewer is never enabled.
+	"inlineChat.accessibleDiffView": "auto",
+
+	// Whether to use the next version of inline chat.
+	"inlineChat.enableV2": false,
+
+	// Whether to finish an inline chat session when typing outside of changed regions.
+	"inlineChat.finishOnType": false,
+
+	// Whether holding the inline chat keybinding will automatically enable speech recognition.
+	"inlineChat.holdToSpeech": true,
+
+	// Enable agent-like behavior for inline chat widget in notebooks.
+	"inlineChat.notebookAgent": false,
+
+	// Chat
+	// When applying edits, show a progress animation in the code block pill. If disabled, shows the progress percentage instead.
+	"chat.agent.codeBlockProgress": true,
+
+	// Enable agent mode for chat. When this is enabled, agent mode can be activated via the dropdown in the view.
+	"chat.agent.enabled": true,
+
+	// The maximum number of requests to allow per-turn when using an agent. When the limit is reached, will ask to confirm to continue.
+	"chat.agent.maxRequests": 25,
+
+	// Controls how tool calls are displayed in relation to thinking sections.
+	//  - off: Tool calls are shown separately, not collapsed into thinking.
+	//  - withThinking: Tool calls are collapsed into thinking sections when thinking is present.
+	//  - always: Tool calls are always collapsed, even without thinking.
+	"chat.agent.thinking.collapsedTools": "always",
+
+	// Controls whether to use an LLM to generate summary titles for thinking sections.
+	"chat.agent.thinking.generateTitles": true,
+
+	// Controls how thinking is rendered.
+	//  - collapsed: Thinking parts will be collapsed by default.
+	//  - collapsedPreview: Thinking parts will be expanded first, then collapse once we reach a part that is not thinking.
+	//  - fixedScrolling: Show thinking in a fixed-height streaming panel that auto-scrolls; click header to expand to full height.
+	"chat.agent.thinkingStyle": "fixedScrolling",
+
+	// Controls where to show the agent sessions menu.
+	"chat.agentSessionsViewLocation": "disabled",
+
+	// Controls whether anonymous access is allowed in chat.
+	"chat.allowAnonymousAccess": false,
+
+	// Enables checkpoints in chat. Checkpoints allow you to restore the chat to a previous state.
+	"chat.checkpoints.enabled": true,
+
+	// Controls whether to show chat checkpoint file changes.
+	"chat.checkpoints.showFileChanges": false,
+
+	// Controls whether the command center shows a menu for actions to control chat (requires `window.commandCenter`).
+	"chat.commandCenter.enabled": false,
+
+	// Whether the runSubagent tool is able to use custom agents. When enabled, the tool can take the name of a custom agent, but it must be given the exact name of the agent.
+	"chat.customAgentInSubagent.enabled": false,
+
+	// Enables chat participant autodetection for panel chat.
+	"chat.detectParticipant.enabled": true,
+
+	// Disable and hide built-in AI features provided by GitHub Copilot, including chat and inline suggestions.
+	"chat.disableAIFeatures": false,
+
+	// Delay after which changes made by chat are automatically accepted. Values are in seconds, `0` means disabled and `100` seconds is the maximum.
+	"chat.editing.autoAcceptDelay": 0,
+
+	// Whether to show a confirmation before removing a request and its associated edits.
+	"chat.editing.confirmEditRequestRemoval": true,
+
+	// Whether to show a confirmation before retrying a request and its associated edits.
+	"chat.editing.confirmEditRequestRetry": true,
+
+	// Controls the font family in chat codeblocks.
+	"chat.editor.fontFamily": "default",
+
+	// Controls the font size in pixels in chat codeblocks.
+	"chat.editor.fontSize": 12,
+
+	// Controls the font weight in chat codeblocks.
+	"chat.editor.fontWeight": "default",
+
+	// Controls the line height in pixels in chat codeblocks. Use 0 to compute the line height from the font size.
+	"chat.editor.lineHeight": 0,
+
+	// Controls whether lines should wrap in chat codeblocks.
+	"chat.editor.wordWrap": "off",
+
+	// Enables editing of requests in the chat. This allows you to change the request content and resubmit it to the model.
+	"chat.editRequests": "inline",
+
+	// Enable the new Edits mode that is based on tool-calling. When this is enabled, models that don't support tool-calling are unavailable for Edits mode.
+	"chat.edits2.enabled": false,
+
+	// Controls whether the chat panel automatically exits after delegating a request to another session.
+	"chat.exitAfterDelegation": true,
+
+	// This setting is deprecated. Please use `chat.detectParticipant.enabled` instead.
+	// Enables chat participant autodetection for panel chat.
+	"chat.experimental.detectParticipant.enabled": null,
+
+	// Enable using tools contributed by third-party extensions.
+	"chat.extensionTools.enabled": true,
+
+	// Enables the unification of GitHub Copilot extensions. When enabled, all GitHub Copilot functionality is served from the GitHub Copilot Chat extension. When disabled, the GitHub Copilot and GitHub Copilot Chat extensions operate independently.
+	"chat.extensionUnification.enabled": true,
+
+	// Controls the font family in chat messages.
+	"chat.fontFamily": "default",
+
+	// Controls the font size in pixels in chat messages.
+	"chat.fontSize": 13,
+
+	// Enables automatically using the active editor as chat context for specified chat locations.
+	"chat.implicitContext.enabled": {
+		"panel": "always"
+	},
+
+	// Controls whether the new implicit context flow is shown. In Ask and Edit modes, the context will automatically be included. When using an agent, context will be suggested as an attachment. Selections are always included as context.
+	"chat.implicitContext.suggestedContext": true,
+
+	// Specify location(s) of instructions files (`*.instructions.md`) that can be attached in Chat sessions. [Learn More](https://aka.ms/vscode-ghcp-custom-instructions).
+	// 
+	// Relative paths are resolved from the root folder(s) of your workspace.
+	"chat.instructionsFilesLocations": {
+		".github/instructions": true
+	},
+
+	// Enable math rendering in chat responses using KaTeX.
+	"chat.math.enabled": true,
+
+	// Controls access to installed Model Context Protocol servers.
+	//  - none: No access to MCP servers.
+	//  - registry: Allows access to MCP servers installed from the registry that VS Code is connected to.
+	//  - all: Allow access to any installed MCP server.
+	"chat.mcp.access": "all",
+
+	// Enables NuGet packages for AI-assisted MCP server installation. Used to install MCP servers by name from the central registry for .NET packages (NuGet.org).
+	"chat.mcp.assisted.nuget.enabled": false,
+
+	// Controls whether MCP servers should be automatically started when the chat messages are submitted.
+	//  - never: Never automatically start MCP servers.
+	//  - onlyNew: Only automatically start new MCP servers that have never been run.
+	//  - newAndOutdated: Automatically start new and outdated MCP servers that are not yet running.
+	"chat.mcp.autostart": "newAndOutdated",
+
+	// Configures discovery of Model Context Protocol servers from configuration from various other applications.
+	"chat.mcp.discovery.enabled": {
+		"claude-desktop": false,
+		"antigravity": false,
+		"cursor-global": false,
+		"cursor-workspace": false
+	},
+
+	// Enables the default Marketplace for Model Context Protocol (MCP) servers.
+	"chat.mcp.gallery.enabled": false,
+
+	// Configures which models are exposed to MCP servers for sampling (making model requests in the background). This setting can be edited in a graphical way under the `MCP: List Servers` command.
+	"chat.mcp.serverSampling": {},
+
+	// This setting is deprecated and will be removed in future releases. Chat modes are now called custom agents and are located in `.github/agents`
+	// Specify location(s) of custom chat mode files (`*.chatmode.md`). [Learn More](https://aka.ms/vscode-ghcp-custom-chat-modes).
+	// 
+	// Relative paths are resolved from the root folder(s) of your workspace.
+	"chat.modeFilesLocations": {
+		".github/chatmodes": true
+	},
+
+	// Controls whether a chat session should present the user with an OS notification when a confirmation is needed while the window is not in focus. This includes a window badge as well as notification toast.
+	"chat.notifyWindowOnConfirmation": true,
+
+	// Controls whether a chat session should present the user with an OS notification when a response is received while the window is not in focus. This includes a window badge as well as notification toast.
+	"chat.notifyWindowOnResponseReceived": true,
+
+	// Specify location(s) of reusable prompt files (`*.prompt.md`) that can be run in Chat sessions. [Learn More](https://aka.ms/vscode-ghcp-prompt-snippets).
+	// 
+	// Relative paths are resolved from the root folder(s) of your workspace.
+	"chat.promptFilesLocations": {
+		".github/prompts": true
+	},
+
+	// Configure which prompt files to recommend in the chat welcome view. Each key is a prompt file name, and the value can be `true` to always recommend, `false` to never recommend, or a [when clause](https://aka.ms/vscode-when-clause) expression like `resourceExtname == .js` or `resourceLangId == markdown`.
+	"chat.promptFilesRecommendations": {},
+
+	// Controls whether related files should be rendered in the chat input.
+	"chat.renderRelatedFiles": false,
+
+	// Controls whether the last session is restored in panel after restart.
+	"chat.restoreLastPanelSession": true,
+
+	// Controls whether CSS of the selected element will be added to the chat. `chat.sendElementsToChat.enabled` must be enabled.
+	"chat.sendElementsToChat.attachCSS": true,
+
+	// Controls whether a screenshot of the selected element will be added to the chat. `chat.sendElementsToChat.enabled` must be enabled.
+	"chat.sendElementsToChat.attachImages": true,
+
+	// Controls whether elements can be sent to chat from the Simple Browser.
+	"chat.sendElementsToChat.enabled": true,
+
+	// Controls whether session descriptions are displayed on a second row in the Chat Sessions view.
+	"chat.showAgentSessionsViewDescription": true,
+
+	// Controls whether background throttling is suspended when a chat request is in progress, allowing the chat session to continue even when the window is not in focus.
+	"chat.suspendThrottling": true,
+
+	// When enabled, todo items include detailed descriptions for implementation context. This provides more information but uses additional tokens and may slow down responses.
+	"chat.todoListTool.descriptionField": true,
+
+	// When enabled, the todo tool operates in write-only mode, requiring the agent to remember todos in context.
+	"chat.todoListTool.writeOnly": false,
+
+	// Controls whether edits made by chat are automatically approved. The default is to approve all edits except those made to certain files which have the potential to cause immediate unintended side-effects, such as `**/.vscode/*.json`.
+	// 
+	// Set to `true` to automatically approve edits to matching files, `false` to always require explicit approval. The last pattern matching a given file will determine whether the edit is automatically approved.
+	"chat.tools.edits.autoApprove": {
+		"**/*": true,
+		"**/.vscode/*.json": false,
+		"**/.git/**": false,
+		"**/{package.json,package-lock.json,server.xml,build.rs,web.config,.gitattributes,.env}": false,
+		"**/*.{code-workspace,csproj,fsproj,vbproj,vcxproj,proj,targets,props}": false
+	},
+
+	// Controls which tools are eligible for automatic approval. Tools set to 'false' will always present a confirmation and will never offer the option to auto-approve. The default behavior (or setting a tool to 'true') may result in the tool offering auto-approval options.
+	"chat.tools.eligibleForAutoApproval": {},
+
+	// Global auto approve also known as "YOLO mode" disables manual approval completely for _all tools in all workspaces_, allowing the agent to act fully autonomously. This is extremely dangerous and is *never* recommended, even containerized environments like [Codespaces](https://github.com/features/codespaces) and [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) have user keys forwarded into the container that could be compromised.
+	// 
+	// **This feature disables [critical security protections](https://code.visualstudio.com/docs/copilot/security) and makes it much easier for an attacker to compromise the machine.**
+	"chat.tools.global.autoApprove": false,
+
+	// Controls whether to show the todo list widget above the chat input. When enabled, the widget displays todo items created by the agent and updates as progress is made.
+	"chat.tools.todos.showWidget": true,
+
+	// Controls which URLs are automatically approved when requested by chat tools. Keys are URL patterns and values can be `true` to approve both requests and responses, `false` to deny, or an object with `approveRequest` and `approveResponse` properties for granular control.
+	// 
+	// Examples:
+	// - `"https://example.com": true` - Approve all requests to example.com
+	// - `"https://*.example.com": true` - Approve all requests to any subdomain of example.com
+	// - `"https://example.com/api/*": { "approveRequest": true, "approveResponse": false }` - Approve requests but not responses for example.com/api paths
+	"chat.tools.urls.autoApprove": {},
+
+	// Controls whether the input of the chat should be restored when an undo request is made. The input will be filled with the text of the request that was restored.
+	"chat.undoRequests.restoreInput": true,
+
+	// Controls whether instructions from `AGENTS.MD` file found in a workspace roots are attached to all chat requests.
+	"chat.useAgentsMdFile": true,
+
+	// Controls whether Claude skills found in the workspace and user home directories under `.claude/skills` are listed in all chat requests. The language model can load these skills on-demand if the `read` tool is available.
+	"chat.useClaudeSkills": false,
+
+	// Controls whether instructions from nested `AGENTS.MD` files found in the workspace are listed in all chat requests. The language model can load these skills on-demand if the `read` tool is available.
+	"chat.useNestedAgentsMdFiles": false,
+
+	// Show chat agent sessions when chat is empty or to the side when chat view is wide enough.
+	"chat.viewSessions.enabled": true,
+
+	// Controls the orientation of the chat agent sessions view when it is shown alongside the chat.
+	//  - auto: Automatically determine the orientation based on available space.
+	//  - stacked: Display sessions vertically stacked unless a chat session is visible.
+	//  - sideBySide: Display sessions side by side if space is sufficient.
+	"chat.viewSessions.orientation": "auto",
+
+	// Show the title of the chat above the chat in the chat view.
+	"chat.viewTitle.enabled": true,
+
+	// Show welcome banner when chat is empty.
+	"chat.viewWelcome.enabled": true,
+
+	// Controls if files that were part of a refactoring are saved automatically
+	"files.refactoring.autoSave": true,
+
+	// 

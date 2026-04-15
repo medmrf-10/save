@@ -1,0 +1,215 @@
+{
+  "main": {
+    "id": "b02bd9041b250d56",
+    "type": "split",
+    "children": [
+      {
+        "id": "54cb7a222668a35b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "27e3099131ba8210",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src-vault/plan.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "plan"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "33e30590bd4641ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "25a125f1a5b8f2c6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d3b64a09874f1425",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "مستكشف الملفات"
+            }
+          },
+          {
+            "id": "1f4edeb0a2f17add",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "0aea4bad63754093",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "518040d040108819",
+    "type": "split",
+    "children": [
+      {
+        "id": "18ac99db81830619",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9feaf104083f63ae",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "21adb9f4326471cb",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "da420a985769e0de",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "6b1c8628d76520c2",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "81a7fd1ec1a3e7dd",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:إفتح الانتقال السريع": false,
+      "graph:إفتح العرض البياني": false,
+      "canvas:إنشاء لوحة بصرية جديدة": false,
+      "daily-notes:إفتح ملاحظة اليوم": false,
+      "templates:أدرج قالب": false,
+      "command-palette:إفتح لوحة الأوامر": false,
+      "bases:إنشاء قاعدة جديدة": false,
+      "audio-recorder:بدء/إيقاف التسجيل": false
+    }
+  },
+  "active": "27e3099131ba8210",
+  "lastOpenFiles": [
+    "new2.md",
+    "vfvvd.md",
+    "cuurent.md",
+    "new.md",
+    "vla.md",
+    "workbench.desktop.main.css.backup",
+    "workbench.desktop.main.js.backup",
+    "src-vault/plan.md",
+    "rtl.py",
+    "antigravity-rtl-fix.sh",
+    "src-vault",
+    "index-vault.md",
+    "src",
+    "learn antigravity settings/parse_json.py",
+    "learn antigravity settings/default_part_ai.jsonc",
+    "learn antigravity settings/default_part_ah.jsonc",
+    "learn antigravity settings/default_part_ag.jsonc",
+    "index.md",
+    "royal-velvet-vscode/node_modules/@types/vscode/README.md",
+    "royal-velvet-vscode/node_modules/typescript/SECURITY.md",
+    "royal-velvet-vscode/node_modules/typescript/README.md",
+    "royal-velvet-vscode/index.md",
+    "royal-velvet-vscode/README.md",
+    "README.md",
+    "node_modules/@types/vscode/README.md",
+    "node_modules/typescript/SECURITY.md",
+    "node_modules/typescript/README.md",
+    "src/test.md"
+  ]
+}
