@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """
-RTL Support for Antigravity v8.2 — The Radical Solution
-=========================================================
-Auto-detect direction per line based on content:
-- First Arabic char → RTL
-- First Latin char → LTR
-- Empty/neutral → RTL (default for .md)
+RTL Support for Antigravity v9.0 — Force RTL
+==============================================
+Force RTL for ALL lines in .md files regardless of language:
+- .md files → ALL lines RTL (Arabic, English, whatever)
+- Non-.md files → LTR (default)
 
-NO per-line map, NO Cmd+;, NO Enter inheritance, NO localStorage.
-Just works.
+NO per-line detection, NO language checking.
+Everything in markdown is RTL. Period.
 
 Usage:
   python3 rtl.py
@@ -39,40 +38,26 @@ errors = []
 # ==============================================================
 # MOD 1: P() — Auto-detect direction from line content
 # ==============================================================
-print("\n🔧 [1/3] تعديل P() — الكشف التلقائي ...")
+print("\n🔧 [1/3] تعديل P() — إجبار RTL لكل الأسطر ...")
 
 OLD_P = 'return i>0?IL.RTL:IL.LTR}getTextDirection'
 
-# Auto-detect logic:
+# Force RTL logic:
 # 1. Decorations override everything (original behavior)
-# 2. For .md files: scan line content for first strong directional char
-#    - Arabic/Hebrew → RTL
-#    - Latin → LTR  
-#    - Empty/neutral-only → RTL (default for .md)
+# 2. For .md files: ALL lines → RTL (no language detection)
 # 3. For non-.md files: LTR
-# Uses this.m.getViewLineData(t).content to get the actual line content
 
 NEW_P = (
     'if(i>0)return IL.RTL;if(i<0)return IL.LTR;'
     'if(typeof window==="undefined"||!window._rtlDefault)return IL.LTR;'
-    'try{'
-    'var _c=this.m.getViewLineData(t).content;'
-    'for(var _j=0;_j<_c.length;_j++){'
-    'var _h=_c.charCodeAt(_j);'
-    'if(_h>=0x600&&_h<=0x6FF||_h>=0x750&&_h<=0x77F||_h>=0x8A0&&_h<=0x8FF'
-    '||_h>=0xFB50&&_h<=0xFDFF||_h>=0xFE70&&_h<=0xFEFF||_h>=0x590&&_h<=0x5FF)'
-    'return IL.RTL;'
-    'if(_h>=0x41&&_h<=0x5A||_h>=0x61&&_h<=0x7A)return IL.LTR'
-    '}'
     'return IL.RTL'
-    '}catch(_x){return IL.RTL}'
     '}getTextDirection'
 )
 
 count = js.count(OLD_P)
 if count == 1:
     js = js.replace(OLD_P, NEW_P)
-    print("  ✅ P() — كشف تلقائي من محتوى السطر")
+    print("  ✅ P() — كل الأسطر RTL في ملفات .md")
 else:
     errors.append(f"P() pattern: {count} (expected 1)")
     print(f"  ❌ {errors[-1]}")
@@ -104,9 +89,8 @@ else:
 print("\n🔧 [3/3] سكريبت كشف الملف (مبسّط!) ...")
 
 SCRIPT = r"""
-;/* RTL_V82 */(function(){
-/* RTL v8.2 — Auto-detect. Just set _rtlDefault based on file type.
- * P() handles everything else by reading line content. */
+;/* RTL_V90 */(function(){
+/* RTL v9.0 — Force RTL. All .md lines are RTL regardless of language. */
 window._rtlDefault=false;
 function sync(){
   var el=document.querySelector('.tab.active .label-name span');
@@ -117,7 +101,7 @@ function sync(){
 }
 setTimeout(function(){
   setInterval(sync,300);sync();
-  console.log('🔄 RTL v8.2 — auto-detect direction per line')
+  console.log('🔄 RTL v9.0 — force RTL for all .md content')
 },2000)
 })();
 """
@@ -129,7 +113,7 @@ print("  ✅ سكريبت مبسّط (كشف الملف فقط — 10 أسطر!)
 # CSS
 # ==============================================================
 RTL_CSS = """
-/* ===== RTL v8.2 ===== */
+/* ===== RTL v9.0 — Force RTL ===== */
 .view-line[dir="rtl"]{text-align:right}
 .view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
 
@@ -195,12 +179,11 @@ if not ok:
     print(f"\n👉 sudo cp {JS_TMP} '{JS_DEST}' && sudo cp {CSS_TMP} '{CSS_DEST}'")
 
 print("\n" + "=" * 50)
-print("🎉 RTL v8.2 — الحل الجذري")
+print("🎉 RTL v9.0 — كل شي RTL")
 print("=" * 50)
-print("✨ كل سطر يكتشف اتجاهه تلقائياً من محتواه!")
-print("📌 حرف عربي أول → RTL")
-print("📌 حرف لاتيني أول → LTR")
-print("📌 سطر فاضي → RTL (في .md)")
-print("📌 بدون Cmd+;, بدون وراثة, بدون تخزين!")
-print("📌 الأسهم تتحرك بصرياً")
+print("✨ كل الأسطر في .md ملفات RTL بغض النظر عن اللغة!")
+print("📌 ملف .md → كل الأسطر RTL")
+print("📌 عربي، إنجليزي، مخلوط — كله RTL")
+print("📌 Chat + Manager → RTL كمان")
+print("📌 بدون كشف تلقائي، بدون تعقيد!")
 print("\n⚠️  Cmd+Q ثم أعد فتح Antigravity!")
