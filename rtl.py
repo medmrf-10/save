@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """
-RTL Support for Antigravity v8.2 — The Radical Solution
-=========================================================
-Auto-detect direction per line based on content:
-- First Arabic char → RTL
-- First Latin char → LTR
-- Empty/neutral → RTL (default for .md)
+RTL Support for Antigravity v9.0 — Force RTL
+==============================================
+Force RTL for ALL lines in .md files regardless of language:
+- .md files → ALL lines RTL (Arabic, English, whatever)
+- Non-.md files → LTR (default)
 
-NO per-line map, NO Cmd+;, NO Enter inheritance, NO localStorage.
-Just works.
+NO per-line detection, NO language checking.
+Everything in markdown is RTL. Period.
 
 Usage:
   python3 rtl.py
@@ -39,40 +38,26 @@ errors = []
 # ==============================================================
 # MOD 1: P() — Auto-detect direction from line content
 # ==============================================================
-print("\n🔧 [1/3] تعديل P() — الكشف التلقائي ...")
+print("\n🔧 [1/3] تعديل P() — إجبار RTL لكل الأسطر ...")
 
 OLD_P = 'return i>0?IL.RTL:IL.LTR}getTextDirection'
 
-# Auto-detect logic:
+# Force RTL logic:
 # 1. Decorations override everything (original behavior)
-# 2. For .md files: scan line content for first strong directional char
-#    - Arabic/Hebrew → RTL
-#    - Latin → LTR  
-#    - Empty/neutral-only → RTL (default for .md)
+# 2. For .md files: ALL lines → RTL (no language detection)
 # 3. For non-.md files: LTR
-# Uses this.m.getViewLineData(t).content to get the actual line content
 
 NEW_P = (
     'if(i>0)return IL.RTL;if(i<0)return IL.LTR;'
     'if(typeof window==="undefined"||!window._rtlDefault)return IL.LTR;'
-    'try{'
-    'var _c=this.m.getViewLineData(t).content;'
-    'for(var _j=0;_j<_c.length;_j++){'
-    'var _h=_c.charCodeAt(_j);'
-    'if(_h>=0x600&&_h<=0x6FF||_h>=0x750&&_h<=0x77F||_h>=0x8A0&&_h<=0x8FF'
-    '||_h>=0xFB50&&_h<=0xFDFF||_h>=0xFE70&&_h<=0xFEFF||_h>=0x590&&_h<=0x5FF)'
-    'return IL.RTL;'
-    'if(_h>=0x41&&_h<=0x5A||_h>=0x61&&_h<=0x7A)return IL.LTR'
-    '}'
     'return IL.RTL'
-    '}catch(_x){return IL.RTL}'
     '}getTextDirection'
 )
 
 count = js.count(OLD_P)
 if count == 1:
     js = js.replace(OLD_P, NEW_P)
-    print("  ✅ P() — كشف تلقائي من محتوى السطر")
+    print("  ✅ P() — كل الأسطر RTL في ملفات .md")
 else:
     errors.append(f"P() pattern: {count} (expected 1)")
     print(f"  ❌ {errors[-1]}")
@@ -104,20 +89,39 @@ else:
 print("\n🔧 [3/3] سكريبت كشف الملف (مبسّط!) ...")
 
 SCRIPT = r"""
-;/* RTL_V82 */(function(){
-/* RTL v8.2 — Auto-detect. Just set _rtlDefault based on file type.
- * P() handles everything else by reading line content. */
+;/* RTL_V90 */(function(){
+/* RTL v9.0 — Force RTL + Cmd+; toggle per file */
 window._rtlDefault=false;
-function sync(){
+var _ov={};
+function _gf(){
   var el=document.querySelector('.tab.active .label-name span');
   if(!el)el=document.querySelector('.tab.active .label-name');
-  var f=el?el.textContent.replace(/[●•*◌]/g,'').trim():'';
-  var l=f.toLowerCase();
-  window._rtlDefault=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'))
+  return el?el.textContent.replace(/[●•*◌]/g,'').trim():''
 }
+function sync(){
+  var f=_gf(),l=f.toLowerCase();
+  var isMd=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'));
+  window._rtlDefault=(f in _ov)?_ov[f]:isMd
+}
+document.addEventListener('keydown',function(e){
+  if((e.metaKey||e.ctrlKey)&&e.key===';'){
+    e.preventDefault();e.stopPropagation();
+    var f=_gf();if(!f)return;
+    window._rtlDefault=!window._rtlDefault;
+    _ov[f]=window._rtlDefault;
+    var msg=window._rtlDefault?'↘ RTL':'↙ LTR';
+    var n=document.createElement('div');
+    n.textContent=msg;
+    n.style.cssText='position:fixed;top:20px;right:20px;z-index:99999;background:#007acc;color:#fff;padding:10px 20px;border-radius:8px;font-size:16px;font-weight:bold;transition:opacity 0.5s;pointer-events:none;font-family:system-ui';
+    document.body.appendChild(n);
+    setTimeout(function(){n.style.opacity='0'},1500);
+    setTimeout(function(){n.remove()},2000);
+    console.log('🔄 RTL toggle:',msg,'for',f)
+  }
+},true);
 setTimeout(function(){
   setInterval(sync,300);sync();
-  console.log('🔄 RTL v8.2 — auto-detect direction per line')
+  console.log('🔄 RTL v9.0 — Cmd+; to toggle direction')
 },2000)
 })();
 """
@@ -129,21 +133,56 @@ print("  ✅ سكريبت مبسّط (كشف الملف فقط — 10 أسطر!)
 # CSS
 # ==============================================================
 RTL_CSS = """
-/* ===== RTL v8.2 ===== */
+/* ===== RTL v9.0 — Force RTL ===== */
+
+/* === Editor RTL === */
 .view-line[dir="rtl"]{text-align:right}
 .view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
 
-/* Chat RTL */
-.interactive-item-container .rendered-markdown,
-.interactive-item-container .rendered-markdown p,
-.interactive-item-container .rendered-markdown li,
-.interactive-item-container .rendered-markdown h1,
-.interactive-item-container .rendered-markdown h2,
-.interactive-item-container .rendered-markdown h3,
-.interactive-item-container .rendered-markdown h4,
-.interactive-item-container .rendered-markdown blockquote,
-.interactive-item-container .rendered-markdown ul,
-.interactive-item-container .rendered-markdown ol,
+/* === Chat Panel RTL (interactive-session) === */
+.interactive-session{direction:rtl;text-align:right}
+.interactive-item-container{direction:rtl;text-align:right}
+.interactive-item-container .header{direction:rtl;flex-direction:row-reverse}
+.interactive-item-container .value,
+.interactive-item-container .value .rendered-markdown,
+.interactive-item-container .value .rendered-markdown p,
+.interactive-item-container .value .rendered-markdown li,
+.interactive-item-container .value .rendered-markdown h1,
+.interactive-item-container .value .rendered-markdown h2,
+.interactive-item-container .value .rendered-markdown h3,
+.interactive-item-container .value .rendered-markdown h4,
+.interactive-item-container .value .rendered-markdown blockquote,
+.interactive-item-container .value .rendered-markdown ul,
+.interactive-item-container .value .rendered-markdown ol{direction:rtl;text-align:right;unicode-bidi:plaintext}
+
+/* Chat input */
+.interactive-session .chat-input-container{direction:rtl;text-align:right}
+.interactive-input-part{direction:rtl}
+
+/* === Agent Manager RTL === */
+.antigravity-agent-side-panel{direction:rtl!important;text-align:right!important}
+.antigravity-agent-side-panel *:not(pre):not(code):not(.codicon):not(.monaco-tokenized-source):not(.monaco-tokenized-source *){unicode-bidi:plaintext}
+.antigravity-agent-side-panel p,
+.antigravity-agent-side-panel li,
+.antigravity-agent-side-panel h1,
+.antigravity-agent-side-panel h2,
+.antigravity-agent-side-panel h3,
+.antigravity-agent-side-panel h4,
+.antigravity-agent-side-panel blockquote,
+.antigravity-agent-side-panel span:not(.codicon){direction:rtl;text-align:right}
+
+/* === Jetski / Full-screen view RTL === */
+.jetski-full-screen-view{direction:rtl!important;text-align:right!important}
+.jetski-full-screen-view p,
+.jetski-full-screen-view li,
+.jetski-full-screen-view h1,
+.jetski-full-screen-view h2,
+.jetski-full-screen-view h3,
+.jetski-full-screen-view h4,
+.jetski-full-screen-view blockquote{direction:rtl;text-align:right;unicode-bidi:plaintext}
+.jetski-custom-editor-pane{direction:rtl!important;text-align:right!important}
+
+/* === Chat widget (inline chat) RTL === */
 .chat-widget .rendered-markdown,
 .chat-widget .rendered-markdown p,
 .chat-widget .rendered-markdown li,
@@ -154,10 +193,19 @@ RTL_CSS = """
 .chat-widget .rendered-markdown blockquote,
 .chat-widget .rendered-markdown ul,
 .chat-widget .rendered-markdown ol{direction:rtl;text-align:right;unicode-bidi:plaintext}
+
+/* === EXCLUDE code blocks from RTL (stay LTR) === */
 .interactive-item-container .rendered-markdown pre,
 .interactive-item-container .rendered-markdown code,
 .chat-widget .rendered-markdown pre,
-.chat-widget .rendered-markdown code{direction:ltr;text-align:left;unicode-bidi:normal}
+.chat-widget .rendered-markdown code,
+.antigravity-agent-side-panel pre,
+.antigravity-agent-side-panel code,
+.antigravity-agent-side-panel .monaco-tokenized-source,
+.jetski-full-screen-view pre,
+.jetski-full-screen-view code,
+.jetski-custom-editor-pane pre,
+.jetski-custom-editor-pane code{direction:ltr!important;text-align:left!important;unicode-bidi:normal!important}
 """
 
 css += '\n' + RTL_CSS
@@ -195,12 +243,11 @@ if not ok:
     print(f"\n👉 sudo cp {JS_TMP} '{JS_DEST}' && sudo cp {CSS_TMP} '{CSS_DEST}'")
 
 print("\n" + "=" * 50)
-print("🎉 RTL v8.2 — الحل الجذري")
+print("🎉 RTL v9.0 — كل شي RTL")
 print("=" * 50)
-print("✨ كل سطر يكتشف اتجاهه تلقائياً من محتواه!")
-print("📌 حرف عربي أول → RTL")
-print("📌 حرف لاتيني أول → LTR")
-print("📌 سطر فاضي → RTL (في .md)")
-print("📌 بدون Cmd+;, بدون وراثة, بدون تخزين!")
-print("📌 الأسهم تتحرك بصرياً")
+print("✨ كل الأسطر في .md ملفات RTL بغض النظر عن اللغة!")
+print("📌 ملف .md → كل الأسطر RTL")
+print("📌 عربي، إنجليزي، مخلوط — كله RTL")
+print("📌 Chat + Manager → RTL كمان")
+print("📌 بدون كشف تلقائي، بدون تعقيد!")
 print("\n⚠️  Cmd+Q ثم أعد فتح Antigravity!")
