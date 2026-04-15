@@ -106,7 +106,7 @@ print("\n🔧 [3/3] سكريبت كشف الملف (مبسّط!) ...")
 SCRIPT = r"""
 ;/* RTL_V83_CHAT */(function(){
 /* RTL v8.3 — Auto-detect for editor + Chat/Manager RTL support.
- * P() handles editor lines. This script handles chat inputs. */
+ * P() handles editor lines. This script handles chat inputs + responses. */
 window._rtlDefault=false;
 function sync(){
   var el=document.querySelector('.tab.active .label-name span');
@@ -115,9 +115,10 @@ function sync(){
   var l=f.toLowerCase();
   window._rtlDefault=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'))
 }
-/* MutationObserver: set dir="auto" on chat input textareas & contenteditable */
+/* Patch chat inputs with dir="auto" HTML attribute (valid!) */
 function patchChatInputs(){
-  var sels=[
+  /* 1. Set dir="auto" on textareas and contenteditable (HTML attr IS valid) */
+  var inputSels=[
     '.interactive-input-editor textarea',
     '.chat-input-container textarea',
     '.inline-chat-input textarea',
@@ -126,30 +127,53 @@ function patchChatInputs(){
     '.chat-input-container [contenteditable]',
     '.inline-chat-input [contenteditable]'
   ];
-  sels.forEach(function(s){
+  inputSels.forEach(function(s){
     document.querySelectorAll(s).forEach(function(el){
       if(el.getAttribute('dir')!=='auto') el.setAttribute('dir','auto');
     })
   });
-  /* Also patch .view-lines inside chat editors */
+  /* 2. Patch view-lines inside chat input editors */
   var chatEditors=[
     '.interactive-input-editor .view-lines',
+    '.interactive-input-editor .view-line',
     '.chat-input-container .view-lines',
+    '.chat-input-container .view-line',
     '.inline-chat-input .view-lines',
-    '.chat-edit-input-container .view-lines'
+    '.inline-chat-input .view-line',
+    '.chat-edit-input-container .view-lines',
+    '.chat-edit-input-container .view-line'
   ];
   chatEditors.forEach(function(s){
     document.querySelectorAll(s).forEach(function(el){
-      if(el.style.direction!=='auto'){
-        el.style.direction='auto';
+      if(!el.style.unicodeBidi||el.style.unicodeBidi!=='plaintext'){
         el.style.unicodeBidi='plaintext';
+        el.style.textAlign='start';
       }
+    })
+  });
+  /* 3. Patch chat response markdown with dir="auto" */
+  var mdSels=[
+    'chat-markdown-part',
+    'chat-tool-invocation-part .rendered-markdown',
+    'chat-terminal-content-part .rendered-markdown',
+    '.interactive-item-container .rendered-markdown',
+    '.chat-widget .rendered-markdown',
+    '.inline-chat-widget .rendered-markdown',
+    '.extension-editor .rendered-markdown'
+  ];
+  mdSels.forEach(function(s){
+    document.querySelectorAll(s).forEach(function(el){
+      if(el.getAttribute('dir')!=='auto') el.setAttribute('dir','auto');
+      /* Also patch child paragraphs */
+      el.querySelectorAll('p,li,h1,h2,h3,h4,blockquote,ul,ol,td,th').forEach(function(child){
+        if(child.getAttribute('dir')!=='auto') child.setAttribute('dir','auto');
+      });
     })
   });
 }
 setTimeout(function(){
   setInterval(sync,300);sync();
-  /* Patch existing + watch for new chat inputs */
+  /* Patch existing + watch for new chat elements */
   patchChatInputs();
   var obs=new MutationObserver(function(){patchChatInputs()});
   obs.observe(document.body,{childList:true,subtree:true});
@@ -166,10 +190,27 @@ print("  ✅ سكريبت مبسّط (كشف الملف فقط — 10 أسطر!)
 # ==============================================================
 RTL_CSS = """
 /* ===== RTL v8.3 — Chat + Manager + Auto-detect ===== */
+/* NOTE: chat-markdown-part is a CUSTOM ELEMENT (tag), not a class!
+   Use tag selector without dot. Also !important to override Tailwind. */
 .view-line[dir="rtl"]{text-align:right}
 .view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
 
 /* === Chat Response/Request RTL (Auto-detect per paragraph) === */
+/* chat-markdown-part is a custom HTML element <chat-markdown-part> */
+chat-markdown-part,
+chat-markdown-part p,
+chat-markdown-part li,
+chat-markdown-part h1,
+chat-markdown-part h2,
+chat-markdown-part h3,
+chat-markdown-part h4,
+chat-markdown-part h5,
+chat-markdown-part h6,
+chat-markdown-part blockquote,
+chat-markdown-part ul,
+chat-markdown-part ol,
+chat-markdown-part td,
+chat-markdown-part th,
 .interactive-item-container .rendered-markdown,
 .interactive-item-container .rendered-markdown p,
 .interactive-item-container .rendered-markdown li,
@@ -177,13 +218,9 @@ RTL_CSS = """
 .interactive-item-container .rendered-markdown h2,
 .interactive-item-container .rendered-markdown h3,
 .interactive-item-container .rendered-markdown h4,
-.interactive-item-container .rendered-markdown h5,
-.interactive-item-container .rendered-markdown h6,
 .interactive-item-container .rendered-markdown blockquote,
 .interactive-item-container .rendered-markdown ul,
 .interactive-item-container .rendered-markdown ol,
-.interactive-item-container .rendered-markdown td,
-.interactive-item-container .rendered-markdown th,
 .chat-widget .rendered-markdown,
 .chat-widget .rendered-markdown p,
 .chat-widget .rendered-markdown li,
@@ -191,65 +228,57 @@ RTL_CSS = """
 .chat-widget .rendered-markdown h2,
 .chat-widget .rendered-markdown h3,
 .chat-widget .rendered-markdown h4,
-.chat-widget .rendered-markdown h5,
-.chat-widget .rendered-markdown h6,
 .chat-widget .rendered-markdown blockquote,
 .chat-widget .rendered-markdown ul,
-.chat-widget .rendered-markdown ol,
-.chat-widget .rendered-markdown td,
-.chat-widget .rendered-markdown th{direction:auto;text-align:start;unicode-bidi:plaintext}
+.chat-widget .rendered-markdown ol{unicode-bidi:plaintext!important;text-align:start!important}
 
 /* === Chat Input RTL (typing area) === */
 .interactive-input-editor .view-lines,
 .interactive-input-editor .view-line,
+.interactive-input-editor .view-line span,
 .chat-input-container .monaco-editor .view-lines,
 .chat-input-container .monaco-editor .view-line,
 .chat-edit-input-container .monaco-editor .view-lines,
-.chat-edit-input-container .monaco-editor .view-line{direction:auto;unicode-bidi:plaintext;text-align:start}
+.chat-edit-input-container .monaco-editor .view-line{unicode-bidi:plaintext!important;text-align:start!important}
 
 /* === Inline Chat RTL === */
 .inline-chat-widget .rendered-markdown,
 .inline-chat-widget .rendered-markdown p,
 .inline-chat-widget .rendered-markdown li,
-.inline-chat-widget .rendered-markdown h1,
-.inline-chat-widget .rendered-markdown h2,
-.inline-chat-widget .rendered-markdown h3,
-.inline-chat-widget .rendered-markdown h4,
 .inline-chat-input .monaco-editor .view-lines,
-.inline-chat-input .monaco-editor .view-line{direction:auto;unicode-bidi:plaintext;text-align:start}
+.inline-chat-input .monaco-editor .view-line{unicode-bidi:plaintext!important;text-align:start!important}
 
 /* === Extension/Settings/Manager Editor RTL === */
 .extension-editor .rendered-markdown,
 .extension-editor .rendered-markdown p,
 .extension-editor .rendered-markdown li,
-.extension-editor .rendered-markdown h1,
-.extension-editor .rendered-markdown h2,
-.extension-editor .rendered-markdown h3,
-.extension-editor .rendered-markdown h4,
 .settings-editor .rendered-markdown,
 .settings-editor .rendered-markdown p,
-.settings-editor .rendered-markdown li{direction:auto;unicode-bidi:plaintext;text-align:start}
+.settings-editor .rendered-markdown li{unicode-bidi:plaintext!important;text-align:start!important}
 
 /* === Interactive Session (Notebook-style) === */
 .interactive-session .rendered-markdown,
 .interactive-session .rendered-markdown p,
-.interactive-session .rendered-markdown li,
 .interactive-request .rendered-markdown,
 .interactive-request .rendered-markdown p,
 .interactive-response .rendered-markdown,
-.interactive-response .rendered-markdown p{direction:auto;unicode-bidi:plaintext;text-align:start}
+.interactive-response .rendered-markdown p{unicode-bidi:plaintext!important;text-align:start!important}
+
+/* === Other chat custom elements === */
+chat-tool-invocation-part .rendered-markdown,
+chat-tool-invocation-part .rendered-markdown p,
+chat-terminal-content-part .rendered-markdown,
+chat-terminal-content-part .rendered-markdown p{unicode-bidi:plaintext!important;text-align:start!important}
 
 /* === Keep code blocks LTR everywhere === */
+chat-markdown-part pre,
+chat-markdown-part code,
 .rendered-markdown pre,
 .rendered-markdown code,
-.interactive-item-container .rendered-markdown pre,
-.interactive-item-container .rendered-markdown code,
-.chat-widget .rendered-markdown pre,
-.chat-widget .rendered-markdown code,
-.inline-chat-widget .rendered-markdown pre,
-.inline-chat-widget .rendered-markdown code,
-.extension-editor .rendered-markdown pre,
-.extension-editor .rendered-markdown code{direction:ltr!important;text-align:left!important;unicode-bidi:normal!important}
+chat-tool-invocation-part pre,
+chat-tool-invocation-part code,
+chat-terminal-content-part pre,
+chat-terminal-content-part code{direction:ltr!important;text-align:left!important;unicode-bidi:normal!important}
 """
 
 css += '\n' + RTL_CSS
