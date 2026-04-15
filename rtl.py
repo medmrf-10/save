@@ -13,6 +13,8 @@ Usage:
   python3 rtl.py
   sudo cp /tmp/workbench.desktop.main.{js,css} \
     /Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/
+  sudo cp /tmp/jetskiAgent.main.js \
+    /Applications/Antigravity.app/Contents/Resources/app/out/jetskiAgent/main.js
 """
 
 import subprocess
@@ -24,14 +26,23 @@ CSS_TMP = '/tmp/workbench.desktop.main.css'
 JS_DEST  = '/Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js'
 CSS_DEST = '/Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.css'
 
+# Manager (Jetski Agent) files
+MGR_BACKUP_JS = '/Users/med10/med/plugins/jetskiAgent.main.js.backup'
+MGR_JS_TMP    = '/tmp/jetskiAgent.main.js'
+MGR_JS_DEST   = '/Applications/Antigravity.app/Contents/Resources/app/out/jetskiAgent/main.js'
+
 print("📖 قراءة النسخ الاحتياطية النظيفة...")
 with open(BACKUP_JS, 'r') as f:
     js = f.read()
-print(f"  JS: {len(js):,} chars ✅")
+print(f"  Workbench JS: {len(js):,} chars ✅")
 
 with open(BACKUP_CSS, 'r') as f:
     css = f.read()
-print(f"  CSS: {len(css):,} chars ✅")
+print(f"  Workbench CSS: {len(css):,} chars ✅")
+
+with open(MGR_BACKUP_JS, 'r') as f:
+    mgr_js = f.read()
+print(f"  Manager JS: {len(mgr_js):,} chars ✅")
 
 errors = []
 
@@ -185,15 +196,12 @@ RTL_CSS = """
 
 /* === Agent Manager RTL === */
 .antigravity-agent-side-panel{direction:rtl!important;text-align:right!important}
-.antigravity-agent-side-panel *:not(pre):not(code):not(.codicon):not(.monaco-tokenized-source):not(.monaco-tokenized-source *){unicode-bidi:plaintext}
-.antigravity-agent-side-panel p,
-.antigravity-agent-side-panel li,
-.antigravity-agent-side-panel h1,
-.antigravity-agent-side-panel h2,
-.antigravity-agent-side-panel h3,
-.antigravity-agent-side-panel h4,
-.antigravity-agent-side-panel blockquote,
-.antigravity-agent-side-panel span:not(.codicon){direction:rtl;text-align:right}
+.antigravity-agent-side-panel *:not(pre):not(code):not(.codicon):not(.monaco-tokenized-source):not(.monaco-tokenized-source *){direction:rtl!important;text-align:right!important;unicode-bidi:plaintext!important}
+/* Override Tailwind text-align utilities inside agent panel */
+.antigravity-agent-side-panel .text-left,
+.antigravity-agent-side-panel .text-center,
+.antigravity-agent-side-panel .text-start{text-align:right!important}
+.antigravity-agent-side-panel .flex-row{flex-direction:row-reverse!important}
 
 /* === Jetski / Full-screen view RTL === */
 .jetski-full-screen-view{direction:rtl!important;text-align:right!important}
@@ -247,24 +255,48 @@ if errors:
 # ==============================================================
 # Save & Copy
 # ==============================================================
+# ==============================================================
+# MOD 4: Manager (Jetski Agent) — inject RTL CSS via JS
+# ==============================================================
+print("\n🔧 [4/4] Manager RTL — حقن CSS عبر JS ...")
+
+MGR_RTL_SCRIPT = r"""
+;/* MGR_RTL_V1 */(function(){
+var s=document.createElement('style');
+s.id='_mgr_rtl';
+s.textContent='.leading-relaxed p,.leading-relaxed li,.leading-relaxed h1,.leading-relaxed h2,.leading-relaxed h3,.leading-relaxed h4,.leading-relaxed h5,.leading-relaxed h6,.leading-relaxed blockquote,.leading-relaxed td,.leading-relaxed th{unicode-bidi:plaintext!important;text-align:start!important}.leading-relaxed.select-text{unicode-bidi:plaintext!important;text-align:start!important}.leading-relaxed pre,.leading-relaxed code{direction:ltr!important;text-align:left!important;unicode-bidi:normal!important}textarea,[contenteditable]{unicode-bidi:plaintext!important}';
+document.head.appendChild(s);
+console.log('🔄 Manager RTL v1 — injected');
+})();
+"""
+
+mgr_js += '\n' + MGR_RTL_SCRIPT
+print("  ✅ Manager RTL CSS injected via JS")
+
+# ==============================================================
+# Save & Copy
+# ==============================================================
 print("\n💾 حفظ ...")
 with open(JS_TMP, 'w') as f:
     f.write(js)
 with open(CSS_TMP, 'w') as f:
     f.write(css)
+with open(MGR_JS_TMP, 'w') as f:
+    f.write(mgr_js)
 print(f"  JS → {JS_TMP} ({len(js):,})")
 print(f"  CSS → {CSS_TMP} ({len(css):,})")
+print(f"  Manager JS → {MGR_JS_TMP} ({len(mgr_js):,})")
 
 print("\n📦 نسخ ...")
 ok = True
-for src, dst in [(JS_TMP, JS_DEST), (CSS_TMP, CSS_DEST)]:
+for src, dst in [(JS_TMP, JS_DEST), (CSS_TMP, CSS_DEST), (MGR_JS_TMP, MGR_JS_DEST)]:
     try:
         subprocess.run(['cp', src, dst], check=True)
     except:
         ok = False
 
 if not ok:
-    print(f"\n👉 sudo cp {JS_TMP} '{JS_DEST}' && sudo cp {CSS_TMP} '{CSS_DEST}'")
+    print(f"\n👉 sudo cp {JS_TMP} '{JS_DEST}' && sudo cp {CSS_TMP} '{CSS_DEST}' && sudo cp {MGR_JS_TMP} '{MGR_JS_DEST}'")
 
 print("\n" + "=" * 50)
 print("🎉 RTL v9.0 — كل شي RTL")
@@ -273,5 +305,6 @@ print("✨ كل الأسطر في .md ملفات RTL بغض النظر عن ال
 print("📌 ملف .md → كل الأسطر RTL")
 print("📌 عربي، إنجليزي، مخلوط — كله RTL")
 print("📌 Chat + Manager → RTL كمان")
+print("📌 Manager View → CSS injection via JS (دائم!)")
 print("📌 بدون كشف تلقائي، بدون تعقيد!")
 print("\n⚠️  Cmd+Q ثم أعد فتح Antigravity!")
