@@ -19,15 +19,15 @@ Usage:
 
 import subprocess
 
-BACKUP_JS  = '/Users/med10/med/plugins/workbench.desktop.main.js.backup'
-BACKUP_CSS = '/Users/med10/med/plugins/workbench.desktop.main.css.backup'
+BACKUP_JS  = '/Users/med10/med/save/plugins_backup/workbench.desktop.main.js.backup'
+BACKUP_CSS = '/Users/med10/med/save/plugins_backup/workbench.desktop.main.css.backup'
 JS_TMP  = '/tmp/workbench.desktop.main.js'
 CSS_TMP = '/tmp/workbench.desktop.main.css'
 JS_DEST  = '/Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js'
 CSS_DEST = '/Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.css'
 
 # Manager (Jetski Agent) files
-MGR_BACKUP_JS = '/Users/med10/med/plugins/jetskiAgent.main.js.backup'
+MGR_BACKUP_JS = '/Users/med10/med/Black/jetskiAgent.main.js.backup'
 MGR_JS_TMP    = '/tmp/jetskiAgent.main.js'
 MGR_JS_DEST   = '/Applications/Antigravity.app/Contents/Resources/app/out/jetskiAgent/main.js'
 
@@ -135,6 +135,8 @@ function injectWebviews(){
   }catch(x){}
 }
 document.addEventListener('keydown',function(e){
+  /* Allow native clipboard/editing shortcuts to pass through untouched */
+  if((e.metaKey||e.ctrlKey)&&'cvxaz'.indexOf(e.key.toLowerCase())!==-1)return;
   if((e.metaKey||e.ctrlKey)&&e.key===';'){
     e.preventDefault();e.stopPropagation();
     var f=_gf();if(!f)return;
@@ -190,9 +192,10 @@ RTL_CSS = """
 .interactive-item-container .value .rendered-markdown ul,
 .interactive-item-container .value .rendered-markdown ol{direction:rtl;text-align:right;unicode-bidi:plaintext}
 
-/* Chat input */
-.interactive-session .chat-input-container{direction:rtl;text-align:right}
-.interactive-input-part{direction:rtl}
+/* Chat input — unicode-bidi:plaintext preserves native clipboard shortcuts (Cmd+C/V) */
+.interactive-session .chat-input-container{direction:rtl;text-align:right;unicode-bidi:plaintext}
+.interactive-input-part{direction:rtl;unicode-bidi:plaintext}
+.interactive-input-part textarea,.interactive-input-part [contenteditable]{direction:rtl;unicode-bidi:plaintext}
 
 /* === Agent Manager RTL === */
 .antigravity-agent-side-panel{direction:rtl!important;text-align:right!important}
