@@ -134,20 +134,55 @@ print("  ✅ سكريبت مبسّط (كشف الملف فقط — 10 أسطر!)
 # ==============================================================
 RTL_CSS = """
 /* ===== RTL v9.0 — Force RTL ===== */
+
+/* === Editor RTL === */
 .view-line[dir="rtl"]{text-align:right}
 .view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
 
-/* Chat RTL */
-.interactive-item-container .rendered-markdown,
-.interactive-item-container .rendered-markdown p,
-.interactive-item-container .rendered-markdown li,
-.interactive-item-container .rendered-markdown h1,
-.interactive-item-container .rendered-markdown h2,
-.interactive-item-container .rendered-markdown h3,
-.interactive-item-container .rendered-markdown h4,
-.interactive-item-container .rendered-markdown blockquote,
-.interactive-item-container .rendered-markdown ul,
-.interactive-item-container .rendered-markdown ol,
+/* === Chat Panel RTL (interactive-session) === */
+.interactive-session{direction:rtl;text-align:right}
+.interactive-item-container{direction:rtl;text-align:right}
+.interactive-item-container .header{direction:rtl;flex-direction:row-reverse}
+.interactive-item-container .value,
+.interactive-item-container .value .rendered-markdown,
+.interactive-item-container .value .rendered-markdown p,
+.interactive-item-container .value .rendered-markdown li,
+.interactive-item-container .value .rendered-markdown h1,
+.interactive-item-container .value .rendered-markdown h2,
+.interactive-item-container .value .rendered-markdown h3,
+.interactive-item-container .value .rendered-markdown h4,
+.interactive-item-container .value .rendered-markdown blockquote,
+.interactive-item-container .value .rendered-markdown ul,
+.interactive-item-container .value .rendered-markdown ol{direction:rtl;text-align:right;unicode-bidi:plaintext}
+
+/* Chat input */
+.interactive-session .chat-input-container{direction:rtl;text-align:right}
+.interactive-input-part{direction:rtl}
+
+/* === Agent Manager RTL === */
+.antigravity-agent-side-panel{direction:rtl!important;text-align:right!important}
+.antigravity-agent-side-panel *:not(pre):not(code):not(.codicon):not(.monaco-tokenized-source):not(.monaco-tokenized-source *){unicode-bidi:plaintext}
+.antigravity-agent-side-panel p,
+.antigravity-agent-side-panel li,
+.antigravity-agent-side-panel h1,
+.antigravity-agent-side-panel h2,
+.antigravity-agent-side-panel h3,
+.antigravity-agent-side-panel h4,
+.antigravity-agent-side-panel blockquote,
+.antigravity-agent-side-panel span:not(.codicon){direction:rtl;text-align:right}
+
+/* === Jetski / Full-screen view RTL === */
+.jetski-full-screen-view{direction:rtl!important;text-align:right!important}
+.jetski-full-screen-view p,
+.jetski-full-screen-view li,
+.jetski-full-screen-view h1,
+.jetski-full-screen-view h2,
+.jetski-full-screen-view h3,
+.jetski-full-screen-view h4,
+.jetski-full-screen-view blockquote{direction:rtl;text-align:right;unicode-bidi:plaintext}
+.jetski-custom-editor-pane{direction:rtl!important;text-align:right!important}
+
+/* === Chat widget (inline chat) RTL === */
 .chat-widget .rendered-markdown,
 .chat-widget .rendered-markdown p,
 .chat-widget .rendered-markdown li,
@@ -158,10 +193,19 @@ RTL_CSS = """
 .chat-widget .rendered-markdown blockquote,
 .chat-widget .rendered-markdown ul,
 .chat-widget .rendered-markdown ol{direction:rtl;text-align:right;unicode-bidi:plaintext}
+
+/* === EXCLUDE code blocks from RTL (stay LTR) === */
 .interactive-item-container .rendered-markdown pre,
 .interactive-item-container .rendered-markdown code,
 .chat-widget .rendered-markdown pre,
-.chat-widget .rendered-markdown code{direction:ltr;text-align:left;unicode-bidi:normal}
+.chat-widget .rendered-markdown code,
+.antigravity-agent-side-panel pre,
+.antigravity-agent-side-panel code,
+.antigravity-agent-side-panel .monaco-tokenized-source,
+.jetski-full-screen-view pre,
+.jetski-full-screen-view code,
+.jetski-custom-editor-pane pre,
+.jetski-custom-editor-pane code{direction:ltr!important;text-align:left!important;unicode-bidi:normal!important}
 """
 
 css += '\n' + RTL_CSS
