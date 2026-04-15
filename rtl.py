@@ -39,7 +39,7 @@ errors = []
 # ==============================================================
 # MOD 1: P() — Auto-detect direction from line content
 # ==============================================================
-print("\n🔧 [1/4] تعديل P() — الكشف التلقائي ...")
+print("\n🔧 [1/3] تعديل P() — الكشف التلقائي ...")
 
 OLD_P = 'return i>0?IL.RTL:IL.LTR}getTextDirection'
 
@@ -80,7 +80,7 @@ else:
 # ==============================================================
 # MOD 2: XLl — padding-inline-start for RTL wrap
 # ==============================================================
-print("\n🔧 [2/4] تعديل XLl (التفاف الأسطر) ...")
+print("\n🔧 [2/3] تعديل XLl (التفاف الأسطر) ...")
 
 OLD_XLl = 'appendString("px; padding-left: ")'
 NEW_XLl = 'appendString("px; padding-inline-start: ")'
@@ -99,29 +99,9 @@ else:
     print(f"  ❌ {errors[-1]}")
 
 # ==============================================================
-# MOD 3: Fix arrow keys — remove RTL direction swap
+# MOD 3: Minimal control script (just file detection!)
 # ==============================================================
-print("\n🔧 [3/4] إصلاح الأسهم المعكوسة ...")
-
-OLD_ARROW_L = 'o?G0.moveRight(t.cursorConfig,t,s.viewState,i,n):G0.moveLeft(t.cursorConfig,t,s.viewState,i,n)'
-NEW_ARROW_L = 'G0.moveLeft(t.cursorConfig,t,s.viewState,i,n)'
-
-OLD_ARROW_R = 'o?G0.moveLeft(t.cursorConfig,t,s.viewState,i,n):G0.moveRight(t.cursorConfig,t,s.viewState,i,n)'
-NEW_ARROW_R = 'G0.moveRight(t.cursorConfig,t,s.viewState,i,n)'
-
-for label, old, new in [("سهم يسار", OLD_ARROW_L, NEW_ARROW_L), ("سهم يمين", OLD_ARROW_R, NEW_ARROW_R)]:
-    c = js.count(old)
-    if c == 1:
-        js = js.replace(old, new)
-        print(f"  ✅ {label}")
-    else:
-        errors.append(f"{label}: {c} (expected 1)")
-        print(f"  ❌ {errors[-1]}")
-
-# ==============================================================
-# MOD 4: Minimal control script (just file detection!)
-# ==============================================================
-print("\n🔧 [4/4] سكريبت كشف الملف (مبسّط!) ...")
+print("\n🔧 [3/3] سكريبت كشف الملف (مبسّط!) ...")
 
 SCRIPT = r"""
 ;/* RTL_V82 */(function(){
