@@ -157,6 +157,8 @@ document.addEventListener('keydown',function(e){
     console.log('🔄 RTL toggle:',msg,'for',f)
   }
 },true);
+window._lastMouseX=0;window._lastMouseY=0;
+document.addEventListener('mousemove',function(e){window._lastMouseX=e.clientX;window._lastMouseY=e.clientY;},true);
 setTimeout(function(){
   setInterval(sync,300);sync();
   setInterval(injectWebviews,1000);injectWebviews();
@@ -169,6 +171,39 @@ js += '\n' + SCRIPT
 print("  ✅ سكريبت مبسّط (كشف الملف فقط — 10 أسطر!)")
 
 # ==============================================================
+# MOD 4: Fix getLinkOccurrence Hit-Testing in RTL
+# ==============================================================
+print("\n🔧 [4/4] تعديل LinkDetector (إصلاح Cmd+Click) ...")
+
+OLD_GET_LINK = 'getLinkOccurrence(e){if(!this.m.hasModel()||!e)return null;const i=this.m.getModel().getDecorationsInRange({startLineNumber:e.lineNumber,startColumn:e.column,endLineNumber:e.lineNumber,endColumn:e.column},0,!0);for(const n of i){const s=this.j[n.id];if(s)return s}return null}'
+
+NEW_GET_LINK = (
+    'getLinkOccurrence(e){'
+    'if(!this.m.hasModel()||!e)return null;'
+    'const i=this.m.getModel().getDecorationsInRange({startLineNumber:e.lineNumber,startColumn:e.column,endLineNumber:e.lineNumber,endColumn:e.column},0,!0);'
+    'for(const n of i){const s=this.j[n.id];if(s)return s;}'
+    'if(window._rtlDefault && window._lastMouseX){'
+    'try{'
+    'var r=document.caretRangeFromPoint(window._lastMouseX,window._lastMouseY);'
+    'if(r&&r.startContainer&&r.startContainer.nodeType===3){'
+    'var all=this.m.getModel().getDecorationsInRange({startLineNumber:e.lineNumber,startColumn:1,endLineNumber:e.lineNumber,endColumn:9999},0,!0);'
+    'for(const n of all){const s=this.j[n.id];if(s)return s;}'
+    '}'
+    '}catch(err){}'
+    '}'
+    'return null}'
+)
+
+count = js.count(OLD_GET_LINK)
+if count == 1:
+    js = js.replace(OLD_GET_LINK, NEW_GET_LINK)
+    print("  ✅ LinkDetector — إصلاح الـ Hit-testing")
+else:
+    errors.append(f"LinkDetector pattern: {count} (expected 1)")
+    print(f"  ❌ {errors[-1]}")
+
+
+# ==============================================================
 # CSS
 # ==============================================================
 RTL_CSS = """
@@ -177,6 +212,7 @@ RTL_CSS = """
 /* === Editor RTL === */
 .view-line[dir="rtl"]{text-align:right}
 .view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
+
 
 /* === Fix: kill text-indent overflow on RTL wrapped lines === */
 .view-line[dir="rtl"]>div[style*="text-indent"]{text-indent:0px!important}
