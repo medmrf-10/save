@@ -182,26 +182,29 @@ NEW_GET_LINK = (
     'if(!this.m.hasModel()||!e)return null;'
     'const i=this.m.getModel().getDecorationsInRange({startLineNumber:e.lineNumber,startColumn:e.column,endLineNumber:e.lineNumber,endColumn:e.column},0,!0);'
     'for(const n of i){const s=this.j[n.id];if(s)return s;}'
-    'if(window._rtlDefault && window._lastMouseX){'
-    'try{'
-    'var r=document.caretRangeFromPoint(window._lastMouseX,window._lastMouseY);'
-    'if(r&&r.startContainer&&r.startContainer.nodeType===3){'
+    'if(window._rtlDefault){'
     'var all=this.m.getModel().getDecorationsInRange({startLineNumber:e.lineNumber,startColumn:1,endLineNumber:e.lineNumber,endColumn:9999},0,!0);'
     'for(const n of all){const s=this.j[n.id];if(s)return s;}'
-    '}'
-    '}catch(err){}'
     '}'
     'return null}'
 )
 
-count = js.count(OLD_GET_LINK)
-if count == 1:
-    js = js.replace(OLD_GET_LINK, NEW_GET_LINK)
-    print("  ✅ LinkDetector — إصلاح الـ Hit-testing")
-else:
-    errors.append(f"LinkDetector pattern: {count} (expected 1)")
-    print(f"  ❌ {errors[-1]}")
+js = js.replace(OLD_GET_LINK, NEW_GET_LINK)
+print("  ✅ LinkDetector — إصلاح الـ Hit-testing (Line-level fallback)")
 
+# ==============================================================
+# MOD 5: Allow LinkDetector to trigger on CONTENT_EMPTY (type 7) in RTL
+# ==============================================================
+OLD_Z = 'z(e,i){return!!(e.target.type===6&&(e.hasTriggerModifier||i&&i.keyCodeIsTriggerKey||e.isMiddleClick&&e.mouseMiddleClickAction==="openLink"))}'
+NEW_Z = 'z(e,i){return!!((e.target.type===6||(window._rtlDefault&&e.target.type===7))&&(e.hasTriggerModifier||i&&i.keyCodeIsTriggerKey||e.isMiddleClick&&e.mouseMiddleClickAction==="openLink"))}'
+
+count_z = js.count(OLD_Z)
+if count_z == 1:
+    js = js.replace(OLD_Z, NEW_Z)
+    print("  ✅ LinkDetector — السماح بالتفعيل في المساحات الفارغة (RTL Hit-testing Bypass)")
+else:
+    errors.append(f"LinkDetector Z pattern: {count_z} (expected 1)")
+    print(f"  ❌ {errors[-1]}")
 
 # ==============================================================
 # CSS
