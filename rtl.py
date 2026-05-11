@@ -1,4 +1,22 @@
-import os
+#!/usr/bin/env python3
+"""
+RTL Support for Antigravity v9.0 — Force RTL
+==============================================
+Force RTL for ALL lines in .md files regardless of language:
+- .md files → ALL lines RTL (Arabic, English, whatever)
+- Non-.md files → LTR (default)
+
+NO per-line detection, NO language checking.
+Everything in markdown is RTL. Period.
+
+Usage:
+  python3 rtl.py
+  sudo cp /tmp/workbench.desktop.main.{js,css} \
+    /Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/
+  sudo cp /tmp/jetskiAgent.main.js \
+    /Applications/Antigravity.app/Contents/Resources/app/out/jetskiAgent/main.js
+"""
+
 import subprocess
 
 BACKUP_JS  = '/Users/kamel/k/save/plugins_backup/workbench.desktop.main.js.backup'
@@ -16,32 +34,41 @@ MGR_JS_DEST   = '/Applications/Antigravity.app/Contents/Resources/app/out/jetski
 print("📖 قراءة النسخ الاحتياطية النظيفة...")
 with open(BACKUP_JS, 'r') as f:
     js = f.read()
+print(f"  Workbench JS: {len(js):,} chars ✅")
+
 with open(BACKUP_CSS, 'r') as f:
     css = f.read()
+print(f"  Workbench CSS: {len(css):,} chars ✅")
+
 with open(MGR_BACKUP_JS, 'r') as f:
     mgr_js = f.read()
+print(f"  Manager JS: {len(mgr_js):,} chars ✅")
 
 errors = []
 
 # ==============================================================
-# MOD 1: True Native Bidi (Fixes Mirror Inversion & Arabic Text)
+# MOD 1: P() — Auto-detect direction from line content
 # ==============================================================
-print("\n🔧 [1/3] تعديل P() — الكشف الذكي عن الاتجاه (Native Bidi) ...")
+print("\n🔧 [1/3] تعديل P() — إجبار RTL لكل الأسطر ...")
 
 OLD_P = 'return i>0?V6.RTL:V6.LTR}getTextDirection'
 
+# Force RTL logic:
+# 1. Decorations override everything (original behavior)
+# 2. For .md files: ALL lines → RTL (no language detection)
+# 3. For non-.md files: LTR
+
 NEW_P = (
     'if(i>0)return V6.RTL;if(i<0)return V6.LTR;'
-    'try{'
-    'var l=this.getLineContent(t);var ar=/[\\u0600-\\u06FF]/.test(l);return ar?V6.RTL:V6.LTR;'
-    '}catch(e){return V6.RTL;}'
+    'if(typeof window==="undefined"||!window._rtlDefault)return V6.LTR;'
+    'return V6.RTL'
     '}getTextDirection'
 )
 
 count = js.count(OLD_P)
 if count == 1:
     js = js.replace(OLD_P, NEW_P)
-    print("  ✅ P() — تم تفعيل الكشف الذكي")
+    print("  ✅ P() — كل الأسطر RTL في ملفات .md")
 else:
     errors.append(f"P() pattern: {count} (expected 1)")
     print(f"  ❌ {errors[-1]}")
@@ -68,12 +95,13 @@ else:
     print(f"  ❌ {errors[-1]}")
 
 # ==============================================================
-# MOD 3: Minimal control script (with PARENT PADDING FIX)
+# MOD 3: Minimal control script (just file detection!)
 # ==============================================================
-print("\n🔧 [3/3] سكريبت كشف الملف ...")
+print("\n🔧 [3/3] سكريبت كشف الملف (مبسّط!) ...")
 
 SCRIPT = r"""
-;/* RTL_V12 */(function(){
+;/* RTL_V90 */(function(){
+/* RTL v9.0 — Force RTL + Cmd+; toggle + webview injection */
 window._rtlDefault=false;
 var _ov={};
 var _wvCSS='*:not(pre):not(code):not(.codicon):not(.monaco-tokenized-source):not(.monaco-tokenized-source *){direction:rtl!important;text-align:right!important;unicode-bidi:plaintext!important}pre,code,.codicon,.monaco-tokenized-source,.monaco-tokenized-source *{direction:ltr!important;text-align:left!important;unicode-bidi:normal!important}';
@@ -89,16 +117,12 @@ function sync(){
   try{
     var eds=document.querySelectorAll('.monaco-editor');
     for(var i=0;i<eds.length;i++){
-      if(window._rtlDefault) {
-          eds[i].classList.add('antigravity-rtl');
-          eds[i].parentElement.style.paddingRight = '40px';
-      } else {
-          eds[i].classList.remove('antigravity-rtl');
-          eds[i].parentElement.style.paddingRight = '0px';
-      }
+      if(window._rtlDefault) eds[i].classList.add('antigravity-rtl');
+      else eds[i].classList.remove('antigravity-rtl');
     }
   }catch(x){}
 }
+/* Inject RTL CSS into webview iframes (Agent Manager, Jetski, etc.) */
 function injectWebviews(){
   try{
     var frames=document.querySelectorAll('iframe.webview');
@@ -138,24 +162,69 @@ document.addEventListener('mousemove',function(e){window._lastMouseX=e.clientX;w
 setTimeout(function(){
   setInterval(sync,300);sync();
   setInterval(injectWebviews,1000);injectWebviews();
-  console.log('🔄 RTL v12.0')
+  console.log('🔄 RTL v9.0 — Cmd+; toggle + webview injection')
 },2000)
 })();
 """
 
 js += '\n' + SCRIPT
-print("  ✅ سكريبت السيطرة والبادينغ")
+print("  ✅ سكريبت مبسّط (كشف الملف فقط — 10 أسطر!)")
+
+# ==============================================================
+# MOD 4: Fix getLinkOccurrence Hit-Testing in RTL
+# ==============================================================
+print("\n🔧 [4/4] تعديل LinkDetector (إصلاح Cmd+Click) ...")
+
+OLD_GET_LINK = 'getLinkOccurrence(e){if(!this.m.hasModel()||!e)return null;const i=this.m.getModel().getDecorationsInRange({startLineNumber:e.lineNumber,startColumn:e.column,endLineNumber:e.lineNumber,endColumn:e.column},0,!0);for(const n of i){const s=this.j[n.id];if(s)return s}return null}'
+
+NEW_GET_LINK = (
+    'getLinkOccurrence(e){'
+    'if(!this.m.hasModel()||!e)return null;'
+    'const i=this.m.getModel().getDecorationsInRange({startLineNumber:e.lineNumber,startColumn:e.column,endLineNumber:e.lineNumber,endColumn:e.column},0,!0);'
+    'for(const n of i){const s=this.j[n.id];if(s)return s;}'
+    'if(window._rtlDefault){'
+    'var all=this.m.getModel().getDecorationsInRange({startLineNumber:e.lineNumber,startColumn:1,endLineNumber:e.lineNumber,endColumn:9999},0,!0);'
+    'for(const n of all){const s=this.j[n.id];if(s)return s;}'
+    '}'
+    'return null}'
+)
+
+js = js.replace(OLD_GET_LINK, NEW_GET_LINK)
+print("  ✅ LinkDetector — إصلاح الـ Hit-testing (Line-level fallback)")
+
+# ==============================================================
+# MOD 5: Allow LinkDetector to trigger on CONTENT_EMPTY (type 7) in RTL
+# ==============================================================
+OLD_Z = 'z(e,i){return!!(e.target.type===6&&(e.hasTriggerModifier||i&&i.keyCodeIsTriggerKey||e.isMiddleClick&&e.mouseMiddleClickAction==="openLink"))}'
+NEW_Z = 'z(e,i){return!!((e.target.type===6||(window._rtlDefault&&e.target.type===7))&&(e.hasTriggerModifier||i&&i.keyCodeIsTriggerKey||e.isMiddleClick&&e.mouseMiddleClickAction==="openLink"))}'
+
+count_z = js.count(OLD_Z)
+if count_z == 1:
+    js = js.replace(OLD_Z, NEW_Z)
+    print("  ✅ LinkDetector — السماح بالتفعيل في المساحات الفارغة (RTL Hit-testing Bypass)")
+else:
+    errors.append(f"LinkDetector Z pattern: {count_z} (expected 1)")
+    print(f"  ❌ {errors[-1]}")
 
 # ==============================================================
 # CSS
 # ==============================================================
 RTL_CSS = """
-/* ===== RTL v12.0 ===== */
-.monaco-editor.antigravity-rtl .view-line[dir="rtl"] { text-align: right !important; }
-.monaco-editor.antigravity-rtl .view-line[dir="ltr"] { text-align: left !important; }
+/* ===== RTL v9.0 — Force RTL ===== */
+
+/* === Editor RTL === */
+.view-line[dir="rtl"]{text-align:right}
+.view-line[dir="rtl"]>span>span[style*="unicode-bidi"]{unicode-bidi:normal!important}
+
 
 /* === Fix: kill text-indent overflow on RTL wrapped lines === */
 .view-line[dir="rtl"]>div[style*="text-indent"]{text-indent:0px!important}
+
+/* === Right Space (Shift text container left so right margin appears) === */
+.monaco-editor.antigravity-rtl .lines-content {
+    transform: translateX(-40px) !important;
+}
+
 
 /* === Chat Panel RTL (interactive-session) === */
 .interactive-session{direction:rtl;text-align:right}
@@ -226,6 +295,9 @@ RTL_CSS = """
 css += '\n' + RTL_CSS
 print("  ✅ CSS")
 
+# ==============================================================
+# Error check
+# ==============================================================
 if errors:
     print(f"\n⛔ {len(errors)} أخطاء:")
     for e in errors:
@@ -233,7 +305,10 @@ if errors:
     exit(1)
 
 # ==============================================================
-# Manager RTL
+# Save & Copy
+# ==============================================================
+# ==============================================================
+# MOD 4: Manager (Jetski Agent) — inject RTL CSS via JS
 # ==============================================================
 print("\n🔧 [4/4] Manager RTL — حقن CSS عبر JS ...")
 
@@ -250,6 +325,9 @@ console.log('🔄 Manager RTL v1 — injected');
 mgr_js += '\n' + MGR_RTL_SCRIPT
 print("  ✅ Manager RTL CSS injected via JS")
 
+# ==============================================================
+# Save & Copy
+# ==============================================================
 print("\n💾 حفظ ...")
 with open(JS_TMP, 'w') as f:
     f.write(js)
@@ -259,6 +337,7 @@ with open(MGR_JS_TMP, 'w') as f:
     f.write(mgr_js)
 print(f"  JS → {JS_TMP} ({len(js):,})")
 print(f"  CSS → {CSS_TMP} ({len(css):,})")
+print(f"  Manager JS → {MGR_JS_TMP} ({len(mgr_js):,})")
 
 print("\n📦 نسخ ...")
 ok = True
@@ -272,4 +351,12 @@ if not ok:
     print(f"\n👉 sudo cp {JS_TMP} '{JS_DEST}' && sudo cp {CSS_TMP} '{CSS_DEST}' && sudo cp {MGR_JS_TMP} '{MGR_JS_DEST}'")
 
 print("\n" + "=" * 50)
-print("🎉 RTL v12.0 — DONE!")
+print("🎉 RTL v9.0 — كل شي RTL")
+print("=" * 50)
+print("✨ كل الأسطر في .md ملفات RTL بغض النظر عن اللغة!")
+print("📌 ملف .md → كل الأسطر RTL")
+print("📌 عربي، إنجليزي، مخلوط — كله RTL")
+print("📌 Chat + Manager → RTL كمان")
+print("📌 Manager View → CSS injection via JS (دائم!)")
+print("📌 بدون كشف تلقائي، بدون تعقيد!")
+print("\n⚠️  Cmd+Q ثم أعد فتح Antigravity!")
