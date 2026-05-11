@@ -19,15 +19,15 @@ Usage:
 
 import subprocess
 
-BACKUP_JS  = '/Users/med10/med/plugins/workbench.desktop.main.js.backup'
-BACKUP_CSS = '/Users/med10/med/plugins/workbench.desktop.main.css.backup'
+BACKUP_JS  = '/Users/kamel/k/save/plugins_backup/workbench.desktop.main.js.backup'
+BACKUP_CSS = '/Users/kamel/k/save/plugins_backup/workbench.desktop.main.css.backup'
 JS_TMP  = '/tmp/workbench.desktop.main.js'
 CSS_TMP = '/tmp/workbench.desktop.main.css'
 JS_DEST  = '/Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js'
 CSS_DEST = '/Applications/Antigravity.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.css'
 
 # Manager (Jetski Agent) files
-MGR_BACKUP_JS = '/Users/med10/med/plugins/jetskiAgent.main.js.backup'
+MGR_BACKUP_JS = '/Users/kamel/k/save/plugins_backup/jetskiAgent.main.js.backup'
 MGR_JS_TMP    = '/tmp/jetskiAgent.main.js'
 MGR_JS_DEST   = '/Applications/Antigravity.app/Contents/Resources/app/out/jetskiAgent/main.js'
 
@@ -51,7 +51,7 @@ errors = []
 # ==============================================================
 print("\n🔧 [1/3] تعديل P() — إجبار RTL لكل الأسطر ...")
 
-OLD_P = 'return i>0?IL.RTL:IL.LTR}getTextDirection'
+OLD_P = 'return i>0?V6.RTL:V6.LTR}getTextDirection'
 
 # Force RTL logic:
 # 1. Decorations override everything (original behavior)
@@ -59,9 +59,9 @@ OLD_P = 'return i>0?IL.RTL:IL.LTR}getTextDirection'
 # 3. For non-.md files: LTR
 
 NEW_P = (
-    'if(i>0)return IL.RTL;if(i<0)return IL.LTR;'
-    'if(typeof window==="undefined"||!window._rtlDefault)return IL.LTR;'
-    'return IL.RTL'
+    'if(i>0)return V6.RTL;if(i<0)return V6.LTR;'
+    'if(typeof window==="undefined"||!window._rtlDefault)return V6.LTR;'
+    'return V6.RTL'
     '}getTextDirection'
 )
 
@@ -113,7 +113,14 @@ function _gf(){
 function sync(){
   var f=_gf(),l=f.toLowerCase();
   var isMd=(l.endsWith('.md')||l.endsWith('.markdown')||l.endsWith('.mdx'));
-  window._rtlDefault=(f in _ov)?_ov[f]:isMd
+  window._rtlDefault=(f in _ov)?_ov[f]:isMd;
+  try{
+    var eds=document.querySelectorAll('.monaco-editor');
+    for(var i=0;i<eds.length;i++){
+      if(window._rtlDefault) eds[i].classList.add('antigravity-rtl');
+      else eds[i].classList.remove('antigravity-rtl');
+    }
+  }catch(x){}
 }
 /* Inject RTL CSS into webview iframes (Agent Manager, Jetski, etc.) */
 function injectWebviews(){
@@ -173,6 +180,12 @@ RTL_CSS = """
 
 /* === Fix: kill text-indent overflow on RTL wrapped lines === */
 .view-line[dir="rtl"]>div[style*="text-indent"]{text-indent:0px!important}
+
+/* === Right Space (Shift text container left so right margin appears) === */
+.monaco-editor.antigravity-rtl .lines-content {
+    transform: translateX(-40px) !important;
+}
+
 
 /* === Chat Panel RTL (interactive-session) === */
 .interactive-session{direction:rtl;text-align:right}
